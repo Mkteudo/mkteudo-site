@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Mkteúdo — Marketing Digital em Ribeirão Preto</title>
+  <meta name="description" content="Blog da Mkteúdo: artigos sobre marketing digital, inbound marketing, IA, comunicação e cases de sucesso para empresas de Ribeirão Preto.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mkteudocomunicacao.com.br/blog.html">
+  <link rel="icon" href="imagens/logo-mkteudo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#FAFAF8;--sur:#FFF;--txt:#1A1A1A;--mut:#6B6B6B;--acc:#9428e4;--acl:#f0e6fd;--bor:#E8E8E4;--drk:#111;--fnd:'Syne',sans-serif;--fbd:'DM Sans',-apple-system,sans-serif;--ease:cubic-bezier(.16,1,.3,1)}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    body{font-family:var(--fbd);background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,250,248,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--bor)}
+    .nav__i{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;padding:0 2rem}
+    .nav__logo{height:42px;width:auto}
+    .nav__links{display:flex;gap:2rem;align-items:center}
+    .nav__links a{font-size:.875rem;font-weight:500;color:var(--mut);transition:color .3s}
+    .nav__links a:hover,.nav__links a.active{color:var(--acc)}
+    .nav__cta{background:var(--acc);color:#fff!important;padding:.6rem 1.4rem;border-radius:100px;font-size:.85rem;font-weight:600}
+    .nav__hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+    .nav__hbg span{width:24px;height:2px;background:var(--txt)}
+    .mob{display:none;position:fixed;inset:0;z-index:999;background:rgba(250,250,248,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mob.on{display:flex}.mob a{font-family:var(--fnd);font-size:1.8rem;color:var(--txt)}
+    .mob__x{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer}
+    .page-header{padding:9rem 0 3.5rem;text-align:center;background:var(--sur);border-bottom:1px solid var(--bor)}
+    .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
+    .page-header h1{font-family:var(--fnd);font-size:clamp(2rem,4.5vw,3rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:.8rem}
+    .page-header p{font-size:1rem;color:var(--mut);max-width:480px;margin:0 auto;line-height:1.7}
+    .filters{display:flex;gap:.5rem;justify-content:center;padding:2rem 1.5rem;flex-wrap:wrap;max-width:1200px;margin:0 auto}
+    .filter-btn{padding:.45rem 1.1rem;border-radius:100px;font-size:.8rem;font-weight:600;cursor:pointer;border:1.5px solid var(--bor);background:transparent;color:var(--mut);font-family:var(--fbd);transition:all .25s}
+    .filter-btn.active,.filter-btn:hover{background:var(--acc);color:#fff;border-color:var(--acc)}
+    .blog-wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem 6rem}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .card{border:1px solid var(--bor);border-radius:16px;overflow:hidden;background:var(--sur);transition:transform .35s var(--ease),box-shadow .35s var(--ease);display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(0,0,0,.07)}
+    .card__img{height:210px;object-fit:cover;width:100%;background:var(--acl)}
+    .card__body{padding:1.4rem 1.6rem 1.6rem;display:flex;flex-direction:column;flex:1}
+    .card__meta{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;font-size:.72rem;color:var(--mut);margin-bottom:.7rem}
+    .card__tag{background:var(--acl);color:var(--acc);padding:.2rem .65rem;border-radius:4px;font-weight:700;font-size:.68rem;letter-spacing:.04em;text-transform:uppercase}
+    .card__date{font-size:.72rem;color:var(--mut)}
+    .card__title{font-family:var(--fnd);font-size:1.08rem;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin-bottom:.55rem;color:var(--txt)}
+    .card__excerpt{font-size:.84rem;color:var(--mut);line-height:1.65;margin-bottom:1rem;flex:1}
+    .card__read{font-size:.8rem;font-weight:700;color:var(--acc);display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s;margin-top:auto}
+    .card:hover .card__read{gap:.6rem}
+    .footer{background:var(--drk);color:rgba(255,255,255,.45);padding:3rem 0;text-align:center}
+    .footer img{height:30px;width:auto;margin:0 auto .5rem;filter:brightness(10)}
+    .footer p{font-size:.82rem}
+    @media(max-width:960px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.blog-grid{grid-template-columns:1fr}.nav__links{display:none}.nav__hbg{display:flex}.card__img{height:190px}}
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="nav__i">
+  <a href="index.html"><img src="imagens/logo-mkteudo.png" alt="Mkteúdo" class="nav__logo"></a>
+  <div class="nav__links">
+    <a href="index.html#servicos">Serviços</a><a href="index.html#sobre">Sobre</a>
+    <a href="index.html#cases">Cases</a><a href="blog.html" class="active">Blog</a>
+    <a href="index.html#contato" class="nav__cta">Fale conosco</a>
+  </div>
+  <button class="nav__hbg" onclick="document.getElementById('mob').classList.toggle('on')"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mob" id="mob">
+  <button class="mob__x" onclick="document.getElementById('mob').classList.remove('on')">✕</button>
+  <a href="index.html">Home</a><a href="index.html#servicos">Serviços</a>
+  <a href="index.html#cases">Cases</a><a href="blog.html">Blog</a><a href="index.html#contato">Contato</a>
+</div>
+<header class="page-header">
+  <div class="eyebrow">Blog</div>
+  <h1>Conteúdo que move negócios.</h1>
+  <p>Artigos, cases de sucesso e insights sobre marketing digital para empresas do interior paulista.</p>
+</header>
+<div class="filters">
+  <button class="filter-btn active" data-cat="todos">Todos</button>
+  <button class="filter-btn" data-cat="estrategia">Estratégia</button>
+  <button class="filter-btn" data-cat="cases">Cases</button>
+  <button class="filter-btn" data-cat="inbound">Inbound</button>
+  <button class="filter-btn" data-cat="ia">IA + Marketing</button>
+  <button class="filter-btn" data-cat="midia">Mídia Paga</button>
+  <button class="filter-btn" data-cat="seo">SEO &amp; Conteúdo</button>
+  <button class="filter-btn" data-cat="redes">Redes Sociais</button>
+  <button class="filter-btn" data-cat="financeiro">Financeiro</button>
+</div>
+<div class="blog-wrap"><div class="blog-grid" id="blogGrid">
+
+  <a href="post/agencia-ativa-vs-passiva-head-marketing-mkteudo.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80&fit=crop" alt="Agência ativa vs passiva" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Sobre a Mkteúdo</span><span class="card__date">29 mar 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Agência passiva ou agência ativa? Conheça o modelo que realmente transforma resultados</h3>
+      <p class="card__excerpt">A Mkteúdo opera como Head de Marketing do cliente — dentro, propondo e integrando. Entenda a diferença entre entregar relatório e entregar resultado.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/leads-correspondentes-bancarios-maquina-de-vendas.html" class="card" data-cat="financeiro">
+    <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80&fit=crop" alt="Leads Correspondentes Bancários" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Marketing Financeiro</span><span class="card__date">25 mar 2026</span><span>11 min</span></div>
+      <h3 class="card__title">Geração de Leads para Correspondentes Bancários: como montar uma Máquina de Vendas Digital</h3>
+      <p class="card__excerpt">Como correspondentes bancários geram leads de consignado, FGTS e cartão de crédito de forma previsível com CPL controlado.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/mql-sql-qualificacao-leads-marketing-vendas.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&fit=crop" alt="MQL SQL qualificação leads" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia</span><span class="card__date">20 mar 2026</span><span>10 min</span></div>
+      <h3 class="card__title">MQL e SQL: o que são e como qualificar leads para vender mais com menos esforço</h3>
+      <p class="card__excerpt">A distinção entre leads qualificados pelo marketing e pelo comercial — e por que confundir os dois sabota a eficiência do funil de vendas.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/marketing-integrado-vendas-processo-comercial.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80&fit=crop" alt="Marketing integrado vendas" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia</span><span class="card__date">18 mar 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Marketing integrado com vendas: por que só gerar leads não basta</h3>
+      <p class="card__excerpt">O marketing precisa pensar em vendas — do ICP até o fechamento. Como integrar as duas equipes e medir resultado em receita, não em curtidas.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/felipe-piccoli-profissional-multidisciplinar-comunicacao-marketing.html" class="card" data-cat="sobre">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="Felipe Piccoli" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Sobre a Mkteúdo</span><span class="card__date">15 mar 2026</span><span>8 min</span></div>
+      <h3 class="card__title">Felipe Piccoli: profissional multidisciplinar referência em comunicação e marketing</h3>
+      <p class="card__excerpt">Jornalista, MBA em Marketing, ex-Accenture e LATAM, Copa 2014 e Olimpíadas 2016 — conheça o fundador da Mkteúdo.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/ia-nao-substitui-humano-quem-nao-usar-sera-substituido.html" class="card" data-cat="ia">
+    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&fit=crop" alt="IA não substitui humanos" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">IA + Marketing</span><span class="card__date">15 mar 2026</span><span>9 min</span></div>
+      <h3 class="card__title">IA não vai substituir humanos — mas quem não usar IA será substituído por quem usa</h3>
+      <p class="card__excerpt">64% dos profissionais de marketing já usam IA. O que a IA faz melhor do que humanos e o que o humano ainda faz que a IA não consegue replicar.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/conteudo-motor-geracao-de-leads-maquina-de-vendas.html" class="card" data-cat="seo">
+    <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=80&fit=crop" alt="Conteúdo motor geração leads" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Marketing de Conteúdo</span><span class="card__date">12 mar 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Conteúdo é o combustível da sua máquina de vendas — sem ele, nem o melhor tráfego funciona</h3>
+      <p class="card__excerpt">Por que conteúdo é o motor de qualquer estratégia de leads — mesmo em tráfego pago. Iscas digitais, funil completo e como medir em vendas.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/marketing-digital-ribeirao-preto-consultor-premiado-rd-station.html" class="card" data-cat="cases">
+    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80&fit=crop" alt="Premiação RD Station" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Cases e Premiações</span><span class="card__date">10 mar 2026</span><span>8 min</span></div>
+      <h3 class="card__title">Marketing Digital em Ribeirão Preto: consultor é premiado 2× pela RD Station</h3>
+      <p class="card__excerpt">A história das duas premiações nacionais da Mkteúdo no RD Limitless — o maior prêmio de marketing da América Latina.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/planejamento-execucao-marketing-equilibrio-inovacao-foco.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80&fit=crop" alt="Planejamento execução marketing" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia</span><span class="card__date">10 mar 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Planejamento, execução e foco: como não se perder em meio às novidades do marketing digital</h3>
+      <p class="card__excerpt">FOMO de marketing é o maior sabotador de resultado. Como manter foco no plano sem fechar os olhos para mudanças que realmente importam.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/dashboard-marketing-digital-lovable-cpl-cac-roi-roas.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Dashboard marketing digital" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Dashboard</span><span class="card__date">05 mar 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Dashboard de Marketing Digital: como a Mkteúdo monitora CPL, CAC, ROI e ROAS em tempo real com Lovable</h3>
+      <p class="card__excerpt">Por que dashboards são indispensáveis — e como criamos painéis inteligentes com todas as métricas que importam, atualizados em tempo real.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/inteligencia-artificial-marketing-digital-ribeirao-preto.html" class="card" data-cat="ia">
+    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&fit=crop" alt="Inteligência Artificial" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">IA + Marketing</span><span class="card__date">05 mar 2026</span><span>11 min</span></div>
+      <h3 class="card__title">Inteligência Artificial no Marketing Digital: guia para empresas de Ribeirão Preto</h3>
+      <p class="card__excerpt">8 aplicações práticas de IA para PMEs — automação, criação de conteúdo, chatbots e análise de campanha com exemplos reais.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/otimize-campanhas-por-sql-vendas-nao-por-leads.html" class="card" data-cat="midia">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Otimizar por SQL vendas" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Mídia Paga</span><span class="card__date">02 mar 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Você ainda otimiza campanhas por lead? Está perdendo dinheiro. Otimize por SQL e vendas</h3>
+      <p class="card__excerpt">Como integrar CRM com Google Ads e Meta Ads para que o algoritmo otimize para clientes reais — não para preenchedores de formulário.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/meta-ads-restricoes-servicos-financeiros-correspondente-bancario.html" class="card" data-cat="financeiro">
+    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&q=80&fit=crop" alt="Meta Ads restrições financeiras" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Marketing Financeiro</span><span class="card__date">28 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Meta Ads para Correspondentes Bancários: como anunciar sem cair nas restrições</h3>
+      <p class="card__excerpt">Política do Meta para serviços financeiros, criativos que passam na revisão e como proteger a saúde da conta de anúncios.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/chatgpt-ia-generativa-marketing-empresas-ribeirao-preto.html" class="card" data-cat="ia">
+    <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80&fit=crop" alt="ChatGPT Marketing" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">IA + Marketing</span><span class="card__date">28 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">ChatGPT e IA Generativa no Marketing: guia para empresas de Ribeirão Preto</h3>
+      <p class="card__excerpt">Como criar prompts eficientes, construir biblioteca de marca e usar IA com segurança incluindo cuidados com LGPD.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/terceirizacao-marketing-ribeirao-preto-quando-contratar.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80&fit=crop" alt="Terceirização Marketing" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia</span><span class="card__date">25 fev 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Terceirização de Marketing em Ribeirão Preto: quando contratar agência vale a pena</h3>
+      <p class="card__excerpt">Custo real de equipe interna vs agência e os 7 sinais de que é hora de terceirizar o marketing agora.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/marketing-digital-b2b-ribeirao-preto-interior-paulista.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80&fit=crop" alt="Marketing B2B" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia B2B</span><span class="card__date">20 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Marketing Digital B2B no Interior Paulista: estratégias que funcionam para Ribeirão Preto</h3>
+      <p class="card__excerpt">LinkedIn, account-based marketing e SEO regional — como gerar leads B2B qualificados no mercado do interior paulista.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/trafego-pago-ribeirao-preto-google-ads-meta-ads.html" class="card" data-cat="midia">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Tráfego Pago" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Mídia Paga</span><span class="card__date">18 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Tráfego Pago em Ribeirão Preto: Google Ads e Meta Ads que geram resultado real</h3>
+      <p class="card__excerpt">Os 5 motivos que fazem campanhas falharem — e como configurar segmentação correta para o mercado do interior paulista.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/campanhas-incentivo-vendas-ribeirao-preto-resultado.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&fit=crop" alt="Campanhas Incentivo" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Campanhas de Incentivo</span><span class="card__date">15 fev 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Campanhas de Incentivo de Vendas em Ribeirão Preto: como motivar equipes e bater metas</h3>
+      <p class="card__excerpt">Dinheiro ou experiência? Mecânicas, comunicação e como calcular o ROI de uma campanha de incentivo do zero.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/crm-dados-otimizar-campanhas-marketing.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&fit=crop" alt="CRM dados campanhas" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">CRM &amp; Vendas</span><span class="card__date">08 mar 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Você usa CRM ou apenas cadastra contatos? Como extrair dados do CRM para turbinar campanhas</h3>
+      <p class="card__excerpt">Lookalike audiences, conversões offline e como dados de vendas do CRM otimizam Google Ads e Meta Ads automaticamente.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/marketing-conteudo-seo-empresa-ribeirao-preto.html" class="card" data-cat="seo">
+    <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=80&fit=crop" alt="Marketing Conteúdo SEO" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Conteúdo e SEO</span><span class="card__date">12 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Marketing de Conteúdo e SEO: como gerar leads orgânicos para sua empresa em Ribeirão Preto</h3>
+      <p class="card__excerpt">Pesquisa de palavras-chave, estrutura de artigo que ranqueia e link building local para autoridade regional.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/crm-vendas-ribeirao-preto-pipedrive-rd-station.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&fit=crop" alt="CRM Vendas" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">CRM &amp; Vendas</span><span class="card__date">08 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">CRM para empresas de Ribeirão Preto: como organizar vendas e crescer com previsibilidade</h3>
+      <p class="card__excerpt">Pipedrive vs HubSpot vs RD Station CRM — comparativo honesto e guia de implementação em 30 dias.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/seo-local-ribeirao-preto-como-aparecer-google.html" class="card" data-cat="seo">
+    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80&fit=crop" alt="SEO Local" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">SEO</span><span class="card__date">03 fev 2026</span><span>10 min</span></div>
+      <h3 class="card__title">SEO Local em Ribeirão Preto: como aparecer no Google e atrair clientes da sua cidade</h3>
+      <p class="card__excerpt">Google Meu Negócio, NAP consistency, palavras-chave de alta intenção e quanto tempo leva para ranquear.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/automacao-marketing-rd-station-ribeirao-preto.html" class="card" data-cat="inbound">
+    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80&fit=crop" alt="Automação RD Station" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Automação</span><span class="card__date">28 jan 2026</span><span>10 min</span></div>
+      <h3 class="card__title">Automação de Marketing com RD Station em Ribeirão Preto: guia completo para empresas</h3>
+      <p class="card__excerpt">Fluxos por segmento, lead scoring e integração com CRM — como nutrir leads 24h sem aumentar a equipe.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/inbound-marketing-ribeirao-preto-maquina-de-vendas.html" class="card" data-cat="inbound">
+    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&q=80&fit=crop" alt="Inbound Marketing" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Inbound Marketing</span><span class="card__date">22 jan 2026</span><span>11 min</span></div>
+      <h3 class="card__title">Inbound Marketing em Ribeirão Preto: como criar uma Máquina de Vendas Digital</h3>
+      <p class="card__excerpt">Os 4 pilares do Inbound, ferramentas essenciais e o case do GRUPO INTELLI com ROI de 1.275%.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/gestao-redes-sociais-empresa-ribeirao-preto.html" class="card" data-cat="redes">
+    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80&fit=crop" alt="Redes Sociais" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Redes Sociais</span><span class="card__date">14 jan 2026</span><span>9 min</span></div>
+      <h3 class="card__title">Gestão de Redes Sociais para empresas em Ribeirão Preto: além dos posts bonitos</h3>
+      <p class="card__excerpt">Do algoritmo ao funil de vendas — como rastrear se as redes sociais estão gerando clientes de verdade.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/producao-de-conteudo-ribeirao-preto.html" class="card" data-cat="seo">
+    <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=80&fit=crop" alt="Produção de Conteúdo" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Marketing de Conteúdo</span><span class="card__date">10 out 2023</span><span>9 min</span></div>
+      <h3 class="card__title">Produção de Conteúdo em Ribeirão Preto: a estratégia que atrai clientes sem pagar por clique</h3>
+      <p class="card__excerpt">Repurposing, conteúdo sazonal e como medir se o conteúdo está gerando resultado de negócio real.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/comunicacao-estrategica-ribeirao-preto.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80&fit=crop" alt="Comunicação Estratégica" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia</span><span class="card__date">03 out 2023</span><span>9 min</span></div>
+      <h3 class="card__title">Comunicação Estratégica em Ribeirão Preto: vá além da panfletagem digital</h3>
+      <p class="card__excerpt">Os 4 pilares da comunicação que gera resultado — posicionamento, persona, mensagem e canal certo na hora certa.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/midia-paga-ribeirao-preto.html" class="card" data-cat="midia">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Mídia Paga" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Mídia Paga</span><span class="card__date">25 set 2023</span><span>9 min</span></div>
+      <h3 class="card__title">Mídia Paga em Ribeirão Preto: como parar de queimar dinheiro e ter ROI real</h3>
+      <p class="card__excerpt">Calculadora de orçamento, configuração de Google Ads e Meta Ads, e checklist de otimização semanal.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/estrategia-da-vaca-roxa-no-marketing-digital.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&q=80&fit=crop" alt="Vaca Roxa Marketing" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Estratégia</span><span class="card__date">20 set 2023</span><span>9 min</span></div>
+      <h3 class="card__title">Estratégia da Vaca Roxa no Marketing Digital: como ser notavelmente diferente</h3>
+      <p class="card__excerpt">Seth Godin aplicado ao mercado de Ribeirão Preto — 5 formas práticas de sair do modo "vaca marrom".</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/gestao-redes-sociais-ribeirao-preto.html" class="card" data-cat="redes">
+    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80&fit=crop" alt="Redes Sociais Ribeirão Preto" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Redes Sociais</span><span class="card__date">18 set 2023</span><span>8 min</span></div>
+      <h3 class="card__title">Gestão de Redes Sociais em Ribeirão Preto: do post bonito ao resultado real</h3>
+      <p class="card__excerpt">Algoritmo, calendário editorial, influenciadores locais e gestão de crise — o que funciona para empresas da cidade.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/criacao-de-site-ribeirao-preto.html" class="card" data-cat="estrategia">
+    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&fit=crop" alt="Criação de Site" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Marketing Digital</span><span class="card__date">12 set 2023</span><span>8 min</span></div>
+      <h3 class="card__title">Criação de Site em Ribeirão Preto: por que design bonito não é suficiente</h3>
+      <p class="card__excerpt">UX, performance técnica, SEO on-page e landing pages — o que separa um site bonito de um site que vende.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/agencia-parceira-rd-station-ribeirao-preto.html" class="card" data-cat="inbound">
+    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80&fit=crop" alt="Parceira RD Station Ribeirão Preto" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Inbound Marketing</span><span class="card__date">05 ago 2023</span><span>8 min</span></div>
+      <h3 class="card__title">Agência Parceira RD Station em Ribeirão Preto: o que essa certificação garante</h3>
+      <p class="card__excerpt">Critérios de certificação, SLA de entrega e como a parceria impacta o resultado do marketing da sua empresa.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/agencia-parceira-rd-station.html" class="card" data-cat="inbound">
+    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80&fit=crop" alt="Parceira RD Station" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Inbound Marketing</span><span class="card__date">01 jul 2023</span><span>8 min</span></div>
+      <h3 class="card__title">Mkteúdo: Agência Parceira da RD Station com resultado comprovado nacionalmente</h3>
+      <p class="card__excerpt">Cases premiados, ROI documentado e metodologia auditada — o que garante uma agência parceira certificada RD Station.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/mkteudo-podio-rd-limitless.html" class="card" data-cat="cases">
+    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80&fit=crop" alt="Pódio RD Limitless" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Cases e Premiações</span><span class="card__date">15 nov 2023</span><span>7 min</span></div>
+      <h3 class="card__title">Mkteúdo sobe ao pódio no maior evento de marketing da América Latina</h3>
+      <p class="card__excerpt">Top 3 no RD Limitless 2023 — o histórico de duas premiações e o que diferencia a Mkteúdo no mercado nacional.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+  <a href="post/grupo-intelli-roi-1275.html" class="card" data-cat="cases">
+    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80&fit=crop" alt="GRUPO INTELLI ROI" class="card__img">
+    <div class="card__body">
+      <div class="card__meta"><span class="card__tag">Cases de Sucesso</span><span class="card__date">10 nov 2023</span><span>9 min</span></div>
+      <h3 class="card__title">GRUPO INTELLI alcança ROI de 1.275% com o Clube do Eletricista — case premiado</h3>
+      <p class="card__excerpt">11.100 leads em 6 meses, 2º maior faturamento da história — e o Melhor Case de Transformação Digital do Brasil.</p>
+      <span class="card__read">Ler mais →</span>
+    </div>
+  </a>
+
+</div></div>
+
+<footer class="footer">
+  <img src="imagens/logo-mkteudo.png" alt="Mkteúdo">
+  <p>&copy; 2026 Mkteúdo Comunicação. Todos os direitos reservados.</p>
+</footer>
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('#blogGrid .card').forEach(card => {
+        card.style.display = (cat === 'todos' || card.dataset.cat === cat) ? 'flex' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
