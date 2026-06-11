@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Potencial de Receita | Método PICC — Mkteúdo</title>
+<meta name="description" content="Descubra quanto sua empresa pode faturar a mais otimizando funil, e-mail, CAPI, CRM e IA. Calculadora gratuita com benchmarks reais do mercado e RD Station.">
+<meta name="keywords" content="calculadora ROI marketing, calculadora ROAS, benchmark funil de vendas, potencial de receita, RD Station, MQL SQL conversão">
+<meta name="author" content="Mkteúdo Comunicação">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mkteudocomunicacao.com.br/calculadora.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Mkteúdo Comunicação">
+<meta property="og:title" content="Calculadora de Potencial de Receita — Método PICC">
+<meta property="og:description" content="Quanto sua empresa deixa na mesa hoje? Simule o impacto de otimizar funil, e-mail, CAPI, CRM e IA com benchmarks reais.">
+<meta property="og:url" content="https://mkteudocomunicacao.com.br/calculadora.html">
+<meta property="og:image" content="https://mkteudocomunicacao.com.br/imagens/logo-mkteudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+
+    :root{--clr-bg:#FAFAF8;--clr-surface:#FFF;--clr-text:#1A1A1A;--clr-text-muted:#6B6B6B;--clr-accent:#9428e4;--clr-accent-light:#f0e6fd;--clr-border:#E8E8E4;--clr-dark:#111;--clr-neon:#ff00ff;--font-display:'Syne',sans-serif;--font-body:'DM Sans',-apple-system,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);--max-w:1200px}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}ul{list-style:none}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,250,248,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--clr-border);transition:all .4s var(--ease-out)}.navbar.scrolled{box-shadow:0 1px 20px rgba(0,0,0,.06)}.navbar__inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:var(--max-w);margin:0 auto;padding:0 2rem}.navbar__logo-img{height:42px;width:auto}.navbar__links{display:flex;gap:2rem;align-items:center}.navbar__links a{font-size:.875rem;font-weight:500;color:var(--clr-text-muted);transition:color .3s;position:relative}.navbar__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--clr-accent);transition:width .3s var(--ease-out)}.navbar__links a:hover{color:var(--clr-text)}.navbar__links a:hover::after{width:100%}.navbar__cta{background:var(--clr-accent);color:#fff!important;padding:.6rem 1.4rem;border-radius:100px;font-size:.85rem;font-weight:600;transition:transform .3s var(--ease-out),box-shadow .3s}.navbar__cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(148,40,228,.3)}.navbar__cta::after{display:none!important}.navbar__hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}.navbar__hamburger span{width:24px;height:2px;background:var(--clr-text);transition:all .3s var(--ease-out)}
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}.hero__bg-image{position:absolute;inset:0;z-index:0;background-image:url('imagens/hero-bg.jpg');background-size:cover;background-position:center;opacity:.05}.hero__bg-gradient{position:absolute;top:-100px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.08) 0%,transparent 70%);pointer-events:none}.hero__bg-gradient2{position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.04) 0%,transparent 70%);pointer-events:none}.hero__content{position:relative;z-index:1;padding:4rem 0}.hero__badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--clr-accent-light);color:var(--clr-accent);padding:.5rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.02em;margin-bottom:2rem;animation:fadeUp .8s var(--ease-out) both}.hero__badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--clr-accent);animation:pulse 2s ease infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.hero__title{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,4.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--clr-text);max-width:820px;margin-bottom:1.5rem;animation:fadeUp .8s .1s var(--ease-out) both}.hero__title em{font-style:normal;background:linear-gradient(135deg,var(--clr-accent),var(--clr-neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero__subtitle{font-size:1.15rem;color:var(--clr-text-muted);max-width:560px;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp .8s .2s var(--ease-out) both}.hero__actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .3s var(--ease-out) both}.hero__stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--clr-border);animation:fadeUp .8s .4s var(--ease-out) both}.hero__stat-number{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--clr-accent);line-height:1}.hero__stat-label{font-size:.78rem;color:var(--clr-text-muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.08em}@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:100px;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;border:none;transition:all .3s var(--ease-out)}.btn--primary{background:var(--clr-accent);color:#fff}.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(148,40,228,.3)}.btn--outline{background:transparent;color:var(--clr-text);border:1.5px solid var(--clr-border)}.btn--outline:hover{border-color:var(--clr-accent);color:var(--clr-accent)}.btn__arrow{transition:transform .3s var(--ease-out)}.btn:hover .btn__arrow{transform:translateX(3px)}
+    .section{padding:7rem 0}.section--alt{background:var(--clr-surface)}.section__eyebrow{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:1rem;display:flex;align-items:center;gap:8px}.section__eyebrow::before{content:'';width:20px;height:2px;background:var(--clr-neon);display:block}.section__title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;max-width:600px;margin-bottom:1rem}.section__desc{font-size:1.05rem;color:var(--clr-text-muted);max-width:560px;line-height:1.75;margin-bottom:3rem}
+    .awards-strip{background:var(--clr-dark);padding:3.5rem 0}.awards-strip__inner{display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap}.award-item{display:flex;align-items:center;gap:1rem;color:#fff}.award-item__icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--clr-neon),var(--clr-accent));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}.award-item__title{font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.2;color:#fff}.award-item__event{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:2px}.award-divider{width:1px;height:48px;background:rgba(255,255,255,.1)}
+    .services__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}.service-card{background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:16px;padding:2.2rem;transition:all .4s var(--ease-out);position:relative;overflow:hidden}.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--clr-accent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out)}.service-card:hover{border-color:var(--clr-accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(148,40,228,.08)}.service-card:hover::before{transform:scaleX(1)}.service-card__icon{width:48px;height:48px;border-radius:12px;background:var(--clr-accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.3rem}.service-card__title{font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:.75rem;line-height:1.2}.service-card__text{font-size:.92rem;color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.5rem}.service-card__link{font-size:.85rem;font-weight:600;color:var(--clr-accent);display:inline-flex;align-items:center;gap:.3rem;transition:gap .3s var(--ease-out)}.service-card__link:hover{gap:.6rem}
+    .about__grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.about__image-wrapper{position:relative}.about__image{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;background:var(--clr-accent-light)}.about__float-card{position:absolute;bottom:-20px;right:-20px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:14px;padding:1.2rem 1.5rem;box-shadow:0 8px 30px rgba(0,0,0,.08)}.about__float-card-title{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--clr-accent);line-height:1}.about__float-card-text{font-size:.75rem;color:var(--clr-text-muted);margin-top:.2rem}.about__text h3{font-family:var(--font-display);font-size:1.8rem;font-weight:800;margin-bottom:1rem;line-height:1.15;letter-spacing:-.02em}.about__text p{font-size:.95rem;color:var(--clr-text-muted);line-height:1.75;margin-bottom:1.2rem}.about__credentials{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}.about__cred{background:var(--clr-accent-light);color:var(--clr-accent);padding:.35rem .9rem;border-radius:100px;font-size:.75rem;font-weight:600}
+    .clients__marquee{overflow:hidden;position:relative;padding:2.5rem 0;mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent)}.clients__track{display:flex;gap:3rem;align-items:center;animation:marquee 40s linear infinite;width:max-content}.clients__track img{height:40px;width:120px;object-fit:contain;object-position:center;opacity:.3;filter:grayscale(1);transition:all .4s}.clients__track img:hover{opacity:.75;filter:grayscale(0)}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .diff__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}.diff-card{border-radius:20px;padding:2.5rem 2rem;position:relative;overflow:hidden}.diff-card.dark{background:var(--clr-dark);color:#fff}.diff-card.light{background:var(--clr-surface);border:1.5px solid var(--clr-border)}.diff-card.accent{background:var(--clr-accent-light)}.diff-card__num{font-family:var(--font-display);font-size:3.5rem;font-weight:800;line-height:1;margin-bottom:.8rem;opacity:.12}.diff-card.dark .diff-card__num{color:#fff;opacity:.15}.diff-card.accent .diff-card__num{color:var(--clr-accent)}.diff-card__title{font-family:var(--font-display);font-size:1.25rem;font-weight:700;line-height:1.2;margin-bottom:.8rem}.diff-card.dark .diff-card__title{color:#fff}.diff-card.accent .diff-card__title{color:var(--clr-accent)}.diff-card__text{font-size:.9rem;line-height:1.65}.diff-card.dark .diff-card__text{color:rgba(255,255,255,.55)}.diff-card.accent .diff-card__text{color:#4a3060}.diff-card__glow{position:absolute;bottom:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.15),transparent 70%);}
+    .case-highlight{background:var(--clr-dark);color:#fff;border-radius:20px;padding:4rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;position:relative}.case-highlight::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.18),transparent 70%);pointer-events:none}.case-highlight__eyebrow{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--clr-neon);margin-bottom:1rem;display:flex;align-items:center;gap:8px}.case-highlight__eyebrow::before{content:'';width:16px;height:2px;background:var(--clr-neon);display:block}.case-highlight__title{font-family:var(--font-display);font-size:clamp(1.4rem,5vw,2rem);font-weight:800;line-height:1.15;margin-bottom:1rem;letter-spacing:-.02em}.case-highlight__text{color:rgba(255,255,255,.65);line-height:1.7;font-size:.9rem;margin-bottom:1.5rem}.case-highlight__metric{display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap}.case-highlight__metric-value{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--clr-neon);line-height:1}.case-highlight__metric-label{font-size:.7rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}.case-highlight__visual{position:relative;display:flex;align-items:center;justify-content:center}.case-highlight__image{width:280px;height:280px;border-radius:20px;object-fit:cover;box-shadow:0 20px 60px rgba(0,0,0,.3)}.case-highlight__image-fallback{width:220px;height:220px;border-radius:50%;background:linear-gradient(135deg,var(--clr-accent),var(--clr-neon));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;font-weight:700;text-align:center;padding:2rem;line-height:1.3;box-shadow:0 20px 60px rgba(148,40,228,.35)}
+    .method__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:step}.method-step{position:relative;padding:2rem 1.5rem;border:1px solid var(--clr-border);border-radius:16px;background:var(--clr-surface);transition:all .4s var(--ease-out);counter-increment:step}.method-step::before{content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--clr-accent-light);line-height:1;display:block;margin-bottom:1rem}.method-step:hover{border-color:var(--clr-accent);box-shadow:0 8px 30px rgba(148,40,228,.06);transform:translateY(-4px)}.method-step h4{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.6rem}.method-step p{font-size:.88rem;color:var(--clr-text-muted);line-height:1.6}
+    .blog__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}.blog-card{border:1px solid var(--clr-border);border-radius:16px;overflow:hidden;background:var(--clr-surface);transition:all .4s var(--ease-out);display:block}.blog-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.06);transform:translateY(-4px)}.blog-card__img{height:200px;object-fit:cover;width:100%;background:var(--clr-accent-light)}.blog-card__img-fallback{height:200px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:var(--clr-accent-light)}.blog-card__body{padding:1.5rem}.blog-card__tag{font-family:var(--font-display);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--clr-accent);margin-bottom:.5rem}.blog-card__title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;line-height:1.3;margin-bottom:.5rem}.blog-card__excerpt{font-size:.85rem;color:var(--clr-text-muted);line-height:1.6}
+    .cta-section{background:var(--clr-dark);padding:6rem 0;text-align:center;color:#fff;position:relative;overflow:hidden}.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.15),transparent 70%)}.cta-section .section__title{color:#fff;margin:0 auto 1rem;max-width:700px;text-align:center}.cta-section .section__desc{color:rgba(255,255,255,.5);margin:0 auto 2.5rem;text-align:center}.cta-section .section__eyebrow{justify-content:center;color:var(--clr-neon)}.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}.contact__form{display:flex;flex-direction:column;gap:1.2rem}.contact__input,.contact__textarea{width:100%;padding:1rem 1.2rem;border:1.5px solid var(--clr-border);border-radius:12px;font-family:var(--font-body);font-size:.95rem;background:var(--clr-bg);transition:border-color .3s;outline:none}.contact__input:focus,.contact__textarea:focus{border-color:var(--clr-accent)}.contact__textarea{resize:vertical;min-height:140px}.contact__info h3{font-family:var(--font-display);font-size:1.6rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em}.contact__info p{font-size:.95rem;color:var(--clr-text-muted);line-height:1.75;margin-bottom:1.5rem}.contact__detail{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem}.contact__detail-icon{width:40px;height:40px;border-radius:10px;background:var(--clr-accent-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}.contact__detail-text{font-size:.9rem}.contact__detail-text strong{display:block;color:var(--clr-text);margin-bottom:.15rem}
+    .footer{background:var(--clr-dark);color:rgba(255,255,255,.5);padding:4rem 0 2rem;border-top:1px solid rgba(255,255,255,.06)}.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}.footer__logo-img{height:36px;width:auto;margin-bottom:1rem;filter:brightness(10)}.footer__tagline{font-size:.88rem;line-height:1.6;margin-bottom:1.2rem}.footer__social{display:flex;gap:.8rem}.footer__social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;color:rgba(255,255,255,.5)}.footer__social a:hover{background:var(--clr-accent);border-color:var(--clr-accent);color:#fff}.footer__col h5{color:#fff;font-size:.75rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.2rem}.footer__col a{display:block;font-size:.88rem;margin-bottom:.7rem;transition:color .3s;color:rgba(255,255,255,.5)}.footer__col a:hover{color:#fff}.footer__bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;font-size:.8rem}.footer__award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,0,255,.1);border:1px solid rgba(255,0,255,.2);border-radius:20px;padding:.3rem .8rem;font-size:.7rem;font-weight:600;color:var(--clr-neon);margin-top:.8rem}
+
+    .reveal{opacity:1;transform:none}.js-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease-out),transform .65s var(--ease-out)}.js-ready .reveal.visible{opacity:1;transform:none}
+    .mobile-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(250,250,248,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-overlay.active{display:flex}.mobile-overlay a{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--clr-text)}.mobile-overlay a:hover{color:var(--clr-accent)}.mobile-overlay__close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer}
+    @media(min-width:769px){.case-highlight{overflow:hidden}}@media(max-width:1024px){.method__grid{grid-template-columns:repeat(2,1fr)}.case-highlight{grid-template-columns:1fr;padding:2.5rem;border-radius:16px}.case-highlight__visual{display:none}.about__grid{grid-template-columns:1fr}.about__image-wrapper{order:-1}.diff__grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.navbar__links{display:none}.navbar__hamburger{display:flex}.hero__stats{gap:2rem;flex-wrap:wrap}.services__grid{grid-template-columns:1fr}.method__grid{grid-template-columns:1fr}.blog__grid{grid-template-columns:1fr}.contact__grid{grid-template-columns:1fr}.footer__grid{grid-template-columns:1fr 1fr}.section{padding:4rem 0}.case-highlight{padding:1.25rem 1.25rem 1.75rem;grid-template-columns:1fr;border-radius:14px}.footer__bottom{flex-direction:column;gap:.5rem}.diff__grid{grid-template-columns:1fr}.awards-strip__inner{gap:2rem}.award-divider{display:none}}
+
+    /* ── RD STATION FORM ── */
+    .rd-form-wrapper{max-width:860px;margin:0 auto}
+    .rd-form{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:20px;padding:3rem;display:flex;flex-direction:column;gap:1.8rem}
+    .rd-form__row{display:grid;gap:1.5rem}.rd-form__row--2{grid-template-columns:1fr 1fr}
+    .rd-form__group{display:flex;flex-direction:column;gap:.5rem}
+    .rd-form__label{font-size:.82rem;font-weight:600;color:var(--clr-text);letter-spacing:.01em}.rd-form__label span{color:var(--clr-accent)}
+    .rd-form__input{width:100%;padding:.85rem 1.1rem;border:1.5px solid var(--clr-border);border-radius:10px;font-family:var(--font-body);font-size:.92rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color .25s,box-shadow .25s;outline:none;appearance:none}
+    .rd-form__input:focus{border-color:var(--clr-accent);box-shadow:0 0 0 3px rgba(148,40,228,.1)}
+    .rd-form__select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239428e4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+    .rd-form__textarea{min-height:110px;resize:vertical}
+    .rd-form__radio-group{display:flex;flex-wrap:wrap;gap:.5rem}
+    .rd-form__radio-group--col{flex-direction:column;gap:.4rem}
+    .rd-form__radio{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1.5px solid var(--clr-border);border-radius:8px;cursor:pointer;font-size:.85rem;color:var(--clr-text-muted);transition:all .2s;white-space:nowrap}
+    .rd-form__radio:has(input:checked){border-color:var(--clr-accent);background:var(--clr-accent-light);color:var(--clr-accent);font-weight:600}
+    .rd-form__radio input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+    .rd-form__divider{display:flex;align-items:center;gap:1rem;color:var(--clr-text-muted);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.rd-form__divider::before,.rd-form__divider::after{content:'';flex:1;height:1px;background:var(--clr-border)}
+    .rd-form__submit-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:.75rem}
+    .rd-form__submit{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.2rem;background:var(--clr-accent);color:#fff;border:none;border-radius:100px;font-family:var(--font-display);font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s var(--ease-out)}
+    .rd-form__submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(148,40,228,.3)}
+    .rd-form__privacy{font-size:.75rem;color:var(--clr-text-muted);max-width:420px;line-height:1.5}
+    .rd-form__success{text-align:center;padding:4rem 2rem}.rd-form__success-icon{width:64px;height:64px;border-radius:50%;background:var(--clr-accent-light);color:var(--clr-accent);font-size:1.8rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}.rd-form__success h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:.5rem}.rd-form__success p{color:var(--clr-text-muted)}
+    @media(max-width:680px){.rd-form{padding:1.5rem}.rd-form__row--2{grid-template-columns:1fr}.rd-form__radio-group{gap:.4rem}}
+  
+
+    /* Variáveis extras usadas pela calculadora (compatibilidade com o site real) */
+    :root{--clr-accent-dark:#4C0059;--clr-bg-alt:#f7f2fb;--grad-main:linear-gradient(135deg,#9428e4,#ff00ff)}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Potencial de Receita — Método PICC",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
+  "provider": { "@type": "Organization", "name": "Mkteúdo Comunicação" },
+  "description": "Calculadora que estima o potencial de receita de uma empresa ao otimizar funil de vendas, e-mail marketing, rastreamento (CAPI/Pixel), CRM, RD Station e IA, com base em benchmarks de mercado."
+}
+</script>
+<style>
+/* ============ CALCULADORA — estilo próprio sobre o brandbook ============ */
+.calc-hero{padding:8.5rem 0 3rem;background:var(--clr-dark);color:#fff;position:relative;overflow:hidden}
+.calc-hero::after{content:'';position:absolute;top:-160px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.16),transparent 70%);pointer-events:none}
+.calc-hero::before{content:'';position:absolute;bottom:-180px;left:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.14),transparent 70%);pointer-events:none}
+.calc-hero__inner{position:relative;max-width:760px}
+.calc-hero__badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,0,255,.12);border:1px solid rgba(255,0,255,.28);color:var(--clr-neon);padding:.45rem 1rem;border-radius:100px;font-size:.78rem;font-weight:700;margin-bottom:1.5rem}
+.calc-hero__title{font-family:var(--font-display);font-size:clamp(2.1rem,4.5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.1rem}
+.calc-hero__title em{font-style:normal;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.calc-hero__sub{font-size:1.12rem;color:rgba(255,255,255,.62);line-height:1.7}
+
+.calc-wrap{max-width:1080px;margin:-2rem auto 0;padding:0 2rem 5rem;position:relative;z-index:5}
+.calc-card{background:#fff;border:1.5px solid var(--clr-border);border-radius:22px;box-shadow:0 30px 80px rgba(76,0,89,.13);overflow:hidden}
+
+/* Stepper */
+.calc-steps{display:flex;border-bottom:1.5px solid var(--clr-border);background:var(--clr-bg-alt)}
+.calc-step{flex:1;padding:1.1rem 1rem;text-align:center;font-size:.8rem;font-weight:700;color:var(--clr-text-muted);position:relative;transition:color .2s}
+.calc-step.active{color:var(--clr-accent)}
+.calc-step.active::after{content:'';position:absolute;bottom:-1.5px;left:0;width:100%;height:3px;background:var(--grad-main)}
+.calc-step span{display:block;font-size:.68rem;font-weight:600;opacity:.6;margin-top:.15rem}
+
+.calc-body{padding:2.5rem}
+.calc-panel{display:none}
+.calc-panel.show{display:block;animation:fadeUp .4s var(--ease-out)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.calc-h{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--clr-accent-dark);letter-spacing:-.02em;margin-bottom:.4rem}
+.calc-sub{font-size:.95rem;color:var(--clr-text-muted);margin-bottom:2rem;line-height:1.6}
+
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.calc-field{display:flex;flex-direction:column;gap:.45rem}
+.calc-field label{font-size:.85rem;font-weight:600;color:var(--clr-text);display:flex;align-items:center;gap:.4rem}
+.calc-field .hint{font-size:.74rem;color:var(--clr-text-muted);font-weight:400}
+.calc-field input,.calc-field select{font-family:var(--font-body);font-size:1rem;padding:.8rem .95rem;border:1.5px solid var(--clr-border);border-radius:10px;background:var(--clr-bg-alt);color:var(--clr-text);transition:border-color .2s}
+.calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--clr-accent);background:#fff}
+.calc-prefix{position:relative}
+.calc-prefix input{padding-left:2.4rem}
+.calc-prefix::before{content:'R$';position:absolute;left:.95rem;top:50%;transform:translateY(-50%);font-size:.9rem;font-weight:600;color:var(--clr-text-muted);pointer-events:none}
+
+.info-tip{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--clr-accent-light);color:var(--clr-accent);font-size:.7rem;font-weight:700;cursor:help}
+
+/* Alavancas (toggles) */
+.lever{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.2rem;border:1.5px solid var(--clr-border);border-radius:14px;margin-bottom:.9rem;cursor:pointer;transition:all .2s;background:#fff}
+.lever:hover{border-color:var(--clr-accent)}
+.lever.on{border-color:var(--clr-accent);background:linear-gradient(160deg,#fff,#faf3ff)}
+.lever__check{width:24px;height:24px;border-radius:7px;border:2px solid var(--clr-border);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;transition:all .2s;font-size:.85rem;color:#fff}
+.lever.on .lever__check{background:var(--grad-main);border-color:transparent}
+.lever__ic{font-size:1.5rem;flex-shrink:0}
+.lever__body{flex:1;min-width:0}
+.lever__t{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--clr-accent-dark);margin-bottom:.2rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.lever__pill{font-size:.68rem;font-weight:700;background:var(--clr-accent-light);color:var(--clr-accent);padding:.15rem .5rem;border-radius:5px}
+.lever__d{font-size:.84rem;color:var(--clr-text-muted);line-height:1.5}
+.lever__src{font-size:.72rem;color:#a892b5;margin-top:.35rem;font-style:italic}
+
+.calc-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+
+/* Resultado */
+.res-headline{text-align:center;padding:1rem 0 2rem;border-bottom:1.5px solid var(--clr-border);margin-bottom:2rem}
+.res-headline__label{font-size:.85rem;font-weight:600;color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem}
+.res-headline__big{font-family:var(--font-display);font-size:clamp(2.6rem,6vw,4.2rem);font-weight:800;line-height:1;letter-spacing:-.03em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.res-headline__sub{font-size:1rem;color:var(--clr-text-muted);margin-top:.7rem}
+
+.res-compare{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-bottom:2rem}
+.res-col{border-radius:16px;padding:1.6rem;border:1.5px solid var(--clr-border)}
+.res-col--now{background:var(--clr-bg-alt)}
+.res-col--opt{background:var(--clr-dark);color:#fff;border-color:transparent;position:relative;overflow:hidden}
+.res-col--opt::after{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.2),transparent 70%)}
+.res-col__tag{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;position:relative}
+.res-col--now .res-col__tag{color:var(--clr-text-muted)}
+.res-col--opt .res-col__tag{color:var(--clr-neon)}
+.res-line{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0;border-bottom:1px solid var(--clr-border);font-size:.9rem;position:relative}
+.res-col--opt .res-line{border-color:rgba(255,255,255,.12)}
+.res-line:last-child{border-bottom:none}
+.res-line__l{color:inherit;opacity:.75}
+.res-line__v{font-family:var(--font-display);font-weight:700;font-size:1.05rem}
+.res-col--opt .res-line__v{color:#fff}
+.res-col__big{font-family:var(--font-display);font-size:2rem;font-weight:800;margin-top:1rem;position:relative}
+.res-col--now .res-col__big{color:var(--clr-accent-dark)}
+.res-col--opt .res-col__big{color:var(--clr-neon)}
+
+/* Barras de funil */
+.funnel{margin:1rem 0 2rem}
+.funnel__row{margin-bottom:1rem}
+.funnel__head{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.35rem}
+.funnel__head b{font-weight:700;color:var(--clr-accent-dark)}
+.funnel__bars{display:flex;flex-direction:column;gap:.3rem}
+.funnel__bar{height:14px;border-radius:7px;display:flex;align-items:center;position:relative;transition:width 1s var(--ease-out)}
+.funnel__bar--now{background:#d9c9e6}
+.funnel__bar--opt{background:var(--grad-main)}
+.funnel__bartag{font-size:.66rem;font-weight:700;white-space:nowrap;margin-left:.5rem;color:#5a4365}
+.funnel__bar--opt .funnel__bartag{color:#fff}
+
+.res-cta{background:var(--grad-main);border-radius:18px;padding:2.2rem;text-align:center;color:#fff;margin-top:1rem}
+.res-cta__t{font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.res-cta p{color:rgba(255,255,255,.88);margin-bottom:1.4rem;font-size:.95rem}
+
+.disclaimer{font-size:.74rem;color:var(--clr-text-muted);text-align:center;margin-top:1.5rem;line-height:1.5}
+
+/* Form lead */
+.lead-form{max-width:560px;margin:1.5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.lead-form .calc-field.full{grid-column:1/-1}
+.lead-ok{display:none;text-align:center;padding:2rem}
+.lead-ok.show{display:block}
+
+/* Títulos de seção no resultado */
+.res-h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-accent-dark);margin:2.2rem 0 .8rem;letter-spacing:-.01em}
+.res-p{font-size:.9rem;color:var(--clr-text-muted);line-height:1.6;margin-bottom:1rem}
+
+/* KPIs ROI */
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.8rem 0 .6rem}
+.kpi{background:var(--clr-bg-alt);border:1.5px solid var(--clr-border);border-radius:14px;padding:1.2rem;text-align:center}
+.kpi--hl{background:var(--clr-dark);border-color:transparent;position:relative;overflow:hidden}
+.kpi--hl::after{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.25),transparent 70%)}
+.kpi-l{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--clr-text-muted);margin-bottom:.4rem;position:relative}
+.kpi--hl .kpi-l{color:rgba(255,255,255,.6)}
+.kpi-v{font-family:var(--font-display);font-size:1.7rem;font-weight:800;color:var(--clr-accent-dark);line-height:1;position:relative}
+.kpi--hl .kpi-v{color:var(--clr-neon)}
+.kpi-v span{display:block;font-family:var(--font-body);font-size:.68rem;font-weight:500;color:var(--clr-text-muted);margin-top:.3rem}
+.kpi--hl .kpi-v span{color:rgba(255,255,255,.55)}
+.kpi-note{font-size:.78rem;color:var(--clr-text-muted);line-height:1.5;margin-bottom:.5rem}
+
+/* Bloco CAC */
+.cac-row{display:flex;align-items:stretch;gap:.8rem;margin:1rem 0;flex-wrap:wrap}
+.cac-card{flex:1;min-width:130px;background:var(--clr-bg-alt);border:1.5px solid var(--clr-border);border-radius:14px;padding:1.1rem;text-align:center}
+.cac-card.cac-save{background:#f0fbf4;border-color:#a8e6c0}
+.cac-l{font-size:.74rem;font-weight:600;color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
+.cac-v{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--clr-accent-dark)}
+.cac-v.cac-now{color:#c0392b}.cac-v.cac-opt{color:var(--clr-accent)}
+.cac-card.cac-save .cac-v{color:#1a8a4f}
+.cac-arrow{display:flex;align-items:center;font-size:1.5rem;color:var(--clr-accent);font-weight:700}
+.ltv-row{background:var(--clr-accent-light);border-radius:12px;padding:.9rem 1.2rem;font-size:.9rem;color:var(--clr-accent-dark);margin-top:.8rem}
+.ltv-row .ltv-now{color:#c0392b}.ltv-row .ltv-opt{color:var(--clr-accent)}
+
+/* Quebra por alavanca */
+.brk{display:flex;flex-direction:column;gap:.9rem}
+.brk-row{}
+.brk-top{display:flex;justify-content:space-between;gap:1rem;font-size:.9rem;margin-bottom:.35rem;flex-wrap:wrap}
+.brk-name{font-weight:600;color:var(--clr-text)}
+.brk-val{font-family:var(--font-display);font-weight:800;color:var(--clr-accent)}
+.brk-tag{font-size:.66rem;font-weight:700;padding:.1rem .45rem;border-radius:4px;margin-left:.3rem}
+.brk-tag--solo{background:#fff4e0;color:#b8770d}
+.brk-tag--no{background:#ffe9e9;color:#c0392b}
+.brk-bar{height:10px;border-radius:6px;background:var(--grad-main);transition:width 1s var(--ease-out)}
+
+/* Comparação benchmark */
+.cmp{display:flex;flex-direction:column;gap:.8rem}
+.cmp-row{display:flex;align-items:center;gap:.7rem;font-size:.84rem;flex-wrap:wrap}
+.cmp-l{width:110px;font-weight:600;color:var(--clr-text)}
+.cmp-bars{flex:1;min-width:120px;background:var(--muted);border-radius:6px;overflow:hidden;height:24px;display:flex;align-items:center}
+.cmp-you{height:100%;display:flex;align-items:center;padding:0 .5rem;font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;border-radius:6px}
+.cmp-you.ok{background:linear-gradient(90deg,#2aaa70,#1a8a4f)}
+.cmp-you.low{background:linear-gradient(90deg,#e6a020,#c0392b)}
+.cmp-bench{font-size:.76rem;color:var(--clr-text-muted)}
+.cmp-tag{font-size:.72rem;font-weight:700;padding:.15rem .5rem;border-radius:5px}
+.cmp-tag.ok{background:#e8fdf5;color:#1a8a4f}
+.cmp-tag.low{background:#fff4e0;color:#b8770d}
+
+/* Projeção temporal */
+.proj{display:flex;align-items:flex-end;gap:.4rem;height:140px;padding:.5rem 0;border-bottom:1.5px solid var(--clr-border)}
+.proj-col{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;gap:.3rem}
+.proj-bar{width:100%;max-width:34px;background:var(--grad-main);border-radius:5px 5px 0 0;transition:height 1s var(--ease-out);min-height:6px}
+.proj-m{font-size:.66rem;color:var(--clr-text-muted)}
+
+/* Meta reversa */
+.meta-box{background:linear-gradient(135deg,#fff,#faf3ff);border:1.5px solid var(--clr-accent);border-radius:14px;padding:1.3rem 1.5rem;margin:1.8rem 0}
+.meta-t{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--clr-accent-dark);margin-bottom:.5rem}
+.meta-box p{font-size:.9rem;color:var(--clr-text);line-height:1.65;margin:0}
+.meta-ok{color:#1a8a4f;font-weight:700}
+.meta-gap{color:#b8770d;font-weight:600}
+
+/* Toggle B2B/B2C */
+.seg-toggle{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.seg-opt{font-family:var(--font-body);font-size:.92rem;font-weight:600;padding:.9rem 1rem;border:1.5px solid var(--clr-border);border-radius:11px;background:var(--clr-bg-alt);color:var(--clr-text-muted);cursor:pointer;transition:all .15s;text-align:center}
+.seg-opt:hover{border-color:var(--clr-accent)}
+.seg-opt.on{background:var(--grad-main);border-color:transparent;color:#fff}
+
+/* Perfil de investidor */
+.perfil-toggle{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem}
+.perfil-opt{font-family:var(--font-body);font-size:.88rem;font-weight:700;padding:.85rem .6rem;border:1.5px solid var(--clr-border);border-radius:11px;background:var(--clr-bg-alt);color:var(--clr-text-muted);cursor:pointer;transition:all .15s;text-align:center;display:flex;flex-direction:column;gap:.2rem}
+.perfil-opt small{font-weight:500;font-size:.7rem;opacity:.8}
+.perfil-opt:hover{border-color:var(--clr-accent)}
+.perfil-opt.on{background:var(--grad-main);border-color:transparent;color:#fff}
+.perfil-msg{background:#f3e9fb;border-radius:12px;padding:1rem 1.3rem;font-size:.9rem;color:var(--clr-accent-dark);line-height:1.6;margin-bottom:1.5rem}
+.perfil-msg--seg{background:#eef7f1;color:#1a6e44}
+.perfil-msg--agr{background:#fdeefb;color:#8e1976}
+
+/* Nota de capacidade */
+.cap-note{background:var(--clr-accent-light);border-radius:12px;padding:1rem 1.3rem;font-size:.9rem;color:var(--clr-accent-dark);line-height:1.55;margin-top:1.3rem}
+.cap-src{font-size:.76rem;color:var(--clr-text-muted);line-height:1.55;margin-top:.7rem;font-style:italic}
+.cap-alert__src{display:block;font-size:.74rem;font-style:italic;opacity:.85;margin-top:.55rem;font-weight:400}
+.zero-note{background:linear-gradient(135deg,#fff,#faf3ff);border:1.5px solid var(--clr-accent);border-radius:12px;padding:1.1rem 1.3rem;font-size:.88rem;color:var(--clr-accent-dark);line-height:1.6;margin-bottom:1.3rem}
+.cap-alert{background:#fff4e0;border:1.5px solid #f0c97a;border-radius:12px;padding:1.1rem 1.3rem;font-size:.9rem;color:#8a5a00;line-height:1.6;margin-bottom:1.5rem}
+.cap-alert--info{background:var(--clr-bg-alt);border-color:var(--clr-border);color:var(--clr-text)}
+.cap-alert strong{color:#6b4500}
+
+/* Bloco CAC */
+.cac-row{display:flex;align-items:stretch;gap:.8rem;margin:1.8rem 0;flex-wrap:wrap}
+.cac-card{flex:1;min-width:130px;background:var(--clr-bg-alt);border:1.5px solid var(--clr-border);border-radius:14px;padding:1.1rem;text-align:center}
+.cac-card.cac-save{background:#f0fbf4;border-color:#a8e6c0}
+.cac-l{font-size:.74rem;font-weight:600;color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem}
+.cac-v{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--clr-accent-dark)}
+.cac-v.cac-now{color:#c0392b}.cac-v.cac-opt{color:var(--clr-accent)}
+.cac-card.cac-save .cac-v{color:#1a8a4f}
+.cac-arrow{display:flex;align-items:center;font-size:1.5rem;color:var(--clr-accent);font-weight:700}
+
+/* Grupos no diagnóstico */
+.diag-group{font-family:var(--font-display);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clr-accent);margin:1.6rem 0 .8rem;display:flex;align-items:center;gap:.6rem}
+.diag-group::after{content:'';flex:1;height:1px;background:var(--clr-border)}
+.diag-group:first-child{margin-top:0}
+
+/* Diagnóstico (3 estados) */
+.diag-quick{display:flex;gap:.6rem;margin-bottom:.5rem;flex-wrap:wrap}
+.diag{border:1.5px solid var(--clr-border);border-radius:14px;padding:1.1rem 1.2rem;margin-bottom:.9rem;transition:all .2s;background:#fff}
+.diag--off{background:#fff7f7;border-color:#ffdede}
+.diag__top{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.9rem}
+.diag__ic{font-size:1.6rem;flex-shrink:0}
+.diag__info{flex:1;min-width:0}
+.diag__t{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--clr-accent-dark);margin-bottom:.25rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.diag__pill{font-size:.66rem;font-weight:700;background:var(--clr-accent-light);color:var(--clr-accent);padding:.15rem .5rem;border-radius:5px}
+.diag__d{font-size:.85rem;color:var(--clr-text-muted);line-height:1.5}
+.diag__src{font-size:.72rem;color:#a892b5;margin-top:.35rem;font-style:italic}
+.tri-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+.tri{font-family:var(--font-body);font-size:.82rem;font-weight:600;padding:.6rem .5rem;border:1.5px solid var(--clr-border);border-radius:9px;background:var(--clr-bg-alt);color:var(--clr-text-muted);cursor:pointer;transition:all .15s;text-align:center}
+.tri:hover{border-color:var(--clr-accent)}
+.tri.on.tri--no{background:#ffe9e9;border-color:#ff9b9b;color:#c0392b}
+.tri.on.tri--solo{background:#fff4e0;border-color:#f0b75a;color:#b8770d}
+.tri.on.tri--pro{background:var(--grad-main);border-color:transparent;color:#fff}
+
+/* Veredito */
+.veredito{background:var(--clr-accent-light);border-left:4px solid var(--clr-accent);border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;font-size:.95rem;color:var(--clr-accent-dark);line-height:1.6;margin-bottom:1.5rem}
+
+/* Resumo do diagnóstico */
+.diag-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.5rem}
+.ds-item{border-radius:12px;padding:1rem;text-align:center;border:1.5px solid var(--clr-border)}
+.ds-item .ds-n{display:block;font-family:var(--font-display);font-size:1.8rem;font-weight:800;line-height:1}
+.ds-item .ds-l{display:block;font-size:.76rem;font-weight:600;margin-top:.25rem}
+.ds-no{background:#fff7f7;border-color:#ffdede}.ds-no .ds-n{color:#c0392b}.ds-no .ds-l{color:#c0392b}
+.ds-solo{background:#fff9ef;border-color:#f0d9a8}.ds-solo .ds-n{color:#b8770d}.ds-solo .ds-l{color:#b8770d}
+.ds-pro{background:#f3e9fb;border-color:#d9b8f0}.ds-pro .ds-n{color:var(--clr-accent)}.ds-pro .ds-l{color:var(--clr-accent)}
+
+/* Ressalva jurídica no fim do resultado */
+.ressalva{background:var(--clr-bg-alt);border:1.5px solid var(--clr-border);border-radius:14px;padding:1.6rem 1.8rem;margin-top:1.8rem}
+.ressalva__t{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--clr-accent-dark);margin-bottom:.9rem}
+.ressalva p{font-size:.82rem;color:var(--clr-text-muted);line-height:1.7;margin-bottom:.8rem}
+.ressalva p:last-child{margin-bottom:0}
+.ressalva strong{color:var(--clr-text);font-weight:600}
+.ressalva__close{padding-top:.8rem;border-top:1px solid var(--clr-border);font-style:italic}
+
+/* Estrutura comercial (passo 2) */
+.estrut-list{display:flex;flex-direction:column;gap:.7rem}
+.estrut-opt{text-align:left;border:1.5px solid var(--clr-border);border-radius:12px;padding:1rem 1.2rem;background:var(--clr-bg-alt);cursor:pointer;transition:all .15s;display:flex;flex-direction:column;gap:.25rem}
+.estrut-opt:hover{border-color:var(--clr-accent)}
+.estrut-opt.on{border-color:var(--clr-accent);background:#faf3ff;box-shadow:0 0 0 1px var(--clr-accent)}
+.estrut-t{font-family:var(--font-display);font-weight:700;font-size:.98rem;color:var(--clr-accent-dark)}
+.estrut-d{font-size:.82rem;color:var(--clr-text-muted);line-height:1.5}
+.seg-toggle--3{grid-template-columns:1fr 1fr 1fr}
+
+/* Explicação curta sob cada campo */
+.field-exp{font-size:.78rem;color:var(--clr-text-muted);line-height:1.5;margin-top:.1rem}
+
+/* Glossário do funil */
+.glossario{background:var(--clr-bg-alt);border:1.5px solid var(--clr-border);border-radius:14px;padding:1.3rem 1.5rem}
+.glossario__t{font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--clr-accent-dark);margin-bottom:.9rem}
+.glossario__grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.5rem}
+.gloss-item{font-size:.82rem;line-height:1.5}
+.gloss-item b{color:var(--clr-accent-dark);display:block;margin-bottom:.1rem}
+.gloss-item span{color:var(--clr-text-muted)}
+
+/* Caixa de benchmark do segmento */
+.bench-box{background:linear-gradient(135deg,#fff,#faf3ff);border:1.5px solid var(--clr-accent);border-radius:14px;padding:1.4rem 1.5rem;margin-top:1.4rem}
+.bench-box__t{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--clr-accent-dark);margin-bottom:.3rem}
+.bench-box__intro{font-size:.84rem;color:var(--clr-text-muted);margin-bottom:1rem}
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.bench-cell{background:#fff;border:1.5px solid var(--clr-border);border-radius:11px;padding:.9rem .7rem;text-align:center}
+.bench-n{display:block;font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--clr-accent);line-height:1.1}
+.bench-l{display:block;font-size:.72rem;color:var(--clr-text-muted);margin-top:.35rem;line-height:1.3}
+.bench-box__src{font-size:.74rem;color:var(--clr-text-muted);line-height:1.5;margin-top:1rem;font-style:italic}
+
+/* Intro de cada grupo no diagnóstico */
+.diag-group-intro{font-size:.82rem;color:var(--clr-text-muted);margin:-.4rem 0 .9rem;line-height:1.5}
+
+/* "O que é isso" expansível dentro do item */
+.diag__more{margin-top:.5rem}
+.diag__more summary{font-size:.8rem;font-weight:600;color:var(--clr-accent);cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.35rem}
+.diag__more summary::before{content:'+';font-weight:700;font-size:.95rem;line-height:1}
+.diag__more[open] summary::before{content:'\2013'}
+.diag__more summary::-webkit-details-marker{display:none}
+.diag__more p{font-size:.83rem;color:var(--clr-text-muted);line-height:1.6;margin-top:.55rem;padding:.8rem 1rem;background:var(--clr-bg-alt);border-radius:10px}
+
+@media(max-width:760px){
+  .calc-grid,.res-compare,.lead-form,.seg-toggle,.kpi-row,.perfil-toggle,.seg-toggle--3{grid-template-columns:1fr}
+  .calc-body{padding:1.5rem}
+  .calc-step span{display:none}
+  .calc-step{font-size:.7rem;padding:.9rem .2rem}
+  .tri-wrap{grid-template-columns:1fr}
+  .tri{padding:.7rem}
+  .cac-row{flex-direction:column}.cac-arrow{transform:rotate(90deg)}
+  .cmp-l{width:100%}
+  .proj{gap:.2rem}.proj-m{font-size:.6rem}
+  .glossario__grid{grid-template-columns:1fr}
+  .bench-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href='/'><img src="imagens/logo-mkteudo.png" alt="Mkteúdo" class="navbar__logo-img"></a>
+    <div class="navbar__links">
+      <a href="/#servicos">Serviços</a>
+      <a href="/#sobre">Sobre</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#metodologia">Metodologia</a>
+      <a href="/calculadora">Calculadora</a>
+      <a href="/blog">Blog</a>
+      <a href="/#contato" class="navbar__cta">Fale conosco</a>
+    </div>
+    <button class="navbar__hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-overlay" id="mobileMenu">
+  <button class="mobile-overlay__close" onclick="toggleMenu()">✕</button>
+  <a href="/#servicos" onclick="toggleMenu()">Serviços</a>
+  <a href="/#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="/#cases" onclick="toggleMenu()">Cases</a>
+  <a href="/#metodologia" onclick="toggleMenu()">Metodologia</a>
+  <a href="/calculadora" onclick="toggleMenu()">Calculadora</a>
+  <a href="/blog" onclick="toggleMenu()">Blog</a>
+  <a href="/#contato" onclick="toggleMenu()">Contato</a>
+</div>
+
+<header class="calc-hero">
+  <div class="container calc-hero__inner">
+    <div class="calc-hero__badge">Calculadora · benchmarks reais de mercado</div>
+    <h1 class="calc-hero__title">Quanto sua empresa <em>deixa na mesa</em> todo mês?</h1>
+    <p class="calc-hero__sub">Informe seus números atuais e descubra, em segundos, o potencial de receita que sua operação pode destravar otimizando funil, e-mail, rastreamento, CRM e IA — com base no que o mercado faz de melhor.</p>
+  </div>
+</header>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-steps">
+      <div class="calc-step active" data-s="0">1. Negócio<span>modelo e ticket</span></div>
+      <div class="calc-step" data-s="1">2. Time<span>capacidade comercial</span></div>
+      <div class="calc-step" data-s="2">3. Funil<span>tráfego e conversões</span></div>
+      <div class="calc-step" data-s="3">4. Diagnóstico<span>o que você faz</span></div>
+      <div class="calc-step" data-s="4">5. Resultado<span>seu potencial</span></div>
+    </div>
+
+    <div class="calc-body" id="calcBody"></div>
+  </div>
+  <p class="disclaimer">Esta calculadora usa benchmarks médios de mercado (RD Station, CX Trends, HubSpot, Meta e estudos de funil B2B de 2025–2026) para fins de estimativa. Os resultados são projeções e não garantia de desempenho — cada operação é única. Para uma análise precisa do seu caso, fale com a Mkteúdo.</p>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <img src="imagens/logo-mkteudo.png" alt="Mkteúdo" class="footer__logo-img">
+        <p class="footer__tagline">Marketing que move negócios. Agência de Marketing Digital em Ribeirão Preto.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/mkteudo/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://www.linkedin.com/company/mkteudo/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        </div>
+        <div class="footer__award">🏆 2× Premiada RD Limitless</div>
+      </div>
+      <div class="footer__col"><h5>Serviços</h5><a href='/servicos'>Terceirização de Marketing</a><a href='/servicos#inbound'>Inbound Marketing</a><a href='/servicos#crm'>CRM &amp; Dashboards</a><a href='/servicos#incentivo'>Campanhas de Incentivo</a></div>
+      <div class="footer__col"><h5>Conteúdo</h5><a href='/blog'>Blog</a><a href='/calculadora'>Calculadora de Receita</a><a href="/#cases">Cases</a><a href="/#metodologia">Metodologia</a></div>
+      <div class="footer__col"><h5>Contato</h5><a href="/#contato">Fale conosco</a><a href="https://lp.mkteudo.com.br/contato" target="_blank">Formulário online</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Mkteúdo Comunicação. Todos os direitos reservados.</span>
+      <span>CNPJ: 32.115.047/0001-97</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("active");}
+var _nav=document.getElementById("navbar");if(_nav){window.addEventListener("scroll",function(){_nav.classList.toggle("scrolled",window.scrollY>20);});}
+/* ============================================================
+   CALCULADORA-DIAGNÓSTICO DE RECEITA — Método PICC · Mkteúdo
+   v4 — sem emojis, didática, com benchmarks visíveis.
+   Fontes: RD Station Panorama, Safira Design (CPL BRL 2026),
+   witu.digital, SocialHub, Meta/Google 2026, Data Stone,
+   EasyInsights, estudos LTV/funil B2B 2025-2026.
+   ============================================================ */
+
+/* Benchmarks por modelo + segmento.
+   v2l/l2m/m2s/s2v em %; cpl = custo por lead médio (R$) em mídia paga;
+   cplMin/cplMax = faixa de mercado para exibição. */
+const SEG_B2B = {
+  "Indústria / Manufatura": { v2l:2.0, l2m:22, m2s:55, s2v:27, ticketRef:18000, cpl:90,  cplMin:30,  cplMax:150 },
+  "Indústria de alimentos e bebidas": { v2l:2.2, l2m:23, m2s:56, s2v:30, ticketRef:8000, cpl:70, cplMin:25, cplMax:140 },
+  "Distribuição / Atacado": { v2l:2.3, l2m:24, m2s:56, s2v:30, ticketRef:6000, cpl:75, cplMin:25, cplMax:150 },
+  "Agronegócio":            { v2l:2.2, l2m:24, m2s:55, s2v:28, ticketRef:25000, cpl:110, cplMin:40,  cplMax:200 },
+  "Tecnologia / SaaS":      { v2l:3.0, l2m:25, m2s:60, s2v:22, ticketRef:9000,  cpl:140, cplMin:60,  cplMax:280 },
+  "Saúde / Clínicas":       { v2l:2.5, l2m:23, m2s:52, s2v:30, ticketRef:6000,  cpl:50,  cplMin:15,  cplMax:80  },
+  "Serviços profissionais": { v2l:2.8, l2m:22, m2s:55, s2v:28, ticketRef:7000,  cpl:100, cplMin:40,  cplMax:180 },
+  "Financeiro / Contábil":  { v2l:2.4, l2m:22, m2s:54, s2v:26, ticketRef:8000,  cpl:120, cplMin:50,  cplMax:200 },
+  "Jurídico / Advocacia":   { v2l:2.3, l2m:21, m2s:53, s2v:27, ticketRef:6000,  cpl:180, cplMin:80,  cplMax:350 },
+  "Educação":               { v2l:2.5, l2m:20, m2s:50, s2v:30, ticketRef:4000,  cpl:55,  cplMin:20,  cplMax:100 },
+  "Construção / Imobiliário":{v2l:2.2, l2m:21, m2s:52, s2v:26, ticketRef:30000, cpl:130, cplMin:50,  cplMax:250 },
+  "Turismo / Eventos":      { v2l:2.5, l2m:22, m2s:55, s2v:28, ticketRef:9000,  cpl:80,  cplMin:30,  cplMax:160 },
+  "Outro / Não sei":        { v2l:2.4, l2m:22, m2s:53, s2v:27, ticketRef:9000,  cpl:100, cplMin:40,  cplMax:200 },
+};
+const SEG_B2C = {
+  "Varejo / E-commerce":    { v2l:2.5, l2m:35, m2s:70, s2v:40, ticketRef:400,  cpl:30,  cplMin:10,  cplMax:91  },
+  "Alimentação / Food Service": { v2l:2.8, l2m:36, m2s:68, s2v:42, ticketRef:600, cpl:28, cplMin:12, cplMax:80 },
+  "Comércio local / Lojas físicas": { v2l:2.6, l2m:35, m2s:68, s2v:40, ticketRef:500, cpl:28, cplMin:10, cplMax:85 },
+  "Agro / Venda direta":    { v2l:2.4, l2m:33, m2s:65, s2v:38, ticketRef:1500, cpl:38, cplMin:15, cplMax:100 },
+  "Tecnologia / Apps e assinaturas": { v2l:3.2, l2m:38, m2s:66, s2v:36, ticketRef:600, cpl:32, cplMin:12, cplMax:120 },
+  "Saúde / Estética":       { v2l:3.0, l2m:38, m2s:68, s2v:42, ticketRef:1200, cpl:35,  cplMin:15,  cplMax:80  },
+  "Serviços ao consumidor": { v2l:3.0, l2m:38, m2s:68, s2v:40, ticketRef:800,  cpl:32,  cplMin:15,  cplMax:90  },
+  "Finanças / Seguros (PF)": { v2l:2.6, l2m:34, m2s:64, s2v:34, ticketRef:1800, cpl:50, cplMin:20, cplMax:160 },
+  "Advocacia / Jurídico (PF)": { v2l:2.5, l2m:33, m2s:63, s2v:36, ticketRef:2500, cpl:70, cplMin:25, cplMax:200 },
+  "Educação / Cursos":      { v2l:3.5, l2m:40, m2s:65, s2v:38, ticketRef:900,  cpl:28,  cplMin:12,  cplMax:90  },
+  "Imobiliário":            { v2l:2.0, l2m:30, m2s:60, s2v:30, ticketRef:8000, cpl:60,  cplMin:25,  cplMax:140 },
+  "Turismo / Eventos":      { v2l:2.8, l2m:36, m2s:66, s2v:38, ticketRef:2500, cpl:40,  cplMin:18,  cplMax:100 },
+  "Outro / Não sei":        { v2l:2.8, l2m:36, m2s:67, s2v:39, ticketRef:700,  cpl:35,  cplMin:15,  cplMax:90  },
+};
+
+/* ITENS do diagnóstico.
+   exp = explicação didática (o que é, por que importa, por que está aqui). */
+const ITENS = [
+  { id:"pixel", t:"Pixel e rastreamento", pill:"Planejar", grupo:"Mídia & dados",
+    q:"Você tem o Pixel e o rastreamento bem configurados?",
+    d:"Sem rastrear corretamente, a mídia otimiza no escuro e você não consegue refazer públicos (remarketing).",
+    exp:"O Pixel é um pequeno código no seu site que registra o que cada visitante faz (visitou, clicou, comprou). É a base de tudo: sem ele, o Google e a Meta não conseguem aprender quem é seu cliente ideal nem otimizar os anúncios. É o primeiro item porque, sem rastreamento, todos os outros investimentos rendem menos.",
+    src:"Base de qualquer mídia que performa", effect:{ v2l:0.04 }, solo:0.5 },
+  { id:"capi", t:"CAPI — API de Conversões", pill:"Converter", grupo:"Mídia & dados",
+    q:"Você usa a API de Conversões (rastreamento server-side)?",
+    d:"Sem CAPI, perde-se de 40% a 60% das conversões por causa de bloqueios do iPhone e de cookies.",
+    exp:"CAPI (Conversions API) envia os dados de conversão direto do seu servidor para a Meta/Google, em vez de depender só do navegador do usuário. Como o iPhone e os bloqueadores de cookie hoje escondem boa parte dos dados, sem CAPI a plataforma 'enxerga' menos vendas do que você realmente teve — e otimiza pior. Ligar isso costuma recuperar metade das conversões perdidas.",
+    src:"Meta/EasyInsights: cerca de +23% de ROAS", effect:{ v2l:0.05, s2v:0.03 }, solo:0.3 },
+  { id:"google", t:"Google Ads", pill:"Converter", grupo:"Mídia & dados",
+    q:"Você anuncia no Google Ads?",
+    d:"O Google captura quem já está procurando ativamente pela sua solução — é o tráfego de maior intenção de compra.",
+    exp:"No Google Ads você aparece para quem digita exatamente o que vende ('empresa de X', 'preço de Y'). Como a pessoa já está buscando, a chance de virar cliente é alta. É o canal de menor risco para começar, porque você fala com quem já tem o problema que você resolve.",
+    src:"CPL Google B2B R$45–500; B2C R$20–80 (2026)", effect:{ trafego:0.10 }, solo:0.55, canal:true },
+  { id:"meta", t:"Meta Ads (Facebook e Instagram)", pill:"Converter", grupo:"Mídia & dados",
+    q:"Você anuncia no Meta Ads (Facebook/Instagram)?",
+    d:"A Meta gera alcance, autoridade e remarketing. Combinada ao Google, reduz o custo de aquisição em até 35%.",
+    exp:"No Meta (Facebook/Instagram) você alcança a pessoa antes dela procurar — gera desejo e lembrança de marca. Funciona muito bem junto com o Google: o Meta desperta o interesse, o Google captura na hora da decisão. Usar os dois reduz o custo por cliente porque um alimenta o outro.",
+    src:"witu.digital: Google+Meta -35% de CAC (2026)", effect:{ trafego:0.08 }, solo:0.55, canal:true },
+  { id:"trafego", t:"Otimização semanal de campanhas", pill:"Converter", grupo:"Mídia & dados",
+    q:"Suas campanhas de mídia são otimizadas toda semana?",
+    d:"Campanha no piloto automático queima verba. Ajuste contínuo derruba o custo por lead.",
+    exp:"Anúncio não é 'configurar e esquecer'. Toda semana há públicos que param de funcionar, anúncios que cansam e palavras que gastam sem retorno. Quem revisa e ajusta com frequência paga menos por cada lead. Deixar a campanha rodando sozinha é a forma mais comum de desperdiçar orçamento.",
+    src:"Gestão profissional: CPC 20–40% menor (2026)", effect:{ v2l:0.05 }, solo:0.4, cplCut:0.18 },
+  { id:"conteudo", t:"Conteúdo constante (Instagram/LinkedIn)", pill:"Planejar", grupo:"Topo de funil",
+    q:"Você produz conteúdo com constância nas redes?",
+    d:"Presença constante alimenta o topo do funil e gera autoridade — leads que chegam já confiando.",
+    exp:"Postar com regularidade mantém sua marca na frente do público e constrói confiança ao longo do tempo. Diferente do anúncio (que para quando você para de pagar), o conteúdo se acumula: cada post continua atraindo e educando. Ajuda principalmente no topo do funil, trazendo gente nova de forma orgânica (sem pagar por clique).",
+    src:"Constância amplia a geração de leads orgânicos", effect:{ trafego:0.06, v2l:0.03 }, solo:0.45 },
+  { id:"email", t:"E-mail marketing com automação", pill:"Converter", grupo:"Nutrição & CRM",
+    q:"Você faz e-mail marketing segmentado e automatizado?",
+    d:"Disparo manual e genérico converte pouco. Automação e segmentação elevam abertura e cliques.",
+    exp:"E-mail marketing não é mandar a mesma mensagem para todo mundo. Automação significa que o e-mail certo sai sozinho no momento certo (ex.: alguém baixou um material e recebe uma sequência educativa). Segmentação é falar diferente com cada perfil. Bem feito, é um dos canais de maior retorno porque trabalha o lead até ele estar pronto para comprar.",
+    src:"Abertura média 24–36%; bom CTR acima de 3% (2026)", effect:{ l2m:0.06 }, solo:0.35 },
+  { id:"rd", t:"RD Station Marketing", pill:"Integrar", grupo:"Nutrição & CRM",
+    q:"Você usa o RD Station com lead scoring e nutrição?",
+    d:"A maioria usa só 30% da ferramenta. Pontuação e nutrição de leads entregam contatos mais maduros para vendas.",
+    exp:"O RD Station é uma plataforma de automação de marketing. 'Lead scoring' dá uma nota para cada lead conforme o perfil e o interesse, para o time focar nos mais quentes. 'Nutrição' é a régua automática de e-mails que amadurece o lead. Quase toda empresa que tem a ferramenta usa só uma fração — e é justamente aí que se perde resultado.",
+    src:"RD Station Panorama — funil por segmento", effect:{ l2m:0.07, m2s:0.04 }, solo:0.4 },
+  { id:"crm", t:"CRM integrado ao marketing", pill:"Integrar", grupo:"Nutrição & CRM",
+    q:"Seu CRM conversa com o marketing, com regras claras (SLA)?",
+    d:"Marketing e vendas em silos = pipeline vazando. Integração rastreia a passagem de bastão.",
+    exp:"CRM é o sistema onde o time comercial gerencia as oportunidades (Pipedrive, HubSpot, RD CRM). Quando ele não conversa com o marketing, leads se perdem na passagem de um time para o outro. 'SLA' é o acordo de quem faz o quê e em quanto tempo. Integrar os dois é o que mais destrava receita em quem já gera leads mas vê vendas travarem.",
+    src:"MQL→SQL sobe para 50–70% integrado (Data Stone)", effect:{ m2s:0.06, s2v:0.05 }, solo:0.3 },
+  { id:"ia", t:"IA aplicada (conteúdo e qualificação)", pill:"Crescer", grupo:"Nutrição & CRM",
+    q:"Você aplica IA em marketing e vendas?",
+    d:"IA acelera a produção de conteúdo e qualifica leads por intenção, priorizando o que o time deve atacar.",
+    exp:"Inteligência artificial aqui significa usar ferramentas para produzir conteúdo mais rápido, responder leads na hora e identificar quem tem mais intenção de compra. Não substitui estratégia — acelera execução e ajuda o time comercial a falar primeiro com quem está mais perto de fechar.",
+    src:"Pontuação por intenção e comportamento (2026)", effect:{ l2m:0.04, m2s:0.04 }, solo:0.35 },
+  { id:"dash", t:"Dashboards de vendas e marketing", pill:"Crescer", grupo:"Gestão",
+    q:"Você acompanha o funil em dashboards (CAC, LTV, pipeline)?",
+    d:"Sem dado consolidado, você não enxerga onde o funil vaza nem corrige a tempo.",
+    exp:"Dashboard é um painel que reúne os números do marketing e das vendas num lugar só, atualizado. Sem ele, a decisão vira 'achismo' e os problemas só aparecem no fim do mês. Com ele, você vê qual etapa do funil está perdendo gente e corrige na semana, não no trimestre. É o que sustenta a melhoria contínua.",
+    src:"O que é medido melhora — otimização contínua", effect:{ s2v:0.04, l2m:0.03 }, solo:0.4 },
+];
+
+/* Glossário das etapas do funil (didático) */
+const GLOSSARIO = [
+  { t:"Visitante", d:"Pessoa que entra no seu site ou landing page. Topo do funil." },
+  { t:"Lead", d:"Visitante que deixou um contato (e-mail, telefone, formulário). Demonstrou interesse inicial." },
+  { t:"MQL (Marketing Qualified Lead)", d:"Lead que tem o perfil certo e demonstrou interesse suficiente para o marketing considerar pronto para abordagem." },
+  { t:"SQL (Sales Qualified Lead)", d:"Lead que o time de vendas analisou e validou como uma oportunidade real de negócio." },
+  { t:"Venda", d:"O SQL que fechou negócio e virou cliente. Fundo do funil." },
+  { t:"CPL (Custo por Lead)", d:"Quanto, em média, você paga em mídia para gerar um lead. CPL = verba investida ÷ leads gerados." },
+  { t:"CAC (Custo de Aquisição de Cliente)", d:"Quanto custa, no total, para conquistar um cliente. CAC = verba investida ÷ vendas fechadas." },
+  { t:"LTV (Lifetime Value)", d:"Quanto um cliente gera de receita durante todo o tempo que fica com você. Em recorrência: ticket × meses de permanência." },
+  { t:"ROAS / ROI", d:"Retorno sobre o investimento em mídia. ROAS de 5× significa que cada R$1 em anúncio gerou R$5 de receita." },
+];
+
+let S = {
+  step:0, modelo:"B2B", segmento:"Serviços profissionais", ticket:7000,
+  recorrencia:"unica", retencao:18,
+  estrutura:"misto", usaCrm:"basico", vendedores:3, capPorVend:12,
+  temProduto:"servico", logistica:"ok",
+  perfil:"cauteloso", investAtual:0,
+  knowsFunnel:"sim",   // sim | nao | zero (ainda nao faz digital)
+  funilSimples:false,  // true = informa só leads e vendas
+  zeroVerba:5000,      // verba de midia mensal pretendida (modo zero)
+  trafego:5000, leads:100, mql:40, sql:20, vendas:5, metaFat:0,
+  estados:{},
+};
+ITENS.forEach(i=>S.estados[i.id]=0);
+
+const fmtBRL = n => "R$ " + Math.round(n).toLocaleString("pt-BR");
+const $ = s => document.querySelector(s);
+function segData(){ return (S.modelo==="B2B"?SEG_B2B:SEG_B2C)[S.segmento] || (S.modelo==="B2B"?SEG_B2B:SEG_B2C)["Outro / Não sei"]; }
+function valorCliente(){ return S.recorrencia==="recorrente" ? S.ticket*Math.max(1,S.retencao) : S.ticket; }
+
+function render(){
+  document.querySelectorAll(".calc-step").forEach(el=>el.classList.toggle("active",+el.dataset.s===S.step));
+  const body=$("#calcBody");
+  if(S.step===0) body.innerHTML=panelNegocio();
+  if(S.step===1) body.innerHTML=panelCapacidade();
+  if(S.step===2) body.innerHTML=panelFunil();
+  if(S.step===3) body.innerHTML=panelDiag();
+  if(S.step===4){ body.innerHTML=panelResultado(); animateBars(); }
+  window.scrollTo({top:document.querySelector(".calc-wrap").offsetTop-80,behavior:"smooth"});
+}
+
+/* PASSO 1 */
+function panelNegocio(){
+  const segs=Object.keys(S.modelo==="B2B"?SEG_B2B:SEG_B2C);
+  const opts=segs.map(s=>`<option ${s===S.segmento?"selected":""}>${s}</option>`).join("");
+  return `<div class="calc-panel show">
+    <h2 class="calc-h">Vamos começar pelo seu negócio</h2>
+    <p class="calc-sub">Negócios que vendem para empresas (B2B) e para o consumidor final (B2C) têm números de mercado bem diferentes. Por isso começamos por aqui: assim comparamos você com a referência certa.</p>
+    <div class="calc-field" style="margin-bottom:1.3rem"><label>Você vende para...</label>
+      <div class="seg-toggle">
+        <button class="seg-opt ${S.modelo==='B2B'?'on':''}" onclick="setModelo('B2B')">Outras empresas (B2B)</button>
+        <button class="seg-opt ${S.modelo==='B2C'?'on':''}" onclick="setModelo('B2C')">Consumidor final (B2C)</button>
+      </div>
+      <span class="field-exp">B2B costuma ter ticket maior, ciclo de venda mais longo e custo por lead mais alto. B2C tem volume maior e decisão mais rápida.</span></div>
+    <div class="calc-grid">
+      <div class="calc-field"><label>Segmento</label><select id="f-seg" onchange="onSegChange()">${opts}</select>
+        <span class="field-exp">Usamos o segmento para aplicar as taxas de conversão e o custo por lead típicos da sua área.</span></div>
+      <div class="calc-field"><label>Ticket médio por venda</label>
+        <div class="calc-prefix"><input id="f-ticket" type="number" min="0" value="${S.ticket}"></div>
+        <span class="field-exp">É o valor médio que entra a cada negócio fechado. Se você vende por contrato/mensalidade, use o valor de um mês (o tempo de permanência é perguntado abaixo).</span></div>
+      <div class="calc-field"><label>Tipo de receita</label>
+        <select id="f-rec" onchange="toggleRec(this.value)">
+          <option value="unica" ${S.recorrencia==="unica"?"selected":""}>Venda única (paga uma vez)</option>
+          <option value="recorrente" ${S.recorrencia==="recorrente"?"selected":""}>Recorrente (mensalidade/contrato)</option>
+        </select>
+        <span class="field-exp">Receita recorrente vale mais: o cliente paga várias vezes. Por isso calculamos o valor dele ao longo do tempo (LTV), não só a primeira venda.</span></div>
+      <div class="calc-field" id="recWrap" style="${S.recorrencia==="recorrente"?"":"display:none"}">
+        <label>Tempo médio que o cliente fica (meses)</label>
+        <input id="f-ret" type="number" min="1" value="${S.retencao}">
+        <span class="field-exp">Quantos meses, em média, um cliente continua pagando. Média de mercado B2B: 18 a 24 meses. O LTV é o ticket multiplicado por esse tempo.</span></div>
+      <div class="calc-field"><label>Você vende...</label>
+        <select id="f-prod" onchange="toggleProd(this.value)">
+          <option value="servico" ${S.temProduto==="servico"?"selected":""}>Serviço (sem entrega física)</option>
+          <option value="produto" ${S.temProduto==="produto"?"selected":""}>Produto físico (precisa entregar)</option>
+        </select>
+        <span class="field-exp">Produto físico depende de logística para crescer. Se a entrega travar, vender mais não adianta — por isso perguntamos.</span></div>
+      <div class="calc-field" id="logWrap" style="${S.temProduto==="produto"?"":"display:none"}">
+        <label>Sua logística/entrega dá conta de crescer?</label>
+        <select id="f-log">
+          <option value="ok" ${S.logistica==="ok"?"selected":""}>Sim, tem folga para vender mais</option>
+          <option value="gargalo" ${S.logistica==="gargalo"?"selected":""}>Não, já está no limite</option>
+        </select>
+        <span class="field-exp">Se a operação já está no limite, ajustamos a projeção para baixo — crescer vendas sem dar conta de entregar gera cliente insatisfeito.</span></div>
+    </div>
+    <div class="calc-field" style="margin-top:1.3rem"><label>Seu perfil para investir em marketing</label>
+      <div class="perfil-toggle">
+        <button class="perfil-opt ${S.perfil==='receoso'?'on':''}" onclick="setPerfil('receoso')">Tenho receio<small>quero segurança antes de investir</small></button>
+        <button class="perfil-opt ${S.perfil==='cauteloso'?'on':''}" onclick="setPerfil('cauteloso')">Sou cauteloso<small>prefiro ir por etapas</small></button>
+        <button class="perfil-opt ${S.perfil==='agressivo'?'on':''}" onclick="setPerfil('agressivo')">Quero investir<small>se o retorno provar, acelero</small></button>
+      </div>
+      <span class="field-exp">Isso não muda os números — muda o que destacamos no resultado, de acordo com o seu apetite a risco.</span></div>
+    <div class="calc-nav"><span></span><button class="btn btn--grad" onclick="next()">Continuar</button></div>
+  </div>`;
+}
+
+/* PASSO 2 */
+function panelCapacidade(){
+  const estr=S.estrutura;
+  const opt=(val,titulo,desc)=>`<button class="estrut-opt ${estr===val?'on':''}" onclick="setEstrutura('${val}')"><span class="estrut-t">${titulo}</span><span class="estrut-d">${desc}</span></button>`;
+  // rótulo do campo "quantas pessoas" muda conforme a estrutura
+  const labelVend = {
+    dedicado:"Quantos vendedores atendem os leads",
+    misto:"Quantas pessoas atendem (loja + leads)",
+    externo:"Quantos vendedores/representantes na rua",
+    dono:"Quantas pessoas vendem (você + sócios)",
+    nenhum:"Quantas pessoas poderiam atender leads hoje",
+  }[estr] || "Quantas pessoas vendem";
+  const expVend = {
+    dedicado:"Pessoas focadas em vendas internas, que conseguem priorizar os leads do digital.",
+    misto:"Como dividem o tempo entre o balcão/loja e os leads online, a capacidade para o digital é parcial — consideramos isso no cálculo.",
+    externo:"A força de vendas externa recebe os leads do digital além da carteira própria. O tempo dedicado ao digital costuma ser parcial.",
+    dono:"Quem comanda também vende. Funciona no começo, mas vira gargalo rápido quando os leads aumentam.",
+    nenhum:"Mesmo sem estrutura hoje, estimamos com quem poderia assumir os primeiros leads enquanto o comercial é montado.",
+  }[estr] || "";
+  // fator de dedicação ao digital (afeta a capacidade real)
+  const fatorTxt = {
+    dedicado:"100% do tempo nos leads",
+    misto:"~50% do tempo (divide com a loja)",
+    externo:"~40% do tempo (divide com a carteira)",
+    dono:"tempo limitado entre outras funções",
+    nenhum:"a estruturar",
+  }[estr] || "";
+  return `<div class="calc-panel show">
+    <h2 class="calc-h">Como funciona a sua estrutura de vendas?</h2>
+    <p class="calc-sub">Gerar mais leads não adianta se não houver quem atenda e feche — no tempo certo. A realidade das empresas brasileiras é variada: tem quem venda no balcão, na rua, por representante ou por um time interno. Escolha o que mais se parece com a sua, para a projeção respeitar a sua capacidade real.</p>
+    <div class="estrut-list">
+      ${opt('dedicado','Time interno dedicado a vendas','Vendedores internos focados em atender e fechar (inside sales). Comum em serviços, tecnologia e indústrias mais estruturadas.')}
+      ${opt('misto','Time misto: loja/balcão + leads','Os mesmos vendedores atendem o cliente presencial e os contatos do digital. Muito comum em varejo, alimentício, autopeças, materiais de construção e distribuidoras.')}
+      ${opt('externo','Vendedores externos / representantes','Força de vendas na rua ou representantes que recebem os leads do digital além da carteira. Clássico da indústria, do agro e da distribuição.')}
+      ${opt('dono','Eu ou os sócios vendemos','A liderança ainda toca as vendas. Típico de operações enxutas e de quem está começando no digital.')}
+      ${opt('nenhum','Ainda não tenho estrutura para isso','Quero gerar demanda, mas o comercial para atender o digital ainda precisa ser montado.')}
+    </div>
+    <div class="calc-grid" style="margin-top:1.5rem">
+      <div class="calc-field"><label>${labelVend}</label><input id="f-vend" type="number" min="1" value="${S.vendedores}">
+        <span class="field-exp">${expVend}</span></div>
+      <div class="calc-field"><label>Negócios que cada um fecha por mês</label><input id="f-cap" type="number" min="1" value="${S.capPorVend}">
+        <span class="field-exp">Capacidade média de fechamento por pessoa, contando só o que vem do digital. Ticket alto e venda complexa têm números menores (ex.: 4 a 8); venda simples e recorrente, números maiores.</span></div>
+    </div>
+    ${estr?`<div class="cap-note">Dedicação ao digital nessa estrutura: <strong>${fatorTxt}</strong>. Capacidade estimada para os leads do digital: <strong id="capTotal">${Math.round(S.vendedores*S.capPorVend*fatorDigital())}</strong> negócios por mês. ${estr==='misto'||estr==='externo'?'Como o time divide o tempo, consideramos só a fração dedicada ao digital — é assim que evitamos prometer mais do que a operação aguenta.':estr==='nenhum'?'Recomendamos estruturar o atendimento em paralelo à geração de demanda.':'Se a projeção passar disso, o próximo passo é reforçar o time.'}</div>
+    <p class="cap-src">Por que a capacidade cai quando o time é dividido? Pesquisas de produtividade comercial mostram que o vendedor gasta a maior parte do tempo fora da venda em si: a Salesforce (State of Sales) aponta cerca de 72% do tempo em atividades que não são de venda, e o State of Sales registra só ~36% do tempo dedicado a vender de fato. Quando esse mesmo vendedor ainda atende balcão ou uma carteira própria, a fração que sobra para os leads do digital é menor — por isso aplicamos um fator de dedicação (100% dedicado, ~50% misto, ~40% externo) em vez de assumir o time inteiro disponível.</p>`:`<div class="cap-note">Selecione a estrutura acima para estimarmos sua capacidade real de atendimento.</div>`}
+    <div class="calc-field" style="margin-top:1.4rem"><label>Esse time usa um CRM para organizar os atendimentos?</label>
+      <div class="seg-toggle seg-toggle--3">
+        <button class="seg-opt ${S.usaCrm==='sim'?'on':''}" onclick="setCrm('sim')">Sim, usamos CRM</button>
+        <button class="seg-opt ${S.usaCrm==='basico'?'on':''}" onclick="setCrm('basico')">Usamos pouco / planilha</button>
+        <button class="seg-opt ${S.usaCrm==='nao'?'on':''}" onclick="setCrm('nao')">Não usamos</button>
+      </div>
+      <span class="field-exp">Ter vendedor não significa ter processo. Sem CRM, leads esfriam e se perdem na correria do dia a dia — um dos maiores ralos de receita no Brasil. Isso entra na análise do diagnóstico.</span></div>
+    <div class="calc-nav"><button class="btn btn--ghost" onclick="prev()">Voltar</button><button class="btn btn--grad" onclick="next()">Continuar</button></div>
+  </div>`;
+}
+// fração do tempo do time efetivamente dedicada aos leads do digital
+function fatorDigital(){
+  return { dedicado:1, misto:0.5, externo:0.4, dono:0.5, nenhum:0.5 }[S.estrutura] || 1;
+}
+
+/* PASSO 3 */
+function panelFunil(){
+  const b=segData();
+  return `<div class="calc-panel show">
+    <h2 class="calc-h">Seu funil hoje e sua meta</h2>
+    <p class="calc-sub">O funil é o caminho do visitante até virar cliente. Informe os números de um mês típico. Se não souber algum, escolha a opção de usar a média do mercado — preenchemos com a referência do seu segmento.</p>
+
+    <div class="glossario">
+      <div class="glossario__t">O que significa cada etapa</div>
+      <div class="glossario__grid">
+        ${GLOSSARIO.slice(0,5).map(g=>`<div class="gloss-item"><b>${g.t}</b><span>${g.d}</span></div>`).join("")}
+      </div>
+    </div>
+
+    <div class="calc-field" style="margin:1.5rem 0 1.4rem"><label>Qual cenário descreve você hoje?</label>
+      <select id="f-knows" onchange="toggleKnows(this.value)">
+        <option value="sim" ${S.knowsFunnel==="sim"?"selected":""}>Já faço marketing digital e conheço meus números</option>
+        <option value="nao" ${S.knowsFunnel==="nao"?"selected":""}>Já faço digital, mas não sei os números — usar a média</option>
+        <option value="zero" ${S.knowsFunnel==="zero"?"selected":""}>Ainda não faço digital — quero projetar do zero</option>
+      </select>
+      <span class="field-exp">${S.knowsFunnel==="zero"?'Perfeito para quem tem operação consolidada mas ainda não vende pelo digital. Vamos projetar um cenário de entrada com base na verba que você pretende investir e nas médias do seu segmento.':'O funil é o caminho do visitante até virar cliente.'}</span></div>
+
+    <div id="zeroInputs" style="${S.knowsFunnel==="zero"?"":"display:none"}">
+      <div class="zero-note">Você indicou que <strong>ainda não faz marketing digital</strong>. Em vez do funil atual (que seria zero), vamos projetar um <strong>cenário de entrada</strong>: quanto sua operação pode gerar ao começar a investir em digital, usando as taxas médias do seu segmento. É uma estimativa de potencial inicial — o número real depende do diagnóstico, como explicamos ao final.</div>
+      <div class="calc-grid">
+        <div class="calc-field"><label>Quanto pretende investir em mídia por mês?</label>
+          <div class="calc-prefix"><input id="f-zeroverba" type="number" min="0" value="${S.zeroVerba}"></div>
+          <span class="field-exp">Verba mensal de anúncios (Google + Meta). A partir dela e do custo por lead do seu segmento, estimamos quantos leads e vendas isso pode gerar.</span></div>
+        <div class="calc-field"><label>Meta de faturamento digital por mês <span class="hint" style="font-weight:400">(opcional)</span></label>
+          <div class="calc-prefix"><input id="f-meta-zero" type="number" min="0" value="${S.metaFat||''}" placeholder="0"></div>
+          <span class="field-exp">Se informar, mostramos quanto de verba e quantos leads seriam necessários para chegar lá.</span></div>
+      </div>
+    </div>
+
+    <div id="funnelInputs" style="${S.knowsFunnel==="nao"?"opacity:.4;pointer-events:none;":""}${S.knowsFunnel==="zero"?"display:none;":""}">
+      <div class="calc-field" style="margin-bottom:1.3rem"><label>Como você prefere informar seu funil?</label>
+        <div class="seg-toggle">
+          <button class="seg-opt ${!S.funilSimples?'on':''}" onclick="setFunilSimples(false)">Funil completo (tenho os números)</button>
+          <button class="seg-opt ${S.funilSimples?'on':''}" onclick="setFunilSimples(true)">Simples: só leads e vendas</button>
+        </div>
+        <span class="field-exp">${S.funilSimples?'Modo ideal para quem não acompanha MQL e SQL. Informe só quantos leads entram e quantas vendas saem — estimamos as etapas do meio pela média do seu segmento.':'Se você acompanha cada etapa (MQL e SQL), preencha tudo. Se não acompanha, escolha "Simples: só leads e vendas".'}</span></div>
+      <div class="calc-grid">
+        <div class="calc-field" style="${S.funilSimples?'display:none':''}"><label>Visitantes por mês</label><input id="f-traf" type="number" min="0" value="${S.trafego}">
+          <span class="field-exp">Total de pessoas que acessam seu site/página por mês.</span></div>
+        <div class="calc-field"><label>Leads por mês</label><input id="f-leads" type="number" min="0" value="${S.leads}">
+          <span class="field-exp">Quantos deixam contato por mês.</span></div>
+        <div class="calc-field" style="${S.funilSimples?'display:none':''}"><label>MQLs por mês</label><input id="f-mql" type="number" min="0" value="${S.mql}">
+          <span class="field-exp">Leads com perfil e interesse para abordagem.</span></div>
+        <div class="calc-field" style="${S.funilSimples?'display:none':''}"><label>SQLs por mês</label><input id="f-sql" type="number" min="0" value="${S.sql}">
+          <span class="field-exp">Oportunidades que vendas validou.</span></div>
+        <div class="calc-field"><label>Vendas por mês</label><input id="f-vendas" type="number" min="0" value="${S.vendas}">
+          <span class="field-exp">Negócios fechados por mês.</span></div>
+        <div class="calc-field"><label>Meta de faturamento por mês <span class="hint" style="font-weight:400">(opcional)</span></label>
+          <div class="calc-prefix"><input id="f-meta" type="number" min="0" value="${S.metaFat||''}" placeholder="0"></div>
+          <span class="field-exp">Se informar, fazemos a conta inversa: quantos leads e vendas você precisa para bater a meta.</span></div>
+      </div>
+      ${S.funilSimples?`<p class="cap-src" style="margin-top:.3rem">No modo simples, MQL e SQL são estimados pelas taxas médias do seu segmento (${b.l2m}% e ${b.m2s}%) só para montar o funil visual. O cálculo de receita usa seus leads e vendas reais — então o resultado continua fiel ao que você informou.</p>`:''}
+    </div>
+
+    <div class="calc-field" id="invWrap" style="margin-top:1.4rem;${S.knowsFunnel==="zero"?"display:none":""}"><label>Quanto você investe em mídia paga hoje, por mês? <span class="hint" style="font-weight:400">(Google + Meta + outras)</span></label>
+      <div class="calc-prefix"><input id="f-inv" type="number" min="0" value="${S.investAtual||''}" placeholder="0"></div>
+      <span class="field-exp">Some o que gasta em anúncios por mês. Com esse valor calculamos seu custo por lead e seu CAC reais — não estimados. Deixe em branco se ainda não investe em mídia.</span></div>
+
+    <div class="bench-box">
+      <div class="bench-box__t">Parâmetros do seu segmento (${S.modelo} · ${S.segmento})</div>
+      <p class="bench-box__intro">Use como referência para saber se você está acima ou abaixo da média do mercado:</p>
+      <div class="bench-grid">
+        <div class="bench-cell"><span class="bench-n">${b.l2m}%</span><span class="bench-l">Lead para MQL</span></div>
+        <div class="bench-cell"><span class="bench-n">${b.m2s}%</span><span class="bench-l">MQL para SQL</span></div>
+        <div class="bench-cell"><span class="bench-n">${b.s2v}%</span><span class="bench-l">SQL para Venda</span></div>
+        <div class="bench-cell"><span class="bench-n">${fmtBRL(b.cplMin)}–${fmtBRL(b.cplMax)}</span><span class="bench-l">Custo por lead típico</span></div>
+      </div>
+      <p class="bench-box__src">Fontes: RD Station Panorama, Data Stone (taxas de funil) e Safira Design / WordStream-LocaliQ 2026 (custo por lead em BRL). São faixas de mercado — seu número real varia com a qualidade dos anúncios, da página e do histórico da conta.</p>
+    </div>
+
+    <div class="calc-nav"><button class="btn btn--ghost" onclick="prev()">Voltar</button><button class="btn btn--grad" onclick="next()">Continuar</button></div>
+  </div>`;
+}
+
+/* PASSO 4 */
+function panelDiag(){
+  const grupos={}; ITENS.forEach(it=>{(grupos[it.grupo]=grupos[it.grupo]||[]).push(it);});
+  const intro={
+    "Mídia & dados":"Como você atrai e rastreia quem chega — a base da geração de demanda.",
+    "Topo de funil":"Como você atrai gente nova de forma orgânica (sem pagar por clique).",
+    "Nutrição & CRM":"Como você amadurece o lead e conecta marketing com vendas.",
+    "Gestão":"Como você mede e melhora a operação com base em dados.",
+  };
+  let html="";
+  for(const g in grupos){
+    html+=`<div class="diag-group">${g}</div><p class="diag-group-intro">${intro[g]||""}</p>`;
+    html+=grupos[g].map(it=>{
+      const e=S.estados[it.id];
+      const seg=(v,l,c)=>`<button class="tri ${e===v?("on "+c):""}" onclick="setEstado('${it.id}',${v})">${l}</button>`;
+      return `<div class="diag ${e===0?"diag--off":""}">
+        <div class="diag__info">
+          <div class="diag__t">${it.q} <span class="diag__pill">${it.pill}</span></div>
+          <div class="diag__d">${it.d}</div>
+          <details class="diag__more"><summary>O que é isso e por que importa</summary><p>${it.exp}</p></details>
+          <div class="diag__src">Parâmetro de mercado: ${it.src}</div>
+        </div>
+        <div class="tri-wrap">${seg(0,"Não faço","tri--no")}${seg(1,"Faço sozinho","tri--solo")}${seg(2,"Faço com consultoria","tri--pro")}</div>
+      </div>`;
+    }).join("");
+  }
+  return `<div class="calc-panel show">
+    <h2 class="calc-h">Diagnóstico: o que você já faz hoje?</h2>
+    <p class="calc-sub">Marque o seu nível em cada item, com honestidade. Cada um tem uma explicação — clique em "O que é isso e por que importa" se tiver dúvida. <strong>"Faço sozinho"</strong> conta como ganho parcial (você capta uma fração do resultado); <strong>"Faço com consultoria"</strong> é o potencial completo, com método. No fim você verá quanto está deixando na mesa, sem exageros.</p>
+    <div class="diag-quick">
+      <button class="btn btn--ghost" style="font-size:.82rem;padding:.5rem 1rem" onclick="setAll(0)">Marcar tudo como não faço</button>
+      <button class="btn btn--ghost" style="font-size:.82rem;padding:.5rem 1rem" onclick="setAll(1)">Marcar tudo como faço sozinho</button>
+    </div>
+    ${html}
+    <div class="calc-nav"><button class="btn btn--ghost" onclick="prev()">Voltar</button><button class="btn btn--grad" onclick="next()">Ver meu resultado</button></div>
+  </div>`;
+}
+
+/* ---- cálculo ---- */
+function baseFunnel(){
+  const b=segData(); let traf,leads,mql,sql,vendas;
+  if(S.knowsFunnel==="zero"){
+    // não faz digital: cenário atual do DIGITAL é zero
+    traf=0; leads=0; mql=0; sql=0; vendas=0;
+  } else if(S.knowsFunnel==="nao"){
+    traf=S.trafego||5000; leads=traf*b.v2l/100; mql=leads*b.l2m/100; sql=mql*b.m2s/100; vendas=sql*b.s2v/100;
+  } else {
+    // cenário "sim, conheço meus números"
+    if(S.funilSimples){
+      // informou só leads e vendas: estima MQL/SQL pelas médias só para montar o funil visual.
+      // a receita usa leads e vendas REAIS informados.
+      leads=S.leads; vendas=S.vendas;
+      mql=leads*b.l2m/100; sql=mql*b.m2s/100;
+      traf=b.v2l>0?leads/(b.v2l/100):leads*40; // visitantes estimados
+    } else {
+      traf=S.trafego; leads=S.leads; mql=S.mql; sql=S.sql; vendas=S.vendas;
+    }
+  }
+  return {traf,leads,mql,sql,vendas};
+}
+// cenário de entrada para quem começa do zero: deriva da verba pretendida
+function entradaZero(){
+  const b=segData();
+  const verba=S.zeroVerba||5000;
+  const leads=verba/b.cpl;                 // verba ÷ CPL = leads
+  const mql=leads*b.l2m/100;
+  const sql=mql*b.m2s/100;
+  const vendas=sql*b.s2v/100;
+  return { traf:leads/(b.v2l/100), leads, mql, sql, vendas, receita:vendas*S.ticket, verba };
+}
+function uplift(mode){
+  const up={trafego:0,v2l:0,l2m:0,m2s:0,s2v:0,cplCut:0};
+  ITENS.forEach(it=>{ const e=mode==="pro"?2:S.estados[it.id]; let f=e===2?1:e===1?it.solo:0;
+    for(const k in it.effect){ up[k]+=it.effect[k]*f; } if(it.cplCut){ up.cplCut+=it.cplCut*f; } });
+  return up;
+}
+function aplicar(base, up){
+  const r=(a,bb)=>bb>0?a/bb:0;
+  const v2l=r(base.leads,base.traf), l2m=r(base.mql,base.leads), m2s=r(base.sql,base.mql), s2v=r(base.vendas,base.sql);
+  const cap=(t,u,max)=>Math.min(t*(1+u),max);
+  const traf=base.traf*(1+up.trafego);
+  const leads=traf*cap(v2l,up.v2l,0.10);
+  const mql=leads*cap(l2m,up.l2m, S.modelo==="B2B"?0.42:0.55);
+  const sql=mql*cap(m2s,up.m2s, S.modelo==="B2B"?0.72:0.80);
+  const vendas=sql*cap(s2v,up.s2v, S.modelo==="B2B"?0.42:0.55);
+  return {traf,leads,mql,sql,vendas,receita:vendas*S.ticket};
+}
+function receitaCom(estados){
+  const base=baseFunnel(); const up={trafego:0,v2l:0,l2m:0,m2s:0,s2v:0,cplCut:0};
+  ITENS.forEach(it=>{ const e=estados[it.id]; let f=e===2?1:e===1?it.solo:0; for(const k in it.effect) up[k]+=it.effect[k]*f; });
+  return aplicar(base, up).receita;
+}
+function calcular(){
+  const modoZero = S.knowsFunnel==="zero";
+  const base=baseFunnel();
+  const cur={...base, receita:base.vendas*S.ticket};
+  let opt;
+  if(modoZero){
+    // otimizado = cenário de entrada projetado pela verba pretendida (já no nível "com método")
+    opt=entradaZero();
+  } else {
+    const upPro=uplift("pro"), upCur=uplift("atual"), d={};
+    for(const k in upPro) d[k]=Math.max(0,upPro[k]-upCur[k]);
+    opt=aplicar(base,d);
+  }
+  // delta de uplift para CPL (usado no modo normal)
+  let dCpl=0;
+  if(!modoZero){ const upPro=uplift("pro"),upCur=uplift("atual"); dCpl=Math.max(0,(upPro.cplCut||0)-(upCur.cplCut||0)); }
+
+  const capTime=Math.max(1,S.vendedores*S.capPorVend*fatorDigital());
+  let limitado=false;
+  if(opt.vendas>capTime){ opt={...opt,vendas:capTime,receita:capTime*S.ticket}; limitado=true; }
+  let logCorte=false;
+  if(S.temProduto==="produto" && S.logistica==="gargalo"){
+    if(modoZero){ // base é zero: corta 40% do volume projetado total
+      if(opt.vendas>0){ opt.vendas=opt.vendas*0.6; opt.receita=opt.vendas*S.ticket; logCorte=true; }
+    } else { const g=opt.vendas-cur.vendas; if(g>0){ opt.vendas=cur.vendas+g*0.6; opt.receita=opt.vendas*S.ticket; logCorte=true; } }
+  }
+  const vc=valorCliente();
+  const receitaMesCur=cur.vendas*S.ticket, receitaMesOpt=opt.vendas*S.ticket;
+  const ltvCur=cur.vendas*vc, ltvOpt=opt.vendas*vc;
+  const b=segData();
+  const usaReal=!modoZero && S.investAtual>0 && cur.leads>0;
+  const cplNow=usaReal?S.investAtual/cur.leads:b.cpl;
+  const cplOpt=modoZero?b.cpl:cplNow*(1-Math.min(0.30,dCpl));
+  const cacNow=cur.vendas>0?(cur.leads*cplNow)/cur.vendas:0;
+  const cacOpt=opt.vendas>0?(opt.leads*cplOpt)/opt.vendas:0;
+  const midiaCur=modoZero?0:(usaReal?S.investAtual:cur.leads*cplNow);
+  const midiaOpt=modoZero?(opt.verba||opt.leads*cplOpt):opt.leads*cplOpt;
+  const investExtra=Math.max(0,midiaOpt-midiaCur);
+  const ganhoMes=receitaMesOpt-receitaMesCur;
+  const roiMidia=investExtra>0?ganhoMes/investExtra:0;
+  const ltvCacNow=cacNow>0?vc/cacNow:0, ltvCacOpt=cacOpt>0?vc/cacOpt:0;
+  // alerta de sanidade: CAC otimizado maior que o ticket (aquisição custa mais que a 1ª venda)
+  const cacAlerta = cacOpt>0 && cacOpt>S.ticket && S.recorrencia!=="recorrente";
+
+  const breakdown=[];
+  if(!modoZero){ const baseRec=receitaCom(S.estados);
+    ITENS.forEach(it=>{ if(S.estados[it.id]<2){ const test={...S.estados}; test[it.id]=2; let g=receitaCom(test)-baseRec; if(g>0) breakdown.push({t:it.t,pill:it.pill,ganho:g,estado:S.estados[it.id]}); } });
+    breakdown.sort((a,b)=>b.ganho-a.ganho);
+  }
+  const rampa=[0.15,0.30,0.50,0.70,0.85,1,1,1,1,1,1,1];
+  let acum12=0; const serie=[];
+  for(let m=0;m<12;m++){ const v=receitaMesCur+ganhoMes*rampa[m]; acum12+=v; serie.push(v); }
+  const acumGanho12=acum12-(receitaMesCur*12);
+  let pay=0,gAcum=0,iAcum=0;
+  for(let m=0;m<24;m++){ gAcum+=ganhoMes*(rampa[m]||1); iAcum+=investExtra; if(iAcum>0 && gAcum>=iAcum){ pay=m+1; break; } }
+  const rcur=(a,bb)=>bb>0?(a/bb*100):0;
+  const userS2v=rcur(cur.vendas,cur.sql), userL2m=rcur(cur.mql,cur.leads);
+  // conversão geral Lead -> Venda (a métrica que todo mundo entende)
+  const convLeadVendaCur=rcur(cur.vendas,cur.leads);
+  const convLeadVendaOpt=rcur(opt.vendas,opt.leads);
+  // benchmark Lead->Venda do segmento = produto das três etapas
+  const benchLeadVenda=(b.l2m/100)*(b.m2s/100)*(b.s2v/100)*100;
+  let metaInfo=null;
+  if(S.metaFat>0){ const vendasNec=S.metaFat/S.ticket;
+    const taxaGlobal=(!modoZero && base.leads>0 && cur.vendas>0)?cur.vendas/base.leads:(b.l2m/100*b.m2s/100*b.s2v/100);
+    const leadsNec=taxaGlobal>0?vendasNec/taxaGlobal:0;
+    const verbaNec=leadsNec*b.cpl;
+    metaInfo={vendasNec,leadsNec,verbaNec,leadsHoje:cur.leads,atingeComOpt:opt.vendas>=vendasNec}; }
+  let nNao=0,nSolo=0,nPro=0; ITENS.forEach(it=>{const e=S.estados[it.id]; e===0?nNao++:e===1?nSolo++:nPro++;});
+  // crescimento: protegido contra divisão por zero (modo zero não tem % de crescimento, tem "do zero")
+  const cresc=receitaMesCur>0?(receitaMesOpt/receitaMesCur-1)*100:0;
+  return { modoZero, cur,opt,receitaMesCur,receitaMesOpt,ltvCur,ltvOpt,vc,ganhoMes,ganhoAno:ganhoMes*12,acumGanho12,
+    nNao,nSolo,nPro,capTime,limitado,logCorte,cacNow,cacOpt,cplNow,cplOpt,cacAlerta,investExtra,midiaCur,midiaOpt,usaReal,roiMidia,
+    ltvCacNow,ltvCacOpt,breakdown,serie,pay,userS2v,userL2m,segBenchS2v:b.s2v,segBenchL2m:b.l2m,
+    convLeadVendaCur,convLeadVendaOpt,benchLeadVenda,metaInfo,cresc };
+}
+
+/* PASSO 5 */
+function panelResultado(){
+  const R=calcular();
+  const temGanho=R.ganhoMes>1;
+  const jaTopo=R.nPro===ITENS.length;
+  const linha=(l,v)=>`<div class="res-line"><span class="res-line__l">${l}</span><span class="res-line__v">${v}</span></div>`;
+  const maxV=Math.max(R.opt.leads,R.cur.leads,1);
+  const bar=(label,now,opt)=>{ const wN=Math.max(3,now/maxV*100),wO=Math.max(3,opt/maxV*100);
+    return `<div class="funnel__row"><div class="funnel__head"><b>${label}</b><span>${Math.round(now).toLocaleString("pt-BR")} para <b style="color:var(--clr-accent)">${Math.round(opt).toLocaleString("pt-BR")}</b></span></div>
+      <div class="funnel__bars"><div class="funnel__bar funnel__bar--now" data-w="${wN}" style="width:0"><span class="funnel__bartag">hoje</span></div><div class="funnel__bar funnel__bar--opt" data-w="${wO}" style="width:0"><span class="funnel__bartag">com Mkteúdo</span></div></div></div>`; };
+
+  let veredito;
+  if(R.modoZero) veredito=`Você tem uma operação consolidada, mas <strong>ainda não vende pelo digital</strong> — ou seja, há um canal inteiro de receita ainda inexplorado. A projeção abaixo é um <strong>cenário de entrada</strong>: o que o digital pode gerar a partir da verba que você pretende investir, usando as taxas médias do seu segmento. Não é o seu número atual (que é zero no digital); é o potencial inicial a destravar.`;
+  else if(jaTopo) veredito=`Você já opera no nível de uma consultoria em todos os pontos. Raro e admirável. O ganho extra é pequeno — seu próximo passo é escala e refinamento fino.`;
+  else if(R.nNao>=7) veredito=`Há bastante alavanca parada: <strong>${R.nNao} de ${ITENS.length}</strong>. Não prometemos milagre — o ganho abaixo é conservador e respeita a capacidade do seu time. Ainda assim, é dinheiro real ficando na mesa.`;
+  else if(R.nSolo>=4) veredito=`Você faz muita coisa <strong>por conta própria</strong>, e isso te trouxe até aqui. Fazer sozinho captura parte do resultado; com método, esses mesmos itens rendem mais — sem revolução, com consistência.`;
+  else veredito=`Você está no meio do caminho: já faz parte, mas há alavancas paradas e outras rodando abaixo do potencial. O ganho abaixo é calculado com pé no chão.`;
+
+  let perfilMsg="";
+  if(temGanho && !R.modoZero){
+    if(S.perfil==="receoso") perfilMsg=`<div class="perfil-msg perfil-msg--seg"><strong>Você indicou que tem receio de investir.</strong> Faz sentido. Por isso o foco aqui é segurança: o retorno se paga em aproximadamente <strong>${R.pay||"—"} ${R.pay?"meses":""}</strong>, e a recomendação é começar pequeno, com meta clara, escalando só o que comprovar resultado.</div>`;
+    else if(S.perfil==="agressivo") perfilMsg=`<div class="perfil-msg perfil-msg--agr"><strong>Você indicou que quer investir se o retorno provar.</strong> Então observe o retorno sobre mídia abaixo${R.roiMidia>0?`: <strong>${R.roiMidia.toFixed(1).replace(".",",")} vezes por real investido</strong>`:""}. Com esse patamar, acelerar a verba é o caminho mais rápido para escalar — respeitando o teto de capacidade do time.</div>`;
+    else perfilMsg=`<div class="perfil-msg"><strong>Perfil cauteloso:</strong> o plano abaixo é por etapas. Começa pelas alavancas de maior retorno e menor risco (veja "onde está o dinheiro"), comprova o resultado e avança com base em dados.</div>`;
+  } else if(temGanho && R.modoZero){
+    perfilMsg=`<div class="perfil-msg"><strong>Como você parte do zero no digital</strong>, o caminho recomendado é uma entrada estruturada: começar com a verba indicada, validar os primeiros resultados em campanha controlada e escalar conforme o retorno se confirma. Sem queimar caixa, com método.</div>`;
+  }
+
+  const headBig=temGanho?(R.modoZero?fmtBRL(R.receitaMesOpt)+"/mês":"+"+fmtBRL(R.ganhoAno)):(jaTopo?"Você está no teto":"—");
+  const headSub=temGanho?(R.modoZero?`receita potencial pelo digital &middot; <strong>${fmtBRL(R.ganhoAno)}/ano</strong> &middot; canal hoje inexplorado`:`por ano &middot; <strong>+${fmtBRL(R.ganhoMes)} por mês</strong> &middot; +${R.cresc.toFixed(0)}% de receita`):(jaTopo?"Sua operação já está madura.":"Marque seu nível no diagnóstico.");
+  const headLabel=R.modoZero?"Potencial de receita pelo canal digital":"Potencial de receita adicional";
+  const capAviso=R.limitado?`<div class="cap-alert">Atenção: ${R.modoZero?'a verba que você indicou geraria mais oportunidades do que':'seu time fecharia no máximo'} <strong>${Math.round(R.capTime)} negócios por mês</strong> ${R.modoZero?'que o seu time atual conseguiria fechar':'comportam'}. Travamos a projeção nesse limite. ${R.modoZero&&R.roiMidia<1?'<strong>Por isso o retorno acima ficou baixo:</strong> não adianta investir essa verba sem ampliar a capacidade de atendimento primeiro. O caminho seria começar com verba menor (proporcional ao time) ou estruturar o comercial em paralelo.':'O potencial real é maior <em>se você reforçar o time de vendas</em>.'} É exatamente esse tipo de gargalo que mapeamos no diagnóstico. <span class="cap-alert__src">Base: pesquisas de produtividade comercial (Salesforce State of Sales) indicam que ~72% do tempo do vendedor já é consumido por atividades fora da venda; por isso um time dividido tem capacidade parcial para os leads do digital.</span></div>`:"";
+  const logAviso=R.logCorte?`<div class="cap-alert">Como sua logística já está no limite, reduzimos o ganho projetado. Crescer vendas sem ajustar a entrega gera insatisfação — outro ponto que tratamos antes de acelerar.</div>`:"";
+  const estruturaAviso=(S.estrutura==="misto"||S.estrutura==="externo") && temGanho?`<div class="cap-alert cap-alert--info">Como seu time ${S.estrutura==="misto"?"divide o tempo entre a loja/balcão e os leads do digital":"atende a carteira própria além dos leads do digital"}, consideramos só a fração dedicada ao digital na projeção. Na prática, um ponto crítico é a <strong>velocidade de resposta</strong>: lead de digital que espera horas para ser atendido esfria. Estruturar esse fluxo é parte do trabalho.</div>`:"";
+  const crmAviso=(S.usaCrm==="nao"||S.usaCrm==="basico") && temGanho && !R.modoZero?`<div class="cap-alert cap-alert--info">Você indicou que ${S.usaCrm==="nao"?"não usa CRM":"usa CRM de forma limitada ou planilha"}. Esse costuma ser um dos maiores ralos de receita: leads chegam, mas se perdem sem acompanhamento. Organizar o processo comercial é o que sustenta o ganho projetado — e está no centro do Método PICC (a etapa "Integrar").</div>`:"";
+
+  const roiBloco=(temGanho && R.investExtra>0)?`
+    <h3 class="res-h3">Retorno sobre o investimento em mídia</h3>
+    <p class="res-p">A pergunta que todo gestor faz: "para ganhar isso, quanto preciso investir?". Aqui está — considerando apenas a verba de mídia adicional.</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-l">Verba de mídia adicional</div><div class="kpi-v">${fmtBRL(R.investExtra)}<span>por mês</span></div></div>
+      <div class="kpi kpi--hl"><div class="kpi-l">Retorno sobre essa mídia</div><div class="kpi-v">${R.roiMidia.toFixed(1).replace(".",",")}x<span>cada R$ 1 investido volta como R$ ${R.roiMidia.toFixed(1).replace(".",",")}</span></div></div>
+      <div class="kpi"><div class="kpi-l">Tempo para se pagar</div><div class="kpi-v">${R.pay||"—"}<span>${R.pay?"meses (payback)":"—"}</span></div></div>
+    </div>
+    <p class="kpi-note">Considera apenas investimento em <strong>mídia paga</strong> (não inclui honorários de agência). ${R.usaReal?`Baseado no que você investe hoje (${fmtBRL(R.midiaCur)} por mês). Seu custo por lead real`:`Custo por lead estimado do seu segmento`}: hoje ${fmtBRL(R.cplNow)} e otimizado ${fmtBRL(R.cplOpt)}.</p>`:"";
+
+  const cacBloco=(R.cacNow>0)?`
+    <h3 class="res-h3">Eficiência de aquisição (CAC)</h3>
+    <p class="res-p">CAC é o custo de conquistar um cliente. Quanto menor, mais saudável o negócio. Otimizar mídia e funil derruba esse custo:</p>
+    <div class="cac-row">
+      <div class="cac-card"><div class="cac-l">CAC hoje</div><div class="cac-v cac-now">${fmtBRL(R.cacNow)}</div></div>
+      <div class="cac-arrow">para</div>
+      <div class="cac-card"><div class="cac-l">CAC com Mkteúdo</div><div class="cac-v cac-opt">${fmtBRL(R.cacOpt)}</div></div>
+      <div class="cac-card cac-save"><div class="cac-l">Economia por cliente</div><div class="cac-v">${fmtBRL(Math.max(0,R.cacNow-R.cacOpt))}</div></div>
+    </div>
+    ${(S.recorrencia==="recorrente")?`<div class="ltv-row"><span>Relação <strong>LTV:CAC</strong> — quanto cada cliente vale em relação ao custo de conquistá-lo. O ideal de mercado é no mínimo 3 para 1:</span> <b class="ltv-now">${R.ltvCacNow.toFixed(1).replace(".",",")} para 1</b> passa para <b class="ltv-opt">${R.ltvCacOpt.toFixed(1).replace(".",",")} para 1</b></div>`:""}`:"";
+
+  const cacAlertaBloco = R.cacAlerta?`<div class="cap-alert">Observação técnica: pelo custo médio do segmento, o CAC projetado (${fmtBRL(R.cacOpt)}) fica próximo ou acima do seu ticket (${fmtBRL(S.ticket)}). Em venda única, isso aperta a margem — é sinal de que o ganho real virá de aumentar a conversão e o valor do cliente (recompra, upsell), não só de gerar mais leads. Exatamente o tipo de ajuste fino que o diagnóstico trata.</div>`:"";
+
+  // Conversão geral Lead -> Venda (a métrica que todo gestor entende, mesmo sem CRM)
+  const convCaiu = R.convLeadVendaOpt < R.convLeadVendaCur;
+  const convBloco=(R.cur.leads>0 && R.convLeadVendaCur>0)?`
+    <h3 class="res-h3">Sua taxa de conversão de Lead para Venda</h3>
+    <p class="res-p">De cada 100 leads que entram, quantos viram cliente. É a métrica mais direta da saúde do seu funil.</p>
+    <div class="cac-row">
+      <div class="cac-card"><div class="cac-l">Hoje</div><div class="cac-v" style="color:var(--clr-text)">${R.convLeadVendaCur.toFixed(1).replace(".",",")}%</div></div>
+      <div class="cac-arrow">para</div>
+      <div class="cac-card"><div class="cac-l">Com a Mkteúdo</div><div class="cac-v cac-opt">${R.convLeadVendaOpt.toFixed(1).replace(".",",")}%</div></div>
+      <div class="cac-card"><div class="cac-l">Média do segmento</div><div class="cac-v" style="color:var(--clr-text-muted)">${R.benchLeadVenda.toFixed(1).replace(".",",")}%</div></div>
+    </div>
+    ${convCaiu?`<p class="cap-src" style="margin-top:.5rem">Reparou que o percentual pode cair enquanto as vendas sobem? É esperado: parte do trabalho amplia bastante a entrada de leads (topo do funil), o que dilui a taxa — mas o <strong>número absoluto de vendas aumenta</strong> (de ${Math.round(R.cur.vendas)} para ${Math.round(R.opt.vendas)} por mês). Conversão percentual é saúde do funil; o que paga o caixa é a venda absoluta. O ideal é crescer os dois, e é isso que o diagnóstico busca equilibrar.</p>`:`<p class="cap-src" style="margin-top:.5rem">Benchmark calculado pela combinação das taxas médias do seu segmento (Lead→MQL, MQL→SQL e SQL→Venda). Fontes: RD Station Panorama e Data Stone.</p>`}`:"";
+
+  let breakBloco="";
+  if(temGanho && !R.modoZero && R.breakdown.length){
+    const top=R.breakdown.slice(0,5); const maxG=top[0].ganho||1;
+    breakBloco=`<h3 class="res-h3">Onde está o dinheiro — seu plano de ação</h3>
+      <p class="res-p">As alavancas que mais aumentariam sua receita, em ordem de impacto. Comece de cima para baixo: é o caminho de maior retorno primeiro.</p>
+      <div class="brk">${top.map(x=>{ const w=Math.max(8,x.ganho/maxG*100);
+        const tag=x.estado===1?'<span class="brk-tag brk-tag--solo">hoje faz sozinho</span>':'<span class="brk-tag brk-tag--no">hoje não faz</span>';
+        return `<div class="brk-row"><div class="brk-top"><span class="brk-name">${x.t} ${tag}</span><span class="brk-val">+${fmtBRL(x.ganho)}/mês</span></div><div class="brk-bar" data-w="${w}" style="width:0"></div></div>`; }).join("")}</div>`;
+  }
+
+  const cmp=(user,bench,label)=>{ const acima=user>=bench;
+    return `<div class="cmp-row"><span class="cmp-l">${label}</span>
+      <span class="cmp-bars"><span class="cmp-you ${acima?'ok':'low'}" style="width:${Math.min(100,user/Math.max(user,bench)*100)}%">você ${user.toFixed(1).replace(".",",")}%</span></span>
+      <span class="cmp-bench">média ${bench}%</span>
+      <span class="cmp-tag ${acima?'ok':'low'}">${acima?'acima':'abaixo'}</span></div>`; };
+  let benchBloco="";
+  if(R.modoZero){
+    benchBloco=`<h3 class="res-h3">Os parâmetros que usamos na projeção</h3>
+       <p class="res-p">Como você ainda não tem histórico digital, projetamos com as taxas médias do seu segmento. São estas as referências aplicadas:</p>
+       <div class="cmp"><div class="cmp-row"><span class="cmp-l">Lead para MQL</span><span class="cmp-bench" style="font-weight:600;color:var(--clr-accent-dark)">${R.segBenchL2m}%</span></div><div class="cmp-row"><span class="cmp-l">SQL para Venda</span><span class="cmp-bench" style="font-weight:600;color:var(--clr-accent-dark)">${R.segBenchS2v}%</span></div></div>`;
+  } else if(S.knowsFunnel==="sim" && R.cur.leads>0){
+    benchBloco=`<h3 class="res-h3">Você comparado à média do seu segmento</h3>
+       <p class="res-p">Onde sua operação está em relação ao mercado. Estar abaixo aponta exatamente onde há mais espaço para crescer.</p>
+       <div class="cmp">${cmp(R.userL2m,R.segBenchL2m,"Lead para MQL")}${cmp(R.userS2v,R.segBenchS2v,"SQL para Venda")}</div>`;
+  } else {
+    benchBloco=`<h3 class="res-h3">Você comparado à média do seu segmento</h3>
+       <p class="res-p">Como você escolheu usar a <strong>média do mercado</strong> em vez de informar seus números reais, não há base para essa comparação — seria comparar a média com ela mesma. Para saber se sua operação está acima ou abaixo do mercado, é preciso medir seu funil real. Esse é justamente o primeiro passo do diagnóstico da Mkteúdo.</p>`;
+  }
+
+  const metaBloco=R.metaInfo?`<div class="meta-box">
+    <div class="meta-t">Conta inversa da sua meta (${fmtBRL(S.metaFat)} por mês)</div>
+    <p>Para bater essa meta você precisa de aproximadamente <strong>${Math.ceil(R.metaInfo.vendasNec)} vendas por mês</strong>, o que exige cerca de <strong>${Math.ceil(R.metaInfo.leadsNec).toLocaleString("pt-BR")} leads por mês</strong>${R.modoZero?` e uma verba de mídia estimada de <strong>${fmtBRL(R.metaInfo.verbaNec)} por mês</strong>`:``}. ${R.modoZero?'':`Hoje você gera <strong>${Math.round(R.metaInfo.leadsHoje).toLocaleString("pt-BR")}</strong>. `}${R.metaInfo.atingeComOpt?'<span class="meta-ok">Com o Método PICC, sua meta fica ao alcance.</span>':'<span class="meta-gap">É uma meta ambiciosa — mapeamos o caminho completo no diagnóstico.</span>'}</p>
+  </div>`:"";
+
+  const maxS=Math.max(...R.serie,1);
+  const projBloco=temGanho?`<h3 class="res-h3">Projeção dos próximos 12 meses</h3>
+    <p class="res-p">${R.modoZero?'Entrar no digital tem uma curva de maturação (cerca de 6 meses) até o patamar cheio, enquanto a operação aprende e as campanhas calibram. Somando o 1º ano, a receita digital projetada é de':'Resultado não é instantâneo: há uma curva de maturação de cerca de 6 meses até o patamar cheio. Somando o ano todo, o ganho acumulado é de'} <strong>+${fmtBRL(R.acumGanho12)}</strong>${R.modoZero?'':' além da receita atual'}.</p>
+    <div class="proj">${R.serie.map((v,i)=>{const h=Math.max(6,v/maxS*100);return `<div class="proj-col"><div class="proj-bar" data-h="${h}" style="height:0" title="Mês ${i+1}: ${fmtBRL(v)}"></div><div class="proj-m">${i+1}</div></div>`;}).join("")}</div>`:"";
+
+  const colNowTag=R.modoZero?"Hoje (sem digital)":"Sua operação hoje";
+  const colOptTag=R.modoZero?"Potencial com o digital (Método PICC)":"Com a Mkteúdo (Método PICC)";
+  const diagSummary=R.modoZero?"":`<div class="diag-summary">
+      <div class="ds-item ds-no"><span class="ds-n">${R.nNao}</span><span class="ds-l">não faz</span></div>
+      <div class="ds-item ds-solo"><span class="ds-n">${R.nSolo}</span><span class="ds-l">faz sozinho</span></div>
+      <div class="ds-item ds-pro"><span class="ds-n">${R.nPro}</span><span class="ds-l">com consultoria</span></div>
+    </div>`;
+  const ctaBloco=temGanho?`<div class="res-cta">
+      <div class="res-cta__t">${R.modoZero?'Um canal inteiro de receita esperando para ser ativado.':'+'+R.cresc.toFixed(0)+'% de receita — com método, não com sorte.'}</div>
+      <p>${R.modoZero?'Você já tem o mais difícil: operação, produto e demanda. Falta estruturar o digital para capturar quem procura por você online. É exatamente o que a Mkteúdo faz.':'Este número é conservador e respeita a sua capacidade. O trabalho da Mkteúdo é ligar as alavancas paradas e levar as que você faz sozinho ao nível de consultoria.'}</p>
+      <button class="btn" style="background:#fff;color:var(--clr-accent-dark)" onclick="showLead()">Quero meu diagnóstico detalhado</button>
+    </div>`:`<div class="res-cta"><div class="res-cta__t">Operação madura. Vamos escalar?</div><p>Quando o básico está feito, o próximo nível é refinamento e escala.</p><button class="btn" style="background:#fff;color:var(--clr-accent-dark)" onclick="showLead()">Falar com a Mkteúdo</button></div>`;
+
+  return `<div class="calc-panel show">
+    <div class="res-headline">
+      <div class="res-headline__label">${headLabel}</div>
+      <div class="res-headline__big">${headBig}</div>
+      <div class="res-headline__sub">${headSub}</div>
+    </div>
+    <div class="veredito">${veredito}</div>
+    ${perfilMsg}${capAviso}${logAviso}${estruturaAviso}${crmAviso}${cacAlertaBloco}
+    ${roiBloco}
+    <h3 class="res-h3">${R.modoZero?'Cenário de entrada no digital':'Sua operação hoje e com a Mkteúdo'}</h3>
+    <p class="res-p">${R.modoZero?'À esquerda, seu digital hoje (zero). À direita, o que a verba indicada pode gerar pelo funil médio do seu segmento.':'A comparação direta, etapa por etapa do funil, e o impacto na receita mensal.'}</p>
+    <div class="res-compare">
+      <div class="res-col res-col--now"><div class="res-col__tag">${colNowTag}</div>
+        ${linha("Leads / mês",Math.round(R.cur.leads).toLocaleString("pt-BR"))}
+        ${linha("MQL / mês",Math.round(R.cur.mql).toLocaleString("pt-BR"))}
+        ${linha("SQL / mês",Math.round(R.cur.sql).toLocaleString("pt-BR"))}
+        ${linha("Vendas / mês",Math.round(R.cur.vendas).toLocaleString("pt-BR"))}
+        <div class="res-col__big">${fmtBRL(R.receitaMesCur)}<span style="font-size:.8rem;font-weight:600;opacity:.6">/mês</span></div>
+      </div>
+      <div class="res-col res-col--opt"><div class="res-col__tag">${colOptTag}</div>
+        ${linha("Leads / mês",Math.round(R.opt.leads).toLocaleString("pt-BR"))}
+        ${linha("MQL / mês",Math.round(R.opt.mql).toLocaleString("pt-BR"))}
+        ${linha("SQL / mês",Math.round(R.opt.sql).toLocaleString("pt-BR"))}
+        ${linha("Vendas / mês",Math.round(R.opt.vendas).toLocaleString("pt-BR"))}
+        <div class="res-col__big">${fmtBRL(R.receitaMesOpt)}<span style="font-size:.8rem;font-weight:600;opacity:.7">/mês</span></div>
+      </div>
+    </div>
+    ${metaBloco}${cacBloco}${convBloco}${breakBloco}${benchBloco}${projBloco}
+    <h3 class="res-h3">${R.modoZero?'O funil que o digital pode construir':'Seu funil, antes e depois'}</h3>
+    <div class="funnel">${bar("Leads",R.cur.leads,R.opt.leads)}${bar("MQL",R.cur.mql,R.opt.mql)}${bar("SQL",R.cur.sql,R.opt.sql)}${bar("Vendas",R.cur.vendas,R.opt.vendas)}</div>
+    ${diagSummary}
+    ${ctaBloco}
+    <div id="leadArea"></div>
+    <div class="ressalva">
+      <div class="ressalva__t">Importante: como interpretar este resultado</div>
+      <p>Os valores apresentados constituem uma <strong>estimativa preliminar de caráter ilustrativo</strong>, calculada a partir de <strong>benchmarks (médias de referência) de mercado</strong> — taxas de conversão de funil, custo por lead e indicadores setoriais publicados por fontes como RD Station, Data Stone, Meta, Google e estudos de mercado de 2025–2026. Tais médias servem apenas como parâmetro inicial de análise e <strong>não representam medição da operação real da sua empresa</strong>.</p>
+      <p>Por essa razão, os números aqui exibidos <strong>não constituem promessa, garantia ou compromisso de resultado</strong>, nem oferta vinculante. O desempenho efetivo de qualquer estratégia de marketing depende de uma série de fatores que atuam em conjunto e que estão, em parte, fora do controle da consultoria — entre eles: a maturidade atual da operação, a verba efetivamente investida, a qualidade e a capacidade do time comercial, o posicionamento e a precificação do produto ou serviço, o comportamento da concorrência, a sazonalidade, as condições de mercado e o próprio engajamento do cliente na execução.</p>
+      <p>O alcance dos patamares projetados pressupõe, necessariamente, um <strong>trabalho conjunto e continuado entre a Mkteúdo e o cliente</strong>, iniciado por uma etapa estruturada de <strong>diagnóstico e mapeamento</strong> da operação real, na qual variáveis específicas são levantadas, validadas e ajustadas. Somente após esse mapeamento é possível estabelecer metas realistas, personalizadas e mensuráveis para o seu caso concreto.</p>
+      <p class="ressalva__close">Em resumo: esta calculadora é um ponto de partida para a conversa, não uma garantia de chegada. Ela mostra o <em>potencial</em> indicado pela média do mercado — transformá-lo em resultado é o que fazemos juntos, com método, dados e acompanhamento.</p>
+    </div>
+    <div class="calc-nav"><button class="btn btn--ghost" onclick="prev()">Revisar diagnóstico</button><button class="btn btn--ghost" onclick="S.step=0;render()">Recomeçar</button></div>
+  </div>`;
+}
+
+function showLead(){
+  const R=calcular();
+  // Monta os dados do diagnóstico para enviar como campos ocultos (ouro p/ o comercial)
+  const modeloTxt = S.modelo;
+  const recorrTxt = S.recorrencia==="recorrente" ? ("Recorrente ("+S.retencao+" meses)") : "Venda única";
+  const cenarioTxt = S.knowsFunnel==="zero" ? "Ainda não faz digital (projeção do zero)" : (S.knowsFunnel==="nao" ? "Não sabe os números (média)" : "Informou os números");
+  const ganhoMesTxt = fmtBRL(R.ganhoMes);
+  const ganhoAnoTxt = fmtBRL(R.ganhoAno);
+  const receitaPotTxt = fmtBRL(R.receitaMesOpt);
+  const roiTxt = R.roiMidia>0 ? R.roiMidia.toFixed(1).replace(".",",")+"x" : "-";
+  const investTxt = R.investExtra>0 ? fmtBRL(R.investExtra) : "-";
+  $("#leadArea").innerHTML=`<div style="background:var(--clr-bg-alt);border-radius:16px;padding:2rem;margin-top:1.5rem">
+    <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--clr-accent-dark);text-align:center;margin-bottom:.4rem">Receber minha análise completa</h3>
+    <p style="text-align:center;color:var(--clr-text-muted);font-size:.9rem;margin-bottom:.5rem">Enviamos o detalhamento do seu diagnóstico e nossa equipe entra em contato em até 1 dia útil.</p>
+    <form class="lead-form" id="calc-lead-form" method="post" action="">
+      <div class="calc-field"><label>Nome</label><input name="nome" required></div>
+      <div class="calc-field"><label>E-mail profissional</label><input type="email" name="email" required></div>
+      <div class="calc-field"><label>Empresa</label><input name="empresa" required></div>
+      <div class="calc-field"><label>WhatsApp</label><input name="telefone" required></div>
+      <!-- Campos ocultos com o diagnóstico (RD Station captura via monitoramento) -->
+      <input type="hidden" name="identificador" value="calculadora-receita-mkteudo">
+      <input type="hidden" name="cf_calc_modelo" value="${modeloTxt}">
+      <input type="hidden" name="cf_calc_segmento" value="${S.segmento}">
+      <input type="hidden" name="cf_calc_ticket" value="${fmtBRL(S.ticket)}">
+      <input type="hidden" name="cf_calc_receita" value="${recorrTxt}">
+      <input type="hidden" name="cf_calc_cenario" value="${cenarioTxt}">
+      <input type="hidden" name="cf_calc_estrutura" value="${S.estrutura}">
+      <input type="hidden" name="cf_calc_ganho_mes" value="${ganhoMesTxt}">
+      <input type="hidden" name="cf_calc_ganho_ano" value="${ganhoAnoTxt}">
+      <input type="hidden" name="cf_calc_receita_potencial" value="${receitaPotTxt}">
+      <input type="hidden" name="cf_calc_roi_midia" value="${roiTxt}">
+      <input type="hidden" name="cf_calc_verba_sugerida" value="${investTxt}">
+      <input type="hidden" name="cf_calc_perfil" value="${S.perfil}">
+      <div class="calc-field full"><button type="submit" class="btn btn--grad" style="width:100%;justify-content:center">Enviar e receber análise</button></div>
+    </form>
+    <p style="font-size:.72rem;color:var(--clr-text-muted);text-align:center;margin-top:.8rem">Seus dados estão seguros e não serão compartilhados.</p>
+  </div>`;
+  // Sem preventDefault: o RD Station (via Tag Manager) precisa "ver" o envio.
+  // Mostramos a confirmação visual logo após o submit, sem recarregar.
+  var lf=document.getElementById("calc-lead-form");
+  if(lf){ lf.addEventListener("submit", function(){ setTimeout(mostrarSucessoLead,150); }); }
+  $("#leadArea").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function mostrarSucessoLead(){
+  $("#leadArea").innerHTML=`<div style="background:var(--clr-bg-alt);border-radius:16px;padding:2.5rem;margin-top:1.5rem;text-align:center">
+    <div style="width:60px;height:60px;border-radius:50%;background:var(--grad-main);color:#fff;font-size:1.6rem;font-family:var(--font-display);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">OK</div>
+    <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--clr-accent-dark);margin-bottom:.4rem">Recebido!</h3>
+    <p style="color:var(--clr-text-muted)">Em breve você recebe a análise detalhada. Nossa equipe entrará em contato em até 1 dia útil.</p>
+  </div>`;
+}
+function animateBars(){ setTimeout(()=>{
+  document.querySelectorAll(".funnel__bar").forEach(b=>{b.style.width=b.dataset.w+"%";});
+  document.querySelectorAll(".brk-bar").forEach(b=>{b.style.width=b.dataset.w+"%";});
+  document.querySelectorAll(".proj-bar").forEach(b=>{b.style.height=b.dataset.h+"%";});
+},100); }
+
+function saveStep(){
+  if(S.step===0){
+    S.segmento=$("#f-seg").value; S.ticket=+$("#f-ticket").value||0; if(!S.ticket) S.ticket=segData().ticketRef;
+    if($("#f-rec")) S.recorrencia=$("#f-rec").value;
+    if($("#f-ret")) S.retencao=Math.max(1,+$("#f-ret").value||18);
+    if($("#f-prod")) S.temProduto=$("#f-prod").value;
+    if($("#f-log")) S.logistica=$("#f-log").value;
+  }
+  if(S.step===1){ S.vendedores=Math.max(1,+$("#f-vend").value||1); S.capPorVend=Math.max(1,+$("#f-cap").value||1); }
+  if(S.step===2){
+    S.knowsFunnel=$("#f-knows").value;
+    if(S.knowsFunnel==="sim"){
+      S.leads=+$("#f-leads").value||0; S.vendas=+$("#f-vendas").value||0;
+      if(S.funilSimples){
+        // só leads e vendas; MQL/SQL/visitantes serão estimados no cálculo
+      } else {
+        S.trafego=+($("#f-traf")?$("#f-traf").value:S.trafego)||0;
+        S.mql=+($("#f-mql")?$("#f-mql").value:S.mql)||0;
+        S.sql=+($("#f-sql")?$("#f-sql").value:S.sql)||0;
+      }
+    }
+    else if(S.knowsFunnel==="nao"){ S.trafego=+($("#f-traf")?$("#f-traf").value:S.trafego)||5000; }
+    if(S.knowsFunnel==="zero"){
+      if($("#f-zeroverba")) S.zeroVerba=Math.max(0,+$("#f-zeroverba").value||0);
+      if($("#f-meta-zero")) S.metaFat=+$("#f-meta-zero").value||0;
+    } else {
+      if($("#f-meta")) S.metaFat=+$("#f-meta").value||0;
+      if($("#f-inv")) S.investAtual=+$("#f-inv").value||0;
+    }
+  }
+}
+function next(){
+  saveStep();
+  // no modo "começar do zero", o diagnóstico de alavancas (passo 4) não se aplica — vai direto ao resultado
+  if(S.step===2 && S.knowsFunnel==="zero"){ S.step=4; render(); return; }
+  if(S.step<4){S.step++;render();}
+}
+function prev(){
+  saveStep();
+  if(S.step===4 && S.knowsFunnel==="zero"){ S.step=2; render(); return; }
+  if(S.step>0){S.step--;render();}
+}
+function setEstado(id,v){ S.estados[id]=v; render(); }
+function setAll(v){ ITENS.forEach(it=>S.estados[it.id]=v); render(); }
+function toggleKnows(v){ saveStep(); S.knowsFunnel=v; render(); }
+function setFunilSimples(v){ saveStep(); S.funilSimples=v; render(); }
+function toggleRec(v){ saveStep(); S.recorrencia=v; render(); }
+function toggleProd(v){ const w=$("#logWrap"); if(w) w.style.display=v==="produto"?"":"none"; }
+function onSegChange(){ saveStep(); render(); }
+function setModelo(m){ saveStep(); S.modelo=m; const segs=Object.keys(m==="B2B"?SEG_B2B:SEG_B2C); if(segs.indexOf(S.segmento)<0){S.segmento=segs[0];S.ticket=segData().ticketRef;} render(); }
+function setPerfil(p){ saveStep(); S.perfil=p; render(); }
+function setEstrutura(e){ saveStep(); S.estrutura=e;
+  // sugere números coerentes com a estrutura escolhida
+  const defaults={ dedicado:{v:3,c:12}, misto:{v:4,c:8}, externo:{v:6,c:10}, dono:{v:1,c:6}, nenhum:{v:1,c:5} }[e];
+  if(defaults){ S.vendedores=defaults.v; S.capPorVend=defaults.c; }
+  render(); }
+function setCrm(v){ saveStep(); S.usaCrm=v; render(); }
+
+document.querySelectorAll(".calc-step").forEach(el=>{ el.addEventListener("click",()=>{ saveStep(); S.step=+el.dataset.s; render(); }); });
+document.addEventListener("input",function(e){
+  if(e.target.id==="f-vend"||e.target.id==="f-cap"){ const v=+($("#f-vend").value||0),c=+($("#f-cap").value||0); const el=$("#capTotal"); if(el) el.textContent=Math.round(v*c*fatorDigital()).toLocaleString("pt-BR"); }
+});
+render();
+
+</script>
+</body>
+</html>
