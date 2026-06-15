@@ -8,14 +8,14 @@
 <meta name="keywords" content="calculadora ROI marketing, calculadora ROAS, benchmark funil de vendas, potencial de receita, RD Station, MQL SQL conversão">
 <meta name="author" content="Mkteúdo Comunicação">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://mkteudocomunicacao.com.br/calculadora.html">
+<link rel="canonical" href="https://www.mkteudo.com.br/calculadora.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Mkteúdo Comunicação">
 <meta property="og:title" content="Calculadora de Potencial de Receita — Método PICC">
 <meta property="og:description" content="Quanto sua empresa deixa na mesa hoje? Simule o impacto de otimizar funil, e-mail, CAPI, CRM e IA com benchmarks reais.">
-<meta property="og:url" content="https://mkteudocomunicacao.com.br/calculadora.html">
-<meta property="og:image" content="https://mkteudocomunicacao.com.br/imagens/logo-mkteudo.png">
+<meta property="og:url" content="https://www.mkteudo.com.br/calculadora.html">
+<meta property="og:image" content="https://www.mkteudo.com.br/imagens/logo-mkteudo.png">
 <link rel="icon" href="imagens/logo-mkteudo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -399,6 +399,7 @@
       <a href="/#servicos">Serviços</a>
       <a href="/#sobre">Sobre</a>
       <a href="/metodo-picc">Método PICC</a>
+      <a href="/rd-station">RD Station</a>
       <a href="/#cases">Cases</a>
       <a href="/calculadora">Calculadora</a>
       <a href="/blog">Blog</a>
@@ -412,6 +413,7 @@
   <a href="/#servicos" onclick="toggleMenu()">Serviços</a>
   <a href="/#sobre" onclick="toggleMenu()">Sobre</a>
   <a href="/metodo-picc" onclick="toggleMenu()">Método PICC</a>
+  <a href="/rd-station" onclick="toggleMenu()">RD Station</a>
   <a href="/#cases" onclick="toggleMenu()">Cases</a>
   <a href="/calculadora" onclick="toggleMenu()">Calculadora</a>
   <a href="/blog" onclick="toggleMenu()">Blog</a>
@@ -583,6 +585,7 @@ const GLOSSARIO = [
 ];
 
 let S = {
+  gatePassed:false, leadNome:"", leadEmail:"", leadTelefone:"", leadEmpresa:"",
   step:0, modelo:"B2B", segmento:"Serviços profissionais", ticket:7000,
   recorrencia:"unica", retencao:18,
   estrutura:"misto", usaCrm:"basico", vendedores:3, capPorVend:12,
@@ -603,6 +606,18 @@ function valorCliente(){ return S.recorrencia==="recorrente" ? S.ticket*Math.max
 
 let _firstRender=true;
 function render(){
+  const steps=document.querySelector(".calc-steps");
+  // Enquanto não passar pelo gate, mostra a tela de captura e esconde o stepper.
+  if(!S.gatePassed){
+    if(steps) steps.style.display="none";
+    $("#calcBody").innerHTML=panelGate();
+    if(!_firstRender){
+      window.scrollTo({top:document.querySelector(".calc-wrap").offsetTop-80,behavior:"smooth"});
+    }
+    _firstRender=false;
+    return;
+  }
+  if(steps) steps.style.display="";
   document.querySelectorAll(".calc-step").forEach(el=>el.classList.toggle("active",+el.dataset.s===S.step));
   const body=$("#calcBody");
   if(S.step===0) body.innerHTML=panelNegocio();
@@ -611,11 +626,43 @@ function render(){
   if(S.step===3) body.innerHTML=panelDiag();
   if(S.step===4){ body.innerHTML=panelResultado(); animateBars(); }
   // Só rola para a calculadora quando o usuário avança de etapa.
-  // No primeiro carregamento, mantém a página no topo (hero visível).
   if(!_firstRender){
     window.scrollTo({top:document.querySelector(".calc-wrap").offsetTop-80,behavior:"smooth"});
   }
   _firstRender=false;
+}
+
+function panelGate(){
+  return `<div class="calc-panel show">
+    <h2 class="calc-h">Descubra quanto sua empresa pode faturar a mais</h2>
+    <p class="calc-sub">Em poucos minutos, você terá uma estimativa do seu potencial de receita com base em benchmarks reais de mercado. Para começar e receber sua análise, informe seus dados:</p>
+    <form id="calc-gate-form" method="post" action="" class="gate-form">
+      <div class="calc-grid">
+        <div class="calc-field"><label>Nome completo *</label><input id="g-nome" name="nome" placeholder="Seu nome"></div>
+        <div class="calc-field"><label>E-mail profissional *</label><input id="g-email" name="email" type="email" placeholder="voce@empresa.com.br"></div>
+        <div class="calc-field"><label>Celular (WhatsApp) *</label><input id="g-tel" name="telefone" placeholder="(16) 9 0000-0000"></div>
+        <div class="calc-field"><label>Empresa</label><input id="g-empresa" name="empresa" placeholder="Nome da sua empresa"></div>
+      </div>
+      <input type="hidden" name="identificador" value="calculadora-inicio-mkteudo">
+      <div id="gate-erro" style="display:none;color:#c0334a;font-size:.85rem;margin-top:.6rem"></div>
+      <div class="calc-nav" style="margin-top:1.4rem"><span></span><button type="submit" class="btn btn--grad">Começar minha análise →</button></div>
+    </form>
+    <p style="font-size:.75rem;color:var(--clr-text-muted);text-align:center;margin-top:1rem">Seus dados são tratados com sigilo e nunca compartilhados. Ao continuar, você concorda em receber sua análise por e-mail.</p>
+  </div>`;
+}
+
+function validarGate(){
+  const nome=($("#g-nome")?.value||"").trim();
+  const email=($("#g-email")?.value||"").trim();
+  const tel=($("#g-tel")?.value||"").trim();
+  const empresa=($("#g-empresa")?.value||"").trim();
+  const emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+  const telDigitos=tel.replace(/\D/g,"");
+  if(!nome){ return "Por favor, informe seu nome."; }
+  if(!emailOk){ return "Por favor, informe um e-mail válido."; }
+  if(telDigitos.length<10){ return "Por favor, informe um celular válido com DDD."; }
+  S.leadNome=nome; S.leadEmail=email; S.leadTelefone=tel; S.leadEmpresa=empresa;
+  return null;
 }
 
 /* PASSO 1 */
@@ -1166,15 +1213,15 @@ function showLead(){
   const roiTxt = R.roiMidia>0 ? R.roiMidia.toFixed(1).replace(".",",")+"x" : "-";
   const investTxt = R.investExtra>0 ? fmtBRL(R.investExtra) : "-";
   $("#leadArea").innerHTML=`<div style="background:var(--clr-bg-alt);border-radius:16px;padding:2rem;margin-top:1.5rem">
-    <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--clr-accent-dark);text-align:center;margin-bottom:.4rem">Receber minha análise completa</h3>
-    <p style="text-align:center;color:var(--clr-text-muted);font-size:.9rem;margin-bottom:.5rem">Enviamos o detalhamento do seu diagnóstico e nossa equipe entra em contato em até 1 dia útil.</p>
+    <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--clr-accent-dark);text-align:center;margin-bottom:.4rem">Quero conversar sobre estes números</h3>
+    <p style="text-align:center;color:var(--clr-text-muted);font-size:.9rem;margin-bottom:.5rem">Confirme seus dados e nossa equipe entra em contato para mostrar, na prática, como destravar esse potencial.</p>
     <form class="lead-form" id="calc-lead-form" method="post" action="">
-      <div class="calc-field"><label>Nome</label><input name="nome" required></div>
-      <div class="calc-field"><label>E-mail profissional</label><input type="email" name="email" required></div>
-      <div class="calc-field"><label>Empresa</label><input name="empresa" required></div>
-      <div class="calc-field"><label>WhatsApp</label><input name="telefone" required></div>
+      <div class="calc-field"><label>Nome</label><input name="nome" required value="${(S.leadNome||"").replace(/"/g,'&quot;')}"></div>
+      <div class="calc-field"><label>E-mail profissional</label><input type="email" name="email" required value="${(S.leadEmail||"").replace(/"/g,'&quot;')}"></div>
+      <div class="calc-field"><label>Empresa</label><input name="empresa" required value="${(S.leadEmpresa||"").replace(/"/g,'&quot;')}"></div>
+      <div class="calc-field"><label>WhatsApp</label><input name="telefone" required value="${(S.leadTelefone||"").replace(/"/g,'&quot;')}"></div>
       <!-- Campos ocultos com o diagnóstico (RD Station captura via monitoramento) -->
-      <input type="hidden" name="identificador" value="calculadora-receita-mkteudo">
+      <input type="hidden" name="identificador" value="calculadora-resultado-mkteudo">
       <input type="hidden" name="cf_calc_modelo" value="${modeloTxt}">
       <input type="hidden" name="cf_calc_segmento" value="${S.segmento}">
       <input type="hidden" name="cf_calc_ticket" value="${fmtBRL(S.ticket)}">
@@ -1187,14 +1234,11 @@ function showLead(){
       <input type="hidden" name="cf_calc_roi_midia" value="${roiTxt}">
       <input type="hidden" name="cf_calc_verba_sugerida" value="${investTxt}">
       <input type="hidden" name="cf_calc_perfil" value="${S.perfil}">
-      <div class="calc-field full"><button type="submit" class="btn btn--grad" style="width:100%;justify-content:center">Enviar e receber análise</button></div>
+      <div class="calc-field full"><button type="submit" class="btn btn--grad" style="width:100%;justify-content:center">Quero falar com a Mkteúdo</button></div>
     </form>
     <p style="font-size:.72rem;color:var(--clr-text-muted);text-align:center;margin-top:.8rem">Seus dados estão seguros e não serão compartilhados.</p>
   </div>`;
-  // Sem preventDefault: o RD Station (via Tag Manager) precisa "ver" o envio.
-  // Mostramos a confirmação visual logo após o submit, sem recarregar.
-  var lf=document.getElementById("calc-lead-form");
-  if(lf){ lf.addEventListener("submit", function(){ setTimeout(mostrarSucessoLead,150); }); }
+  // O envio do form é tratado pelo listener global de submit (calc-lead-form).
   $("#leadArea").scrollIntoView({behavior:"smooth",block:"center"});
 }
 function mostrarSucessoLead(){
@@ -1272,6 +1316,61 @@ document.querySelectorAll(".calc-step").forEach(el=>{ el.addEventListener("click
 document.addEventListener("input",function(e){
   if(e.target.id==="f-vend"||e.target.id==="f-cap"){ const v=+($("#f-vend").value||0),c=+($("#f-cap").value||0); const el=$("#capTotal"); if(el) el.textContent=Math.round(v*c*fatorDigital()).toLocaleString("pt-BR"); }
 });
+
+// ── Gate de entrada: captura nome/e-mail/celular antes de liberar a calculadora ──
+// Como a calculadora é uma página única (SPA), prevenimos o reload e enviamos a
+// conversão ao RD Station em segundo plano (API de conversões via código de
+// monitoramento). Assim a calculadora não recarrega e o lead é capturado.
+function enviarConversaoRD(identificador, dados){
+  try{
+    // Se o código de monitoramento do RD expõe a API global, usa ela.
+    if(window.RdIntegration && typeof window.RdIntegration.post==="function"){
+      window.RdIntegration.post(Object.assign({identificador:identificador}, dados));
+      return;
+    }
+    // Fallback: dispara um envio do formulário oculto para o RD "ver" a conversão,
+    // sem afetar a página (via fetch no-cors para o endpoint de conversões).
+    var token = window.__RD_TOKEN__ || ""; // opcional; o monitoramento já captura
+    var payload = Object.assign({token_rdstation: token, identificador: identificador}, dados);
+    fetch("https://www.rdstation.com.br/api/1.3/conversions", {
+      method:"POST", mode:"no-cors",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+  }catch(e){ /* silencioso: não pode quebrar a calculadora */ }
+}
+
+document.addEventListener("submit",function(e){
+  if(e.target && e.target.id==="calc-gate-form"){
+    e.preventDefault();
+    const erro=validarGate();
+    if(erro){
+      const box=$("#gate-erro"); if(box){ box.textContent=erro; box.style.display="block"; }
+      return;
+    }
+    // Captura o lead "abriu a sessão" no RD Station (em segundo plano).
+    enviarConversaoRD("calculadora-inicio-mkteudo", {
+      nome:S.leadNome, email:S.leadEmail, telefone:S.leadTelefone, empresa:S.leadEmpresa
+    });
+    // Libera a calculadora imediatamente, sem recarregar.
+    S.gatePassed=true; S.step=0; render();
+    return;
+  }
+  if(e.target && e.target.id==="calc-lead-form"){
+    e.preventDefault();
+    const f=e.target;
+    const dados={
+      nome:f.nome.value, email:f.email.value, empresa:f.empresa.value, telefone:f.telefone.value,
+      identificador:"calculadora-resultado-mkteudo"
+    };
+    // adiciona os campos de diagnóstico (cf_*)
+    f.querySelectorAll("input[type=hidden]").forEach(function(h){ if(h.name && h.name!=="identificador") dados[h.name]=h.value; });
+    enviarConversaoRD("calculadora-resultado-mkteudo", dados);
+    mostrarSucessoLead();
+    return;
+  }
+});
+
 render();
 
 </script>
