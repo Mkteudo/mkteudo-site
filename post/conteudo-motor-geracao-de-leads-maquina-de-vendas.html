@@ -309,12 +309,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </main>
   <aside class="side">
-    <div class="side-form">
+    <form class="side-form" id="side-news">
       <h4>Receba conteúdos gratuitos</h4>
       <p>Estratégias de marketing digital toda semana.</p>
-      <input type="text" placeholder="Seu nome">
-      <input type="email" placeholder="Seu melhor e-mail">
-      <button>Quero receber →</button>
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+      <button type="submit">Quero receber →</button>
+      <div class="side-form__msg" id="side-news-msg" hidden></div>
+    </form>
+    <div class="side-card side-card--serv">
+      <div class="side-card__ttl">Como podemos ajudar</div>
+      <a href="/consultoria-marketing-digital.html" class="side-serv">Consultoria de Marketing Digital</a>
+      <a href="/terceirizacao-de-marketing.html" class="side-serv">Terceirização de Marketing</a>
+      <a href="/implantacao-de-crm.html" class="side-serv">Implantação de CRM</a>
+      <a href="/marketing-para-agronegocio.html" class="side-serv">Marketing para o Agronegócio</a>
+      <a href="/marketing-para-industria.html" class="side-serv">Marketing para Indústria</a>
     </div>
     <div class="side-card">
       <div class="side-card__ttl">Leia também</div>
@@ -437,6 +446,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
+  
+    .side-card--serv{margin-top:1rem}
+    .side-serv{display:block;font-size:.88rem;font-weight:600;color:var(--acc);padding:.6rem 0;border-bottom:1px solid var(--bor);transition:padding-left .2s}
+    .side-serv:last-child{border-bottom:0}
+    .side-serv:hover{padding-left:.35rem}
+    .side-form__msg{margin-top:.7rem;font-size:.82rem;line-height:1.5;color:var(--acc);font-weight:600}
   </style>
 
 <script>
@@ -538,6 +553,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   ]
 }
+</script>
+
+  <!-- módulo central de captura e qualificação de leads -->
+  <script src="/js/mkt-leads.js"></script>
+
+<script>
+  (function(){
+    var f=document.getElementById('side-news'); if(!f||!window.MKT) return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var m=document.getElementById('side-news-msg');
+      var v=window.MKT.valores(f);
+      if(!window.MKT.emailValido(v.email)){ m.hidden=false; m.textContent='Confira o e-mail.'; return; }
+      var b=f.querySelector('button'); b.disabled=true; b.textContent='Enviando…';
+      window.MKT.enviar(Object.assign({}, v, window.MKT.contexto(), {
+        origem_form:'newsletter', etapa:'newsletter', identificador:'newsletter-blog-mkteudo'
+      })).then(function(){
+        window.MKT.push('newsletter_inscricao', {form_origem:'newsletter'});
+        f.innerHTML='<h4>Pronto!</h4><p>Você vai receber nossos conteúdos no e-mail cadastrado.</p>';
+      });
+    });
+  })();
 </script>
 </body>
 </html>

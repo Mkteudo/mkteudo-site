@@ -380,12 +380,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
   <aside class="side">
-    <div class="side-form">
+    <form class="side-form" id="side-news">
       <h4>Receba conteúdos gratuitos</h4>
       <p>Estratégias de marketing digital toda semana.</p>
-      <input type="text" placeholder="Seu nome">
-      <input type="email" placeholder="Seu melhor e-mail">
-      <button>Quero receber →</button>
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+      <button type="submit">Quero receber →</button>
+      <div class="side-form__msg" id="side-news-msg" hidden></div>
+    </form>
+    <div class="side-card side-card--serv">
+      <div class="side-card__ttl">Como podemos ajudar</div>
+      <a href="/consultoria-marketing-digital.html" class="side-serv">Consultoria de Marketing Digital</a>
+      <a href="/terceirizacao-de-marketing.html" class="side-serv">Terceirização de Marketing</a>
+      <a href="/implantacao-de-crm.html" class="side-serv">Implantação de CRM</a>
+      <a href="/marketing-para-agronegocio.html" class="side-serv">Marketing para o Agronegócio</a>
+      <a href="/marketing-para-industria.html" class="side-serv">Marketing para Indústria</a>
     </div>
     <div class="side-card">
       <div class="side-card__ttl">Leia também</div>
@@ -526,6 +535,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     .content li.li-check::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239428e4' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 12 5.5 5.5L20 7'/%3E%3C/svg%3E")}
     .content li.li-cross::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b02525' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E")}
+  
+    .side-card--serv{margin-top:1rem}
+    .side-serv{display:block;font-size:.88rem;font-weight:600;color:var(--acc);padding:.6rem 0;border-bottom:1px solid var(--bor);transition:padding-left .2s}
+    .side-serv:last-child{border-bottom:0}
+    .side-serv:hover{padding-left:.35rem}
+    .side-form__msg{margin-top:.7rem;font-size:.82rem;line-height:1.5;color:var(--acc);font-weight:600}
   </style>
 
 <script>
@@ -627,6 +642,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   ]
 }
+</script>
+
+  <!-- módulo central de captura e qualificação de leads -->
+  <script src="/js/mkt-leads.js"></script>
+
+<script>
+  (function(){
+    var f=document.getElementById('side-news'); if(!f||!window.MKT) return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var m=document.getElementById('side-news-msg');
+      var v=window.MKT.valores(f);
+      if(!window.MKT.emailValido(v.email)){ m.hidden=false; m.textContent='Confira o e-mail.'; return; }
+      var b=f.querySelector('button'); b.disabled=true; b.textContent='Enviando…';
+      window.MKT.enviar(Object.assign({}, v, window.MKT.contexto(), {
+        origem_form:'newsletter', etapa:'newsletter', identificador:'newsletter-blog-mkteudo'
+      })).then(function(){
+        window.MKT.push('newsletter_inscricao', {form_origem:'newsletter'});
+        f.innerHTML='<h4>Pronto!</h4><p>Você vai receber nossos conteúdos no e-mail cadastrado.</p>';
+      });
+    });
+  })();
 </script>
 </body>
 </html>
