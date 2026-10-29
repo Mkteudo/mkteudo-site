@@ -22,7 +22,7 @@ const ABA = 'Leads';
 /* A ordem aqui é a ordem das colunas. Para acrescentar um campo,
    basta incluir o nome na lista e rodar configurar() de novo. */
 const COLS = [
-  'Recebido em', 'Atualizado em', 'etapa', 'origem_form',
+  'Recebido em', 'Atualizado em', 'etapa', 'origem_form', 'verificacao',
   'lead_score', 'lead_tier', 'lead_sinais',
   'nome', 'email', 'telefone', 'empresa', 'site', 'setor',
   'cidade', 'estado', 'nivel_decisao', 'area',
@@ -72,17 +72,28 @@ function configurar() {
 }
 
 /* ───────────────────────── anti-spam ───────────────────────── */
+/* Devolve um rótulo, não um booleano, porque os três casos são
+   diferentes e só UM deles é motivo para recusar o lead:
+
+     'ok'          token conferido pela Cloudflare
+     'sem-token'   o widget não carregou (bloqueador de anúncios,
+                   rede corporativa, JS falhou). É gente de verdade
+                   na esmagadora maioria das vezes — recusar aqui
+                   seria jogar fora lead bom. Grava e sinaliza.
+     'falhou'      veio token e a Cloudflare reprovou. Isso sim é
+                   sinal de forja: recusa.
+*/
 function turnstileOk(token, ip) {
   const segredo = PropertiesService.getScriptProperties().getProperty('TURNSTILE_SECRET');
-  if (!segredo) return true;      /* ainda não configurado: não bloqueia */
-  if (!token) return false;
+  if (!segredo) return 'sem-chave';
+  if (!token)   return 'sem-token';
   try {
     const r = UrlFetchApp.fetch(
       'https://challenges.cloudflare.com/turnstile/v0/siteverify',
       { method: 'post', payload: { secret: segredo, response: token, remoteip: ip || '' },
         muteHttpExceptions: true });
-    return !!JSON.parse(r.getContentText()).success;
-  } catch (e) { return true; }    /* Cloudflare fora do ar não derruba o lead */
+    return JSON.parse(r.getContentText()).success ? 'ok' : 'falhou';
+  } catch (e) { return 'cloudflare-fora'; }   /* indisponibilidade não derruba o lead */
 }
 
 /* ───────────────────────── recebimento ───────────────────────── */
@@ -95,9 +106,11 @@ function doPost(e) {
 
     /* Só exigimos o anti-spam nas etapas finais. As parciais vêm de
        quem já passou pelo formulário e travá-las só perderia dado. */
-    const exigeToken = d.etapa === 'completo' || d.etapa === 'pediu_diagnostico';
-    if (exigeToken && !turnstileOk(d.turnstile_token, d.ip)) {
-      return resposta({ ok: false, erro: 'anti-spam' });
+    const etapaFinal = d.etapa === 'completo' || d.etapa === 'pediu_diagnostico';
+    if (etapaFinal) {
+      const v = turnstileOk(d.turnstile_token, d.ip);
+      if (v === 'falhou') return resposta({ ok: false, erro: 'anti-spam' });
+      d.verificacao = v;
     }
 
     const ss = SpreadsheetApp.getActiveSpreadsheet();
