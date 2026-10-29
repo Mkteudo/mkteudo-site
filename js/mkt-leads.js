@@ -21,7 +21,7 @@
 
   var CONFIG = {
     /* URL /exec da implantação do Apps Script. Vazio = fila local. */
-    ENDPOINT: '',
+    ENDPOINT: 'https://script.google.com/macros/s/AKfycbxj4Ff3pKi4AlKMqMHW2WKfTtSdokS7a62E4E7JZ3b0hZt-Tedbi41H1SRJ_pPO5Cbrng/exec',
     /* Chave pública do Cloudflare Turnstile (pode ficar no código). */
     TURNSTILE_SITE_KEY: '0x4AAAAAAFrUQu2VfFUGikMh',
     /* Dias que o identificador de sessão sobrevive. */
