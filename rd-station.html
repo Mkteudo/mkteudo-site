@@ -321,6 +321,9 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 <style id="mkt-a11y-v1">
+/* ancoras nao ficam escondidas atras do menu fixo */
+section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
+
 /* Blocos escuros: titulo e texto sempre claros. O h3/h4 do CTA do meio do
    post estava com a cor de texto do corpo sobre fundo preto — invisivel. */
 .cta-mid h1,.cta-mid h2,.cta-mid h3,.cta-mid h4,.cta-mid p,

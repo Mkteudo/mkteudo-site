@@ -260,6 +260,9 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 <style id="mkt-a11y-v1">
+/* ancoras nao ficam escondidas atras do menu fixo */
+section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
+
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .pular{position:absolute;left:-9999px;top:0;z-index:2000;background:#9428e4;color:#fff;padding:.7rem 1.2rem;border-radius:0 0 10px 0;font-weight:600;font-size:.9rem;text-decoration:none}
 .pular:focus{left:0}
@@ -380,6 +383,63 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
     border-color:var(--clr-neon); color:var(--clr-neon);
   }
   </style>
+<style id="mkt-dirm-v1">
+.dirm{background:#0d0010;color:#f4f3ee;padding:7rem 0;position:relative;overflow:hidden}
+.dirm::before{content:'';position:absolute;top:-240px;right:-180px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.22) 0%,transparent 68%);pointer-events:none}
+.dirm::after{content:'';position:absolute;bottom:-280px;left:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.10) 0%,transparent 70%);pointer-events:none}
+.dirm__in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 2rem}
+.dirm__over{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c18cff;margin-bottom:1.4rem}
+.dirm__over::before{content:'';width:24px;height:2px;background:#ff00ff;display:block;flex:0 0 auto}
+.dirm h2{font-family:var(--font-display);font-size:clamp(2rem,4.4vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:#fff;max-width:19ch;margin:0 0 1.2rem}
+.dirm__sub{font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.75;color:rgba(244,243,238,.68);max-width:62ch;margin:0}
+.dirm__fase{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,243,238,.45);margin:0 0 .9rem;display:flex;align-items:center;gap:10px}
+.dirm__fase span{flex:1;height:1px;background:rgba(244,243,238,.14)}
+.dirm__ciclo{margin-top:3.6rem;display:grid;grid-template-columns:1fr 1fr;gap:2.6rem 3.4rem;position:relative}
+.dirm__bloco{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.dirm-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.9rem 1.6rem;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,background .35s;position:relative}
+.dirm-card:hover{transform:translateY(-4px);background:rgba(148,40,228,.10);border-color:rgba(148,40,228,.45)}
+.dirm-card__l{font-family:var(--font-display);font-size:2.6rem;font-weight:800;line-height:1;color:#9428e4;margin-bottom:.5rem}
+.dirm-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:#fff;margin:0 0 .55rem;letter-spacing:-.01em}
+.dirm-card p{font-size:.88rem;line-height:1.65;color:rgba(244,243,238,.6);margin:0}
+.dirm__volta{grid-column:1/-1;display:flex;align-items:center;gap:14px;color:rgba(244,243,238,.45);font-size:.82rem;margin-top:.4rem}
+.dirm__volta::before,.dirm__volta::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(148,40,228,.5),transparent)}
+.dirm__volta b{color:#c18cff;font-weight:600}
+.dirm-quem{background:#f4f3ee;color:#0d0010;padding:6rem 0}
+.dirm-quem__in{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:start}
+.dirm-quem h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin:0 0 1rem}
+.dirm-quem p{font-size:1.05rem;line-height:1.75;color:var(--clr-text-muted);margin:0;max-width:52ch}
+.dirm-sinais{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.8rem}
+.dirm-sinais li{display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid var(--clr-border);border-radius:14px;padding:1.1rem 1.3rem;font-size:.97rem;line-height:1.55}
+.dirm-sinais li::before{content:'';width:20px;height:20px;border-radius:50%;background:#9428e4;flex:0 0 auto;margin-top:.1rem;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20 6L9 17l-5-5' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20 6L9 17l-5-5' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat}
+.dirm-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.6rem}
+.dirm-cta__a{display:inline-flex;align-items:center;gap:.5rem;background:#4c0059;color:#f4f3ee;padding:.95rem 2rem;border-radius:100px;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;transition:background .3s,transform .3s}
+.dirm-cta__a:hover{background:#9428e4;transform:translateY(-2px);color:#fff}
+.dirm-cta__b{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid rgba(13,0,16,.18);color:#0d0010;padding:.95rem 1.9rem;border-radius:100px;font-size:.95rem;font-weight:600;text-decoration:none;transition:border-color .3s,color .3s}
+.dirm-cta__b:hover{border-color:#9428e4;color:#9428e4}
+.dirm-frentes{background:#f4f3ee;padding:0 0 6rem}
+.dirm-frentes__in{max-width:1200px;margin:0 auto;padding:0 2rem}
+.dirm-frentes__t{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clr-text-muted);margin:0 0 1.2rem}
+.dirm-frentes__g{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.9rem}
+.dirm-frente{display:block;background:#fff;border:1px solid var(--clr-border);border-radius:14px;padding:1.2rem 1.3rem;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s,box-shadow .3s}
+.dirm-frente:hover{border-color:#9428e4;transform:translateY(-3px);box-shadow:0 12px 32px rgba(148,40,228,.10)}
+.dirm-frente b{display:block;font-family:var(--font-display);font-size:.98rem;font-weight:700;margin-bottom:.3rem;line-height:1.25}
+.dirm-frente span{font-size:.84rem;color:var(--clr-text-muted);line-height:1.5}
+@media(max-width:900px){
+  .dirm{padding:4.5rem 0}.dirm-quem{padding:4rem 0}.dirm-frentes{padding-bottom:4rem}
+  .dirm__ciclo{grid-template-columns:1fr;gap:2.2rem}
+  .dirm-quem__in{grid-template-columns:1fr;gap:2rem}
+}
+@media(max-width:620px){
+  .dirm{padding:3.6rem 0}
+  .dirm__bloco{grid-template-columns:1fr}
+  .dirm h2{font-size:1.75rem}
+  .dirm-card{padding:1.4rem 1.2rem}
+  .dirm-card__l{font-size:2.1rem}
+  .dirm-cta__a,.dirm-cta__b{width:100%;justify-content:center}
+}
+</style>
 </head>
 <body>
 <a href="#conteudo" class="pular">Pular para o conteúdo</a>
@@ -448,19 +508,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <section class="section section--alt" id="servicos">
-    <div class="container">
+  <section class="dirm" id="como-funciona"><span id="metodo-picc" aria-hidden="true"></span><span id="metodologia" aria-hidden="true"></span>
+    <div class="dirm__in">
       <div class="reveal">
-        <div class="section__eyebrow">Serviços</div>
-        <h2 class="section__title">Consultoria de marketing que vira execução</h2>
-        <p class="section__desc">A Mkteúdo é uma agência de marketing digital em Ribeirão Preto que opera como consultoria: primeiro lê os seus números, depois executa. Consultoria, terceirização de marketing, implantação de CRM e frentes para agro e indústria — cada uma com página própria, escopo e perguntas frequentes.</p>
+        <div class="dirm__over">Diretoria de Marketing</div>
+        <h2>Nós assumimos a cadeira de Diretor de Marketing da sua empresa.</h2>
+        <p class="dirm__sub">E conduzimos o seu marketing pelo Método PICC, o ciclo que a Mkteúdo aplica desde 2018 para transformar investimento em vendas. É consultoria de marketing com mão na operação, pensada para empresas B2B.</p>
       </div>
-      <div class="services__grid">
-        <a class="service-card reveal" href="/consultoria-de-marketing" style="text-decoration:none;color:inherit;display:block"><div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" style="color:var(--clr-accent)"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><h3 class="service-card__title">Consultoria de Marketing</h3><p class="service-card__text">Para quem já investe e não consegue explicar o que o investimento devolveu. Diagnóstico dos seus números, cinco movimentos em ordem de impacto e um consultor sênior acompanhando a aplicação.</p><span class="service-card__link">Saiba mais →</span></a><a class="service-card reveal" href="/terceirizacao-de-marketing" style="text-decoration:none;color:inherit;display:block"><div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" style="color:var(--clr-accent)"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3 class="service-card__title">Terceirização de Marketing</h3><p class="service-card__text">Um time inteiro no lugar de cinco contratações e três ferramentas. Estratégia, conteúdo, mídia e CRM operados por quem responde por resultado, não por entregável solto.</p><span class="service-card__link">Saiba mais →</span></a><a class="service-card reveal" href="/implantacao-de-crm" style="text-decoration:none;color:inherit;display:block"><div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" style="color:var(--clr-accent)"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="4" width="3" height="14"/></svg></div><h3 class="service-card__title">Implantação de CRM</h3><p class="service-card__text">Funil desenhado sobre o seu processo, ferramenta configurada e time treinado — até o CRM virar rotina do comercial e o relatório virar decisão.</p><span class="service-card__link">Saiba mais →</span></a><a class="service-card reveal" href="/marketing-para-agronegocio" style="text-decoration:none;color:inherit;display:block"><div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" style="color:var(--clr-accent)"><path d="M12 22c0-6 4-10 9-11-1 6-4 10-9 11z"/><path d="M12 22c0-6-4-10-9-11 1 6 4 10 9 11z"/><path d="M12 22V9"/></svg></div><h3 class="service-card__title">Marketing para o Agronegócio</h3><p class="service-card__text">Ciclo de safra, janela de compra e quem decide dentro da propriedade. Campanhas e conteúdo ligados ao CRM, com a origem do lead rastreada até o pedido.</p><span class="service-card__link">Saiba mais →</span></a><a class="service-card reveal" href="/marketing-para-industria" style="text-decoration:none;color:inherit;display:block"><div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" style="color:var(--clr-accent)"><path d="M3 21V10l5 3V10l5 3V10l5 3v8z"/><path d="M3 21h18"/><path d="M8 21v-4"/><path d="M13 21v-4"/></svg></div><h3 class="service-card__title">Marketing para Indústria</h3><p class="service-card__text">Ciclo longo e várias pessoas decidindo. Traduzimos a capacidade da fábrica em argumento comercial e alimentamos o comercial com contexto, não com clique.</p><span class="service-card__link">Saiba mais →</span></a>
+      <div class="dirm__ciclo">
+        <div>
+          <p class="dirm__fase">Primeiro, estruturamos <span></span></p>
+          <div class="dirm__bloco">
+            <div class="dirm-card reveal"><div class="dirm-card__l">P</div><h3>Planejar</h3><p>Você passa a ter alguém responsável pela estratégia de marketing, pela definição de prioridades, pelo plano anual e pelas metas e indicadores.</p></div>
+            <div class="dirm-card reveal"><div class="dirm-card__l">I</div><h3>Integrar</h3><p>Marketing e vendas no mesmo funil. Agência, fornecedores e time trabalhando sobre o mesmo plano, com CRM organizado.</p></div>
+          </div>
+        </div>
+        <div>
+          <p class="dirm__fase">Depois, lideramos no dia a dia <span></span></p>
+          <div class="dirm__bloco">
+            <div class="dirm-card reveal"><div class="dirm-card__l">C</div><h3>Converter</h3><p>Gestão de canais e campanhas, acompanhamento do lead até a venda, automações e IA a serviço do seu time.</p></div>
+            <div class="dirm-card reveal"><div class="dirm-card__l">C</div><h3>Crescer</h3><p>Reuniões de acompanhamento, análise de resultados e projetos de crescimento. O que aprendemos aqui volta para o Planejar.</p></div>
+          </div>
+        </div>
+        <p class="dirm__volta">O que aprendemos em <b>Crescer</b> volta para o <b>Planejar</b> — o ciclo recomeça</p>
       </div>
-      <div class="reveal" style="margin-top:2.2rem;padding:1.6rem 1.8rem;border:1px solid var(--clr-border);border-radius:16px;background:var(--clr-surface);display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
-        <p style="margin:0;color:var(--clr-text-muted);font-size:.95rem;max-width:62ch">Também fazemos produção de conteúdo, mídia paga, redes sociais, campanhas de incentivo de vendas, IA aplicada ao marketing e comunicação estratégica.</p>
-        <a href="/servicos" class="btn btn--outline">Ver todos os serviços</a>
+    </div>
+  </section>
+
+  <section class="dirm-quem">
+    <div class="dirm-quem__in">
+      <div class="reveal">
+        <h2>Para quem é</h2>
+        <p>Empresas que já investem em marketing e têm agência ou time executando, mas não têm quem conecte tudo isso às metas de vendas.</p>
+        <div class="dirm-cta">
+          <a href="#contato" class="dirm-cta__a">Agendar uma conversa <span aria-hidden="true">→</span></a>
+          <a href="/metodo-picc" class="dirm-cta__b">Conhecer o Método PICC <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <ul class="dirm-sinais reveal">
+        <li>Investe em marketing, mas não vê o retorno</li>
+        <li>As decisões de marketing ainda dependem do dono</li>
+        <li>Tem agência ou equipe, mas falta direção</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="dirm-frentes" id="servicos">
+    <div class="dirm-frentes__in">
+      <p class="dirm-frentes__t">Frentes que conduzimos</p>
+      <div class="dirm-frentes__g">
+        <a class="dirm-frente" href="/consultoria-de-marketing"><b>Consultoria de Marketing</b><span>Diagnóstico dos seus números e o plano em ordem de impacto</span></a>
+        <a class="dirm-frente" href="/terceirizacao-de-marketing"><b>Terceirização de Marketing</b><span>Um time inteiro no lugar de cinco contratações</span></a>
+        <a class="dirm-frente" href="/implantacao-de-crm"><b>Implantação de CRM</b><span>Funil, configuração e time treinado até virar rotina</span></a>
+        <a class="dirm-frente" href="/marketing-para-agronegocio"><b>Marketing para o Agro</b><span>No ritmo da safra e de quem decide na propriedade</span></a>
+        <a class="dirm-frente" href="/marketing-para-industria"><b>Marketing para Indústria</b><span>Ciclo longo, decisão compartilhada, argumento técnico</span></a>
+        <a class="dirm-frente" href="/servicos"><b>Todos os serviços</b><span>Conteúdo, mídia paga, redes sociais, incentivo e IA</span></a>
       </div>
     </div>
   </section>
@@ -537,46 +639,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <section class="section picc" id="metodo-picc"><span id="metodologia" aria-hidden="true"></span>
-    <div class="container" style="position:relative;z-index:1">
-      <div class="reveal">
-        <div class="section__eyebrow">Método proprietário</div>
-        <h2 class="section__title">O Método PICC</h2>
-        <p class="section__desc">Não improvisamos. Todo cliente passa por um sistema próprio de crescimento, em quatro fases, que conecta estratégia, marketing, vendas e dados em uma só engrenagem.</p>
-        <div class="picc__word"><span>Planejar</span> <span>Integrar</span> <span>Converter</span> <span>Crescer</span></div>
-      </div>
-      <div class="picc__grid">
-        <div class="picc-card reveal">
-          <div class="picc-card__letter">P</div>
-          <div class="picc-card__title">Planejar</div>
-          <div class="picc-card__text">Mapeamos onde o crescimento vaza: funil, maturidade digital, concorrência e oportunidades. Diagnóstico e plano de 30-60-90 dias antes de qualquer execução.</div>
-          <span class="picc-card__tag">Diagnóstico</span>
-        </div>
-        <div class="picc-card reveal">
-          <div class="picc-card__letter">I</div>
-          <div class="picc-card__title">Integrar</div>
-          <div class="picc-card__text">Nosso maior diferencial: conectar marketing, vendas e dados em um sistema único. CRM, SLAs e playbooks para que o lead não se perca entre as áreas — com capacitação do time de vendas e das lideranças, porque ferramenta que ninguém usa não muda número.</div>
-          <span class="picc-card__tag">Implantação</span>
-        </div>
-        <div class="picc-card reveal">
-          <div class="picc-card__letter">C</div>
-          <div class="picc-card__title">Converter</div>
-          <div class="picc-card__text">Operamos a máquina: campanhas, conteúdo, qualificação e pipeline ativo. É a fase em que a demanda vira receita — e o investimento se paga.</div>
-          <span class="picc-card__tag">Operação</span>
-        </div>
-        <div class="picc-card reveal">
-          <div class="picc-card__letter">C</div>
-          <div class="picc-card__title">Crescer</div>
-          <div class="picc-card__text">Escalamos com dados, automação e IA, squads dedicados e governança contínua. Crescimento previsível e sustentável, não picos isolados.</div>
-          <span class="picc-card__tag">Escala</span>
-        </div>
-      </div>
-      <div class="picc__cta reveal">
-        <a href="/metodo-picc" class="btn btn--primary">Conhecer o Método PICC <span class="btn__arrow">→</span></a>
-        <a href="/calculadora" class="btn btn--outline">Calcular meu potencial</a>
-      </div>
-    </div>
-  </section>
+  
 
   <section class="section section--alt" id="cases">
     <div class="container">
