@@ -215,8 +215,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      aria-label="Aviso de cookies" hidden>
   <div class="mkt-cookie__text">
     <strong>A gente usa cookies.</strong>
-    Usamos cookies para entender como o site é usado e melhorar sua experiência.
-    Você escolhe. <a href="/politica-de-privacidade/">Política de Privacidade</a>
+    Para entender como o site é usado e melhorar sua experiência.
+    <a href="/politica-de-privacidade/">Política de Privacidade</a>
   </div>
   <div class="mkt-cookie__actions">
     <button type="button" class="mkt-cookie__btn mkt-cookie__btn--ghost"
@@ -252,11 +252,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
   .mkt-cookie__btn--solid:hover{background:#a53ff0}
   @media(max-width:560px){
-    .mkt-cookie{flex-direction:column; align-items:stretch; text-align:left}
-    .mkt-cookie__actions{justify-content:stretch}
-    .mkt-cookie__btn{flex:1}
+    /* Vira uma faixa rente ao rodapé: ocupa o mínimo de tela possível
+       e deixa os dois botões lado a lado, não empilhados. */
+    .mkt-cookie{
+      left:0; right:0; bottom:0; transform:none; width:100%;
+      border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
+      padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom, 0px));
+      gap:.7rem; align-items:center;
+    }
+    .mkt-cookie__text{flex:1 1 100%; font-size:.78rem; line-height:1.45}
+    .mkt-cookie__text strong{display:inline; margin:0}
+    .mkt-cookie__actions{flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+    .mkt-cookie__btn{width:100%; padding:.62rem .5rem; font-size:.8rem}
   }
-</style>
+
+  /* ═══════════════════════════════════════════════════════════════
+     AJUSTES DE MOBILE  ·  mkt-mobile-v1
+     ───────────────────────────────────────────────────────────────
+     Os títulos usam clamp() com piso alto (ex.: clamp(2.8rem,6vw,4.8rem)).
+     O piso trava em 44.8px e PARA de encolher abaixo de ~746px — por
+     isso num celular de 360px a fonte é a mesma de um tablet, e
+     palavras longas como "crescimento" e "transformamos" estouram.
+     Aqui o tamanho é redefinido só no celular; desktop e tablet
+     continuam exatamente como estão.
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 640px){
+    .hero__title        {font-size:1.95rem !important;letter-spacing:-.02em;line-height:1.12}
+    .hero__subtitle     {font-size:1rem !important}
+    .section__title     {font-size:1.55rem !important;letter-spacing:-.02em}
+    .section__desc      {font-size:.95rem !important}
+    .picc__word         {font-size:1.8rem !important}
+    .picc-hero__title   {font-size:1.72rem !important;letter-spacing:-.02em;line-height:1.1}
+    .picc-hero__sub     {font-size:.95rem !important;line-height:1.6}
+    .picc-proof__mv     {font-size:1.4rem !important}
+    .picc-cta__title    {font-size:1.45rem !important}
+    .rd-hero__title     {font-size:1.78rem !important;letter-spacing:-.02em;line-height:1.12}
+    .calc-hero__title   {font-size:1.8rem !important}
+    .res-headline__big  {font-size:1.9rem !important}
+    .case-highlight__title{font-size:1.35rem !important}
+
+    /* caixas com muito respiro interno sobram pouco espaço ao texto */
+    .picc-cta__box      {padding:2rem 1.25rem !important}
+    .case-highlight     {padding:2rem 1.25rem !important}
+    .container          {padding:0 1.25rem}
+
+    /* rede de segurança: nenhuma palavra longa rompe a caixa */
+    h1,h2,h3,h4,.hero__title,.section__title,.picc-hero__title,
+    .picc-cta__title,.rd-hero__title,.calc-hero__title{
+      overflow-wrap:break-word; word-break:normal;
+    }
+
+    /* A linha de números do hero era um flex de 3 colunas com gap de
+       3rem que não quebrava: era ela que empurrava a home 21px para
+       fora da tela e causava o arrasto lateral. */
+    .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
+    .hero__stat-number{font-size:1.9rem}
+    .hero__actions .btn{width:100%; justify-content:center}
+  }
+
+  </style>
 
 <script>
 (function(){

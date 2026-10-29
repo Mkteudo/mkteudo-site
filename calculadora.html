@@ -72,11 +72,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 
     :root{--clr-bg:#FAFAF8;--clr-surface:#FFF;--clr-text:#1A1A1A;--clr-text-muted:#6B6B6B;--clr-accent:#9428e4;--clr-accent-light:#f0e6fd;--clr-border:#E8E8E4;--clr-dark:#111;--clr-neon:#ff00ff;--font-display:'Syne',sans-serif;--font-body:'DM Sans',-apple-system,sans-serif;--ease-out:cubic-bezier(.16,1,.3,1);--max-w:1200px}
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}ul{list-style:none}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}ul{list-style:none}
     .container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
     .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border-bottom:1px solid var(--clr-border);box-shadow:0 1px 0 rgba(0,0,0,.02);transition:all .4s var(--ease-out)}.navbar.scrolled{box-shadow:0 1px 20px rgba(0,0,0,.06)}.navbar__inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:var(--max-w);margin:0 auto;padding:0 2rem}.navbar__logo-img{height:42px;width:auto}.navbar__links{display:flex;gap:2rem;align-items:center}.navbar__links a{font-size:.875rem;font-weight:500;color:var(--clr-text-muted);transition:color .3s;position:relative}.navbar__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--clr-accent);transition:width .3s var(--ease-out)}.navbar__links a:hover{color:var(--clr-text)}.navbar__links a:hover::after{width:100%}.navbar__cta{background:var(--clr-accent);color:#fff!important;padding:.6rem 1.4rem;border-radius:100px;font-size:.85rem;font-weight:600;transition:transform .3s var(--ease-out),box-shadow .3s}.navbar__cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(148,40,228,.3)}.navbar__cta::after{display:none!important}.navbar__hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}.navbar__hamburger span{width:24px;height:2px;background:var(--clr-text);transition:all .3s var(--ease-out)}
     .hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}.hero__bg-image{position:absolute;inset:0;z-index:0;background-image:url('imagens/hero-bg.jpg');background-size:cover;background-position:center;opacity:.05}.hero__bg-gradient{position:absolute;top:-100px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.08) 0%,transparent 70%);pointer-events:none}.hero__bg-gradient2{position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.04) 0%,transparent 70%);pointer-events:none}.hero__content{position:relative;z-index:1;padding:4rem 0}.hero__badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--clr-accent-light);color:var(--clr-accent);padding:.5rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.02em;margin-bottom:2rem;animation:fadeUp .8s var(--ease-out) both}.hero__badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--clr-accent);animation:pulse 2s ease infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.hero__title{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,4.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--clr-text);max-width:820px;margin-bottom:1.5rem;animation:fadeUp .8s .1s var(--ease-out) both}.hero__title em{font-style:normal;background:linear-gradient(135deg,var(--clr-accent),var(--clr-neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero__subtitle{font-size:1.15rem;color:var(--clr-text-muted);max-width:560px;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp .8s .2s var(--ease-out) both}.hero__actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .3s var(--ease-out) both}.hero__stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--clr-border);animation:fadeUp .8s .4s var(--ease-out) both}.hero__stat-number{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--clr-accent);line-height:1}.hero__stat-label{font-size:.78rem;color:var(--clr-text-muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.08em}@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:100px;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;border:none;transition:all .3s var(--ease-out)}.btn--primary{background:var(--clr-accent);color:#fff}.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(148,40,228,.3)}.btn--outline{background:transparent;color:var(--clr-text);border:1.5px solid var(--clr-border)}.btn--outline:hover{border-color:var(--clr-accent);color:var(--clr-accent)}.btn__arrow{transition:transform .3s var(--ease-out)}.btn:hover .btn__arrow{transform:translateX(3px)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:100px;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;border:none;transition:all .3s var(--ease-out)}.btn--primary{background:var(--clr-accent);color:#fff}.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(148,40,228,.3)}.btn--outline{background:transparent;color:inherit;border:1.5px solid var(--clr-border)}.btn--outline:hover{border-color:var(--clr-accent);color:var(--clr-accent)}.btn__arrow{transition:transform .3s var(--ease-out)}.btn:hover .btn__arrow{transform:translateX(3px)}
     .section{padding:7rem 0}.section--alt{background:var(--clr-surface)}.section__eyebrow{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:1rem;display:flex;align-items:center;gap:8px}.section__eyebrow::before{content:'';width:20px;height:2px;background:var(--clr-neon);display:block}.section__title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;max-width:600px;margin-bottom:1rem}.section__desc{font-size:1.05rem;color:var(--clr-text-muted);max-width:560px;line-height:1.75;margin-bottom:3rem}
     .awards-strip{background:var(--clr-dark);padding:3.5rem 0}.awards-strip__inner{display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap}.award-item{display:flex;align-items:center;gap:1rem;color:#fff}.award-item__icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--clr-neon),var(--clr-accent));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}.award-item__title{font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.2;color:#fff}.award-item__event{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:2px}.award-divider{width:1px;height:48px;background:rgba(255,255,255,.1)}
     .services__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}.service-card{background:var(--clr-bg);border:1px solid var(--clr-border);border-radius:16px;padding:2.2rem;transition:all .4s var(--ease-out);position:relative;overflow:hidden}.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--clr-accent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out)}.service-card:hover{border-color:var(--clr-accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(148,40,228,.08)}.service-card:hover::before{transform:scaleX(1)}.service-card__icon{width:48px;height:48px;border-radius:12px;background:var(--clr-accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.3rem}.service-card__title{font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:.75rem;line-height:1.2}.service-card__text{font-size:.92rem;color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.5rem}.service-card__link{font-size:.85rem;font-weight:600;color:var(--clr-accent);display:inline-flex;align-items:center;gap:.3rem;transition:gap .3s var(--ease-out)}.service-card__link:hover{gap:.6rem}
@@ -438,6 +438,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bench-grid{grid-template-columns:1fr 1fr}
 }
 </style>
+  <!-- módulo central de captura e qualificação de leads -->
+  <script src="/js/mkt-leads.js"></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
@@ -1424,6 +1426,288 @@ document.addEventListener("submit",function(e){
   }
 });
 
+/* ══════════════════════════════════════════════════════════════════════
+   CAPTURA PROGRESSIVA DA CALCULADORA
+   ──────────────────────────────────────────────────────────────────────
+   A calculadora já pede nome, e-mail, telefone e empresa no portão de
+   entrada. O que faltava era a entrega: as conversões iam para uma API
+   antiga do RD, sem token, dentro de um try/catch silencioso.
+
+   Aqui a gente conserta e acrescenta o que o Felipe pediu: cada passo
+   que a pessoa completa atualiza A MESMA linha da planilha, costurada
+   pelo sessao_id. Se ela abandonar no meio, ficam o contato e o ponto
+   exato onde parou — que é informação comercial: quem para na
+   capacidade do time tem um problema diferente de quem para no funil.
+   ══════════════════════════════════════════════════════════════════════ */
+(function(){
+  if(!window.MKT){ return; }
+  var M = window.MKT;
+
+  /* ── Deriva as faixas de qualificação dos números que a pessoa já
+        digitou. Não faz sentido perguntar o faturamento de novo: ela
+        acabou de informar ticket, volume e verba. ── */
+  function faixaFaturamento(receitaMes){
+    if(!receitaMes || receitaMes <= 0) return '';
+    if(receitaMes > 1000000) return 'Acima de R$1 milhão';
+    if(receitaMes >  500000) return 'R$500 mil–1 milhão';
+    if(receitaMes >  200000) return 'R$200–500 mil';
+    if(receitaMes >   50000) return 'R$50–200 mil';
+    return 'Até R$50 mil';
+  }
+  function faixaInvestimento(verbaMes){
+    if(verbaMes >= 10000) return '+R$10 mil';
+    if(verbaMes >=  5000) return 'R$5–10 mil';
+    if(verbaMes >=  2000) return 'R$2–5 mil';
+    if(verbaMes >     0 ) return 'Até R$2 mil';
+    return 'Ainda não sei';
+  }
+  function faixaColaboradores(vendedores){
+    if(vendedores > 15) return '51–100';
+    if(vendedores >  7) return '21–50';
+    if(vendedores >  3) return '6–20';
+    return '1–5';
+  }
+  function investeHoje(){
+    if(S.knowsFunnel === 'zero' || (!S.investAtual && !S.zeroVerba)) return 'Não';
+    if(S.estrutura === 'dedicado' || S.estrutura === 'dono') return 'Sim, internamente';
+    return 'Sim, com agência';
+  }
+
+  /* Tudo que a pessoa preencheu, achatado para uma linha de planilha. */
+  function retrato(){
+    var R = null;
+    try { R = calcular(); } catch(e){ R = null; }
+
+    var receitaMes = R ? R.receitaMesCur : 0;
+    var verbaMes   = S.knowsFunnel === 'zero' ? (S.zeroVerba||0) : (S.investAtual||0);
+
+    var d = {
+      /* contato, capturado no portão */
+      nome: S.leadNome, email: S.leadEmail,
+      telefone: S.leadTelefone, empresa: S.leadEmpresa,
+
+      /* faixas derivadas — alimentam a mesma pontuação do form de contato */
+      faturamento:   faixaFaturamento(receitaMes),
+      investimento:  faixaInvestimento(verbaMes),
+      colaboradores: faixaColaboradores(S.vendedores),
+      investe_hoje:  investeHoje(),
+
+      /* o diagnóstico em si — isto é o que abre a conversa */
+      calc_modelo: S.modelo,
+      calc_segmento: S.segmento,
+      calc_ticket: S.ticket,
+      calc_recorrencia: S.recorrencia === 'recorrente' ? ('Recorrente ' + S.retencao + ' meses') : 'Venda única',
+      calc_estrutura: S.estrutura,
+      calc_crm: S.usaCrm,
+      calc_vendedores: S.vendedores,
+      calc_cap_por_vendedor: S.capPorVend,
+      calc_tipo_produto: S.temProduto,
+      calc_logistica: S.logistica,
+      calc_perfil: S.perfil,
+      calc_cenario: S.knowsFunnel === 'zero' ? 'Ainda não faz digital'
+                   : S.knowsFunnel === 'nao'  ? 'Não sabe os números'
+                   : 'Informou os números',
+      calc_trafego: S.trafego, calc_leads: S.leads,
+      calc_mql: S.mql, calc_sql: S.sql, calc_vendas: S.vendas,
+      calc_meta_faturamento: S.metaFat,
+      calc_investimento_atual: verbaMes
+    };
+
+    if(R){
+      d.calc_receita_atual_mes   = Math.round(R.receitaMesCur || 0);
+      d.calc_receita_potencial   = Math.round(R.receitaMesOpt || 0);
+      d.calc_ganho_mes           = Math.round(R.ganhoMes || 0);
+      d.calc_ganho_ano           = Math.round(R.ganhoAno || 0);
+      d.calc_roi_midia           = R.roiMidia ? Number(R.roiMidia).toFixed(1) : '';
+      d.calc_verba_sugerida      = Math.round(R.investExtra || 0);
+      d.calc_cac_atual           = Math.round(R.cacNow || 0);
+      d.calc_cac_otimizado       = Math.round(R.cacOpt || 0);
+    }
+
+    /* itens do diagnóstico que a pessoa marcou como "não tenho" —
+       é a lista de gargalos, pronta para a reunião */
+    try{
+      var faltam = ITENS.filter(function(i){ return !S.estados[i.id]; }).map(function(i){ return i.t; });
+      d.calc_gargalos = faltam.join('; ');
+      d.calc_gargalos_qtd = faltam.length;
+    }catch(e){}
+
+    return d;
+  }
+
+  /* ── Envia/atualiza a linha. O Apps Script faz upsert por sessao_id,
+        então chamar isto várias vezes não cria linhas duplicadas. ── */
+  var ultimoEnvio = '';
+  function gravar(etapa, extra){
+    if(!S.leadEmail) return;                 /* ninguém a identificar ainda */
+    var d = Object.assign({}, retrato(), extra || {});
+    var ctx = M.contexto();
+    var payload = Object.assign({}, d, ctx, {
+      origem_form: 'calculadora',
+      etapa: etapa,
+      identificador: 'calculadora-mkteudo'
+    });
+
+    /* não reenvia um retrato idêntico ao anterior */
+    var impressao = etapa + '|' + JSON.stringify(d);
+    if(impressao === ultimoEnvio) return;
+    ultimoEnvio = impressao;
+
+    M.enviar(payload);
+  }
+
+  /* ── 1. Portão de entrada: valida melhor e grava o contato ── */
+  var _validarGateOriginal = validarGate;
+  validarGate = function(){
+    var erro = _validarGateOriginal();
+    if(erro) return erro;
+    if(!M.emailValido(S.leadEmail))      return 'Confira o e-mail: parece estar incompleto.';
+    if(!M.telefoneValido(S.leadTelefone)) return 'Confira o celular: inclua o DDD.';
+    return null;
+  };
+
+  /* ── 2. A rota de entrega. A função antiga tentava uma API do RD sem
+        token, dentro de um catch silencioso — nunca entregou nada.
+        Agora vai para a planilha e dispara o evento; o RD continua
+        recebendo pelo código de monitoramento, se estiver carregado. ── */
+  enviarConversaoRD = function(identificador, dados){
+    var etapa = identificador === 'calculadora-inicio-mkteudo' ? 'calc_inicio' : 'calc_lead';
+    gravar(etapa, dados && dados.__extra ? dados.__extra : null);
+
+    if(etapa === 'calc_inicio'){
+      M.push('calculadora_iniciada', { form_origem:'calculadora', etapa:'calc_inicio' });
+      M.carregarTurnstile();
+    }
+    /* RD Station, quando o código de monitoramento estiver presente */
+    try{
+      if(window.RdIntegration && typeof window.RdIntegration.post === 'function'){
+        window.RdIntegration.post(Object.assign({identificador: identificador}, dados || {}));
+      }
+    }catch(e){}
+  };
+
+  /* ── 3. Captura progressiva: a cada passo concluído, atualiza a linha ── */
+  var _saveStepOriginal = saveStep;
+  var NOMES_PASSO = ['negocio','capacidade','funil','diagnostico','resultado'];
+  saveStep = function(){
+    _saveStepOriginal.apply(this, arguments);
+    try{
+      var nome = NOMES_PASSO[S.step] || ('passo_' + S.step);
+      gravar('calc_' + nome);
+      M.push('calculadora_passo', {
+        form_origem: 'calculadora',
+        etapa: 'calc_' + nome,
+        calc_passo: S.step + 1
+      });
+    }catch(e){}
+  };
+
+  /* ── 4. Tela final: resultado liberado + convite ao diagnóstico ──
+        A calculadora dá o número de graça. O formulário abaixo pede
+        as duas únicas coisas que os cálculos não revelam — quem decide
+        e em quanto tempo — e entrega o diagnóstico aprofundado. ── */
+  showLead = function(){
+    var R = calcular();
+    var nome = (S.leadNome||'').split(' ')[0];
+    var ganho = fmtBRL(R.ganhoAno);
+    var esc = function(v){ return String(v==null?'':v).replace(/"/g,'&quot;'); };
+
+    $("#leadArea").innerHTML =
+    '<div class="diag-box">' +
+      '<span class="diag-tag">Diagnóstico aprofundado</span>' +
+      '<h3 class="diag-h">' + (nome ? nome + ', e' : 'E') + 'sses ' + ganho + ' por ano são uma estimativa. O próximo passo é o plano.</h3>' +
+      '<p class="diag-p">A calculadora usa benchmarks do seu segmento. O diagnóstico aprofundado olha os <strong>seus</strong> números: seu site, suas campanhas, seu funil e seus concorrentes — e devolve o caminho na ordem certa, com prioridades e prazo.</p>' +
+      '<ul class="diag-ul">' +
+        '<li>Revisão do que você respondeu aqui, com os dados reais das suas contas</li>' +
+        '<li>Os ' + ((function(){try{return ITENS.filter(function(i){return !S.estados[i.id];}).length;}catch(e){return 0;}})()) + ' gargalos que você marcou, em ordem de impacto no faturamento</li>' +
+        '<li>Quanto investir, em que canal, para chegar na meta que você informou</li>' +
+      '</ul>' +
+      '<form class="lead-form diag-form" id="calc-diag-form">' +
+        '<div class="calc-field"><label>Nome</label><input name="nome" required value="' + esc(S.leadNome) + '"></div>' +
+        '<div class="calc-field"><label>E-mail profissional</label><input type="email" name="email" required value="' + esc(S.leadEmail) + '"></div>' +
+        '<div class="calc-field"><label>Empresa</label><input name="empresa" value="' + esc(S.leadEmpresa) + '"></div>' +
+        '<div class="calc-field"><label>WhatsApp</label><input name="telefone" required value="' + esc(S.leadTelefone) + '"></div>' +
+
+        '<div class="calc-field full"><label>Qual seu nível de decisão?</label>' +
+          '<div class="diag-radios">' +
+            ['Sócio / Proprietário','CEO / Presidente','Diretor(a)','Gerente','Coordenador(a) / Supervisor(a)','Analista / Assistente','Outro']
+              .map(function(v){ return '<label class="diag-radio"><input type="radio" name="nivel_decisao" value="'+v+'"><span>'+v+'</span></label>'; }).join('') +
+          '</div></div>' +
+
+        '<div class="calc-field full"><label>Em quanto tempo pretende agir sobre isso?</label>' +
+          '<div class="diag-radios">' +
+            ['Imediato','30 dias','60–90 dias','Só estou pesquisando']
+              .map(function(v){ return '<label class="diag-radio"><input type="radio" name="prazo" value="'+v+'"><span>'+v+'</span></label>'; }).join('') +
+          '</div></div>' +
+
+        '<div class="calc-field full"><div class="cf-turnstile" data-sitekey="' + M.config.TURNSTILE_SITE_KEY + '" data-theme="light" data-size="flexible" data-language="pt-br" data-action="calculadora"></div></div>' +
+        '<div class="calc-field full"><div id="diag-erro" class="diag-erro" hidden></div></div>' +
+        '<div class="calc-field full"><button type="submit" class="btn btn--grad" id="btnDiag" style="width:100%;justify-content:center">Quero o diagnóstico aprofundado</button></div>' +
+      '</form>' +
+      '<p class="diag-fine">Já temos tudo que você preencheu aqui. A conversa começa do ponto onde você parou — sem recomeçar do zero.</p>' +
+    '</div>';
+
+    if(window.turnstile && window.turnstile.render){
+      try{ window.turnstile.render($("#calc-diag-form .cf-turnstile")); }catch(e){}
+    }
+    M.push('diagnostico_ofertado', { form_origem:'calculadora', etapa:'calc_resultado' });
+    $("#leadArea").scrollIntoView({behavior:'smooth', block:'center'});
+  };
+
+  /* ── 5. Envio do diagnóstico: pontua com a mesma régua do site ── */
+  document.addEventListener('submit', function(e){
+    if(!e.target || e.target.id !== 'calc-diag-form') return;
+    e.preventDefault();
+    var f = e.target;
+    var cx = document.getElementById('diag-erro');
+    cx.hidden = true;
+
+    var v = M.valores(f);
+    if(!M.emailValido(v.email))       { cx.textContent='Confira o e-mail.'; cx.hidden=false; return; }
+    if(!M.telefoneValido(v.telefone)) { cx.textContent='Confira o WhatsApp: inclua o DDD.'; cx.hidden=false; return; }
+    if(!v.nivel_decisao)              { cx.textContent='Escolha seu nível de decisão — é o que define quem conduz a conversa do nosso lado.'; cx.hidden=false; return; }
+
+    var token = M.tokenTurnstile(f);
+    if(window.turnstile && !token)    { cx.textContent='Confirme que você não é um robô para concluir.'; cx.hidden=false; return; }
+
+    /* atualiza o contato caso tenha corrigido algo na tela final */
+    S.leadNome=v.nome; S.leadEmail=v.email; S.leadTelefone=v.telefone; S.leadEmpresa=v.empresa;
+
+    var dados = Object.assign({}, retrato(), {
+      nivel_decisao: v.nivel_decisao,
+      prazo: v.prazo || ''
+    });
+    var p = M.pontuar(dados);
+
+    var btn = document.getElementById('btnDiag');
+    btn.disabled = true; btn.textContent = 'Enviando…';
+
+    var ctx = M.contexto();
+    M.enviar(Object.assign({}, dados, ctx, {
+      origem_form: 'calculadora',
+      etapa: 'pediu_diagnostico',
+      lead_score: p.score, lead_tier: p.tier, lead_sinais: p.sinais.join(','),
+      turnstile_token: token,
+      identificador: 'calculadora-diagnostico-mkteudo'
+    })).then(function(){
+      M.eventosDeLead('calculadora', dados, p);
+      M.push('diagnostico_solicitado', {
+        form_origem:'calculadora', lead_tier:p.tier, lead_score:p.score
+      });
+      mostrarSucessoLead();
+    });
+  });
+
+  /* ── 6. Máscara de telefone no portão, quando ele renderizar ── */
+  (function observaGate(){
+    var alvo = document.getElementById('g-tel');
+    if(alvo && !alvo.__mascarado){ alvo.__mascarado = true; M.mascaraTelefone(alvo); }
+    setTimeout(observaGate, 700);
+  })();
+
+})();
+
+
 render();
 
 </script>
@@ -1433,8 +1717,8 @@ render();
      aria-label="Aviso de cookies" hidden>
   <div class="mkt-cookie__text">
     <strong>A gente usa cookies.</strong>
-    Usamos cookies para entender como o site é usado e melhorar sua experiência.
-    Você escolhe. <a href="/politica-de-privacidade/">Política de Privacidade</a>
+    Para entender como o site é usado e melhorar sua experiência.
+    <a href="/politica-de-privacidade/">Política de Privacidade</a>
   </div>
   <div class="mkt-cookie__actions">
     <button type="button" class="mkt-cookie__btn mkt-cookie__btn--ghost"
@@ -1470,11 +1754,100 @@ render();
   .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
   .mkt-cookie__btn--solid:hover{background:#a53ff0}
   @media(max-width:560px){
-    .mkt-cookie{flex-direction:column; align-items:stretch; text-align:left}
-    .mkt-cookie__actions{justify-content:stretch}
-    .mkt-cookie__btn{flex:1}
+    /* Vira uma faixa rente ao rodapé: ocupa o mínimo de tela possível
+       e deixa os dois botões lado a lado, não empilhados. */
+    .mkt-cookie{
+      left:0; right:0; bottom:0; transform:none; width:100%;
+      border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
+      padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom, 0px));
+      gap:.7rem; align-items:center;
+    }
+    .mkt-cookie__text{flex:1 1 100%; font-size:.78rem; line-height:1.45}
+    .mkt-cookie__text strong{display:inline; margin:0}
+    .mkt-cookie__actions{flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+    .mkt-cookie__btn{width:100%; padding:.62rem .5rem; font-size:.8rem}
   }
-</style>
+/* ── convite ao diagnóstico aprofundado (fim da calculadora) ── */
+.diag-box{background:var(--clr-dark);color:#fff;border-radius:18px;padding:2.4rem;margin-top:1.5rem;position:relative;overflow:hidden}
+.diag-box::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.22),transparent 70%);pointer-events:none}
+.diag-tag{display:inline-block;background:var(--grad-main);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .85rem;border-radius:100px;margin-bottom:1rem}
+.diag-h{font-family:var(--font-display);font-size:clamp(1.15rem,3.2vw,1.55rem);font-weight:800;line-height:1.25;color:#fff;margin-bottom:.8rem;position:relative}
+.diag-p{color:rgba(255,255,255,.66);font-size:.92rem;line-height:1.7;margin-bottom:1.2rem;position:relative}
+.diag-p strong{color:#fff}
+.diag-ul{list-style:none;padding:0;margin:0 0 1.8rem;position:relative}
+.diag-ul li{color:rgba(255,255,255,.78);font-size:.88rem;line-height:1.55;padding-left:1.6rem;margin-bottom:.6rem;position:relative}
+.diag-ul li::before{content:'';position:absolute;left:0;top:.52em;width:7px;height:7px;border-radius:50%;background:var(--clr-neon)}
+.diag-form{position:relative}
+.diag-form .calc-field label{color:rgba(255,255,255,.72)!important}
+.diag-form input,.diag-form select{background:rgba(255,255,255,.07)!important;border-color:rgba(255,255,255,.16)!important;color:#fff!important}
+.diag-form input:focus{border-color:var(--clr-neon)!important;outline:none}
+.diag-form input::placeholder{color:rgba(255,255,255,.35)}
+.diag-radios{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.3rem}
+.diag-radio{display:inline-flex;align-items:center;padding:.44rem .9rem;border:1.5px solid rgba(255,255,255,.18);border-radius:8px;cursor:pointer;font-size:.82rem;color:rgba(255,255,255,.72);transition:all .2s;white-space:nowrap}
+.diag-radio:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.diag-radio:has(input:checked){border-color:var(--clr-neon);background:rgba(255,0,255,.12);color:#fff;font-weight:600}
+.diag-radio input{position:absolute;opacity:0;width:0;height:0}
+.diag-erro{background:rgba(255,80,80,.12);border:1.5px solid rgba(255,90,90,.42);color:#ffb3b3;font-size:.84rem;line-height:1.5;padding:.75rem 1rem;border-radius:10px}
+.diag-fine{font-size:.74rem;color:rgba(255,255,255,.42);text-align:center;margin-top:1rem;line-height:1.5;position:relative}
+#btnDiag:disabled{opacity:.6;cursor:wait}
+@media(max-width:680px){.diag-box{padding:1.5rem}.diag-radios{gap:.35rem}.diag-radio{font-size:.78rem;padding:.4rem .7rem}}
+
+
+  /* ═══════════════════════════════════════════════════════════════
+     AJUSTES DE MOBILE  ·  mkt-mobile-v1
+     ───────────────────────────────────────────────────────────────
+     Os títulos usam clamp() com piso alto (ex.: clamp(2.8rem,6vw,4.8rem)).
+     O piso trava em 44.8px e PARA de encolher abaixo de ~746px — por
+     isso num celular de 360px a fonte é a mesma de um tablet, e
+     palavras longas como "crescimento" e "transformamos" estouram.
+     Aqui o tamanho é redefinido só no celular; desktop e tablet
+     continuam exatamente como estão.
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 640px){
+    .hero__title        {font-size:1.95rem !important;letter-spacing:-.02em;line-height:1.12}
+    .hero__subtitle     {font-size:1rem !important}
+    .section__title     {font-size:1.55rem !important;letter-spacing:-.02em}
+    .section__desc      {font-size:.95rem !important}
+    .picc__word         {font-size:1.8rem !important}
+    .picc-hero__title   {font-size:1.72rem !important;letter-spacing:-.02em;line-height:1.1}
+    .picc-hero__sub     {font-size:.95rem !important;line-height:1.6}
+    .picc-proof__mv     {font-size:1.4rem !important}
+    .picc-cta__title    {font-size:1.45rem !important}
+    .rd-hero__title     {font-size:1.78rem !important;letter-spacing:-.02em;line-height:1.12}
+    .calc-hero__title   {font-size:1.8rem !important}
+    .res-headline__big  {font-size:1.9rem !important}
+    .case-highlight__title{font-size:1.35rem !important}
+
+    /* caixas com muito respiro interno sobram pouco espaço ao texto */
+    .picc-cta__box      {padding:2rem 1.25rem !important}
+    .case-highlight     {padding:2rem 1.25rem !important}
+    .container          {padding:0 1.25rem}
+
+    /* rede de segurança: nenhuma palavra longa rompe a caixa */
+    h1,h2,h3,h4,.hero__title,.section__title,.picc-hero__title,
+    .picc-cta__title,.rd-hero__title,.calc-hero__title{
+      overflow-wrap:break-word; word-break:normal;
+    }
+
+    /* A linha de números do hero era um flex de 3 colunas com gap de
+       3rem que não quebrava: era ela que empurrava a home 21px para
+       fora da tela e causava o arrasto lateral. */
+    .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
+    .hero__stat-number{font-size:1.9rem}
+    .hero__actions .btn{width:100%; justify-content:center}
+  }
+
+  
+  /* ═══ CONTRASTE DE BOTÕES · mkt-contraste-v1 ═══
+     .btn--outline passou a herdar a cor do contexto (color:inherit),
+     então em seção clara fica escuro e em seção escura fica claro,
+     sozinho. Abaixo, só o estado :hover dentro dos heróis escuros,
+     onde o roxo da marca teria contraste baixo demais. */
+  .rd-hero__cta .btn--outline:hover,
+  .picc-hero .btn--outline:hover{
+    border-color:var(--clr-neon); color:var(--clr-neon);
+  }
+  </style>
 
 <script>
 (function(){
