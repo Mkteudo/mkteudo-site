@@ -2,16 +2,69 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- mkt-base-v1 -->
+<!-- ---------- 1. FONTES AUTO-HOSPEDADAS ---------- -->
+<link rel="preload" href="/fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<!-- 2. FAVICONS -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#4c0059">
+
+<!-- ---------- 3. CONSENT MODE v2 + GTM ----------
+     IMPORTANTE: este bloco precisa vir ANTES do script do GTM.
+     Tudo negado por padrão — nada dispara até o visitante aceitar.
+-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Estado inicial: TUDO negado (exigência da LGPD/GDPR)
+  gtag('consent', 'default', {
+    'ad_storage':             'denied',
+    'ad_user_data':           'denied',
+    'ad_personalization':     'denied',
+    'analytics_storage':      'denied',
+    'functionality_storage':  'granted',
+    'personalization_storage':'denied',
+    'security_storage':       'granted',
+    'wait_for_update':        500
+  });
+
+  // Se o visitante já decidiu em visita anterior, restaura a escolha
+  (function(){
+    try {
+      var c = localStorage.getItem('mkt_consent');
+      if (c === 'aceito') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    } catch(e) {}
+  })();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQTG79G');</script>
+<!-- End Google Tag Manager -->
+
   <title>Gestão de Redes Sociais em Ribeirão Preto: do post bonito ao resultado real | Mkteúdo</title>
   <meta name="description" content="Como a gestão profissional de redes sociais em Ribeirão Preto transforma curtidas em leads e posts bonitos em vendas reais — com estratégia, métricas e rastreamento.">
   <meta name="keywords" content="gestão de redes sociais ribeirão preto agência, social media ribeirão preto, instagram para empresas interior paulista, agência redes sociais ribeirão preto, conteúdo para empresas local">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Felipe Piccoli">
-  <link rel="canonical" href="https://mkteudocomunicacao.com.br/post/gestao-redes-sociais-ribeirao-preto.html">
+  <link rel="canonical" href="https://www.mkteudo.com.br/post/gestao-redes-sociais-ribeirao-preto.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Gestão de Redes Sociais em Ribeirão Preto: do post bonito ao resultado real | Mkteúdo">
   <meta property="og:description" content="Como a gestão profissional de redes sociais em Ribeirão Preto transforma curtidas em leads e posts bonitos em vendas reais — com estratégia, métricas e rastreamento.">
-  <meta property="og:url" content="https://mkteudocomunicacao.com.br/post/gestao-redes-sociais-ribeirao-preto.html">
+  <meta property="og:url" content="https://www.mkteudo.com.br/post/gestao-redes-sociais-ribeirao-preto.html">
   <meta property="og:image" content="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80&fit=crop">
   <meta property="og:site_name" content="Mkteúdo Comunicação">
   <meta property="og:locale" content="pt_BR">
@@ -22,11 +75,8 @@
   <meta property="article:author" content="Felipe Piccoli">
   <meta property="article:section" content="Redes Sociais">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Gestão de Redes Sociais em Ribeirão Preto: do post bonito ao resultado real","description":"Como a gestão profissional de redes sociais em Ribeirão Preto transforma curtidas em leads e posts bonitos em vendas reais — com estratégia, métricas e rastreamento.","image":"https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80&fit=crop","datePublished":"2023-09-18","dateModified":"2023-09-18","author":{"@type":"Person","name":"Felipe Piccoli","jobTitle":"Fundador e Estrategista","url":"https://mkteudocomunicacao.com.br/post/felipe-piccoli-profissional-multidisciplinar-comunicacao-marketing.html","worksFor":{"@type":"Organization","name":"Mkteúdo Comunicação"}},"publisher":{"@type":"Organization","name":"Mkteúdo Comunicação","logo":{"@type":"ImageObject","url":"https://mkteudocomunicacao.com.br/imagens/logo-mkteudo.png"}},"url":"https://mkteudocomunicacao.com.br/post/gestao-redes-sociais-ribeirao-preto.html","mainEntityOfPage":"https://mkteudocomunicacao.com.br/post/gestao-redes-sociais-ribeirao-preto.html","articleSection":"Redes Sociais","keywords":"gestão de redes sociais ribeirão preto agência, social media ribeirão preto, instagram para empresas interior paulista, agência redes sociais ribeirão preto, conteúdo para empresas local"}
+  {"@context":"https://schema.org","@type":"Article","headline":"Gestão de Redes Sociais em Ribeirão Preto: do post bonito ao resultado real","description":"Como a gestão profissional de redes sociais em Ribeirão Preto transforma curtidas em leads e posts bonitos em vendas reais — com estratégia, métricas e rastreamento.","image":"https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80&fit=crop","datePublished":"2023-09-18","dateModified":"2023-09-18","author":{"@type":"Person","name":"Felipe Piccoli","jobTitle":"Fundador e Estrategista","url":"https://www.mkteudo.com.br/post/felipe-piccoli-profissional-multidisciplinar-comunicacao-marketing.html","worksFor":{"@type":"Organization","name":"Mkteúdo Comunicação"}},"publisher":{"@type":"Organization","name":"Mkteúdo Comunicação","logo":{"@type":"ImageObject","url":"https://www.mkteudo.com.br/imagens/logo-mkteudo.png"}},"url":"https://www.mkteudo.com.br/post/gestao-redes-sociais-ribeirao-preto.html","mainEntityOfPage":"https://www.mkteudo.com.br/post/gestao-redes-sociais-ribeirao-preto.html","articleSection":"Redes Sociais","keywords":"gestão de redes sociais ribeirão preto agência, social media ribeirão preto, instagram para empresas interior paulista, agência redes sociais ribeirão preto, conteúdo para empresas local"}
   </script>
-  <link rel="icon" href="../imagens/logo-mkteudo.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#FAFAF8;--sur:#FFF;--txt:#1A1A1A;--mut:#6B6B6B;--acc:#9428e4;--acl:#f0e6fd;--bor:#E8E8E4;--drk:#111;--fnd:'Syne',sans-serif;--fbd:'DM Sans',-apple-system,sans-serif}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -123,6 +173,9 @@
   </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 <nav class="nav"><div class="nav__i">
   <a href="../index.html"><img src="../imagens/logo-mkteudo.png" alt="Mkteúdo" class="nav__logo"></a>
   <div class="nav__links">
@@ -283,4 +336,105 @@
 </div>
 <footer><img src="../imagens/logo-mkteudo.png" alt="Mkteúdo"><p>© 2026 Mkteúdo Comunicação. Todos os direitos reservados.</p></footer>
 <script>document.querySelectorAll('.faq__q').forEach(function(b){b.addEventListener('click',function(){this.closest('.faq__item').classList.toggle('open')});});</script>
-</body></html>
+<!-- 1. GTM noscript — PRIMEIRA coisa depois de <body> -->
+
+<div class="mkt-cookie" id="mktCookie" role="dialog" aria-live="polite"
+     aria-label="Aviso de cookies" hidden>
+  <div class="mkt-cookie__text">
+    <strong>A gente usa cookies.</strong>
+    Usamos cookies para entender como o site é usado e melhorar sua experiência.
+    Você escolhe. <a href="/politica-de-privacidade/">Política de Privacidade</a>
+  </div>
+  <div class="mkt-cookie__actions">
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--ghost"
+            id="mktCookieDeny">Recusar</button>
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--solid"
+            id="mktCookieAccept">Aceitar</button>
+  </div>
+</div>
+
+<style>
+  .mkt-cookie{
+    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%);
+    z-index:9999; width:min(680px, calc(100vw - 2rem));
+    background:#0d0010; color:#fff;
+    border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:1.1rem 1.3rem; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+    font-family:'DM Sans',-apple-system,sans-serif;
+  }
+  .mkt-cookie[hidden]{display:none}
+  .mkt-cookie__text{flex:1 1 300px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72)}
+  .mkt-cookie__text strong{color:#fff; display:block; margin-bottom:.15rem; font-weight:600}
+  .mkt-cookie__text a{color:#ff00ff; text-decoration:underline}
+  .mkt-cookie__actions{display:flex; gap:.5rem; flex:0 0 auto}
+  .mkt-cookie__btn{
+    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+    padding:.6rem 1.3rem; border-radius:100px; border:1.5px solid transparent;
+    transition:transform .2s, background .2s;
+  }
+  .mkt-cookie__btn:hover{transform:translateY(-1px)}
+  .mkt-cookie__btn--ghost{background:transparent; color:rgba(255,255,255,.65); border-color:rgba(255,255,255,.22)}
+  .mkt-cookie__btn--ghost:hover{color:#fff; border-color:rgba(255,255,255,.45)}
+  .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
+  .mkt-cookie__btn--solid:hover{background:#a53ff0}
+  @media(max-width:560px){
+    .mkt-cookie{flex-direction:column; align-items:stretch; text-align:left}
+    .mkt-cookie__actions{justify-content:stretch}
+    .mkt-cookie__btn{flex:1}
+  }
+</style>
+
+<script>
+(function(){
+  var KEY = 'mkt_consent';
+  var el = document.getElementById('mktCookie');
+  if (!el) return;
+
+  function saved(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function store(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+
+  function decide(value){
+    store(value);
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'analytics_storage': value === 'aceito' ? 'granted' : 'denied'
+      });
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cookie_consent_update',
+      cookie_consent: value
+    });
+    el.hidden = true;
+  }
+
+  // Só mostra se ainda não decidiu
+  if (!saved()) { el.hidden = false; }
+
+  document.getElementById('mktCookieAccept').addEventListener('click', function(){ decide('aceito'); });
+  document.getElementById('mktCookieDeny').addEventListener('click',   function(){ decide('recusado'); });
+})();
+</script>
+
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
+
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      link_location: a.dataset.linkLocation || 'conteudo',
+      link_text: a.dataset.linkText || (a.textContent || '').trim().slice(0,60) || 'WhatsApp'
+    });
+  }, true);
+})();
+</script>
+
+</body>
+</html>

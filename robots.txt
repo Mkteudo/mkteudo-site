@@ -1,0 +1,5 @@
+# www.mkteudo.com.br
+User-agent: *
+Allow: /
+
+Sitemap: https://www.mkteudo.com.br/sitemap.xml

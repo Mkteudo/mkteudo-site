@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- mkt-base-v1 -->
+<!-- ---------- 1. FONTES AUTO-HOSPEDADAS ---------- -->
+<link rel="preload" href="/fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<!-- 2. FAVICONS -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#4c0059">
+
+<!-- ---------- 3. CONSENT MODE v2 + GTM ----------
+     IMPORTANTE: este bloco precisa vir ANTES do script do GTM.
+     Tudo negado por padrão — nada dispara até o visitante aceitar.
+-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Estado inicial: TUDO negado (exigência da LGPD/GDPR)
+  gtag('consent', 'default', {
+    'ad_storage':             'denied',
+    'ad_user_data':           'denied',
+    'ad_personalization':     'denied',
+    'analytics_storage':      'denied',
+    'functionality_storage':  'granted',
+    'personalization_storage':'denied',
+    'security_storage':       'granted',
+    'wait_for_update':        500
+  });
+
+  // Se o visitante já decidiu em visita anterior, restaura a escolha
+  (function(){
+    try {
+      var c = localStorage.getItem('mkt_consent');
+      if (c === 'aceito') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    } catch(e) {}
+  })();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQTG79G');</script>
+<!-- End Google Tag Manager -->
+
+  <title>Política de Privacidade | Mkteúdo Comunicação</title>
+  <meta name="description" content="Como a Mkteúdo Comunicação coleta, usa e protege dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD).">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.mkteudo.com.br/politica-de-privacidade/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Política de Privacidade | Mkteúdo Comunicação">
+  <meta property="og:description" content="Como a Mkteúdo Comunicação coleta, usa e protege dados pessoais, em conformidade com a LGPD.">
+  <meta property="og:url" content="https://www.mkteudo.com.br/politica-de-privacidade/">
+  <meta property="og:site_name" content="Mkteúdo Comunicação">
+  <meta property="og:locale" content="pt_BR">
+  <style>
+    :root{--clr-bg:#FAFAF8;--clr-surface:#FFF;--clr-text:#1A1A1A;--clr-text-muted:#6B6B6B;--clr-accent:#9428e4;--clr-accent-light:#f0e6fd;--clr-border:#E8E8E4;--clr-dark:#111;--clr-neon:#ff00ff;--font-display:'Syne',sans-serif;--font-body:'DM Sans',-apple-system,sans-serif;--max-w:1200px}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font-body);background:var(--clr-bg);color:var(--clr-text);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--clr-accent);text-decoration:none}a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+    .navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--clr-border)}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+    .navbar__logo-img{height:42px;width:auto}
+    .navbar__back{font-size:.875rem;font-weight:500;color:var(--clr-text-muted)}
+    .doc{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem}
+    .doc__eyebrow{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:1rem}
+    .doc h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:.75rem}
+    .doc__meta{font-size:.85rem;color:var(--clr-text-muted);padding-bottom:2rem;margin-bottom:2.5rem;border-bottom:1px solid var(--clr-border)}
+    .doc h2{font-family:var(--font-display);font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:2.75rem 0 .9rem}
+    .doc h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin:1.75rem 0 .6rem}
+    .doc p{margin-bottom:1.1rem;color:#333}
+    .doc ul{margin:0 0 1.2rem 1.25rem}
+    .doc li{margin-bottom:.5rem;color:#333}
+    .doc strong{color:var(--clr-text)}
+    .callout{background:var(--clr-accent-light);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0}
+    .callout p:last-child{margin-bottom:0}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem}
+    th,td{text-align:left;padding:.8rem 1rem;border-bottom:1px solid var(--clr-border);vertical-align:top}
+    th{font-family:var(--font-display);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-text-muted)}
+    .footer{background:var(--clr-dark);color:rgba(255,255,255,.5);padding:3rem 0 2rem;font-size:.85rem}
+    .footer a{color:rgba(255,255,255,.6)}
+    .footer__bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    @media(max-width:640px){.doc{padding:2.5rem 1.5rem 4rem}.container,.navbar__inner{padding:0 1.5rem}}
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="/"><img src="/imagens/logo-mkteudo.png" alt="Mkteúdo" class="navbar__logo-img"></a>
+      <a href="/" class="navbar__back">← Voltar ao site</a>
+    </div>
+  </nav>
+
+  <main class="doc">
+    <div class="doc__eyebrow">Documento legal</div>
+    <h1>Política de Privacidade</h1>
+    <p class="doc__meta">Última atualização: 29 de outubro de 2026 · Mkteúdo Comunicação · CNPJ 32.115.047/0001-97</p>
+
+    <p>Esta política explica quais dados pessoais a <strong>Mkteúdo Comunicação</strong> coleta quando você usa o site <strong>www.mkteudo.com.br</strong>, por que os coletamos e o que você pode fazer a respeito. Ela segue a <strong>Lei nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)</strong>.</p>
+
+    <div class="callout">
+      <p><strong>Em uma frase:</strong> coletamos o mínimo necessário para responder quem nos procura e para entender como o site é usado. Não vendemos dados. Você pode pedir acesso, correção ou exclusão a qualquer momento.</p>
+    </div>
+
+    <h2>1. Quem é o controlador dos dados</h2>
+    <p>Mkteúdo Comunicação, CNPJ 32.115.047/0001-97, com endereço na Av. Pres. Vargas, 2001 — Sala 106, Jardim América, Ribeirão Preto/SP, CEP 14020-260.</p>
+    <p>Para qualquer assunto relacionado a dados pessoais, o canal é <a href="mailto:comercial@mkteudo.com.br">comercial@mkteudo.com.br</a>.</p>
+
+    <h2>2. Que dados coletamos</h2>
+
+    <h3>2.1 Dados que você nos fornece</h3>
+    <p>Quando você preenche um formulário, pede um material ou entra em contato, podemos coletar nome, e-mail, telefone, empresa, cargo e o conteúdo da sua mensagem. Você escolhe o que informar — campos não obrigatórios podem ficar em branco.</p>
+
+    <h3>2.2 Dados coletados automaticamente</h3>
+    <p>Se você aceitar os cookies de análise, coletamos dados de navegação: páginas visitadas, tempo de permanência, origem do acesso, tipo de dispositivo e navegador, e endereço IP (anonimizado pelo Google Analytics). <strong>Enquanto você não aceitar, nenhuma dessas ferramentas é ativada.</strong></p>
+
+    <h2>3. Por que usamos esses dados</h2>
+    <table>
+      <thead><tr><th>Finalidade</th><th>Base legal (LGPD)</th></tr></thead>
+      <tbody>
+        <tr><td>Responder a contatos e propostas comerciais</td><td>Procedimentos preliminares de contrato (art. 7º, V)</td></tr>
+        <tr><td>Enviar conteúdos e comunicações de marketing</td><td>Consentimento (art. 7º, I)</td></tr>
+        <tr><td>Medir e melhorar o desempenho do site</td><td>Consentimento (art. 7º, I)</td></tr>
+        <tr><td>Cumprir obrigações legais e fiscais</td><td>Obrigação legal (art. 7º, II)</td></tr>
+        <tr><td>Prevenir fraudes e garantir a segurança</td><td>Legítimo interesse (art. 7º, IX)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Não usamos seus dados para decisões automatizadas</strong> que afetem seus interesses, nem os vendemos a terceiros.</p>
+
+    <h2>4. Cookies e tecnologias semelhantes</h2>
+    <p>Usamos duas categorias:</p>
+    <ul>
+      <li><strong>Essenciais</strong> — fazem o site funcionar e guardam a sua escolha sobre cookies. Não podem ser desativados.</li>
+      <li><strong>Analíticos</strong> — Google Analytics 4 e Google Tag Manager, usados para entender quais conteúdos são úteis. <strong>Só são ativados depois que você clica em "Aceitar".</strong></li>
+    </ul>
+    <p>Adotamos o <strong>Consent Mode v2</strong> do Google: até você decidir, todos os sinais de consentimento ficam negados por padrão. Se recusar, nenhuma tag de análise é disparada.</p>
+    <p>Para mudar sua escolha depois, limpe os dados do site no seu navegador — o aviso aparecerá novamente.</p>
+
+    <h2>5. Com quem compartilhamos</h2>
+    <p>Compartilhamos dados apenas com fornecedores que sustentam a nossa operação, e somente no necessário:</p>
+    <ul>
+      <li><strong>Google</strong> (Analytics, Tag Manager, Workspace) — análise de tráfego e e-mail corporativo</li>
+      <li><strong>RD Station</strong> — automação de marketing e gestão de relacionamento</li>
+      <li><strong>GitHub Pages</strong> — hospedagem do site</li>
+      <li><strong>SendGrid</strong> — envio de e-mails transacionais</li>
+    </ul>
+    <p>Alguns desses serviços processam dados fora do Brasil. Essa transferência internacional é feita com as garantias previstas no art. 33 da LGPD, por meio das cláusulas contratuais dos próprios fornecedores.</p>
+    <p>Também podemos compartilhar dados quando houver obrigação legal, ordem judicial ou requisição de autoridade competente.</p>
+
+    <h2>6. Por quanto tempo guardamos</h2>
+    <ul>
+      <li><strong>Contatos comerciais:</strong> enquanto durar a relação e por até 5 anos depois, prazo prescricional do Código Civil.</li>
+      <li><strong>Base de marketing:</strong> até você pedir a remoção ou cancelar a inscrição.</li>
+      <li><strong>Dados de navegação:</strong> até 14 meses, conforme a retenção padrão do Google Analytics.</li>
+      <li><strong>Documentos fiscais:</strong> pelos prazos exigidos pela legislação tributária.</li>
+    </ul>
+
+    <h2>7. Seus direitos</h2>
+    <p>O art. 18 da LGPD garante a você o direito de:</p>
+    <ul>
+      <li>confirmar se tratamos seus dados e acessá-los;</li>
+      <li>corrigir dados incompletos, inexatos ou desatualizados;</li>
+      <li>pedir anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade com a lei;</li>
+      <li>solicitar a portabilidade a outro fornecedor;</li>
+      <li>eliminar dados tratados com base no seu consentimento;</li>
+      <li>saber com quem compartilhamos seus dados;</li>
+      <li>revogar o consentimento a qualquer momento;</li>
+      <li>opor-se a um tratamento feito com base em legítimo interesse.</li>
+    </ul>
+    <p>Para exercer qualquer um deles, escreva para <a href="mailto:comercial@mkteudo.com.br">comercial@mkteudo.com.br</a>. Respondemos em até <strong>15 dias</strong>. Podemos pedir uma confirmação de identidade antes de atender — é uma proteção para você.</p>
+
+    <h2>8. Segurança</h2>
+    <p>Adotamos medidas técnicas e administrativas para proteger seus dados: conexão criptografada (HTTPS) em todo o site, acesso restrito a quem precisa trabalhar com a informação, autenticação em duas etapas nas ferramentas que tratam dados e revisão periódica de permissões.</p>
+    <p>Nenhum sistema é infalível. Se ocorrer um incidente de segurança com risco relevante a você, comunicaremos você e a <strong>ANPD</strong>, como manda o art. 48 da LGPD.</p>
+
+    <h2>9. Crianças e adolescentes</h2>
+    <p>Este site é dirigido a profissionais e empresas. Não coletamos intencionalmente dados de menores de 18 anos. Se identificarmos um cadastro nessas condições, ele será excluído.</p>
+
+    <h2>10. Mudanças nesta política</h2>
+    <p>Podemos atualizar este documento. Quando isso acontecer, a data no topo muda. Se a alteração for significativa, avisaremos pelos nossos canais.</p>
+
+    <h2>11. Dúvidas e reclamações</h2>
+    <p>Fale com a gente primeiro: <a href="mailto:comercial@mkteudo.com.br">comercial@mkteudo.com.br</a>. Você também pode procurar a <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong> em <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">gov.br/anpd</a>.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mkteúdo Comunicação. Todos os direitos reservados.</span>
+        <span>CNPJ: 32.115.047/0001-97 · <a href="/">Início</a></span>
+      </div>
+    </div>
+  </footer>
+<!-- 1. GTM noscript — PRIMEIRA coisa depois de <body> -->
+
+<div class="mkt-cookie" id="mktCookie" role="dialog" aria-live="polite"
+     aria-label="Aviso de cookies" hidden>
+  <div class="mkt-cookie__text">
+    <strong>A gente usa cookies.</strong>
+    Usamos cookies para entender como o site é usado e melhorar sua experiência.
+    Você escolhe. <a href="/politica-de-privacidade/">Política de Privacidade</a>
+  </div>
+  <div class="mkt-cookie__actions">
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--ghost"
+            id="mktCookieDeny">Recusar</button>
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--solid"
+            id="mktCookieAccept">Aceitar</button>
+  </div>
+</div>
+
+<style>
+  .mkt-cookie{
+    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%);
+    z-index:9999; width:min(680px, calc(100vw - 2rem));
+    background:#0d0010; color:#fff;
+    border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:1.1rem 1.3rem; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+    font-family:'DM Sans',-apple-system,sans-serif;
+  }
+  .mkt-cookie[hidden]{display:none}
+  .mkt-cookie__text{flex:1 1 300px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72)}
+  .mkt-cookie__text strong{color:#fff; display:block; margin-bottom:.15rem; font-weight:600}
+  .mkt-cookie__text a{color:#ff00ff; text-decoration:underline}
+  .mkt-cookie__actions{display:flex; gap:.5rem; flex:0 0 auto}
+  .mkt-cookie__btn{
+    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+    padding:.6rem 1.3rem; border-radius:100px; border:1.5px solid transparent;
+    transition:transform .2s, background .2s;
+  }
+  .mkt-cookie__btn:hover{transform:translateY(-1px)}
+  .mkt-cookie__btn--ghost{background:transparent; color:rgba(255,255,255,.65); border-color:rgba(255,255,255,.22)}
+  .mkt-cookie__btn--ghost:hover{color:#fff; border-color:rgba(255,255,255,.45)}
+  .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
+  .mkt-cookie__btn--solid:hover{background:#a53ff0}
+  @media(max-width:560px){
+    .mkt-cookie{flex-direction:column; align-items:stretch; text-align:left}
+    .mkt-cookie__actions{justify-content:stretch}
+    .mkt-cookie__btn{flex:1}
+  }
+</style>
+
+<script>
+(function(){
+  var KEY = 'mkt_consent';
+  var el = document.getElementById('mktCookie');
+  if (!el) return;
+
+  function saved(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function store(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+
+  function decide(value){
+    store(value);
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'analytics_storage': value === 'aceito' ? 'granted' : 'denied'
+      });
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cookie_consent_update',
+      cookie_consent: value
+    });
+    el.hidden = true;
+  }
+
+  // Só mostra se ainda não decidiu
+  if (!saved()) { el.hidden = false; }
+
+  document.getElementById('mktCookieAccept').addEventListener('click', function(){ decide('aceito'); });
+  document.getElementById('mktCookieDeny').addEventListener('click',   function(){ decide('recusado'); });
+})();
+</script>
+
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
+
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      link_location: a.dataset.linkLocation || 'conteudo',
+      link_text: a.dataset.linkText || (a.textContent || '').trim().slice(0,60) || 'WhatsApp'
+    });
+  }, true);
+})();
+</script>
+
+</body>
+</html>
