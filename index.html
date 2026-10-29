@@ -146,7 +146,18 @@ else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
     .contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}.contact__form{display:flex;flex-direction:column;gap:1.2rem}.contact__input,.contact__textarea{width:100%;padding:1rem 1.2rem;border:1.5px solid var(--clr-border);border-radius:12px;font-family:var(--font-body);font-size:.95rem;background:var(--clr-bg);transition:border-color .3s;outline:none}.contact__input:focus,.contact__textarea:focus{border-color:var(--clr-accent)}.contact__textarea{resize:vertical;min-height:140px}.contact__info h3{font-family:var(--font-display);font-size:1.6rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em}.contact__info p{font-size:.95rem;color:var(--clr-text-muted);line-height:1.75;margin-bottom:1.5rem}.contact__detail{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem}.contact__detail-icon{width:40px;height:40px;border-radius:10px;background:var(--clr-accent-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}.contact__detail-text{font-size:.9rem}.contact__detail-text strong{display:block;color:var(--clr-text);margin-bottom:.15rem}
     .footer{background:var(--clr-dark);color:rgba(255,255,255,.5);padding:4rem 0 2rem;border-top:1px solid rgba(255,255,255,.06)}.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}.footer__logo-img{height:36px;width:auto;margin-bottom:1rem;filter:brightness(10)}.footer__tagline{font-size:.88rem;line-height:1.6;margin-bottom:1.2rem}.footer__social{display:flex;gap:.8rem}.footer__social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;color:rgba(255,255,255,.5)}.footer__social a:hover{background:var(--clr-accent);border-color:var(--clr-accent);color:#fff}.footer__col .footer__col-t{color:#fff;font-size:.75rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.2rem}.footer__col a{display:block;font-size:.88rem;margin-bottom:.7rem;transition:color .3s;color:rgba(255,255,255,.5)}.footer__col a:hover{color:#fff}.footer__bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;font-size:.8rem}.footer__award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,0,255,.1);border:1px solid rgba(255,0,255,.2);border-radius:20px;padding:.3rem .8rem;font-size:.7rem;font-weight:600;color:var(--clr-neon);margin-top:.8rem}
 
-    .reveal{opacity:1;transform:none}.js-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease-out),transform .65s var(--ease-out)}.js-ready .reveal.visible{opacity:1;transform:none}
+    .case2{margin-top:1.5rem;background:var(--clr-surface);color:var(--clr-text);border:1px solid var(--clr-border);border-radius:20px;padding:2.2rem 2.4rem;display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:center}
+.case2__eyebrow{flex-wrap:wrap;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:.7rem;display:flex;align-items:center;gap:8px}
+.case2__eyebrow::before{content:"";width:16px;height:2px;background:var(--clr-neon);display:block}
+.case2__t{color:var(--clr-text);font-family:var(--font-display);font-size:clamp(1.15rem,3vw,1.5rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:.6rem}
+.case2__p{font-size:.9rem;color:var(--clr-text-muted);line-height:1.7;margin-bottom:1rem}
+.case2__l{font-size:.88rem;font-weight:600;color:var(--clr-accent);text-decoration:none}
+.case2__l:hover{text-decoration:underline}
+.case2__m{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.case2__v{font-family:var(--font-display);font-size:clamp(1.5rem,4vw,2rem);font-weight:800;color:var(--clr-accent);line-height:1}
+.case2__k{font-size:.68rem;color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
+@media(max-width:860px){.case2{grid-template-columns:1fr;padding:1.8rem}}
+.reveal{opacity:1;transform:none}.js-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease-out),transform .65s var(--ease-out)}.js-ready .reveal.visible{opacity:1;transform:none}
     /* ── MÉTODO PICC (home) ── */
     .picc{background:var(--clr-dark);color:#fff;position:relative;overflow:hidden}
     .picc::before{content:'';position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.12),transparent 70%);pointer-events:none}
@@ -429,6 +440,7 @@ section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
   }
   </style>
 <style id="mkt-dirm-v1">
+.dirm__sub--nota{margin-top:1rem;font-size:.96rem;border-left:3px solid var(--clr-neon,#ff00ff);padding-left:1rem}
 .dirm{background:#0d0010;color:#f4f3ee;padding:7rem 0;position:relative;overflow:hidden}
 .dirm::before{content:'';position:absolute;top:-240px;right:-180px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.22) 0%,transparent 68%);pointer-events:none}
 .dirm::after{content:'';position:absolute;bottom:-280px;left:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.10) 0%,transparent 70%);pointer-events:none}
@@ -557,8 +569,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="dirm__in">
       <div class="reveal">
         <div class="dirm__over">Diretoria de Marketing</div>
-        <h2>Nós assumimos a cadeira de Diretor de Marketing da sua empresa.</h2>
-        <p class="dirm__sub">E conduzimos o seu marketing pelo Método PICC, o ciclo que a Mkteúdo aplica desde 2018 para transformar investimento em vendas. É consultoria de marketing com mão na operação, pensada para empresas B2B.</p>
+        <h2>Assumimos a direção de marketing da sua empresa — ao lado do seu time, não no lugar dele.</h2>
+        <p class="dirm__sub">Conduzimos o seu marketing pelo Método PICC, o ciclo que a Mkteúdo aplica desde 2018 para transformar investimento em vendas. É consultoria de marketing com mão na operação, pensada para empresas B2B.</p>
+        <p class="dirm__sub dirm__sub--nota"><strong>Se você já tem gestor, analista ou agência</strong>, eles ganham prioridade definida, processo e números para defender o trabalho — ninguém é substituído. <strong>Se não tem ninguém na cadeira</strong>, a cadeira de Diretor de Marketing passa a ser nossa.</p>
       </div>
       <div class="dirm__ciclo">
         <div>
@@ -584,7 +597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="dirm-quem__in">
       <div class="reveal">
         <h2>Para quem é</h2>
-        <p>Empresas que já investem em marketing e têm agência ou time executando, mas não têm quem conecte tudo isso às metas de vendas.</p>
+        <p>Empresas que já investem em marketing e têm agência ou time executando, mas não têm quem conecte tudo isso às metas de vendas. Trabalhamos com o time que existe: a direção entra por cima da execução, não no lugar dela.</p>
         <div class="dirm-cta">
           <a href="#contato" class="dirm-cta__a">Agendar uma conversa <span aria-hidden="true">→</span></a>
           <a href="/metodo-picc" class="dirm-cta__b">Conhecer o Método PICC <span aria-hidden="true">→</span></a>
@@ -594,6 +607,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>Investe em marketing, mas não vê o retorno</li>
         <li>As decisões de marketing ainda dependem do dono</li>
         <li>Tem agência ou equipe, mas falta direção</li>
+        <li>O gestor de marketing é cobrado por um número que não controla</li>
       </ul>
     </div>
   </section>
@@ -602,7 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="dirm-frentes__in">
       <p class="dirm-frentes__t">Frentes que conduzimos</p>
       <div class="dirm-frentes__g">
-        <a class="dirm-frente" href="/consultoria-de-marketing"><b>Consultoria de Marketing</b><span>Diagnóstico dos seus números e o plano em ordem de impacto</span></a>
+        <a class="dirm-frente" href="/consultoria-de-marketing"><b>Consultoria de Marketing</b><span>Diagnóstico dos seus números e o plano em ordem de impacto</span></a><a class="dirm-frente" href="/assessoria-de-marketing"><b>Assessoria de Marketing</b><span>Direção contínua para o time e a agência que você já tem</span></a><a class="dirm-frente" href="/agencia-de-marketing-b2b"><b>Marketing B2B</b><span>Ciclo longo, ticket alto e mais de uma pessoa decidindo</span></a>
         <a class="dirm-frente" href="/terceirizacao-de-marketing"><b>Terceirização de Marketing</b><span>Um time inteiro no lugar de cinco contratações</span></a>
         <a class="dirm-frente" href="/implantacao-de-crm"><b>Implantação de CRM</b><span>Funil, configuração e time treinado até virar rotina</span></a>
         <a class="dirm-frente" href="/marketing-para-agronegocio"><b>Marketing para o Agro</b><span>No ritmo da safra e de quem decide na propriedade</span></a>
@@ -703,6 +717,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="case-highlight__visual">
           <img src="imagens/case-intelli.jpg" alt="Case Grupo Intelli" class="case-highlight__image" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy" decoding="async">
           <div class="case-highlight__image-fallback" style="display:none;">Prêmio<br>Limitless<br>RD Station</div>
+        </div>
+      </div>
+      <div class="case2 reveal">
+        <div>
+          <div class="case2__eyebrow">Caso premiado · RD Station</div>
+          <h3 class="case2__t">Barenbrug do Brasil — Transformação Digital no agronegócio</h3>
+          <p class="case2__p">Estratégia de inbound marketing e inside sales idealizada e conduzida por Felipe Piccoli à frente do marketing da companhia, em um setor que não acreditava em digital. Premiada pela RD Station na categoria Transformação Digital.</p>
+          <a class="case2__l" href="/post/barenbrug-premio-rd-station-transformacao-digital">Ver os números do case →</a>
+        </div>
+        <div class="case2__m">
+          <div><div class="case2__v">587%</div><div class="case2__k">ROI no ano agrícola</div></div>
+          <div><div class="case2__v">5.920</div><div class="case2__k">Leads gerados</div></div>
+          <div><div class="case2__v">1.049</div><div class="case2__k">Oportunidades</div></div>
+          <div><div class="case2__v">154</div><div class="case2__k">Vendas originadas</div></div>
         </div>
       </div>
     </div>
@@ -1039,7 +1067,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="footer__award">2× Premiada RD Limitless</div>
         </div>
-        <div class="footer__col"><p class="footer__col-t">Serviços</p><a href="/consultoria-de-marketing">Consultoria de Marketing</a><a href="/terceirizacao-de-marketing">Terceirização de Marketing</a><a href="/implantacao-de-crm">Implantação de CRM</a><a href="/marketing-para-agronegocio">Marketing para o Agro</a><a href="/marketing-para-industria">Marketing para Indústria</a><a href="/servicos">Todos os serviços</a></div>
+        <div class="footer__col"><p class="footer__col-t">Serviços</p><a href="/consultoria-de-marketing">Consultoria de Marketing</a><a href="/assessoria-de-marketing">Assessoria de Marketing</a><a href="/agencia-de-marketing-b2b">Marketing B2B</a><a href="/terceirizacao-de-marketing">Terceirização de Marketing</a><a href="/implantacao-de-crm">Implantação de CRM</a><a href="/marketing-para-agronegocio">Marketing para o Agro</a><a href="/marketing-para-industria">Marketing para Indústria</a><a href="/servicos">Todos os serviços</a></div>
         <div class="footer__col"><p class="footer__col-t">Conteúdo</p><a href="/blog">Blog</a><a href="/calculadora">Calculadora de Receita</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a></div>
         <div class="footer__col"><p class="footer__col-t">Contato</p><a href="/#contato">Fale conosco</a><a href="/#cases">Cases</a><a href="/politica-de-privacidade/">Política de Privacidade</a></div>
       </div>
