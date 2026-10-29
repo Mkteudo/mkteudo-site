@@ -296,3 +296,129 @@ subir.
 | `ferramentas/medicao-mkteudo.json` | Pacote para importar no GTM |
 
 Tudo publicado em `www.mkteudo.com.br` e versionado no repositório.
+
+---
+
+# Adendo — revisão de SEO e limpeza visual
+
+Mesmo dia, depois da reconstrução da captura.
+
+## Emojis: 511 ocorrências removidas
+
+Varri o site inteiro. Saíram troféu, gráfico, aperto de mão, estrelas
+de avaliação, prancheta, interrogação, relógio, calendário, chave,
+lápis, certo e errado.
+
+No lugar entraram **ícones SVG desenhados na identidade da marca** e
+marcadores de lista em CSS. As avaliações em estrela da tabela
+comparativa de CRM viraram nota numérica (`5/5`, `4/5`).
+
+**Mantidos de propósito:** a seta `→` dos links "Ler mais", a seta `←`
+de voltar e o `✕` de fechar o menu. São tipografia de interface, não
+emoticon — removê-los quebraria a navegação.
+
+## Faixa de prêmios
+
+Era um flex que quebrava mal: no celular empilhava com ícone grande e
+título em duas linhas; no desktop quebrava 2 em cima e 1 centralizado
+embaixo. Virou **grade de 3 colunas** no desktop e **lista alinhada à
+esquerda** no celular, com ícone menor.
+
+## SEO — o que estava errado
+
+### Títulos (37 de 42 acima do limite)
+
+O Google corta o título por volta de 60 caracteres. Havia títulos de
+**117 caracteres**. Na prática, metade do título nunca aparecia no
+resultado de busca.
+
+Reescrevi os 37 à mão, com a palavra-chave na frente. Exemplos:
+
+| Antes | Depois |
+|---|---|
+| IA não vai substituir humanos — mas quem não usar IA em todos os processos vai ser substituído por quem usa \| Mkteúdo (117) | IA não substitui humanos. Quem não usa, sim \| Mkteúdo (53) |
+| Dashboard de Marketing Digital: como a Mkteúdo monitora CPL, CAC, ROI e ROAS em tempo real com Lovable \| Mkteúdo (112) | Dashboard de Marketing: CPL, CAC, ROI e ROAS \| Mkteúdo (54) |
+| MQL e SQL: o que são, a diferença crucial e como qualificar leads para vender mais com menos esforço \| Mkteúdo (110) | MQL e SQL: a diferença e como qualificar \| Mkteúdo (50) |
+
+Não tentei truncar automaticamente: a regra cortava no meio de frases
+("Clube do", "otimizar e"). Título é a primeira coisa que a pessoa lê
+no Google — precisa ser escrito, não cortado.
+
+**O H1 de cada página continua completo**, então nenhum conteúdo se
+perdeu. `og:title` e `twitter:title` acompanharam.
+
+### Descrições (36 acima do limite)
+
+Havia descrições de 200 caracteres onde cabem 160. Encurtadas sempre
+na última frase completa.
+
+### Canonical — o problema mais sério
+
+O site misturava **três formatos de URL para a mesma página**:
+
+| Página | Canonical | Sitemap | Links internos |
+|---|---|---|---|
+| metodo-picc | `/metodo-picc` | `/metodo-picc.html` | `/metodo-picc` |
+| rd-station | `/rd-station` | `/rd-station.html` | `/rd-station` |
+| servicos | **nenhum** | `/servicos.html` | `/servicos` |
+
+Cada página era alcançável em dois endereços. Isso é conteúdo
+duplicado: o Google divide a autoridade entre as duas versões em vez
+de concentrar numa só.
+
+Padronizei no formato `.html`, que **37 das 42 páginas e o sitemap já
+usavam** — alinhei as 4 divergentes em vez de mexer em 37. Decisão de
+menor risco. A política de privacidade usa a forma de pasta
+(`/politica-de-privacidade/`), que é o correto para índice de
+diretório.
+
+### Schema FAQPage — a maior oportunidade
+
+**35 posts tinham bloco de Perguntas Frequentes e nenhum tinha a
+marcação que o Google lê.** São 175 perguntas e respostas que o
+buscador não conseguia interpretar.
+
+Adicionei `FAQPage` em todos. Isso habilita o **resultado rico** — o
+bloco expansível de perguntas que aparece direto na busca e ocupa
+muito mais espaço na tela que um resultado comum.
+
+Também ganharam schema próprio: `blog.html` (Blog), `servicos.html`
+(ItemList de serviços) e a política de privacidade (WebPage). E
+completei Open Graph e Twitter Card onde faltavam.
+
+## O que já estava certo
+
+Vale registrar, porque é mérito do trabalho anterior:
+
+- Nenhuma página sem título, descrição ou H1
+- Nenhuma página com H1 duplicado
+- **338 imagens, todas com texto alternativo**
+- Nenhum `noindex` acidental
+- `robots.txt` correto, apontando para o sitemap
+- Sitemap sem nenhuma URL quebrada
+- **1.141 links internos verificados, zero quebrados**
+- Nenhum título ou descrição duplicado entre páginas
+
+## Auditoria final
+
+| Item | Antes | Depois |
+|---|---|---|
+| Título acima de 60 car. | 37 | **0** |
+| Descrição acima de 160 car. | 36 | **0** |
+| Canonical ausente ou divergente | 4 | **0** |
+| Páginas sem dados estruturados | 3 | **0** |
+| FAQ sem marcação FAQPage | 35 | **0** |
+| Imagem sem texto alternativo | 0 | 0 |
+| Link interno quebrado | 0 | 0 |
+
+## O que ainda depende de você
+
+Reenviar o sitemap no Search Console. Os canonicais mudaram em 4
+páginas e 35 posts ganharam dados estruturados — vale pedir
+reindexação para o Google ver isso logo.
+
+> Search Console → Sitemaps → enviar `sitemap.xml` novamente
+
+Depois, em alguns dias, acompanhe em **Aprimoramentos → Perguntas
+frequentes**: é onde o Google mostra quantas das 175 perguntas ele
+validou.
