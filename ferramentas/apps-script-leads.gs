@@ -71,6 +71,11 @@ function configurar() {
       .whenFormulaSatisfied('=$' + letra + '2="ICP-B"')
       .setBackground('#f5ebff').build()
   ]);
+  /* Formata tudo como texto. Sem isso, um valor como "+R$10 mil" é
+     lido como fórmula pelo Planilhas e vira #ERROR! na célula. */
+  aba.getRange(2, 1, Math.max(1, aba.getMaxRows() - 1), COLS.length)
+     .setNumberFormat('@');
+
   aba.autoResizeColumns(1, 8);
   return 'Pronto: ' + COLS.length + ' colunas na aba "' + ABA + '".';
 }
@@ -119,7 +124,20 @@ function doPost(e) {
 
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const aba = ss.getSheetByName(ABA) || ss.insertSheet(ABA);
-    if (aba.getLastRow() === 0) configurar();
+
+    /* O cabeçalho precisa bater com COLS. Se o código ganhou colunas
+       novas e a planilha ficou com o cabeçalho antigo, os valores
+       passam a cair embaixo do rótulo errado — foi o que aconteceu
+       quando o mapeamento de terceirização acrescentou 11 campos.
+       Aqui a planilha se conserta sozinha antes de gravar. */
+    if (aba.getLastRow() === 0) {
+      configurar();
+    } else {
+      const cab = aba.getRange(1, 1, 1, Math.max(aba.getLastColumn(), COLS.length))
+                     .getValues()[0].slice(0, COLS.length);
+      const bate = COLS.every(function (c, i) { return cab[i] === c; });
+      if (!bate) configurar();
+    }
 
     const agora = new Date();
     const colSessao = COLS.indexOf('sessao_id') + 1;
@@ -141,7 +159,7 @@ function doPost(e) {
         if (c === 'Recebido em')   return atual[i];
         if (c === 'Atualizado em') return agora;
         const v = d[c];
-        return (v === undefined || v === null || v === '') ? atual[i] : v;
+        return (v === undefined || v === null || v === '') ? atual[i] : texto(v);
       });
       aba.getRange(linha, 1, 1, COLS.length).setValues([novo]);
       return resposta({ ok: true, acao: 'atualizada', linha: linha });
@@ -151,7 +169,7 @@ function doPost(e) {
     const nova = COLS.map(function (c) {
       if (c === 'Recebido em' || c === 'Atualizado em') return agora;
       const v = d[c];
-      return (v === undefined || v === null) ? '' : v;
+      return (v === undefined || v === null) ? '' : texto(v);
     });
     aba.appendRow(nova);
     return resposta({ ok: true, acao: 'criada', linha: aba.getLastRow() });
@@ -165,6 +183,15 @@ function doPost(e) {
 
 function doGet() {
   return resposta({ ok: true, servico: 'leads-mkteudo', colunas: COLS.length });
+}
+
+/* O Planilhas interpreta como fórmula qualquer texto começando por
+   = + - @. Valores legítimos do formulário caem nessa armadilha
+   ("+R$10 mil", "-"), então o prefixo vira apóstrofo, que o Planilhas
+   usa justamente para forçar texto. */
+function texto(v) {
+  if (typeof v !== 'string') return v;
+  return /^[=+\-@]/.test(v) ? "'" + v : v;
 }
 
 function resposta(obj) {
