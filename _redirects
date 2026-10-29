@@ -1,0 +1,14 @@
+# Netlify — mkteudocomunicacao.com.br redireciona para o domínio principal.
+#
+# Este arquivo é lido APENAS pelo Netlify, que serve o domínio antigo.
+# O GitHub Pages, que serve www.mkteudo.com.br, ignora este arquivo.
+#
+# O "!" no fim força o redirecionamento mesmo quando existe um arquivo
+# estático com aquele caminho — sem ele o Netlify entregaria a cópia
+# do site em vez de redirecionar, que é exatamente o problema de
+# conteúdo duplicado que queremos matar.
+
+https://mkteudocomunicacao.com.br/*      https://www.mkteudo.com.br/:splat   301!
+http://mkteudocomunicacao.com.br/*       https://www.mkteudo.com.br/:splat   301!
+https://www.mkteudocomunicacao.com.br/*  https://www.mkteudo.com.br/:splat   301!
+http://www.mkteudocomunicacao.com.br/*   https://www.mkteudo.com.br/:splat   301!
