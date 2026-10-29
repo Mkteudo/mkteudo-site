@@ -103,6 +103,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer__bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     @media(max-width:640px){.doc{padding:2.5rem 1.5rem 4rem}.container,.navbar__inner{padding:0 1.5rem}}
   </style>
+<style id="mkt-overflow-v1">
+/* Trava de rolagem lateral: overflow-x:clip nao cria "scrollport" no iOS,
+   entao o dedo nao arrasta a pagina para o lado como se fosse imagem. */
+html{overflow-x:clip;max-width:100%}
+body{overflow-x:clip;max-width:100%;position:relative}
+img,video,iframe,svg,canvas{max-width:100%;height:auto}
+.content table,table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:640px){
+  .content,.content p,.content li,.content h1,.content h2,.content h3,.content h4,
+  .sumbox,.sumbox *,.card__title,.card__excerpt,.hero__title,.svc-hero__title,
+  .section__title,.cm-card h3,.svc-step h3,.svc-cta h2,.faq__q,.cm-faq__q{overflow-wrap:anywhere}
+  .sumbox{padding:1.2rem 1.1rem}
+  .content ul,.content ol{margin-left:1.1rem;padding-left:0}
+  .content blockquote{padding:1rem 1.1rem}
+}
+</style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
@@ -110,7 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <nav class="navbar">
     <div class="navbar__inner">
-      <a href="/"><img src="/imagens/logo-mkteudo.png" alt="Mkteúdo" class="navbar__logo-img"></a>
+      <a href="/"><img src="/imagens/logo-mkteudo.png" alt="Mkteúdo" class="navbar__logo-img" width="352" height="300"></a>
       <a href="/" class="navbar__back">← Voltar ao site</a>
     </div>
   </nav>
