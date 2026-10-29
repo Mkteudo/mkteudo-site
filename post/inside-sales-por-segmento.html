@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- mkt-base-v1 -->
+<!-- ---------- 1. FONTES AUTO-HOSPEDADAS ---------- -->
+<link rel="preload" href="/fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<!-- 2. FAVICONS -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#4c0059">
+
+<!-- ---------- 3. CONSENT MODE v2 + GTM ----------
+     IMPORTANTE: este bloco precisa vir ANTES do script do GTM.
+     Tudo negado por padrão — nada dispara até o visitante aceitar.
+-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Estado inicial: TUDO negado (exigência da LGPD/GDPR)
+  gtag('consent', 'default', {
+    'ad_storage':             'denied',
+    'ad_user_data':           'denied',
+    'ad_personalization':     'denied',
+    'analytics_storage':      'denied',
+    'functionality_storage':  'granted',
+    'personalization_storage':'denied',
+    'security_storage':       'granted',
+    'wait_for_update':        500
+  });
+
+  // Se o visitante já decidiu em visita anterior, restaura a escolha
+  (function(){
+    try {
+      var c = localStorage.getItem('mkt_consent');
+      if (c === 'aceito') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    } catch(e) {}
+  })();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
+/* GTM sai do caminho critico: carrega no primeiro gesto do visitante ou
+   logo apos o load, o que vier antes. O pageview continua disparando. */
+var carregado=false;
+function carregar(){ if(carregado) return; carregado=true;
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  ['pointerdown','keydown','touchstart','scroll'].forEach(function(e){
+    w.removeEventListener(e,carregar,{passive:true}); });
+}
+['pointerdown','keydown','touchstart','scroll'].forEach(function(e){
+  w.addEventListener(e,carregar,{passive:true,once:true}); });
+if(d.readyState==='complete') setTimeout(carregar,1200);
+else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
+})(window,document,'script','dataLayer','GTM-WQTG79G');</script>
+<!-- End Google Tag Manager -->
+
+  <title>Inside sales funciona no meu segmento? | Mkteúdo</title>
+  <meta name="description" content="Os quatro critérios que decidem o modelo comercial — mais importantes que o setor — e o que muda em indústria, serviços, tecnologia, saúde e distribuição.">
+  <meta name="keywords" content="inside sales por segmento, inside sales indústria, inside sales b2b, field sales ou inside sales, modelo comercial">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Felipe Piccoli">
+  <link rel="canonical" href="https://www.mkteudo.com.br/post/inside-sales-por-segmento">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Inside sales funciona no meu segmento? Indústria, serviços, tecnologia, saúde e distribuição">
+  <meta property="og:description" content="Os quatro critérios que decidem o modelo comercial — mais importantes que o setor — e o que muda em indústria, serviços, tecnologia, saúde e distribuição.">
+  <meta property="og:url" content="https://www.mkteudo.com.br/post/inside-sales-por-segmento">
+  <meta property="og:image" content="https://www.mkteudo.com.br/imagens/posts/inside-sales-por-segmento.jpg">
+  <meta property="og:site_name" content="Mkteúdo Comunicação">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inside sales funciona no meu segmento? Indústria, serviços, tecnologia, saúde e distribuição">
+  <meta name="twitter:description" content="Os quatro critérios que decidem o modelo comercial — mais importantes que o setor — e o que muda em indústria, serviços, tecnologia, saúde e distribuição.">
+  <meta property="article:published_time" content="2026-10-29">
+  <meta property="article:author" content="Felipe Piccoli">
+  <meta property="article:section" content="Comercial">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "Inside sales funciona no meu segmento? Indústria, serviços, tecnologia, saúde e distribuição", "description": "Os quatro critérios que decidem o modelo comercial — mais importantes que o setor — e o que muda em indústria, serviços, tecnologia, saúde e distribuição.", "image": "https://www.mkteudo.com.br/imagens/posts/inside-sales-por-segmento.jpg", "datePublished": "2026-10-29", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Felipe Piccoli", "jobTitle": "Fundador e Estrategista", "url": "https://www.mkteudo.com.br/post/felipe-piccoli-profissional-multidisciplinar-comunicacao-marketing", "worksFor": {"@type": "Organization", "name": "Mkteúdo Comunicação"}}, "publisher": {"@type": "Organization", "name": "Mkteúdo Comunicação", "logo": {"@type": "ImageObject", "url": "https://www.mkteudo.com.br/imagens/logo-mkteudo.png"}}, "url": "https://www.mkteudo.com.br/post/inside-sales-por-segmento", "mainEntityOfPage": "https://www.mkteudo.com.br/post/inside-sales-por-segmento", "articleSection": "Comercial", "keywords": "inside sales por segmento, inside sales indústria, inside sales b2b, field sales ou inside sales, modelo comercial"}
+  </script>
+  <style>
+    :root{--bg:#f4f3ee;--sur:#FFF;--txt:#0d0010;--mut:#6B6B6B;--acc:#9428e4;--acl:#f0e6fd;--bor:#ebebeb;--drk:#0d0010;--fnd:'Syne',sans-serif;--fbd:'DM Sans',-apple-system,sans-serif}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    body{font-family:var(--fbd);background:var(--bg);color:var(--txt);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;display:block}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--bor)}
+    .nav__i{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1200px;margin:0 auto;padding:0 2rem}
+    .nav__logo{height:40px;width:auto}
+    .nav__links{display:flex;gap:2rem;align-items:center}
+    .nav__links a{font-size:.875rem;font-weight:500;color:var(--mut);text-decoration:none;transition:color .3s}
+    .nav__links a:hover{color:var(--txt)}
+    .nav__cta{background:var(--acc);color:#fff!important;padding:.5rem 1.3rem;border-radius:100px;font-size:.84rem;font-weight:600}
+    .nav__hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+    .nav__hbg span{width:24px;height:2px;background:var(--txt)}
+    .mob{display:none;position:fixed;inset:0;z-index:999;background:rgba(244,243,238,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mob.on{display:flex}
+    .mob a{font-family:var(--fnd);font-size:1.6rem;font-weight:700;color:var(--txt);text-decoration:none}
+    .mob__x{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer}
+    .hero{padding:7rem 0 0;background:var(--sur)}
+    .hero__inner{max-width:820px;margin:0 auto;padding:0 1.5rem}
+    .crumb{padding:.9rem 0;font-size:.78rem;color:var(--mut)}
+    .crumb a{color:var(--mut);text-decoration:none}
+    .crumb a:hover{color:var(--acc)}
+    .hero__tag{display:inline-block;background:var(--acl);color:var(--acc);padding:.3rem .9rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem}
+    .hero__title{font-family:var(--fnd);font-size:clamp(1.85rem,4vw,2.75rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem}
+    .hero__meta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;font-size:.82rem;color:var(--mut);padding-bottom:1.5rem;border-bottom:1px solid var(--bor)}
+    .hero__meta strong{color:var(--txt)}
+    .cover img{width:100%;height:460px;object-fit:cover;display:block}
+    .layout{display:grid;grid-template-columns:1fr 290px;gap:4rem;max-width:1140px;margin:0 auto;padding:3rem 1.5rem 5rem}
+    .content h2{font-family:var(--fnd);font-size:1.5rem;font-weight:700;line-height:1.2;margin:2.8rem 0 .9rem;padding-top:.6rem;border-top:2px solid var(--acl);color:var(--txt)}
+    .content h3{font-family:var(--fnd);font-size:1.18rem;font-weight:700;margin:2rem 0 .7rem;color:var(--txt)}
+    .content h4{font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--txt)}
+    .content p{margin-bottom:1.2rem;font-size:1rem;line-height:1.8;color:#2a2a2a}
+    .content ul,.content ol{margin:1rem 0 1.5rem 1.5rem}
+    .content li{margin-bottom:.55rem;line-height:1.7;font-size:.97rem}
+    .content strong{color:var(--txt);font-weight:700}
+    .content a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+    .content blockquote{border-left:4px solid var(--acc);padding:1.2rem 1.5rem;margin:2rem 0;background:var(--acl);border-radius:0 12px 12px 0}
+    .content blockquote p{margin:0;font-style:italic;color:#4a3060}
+    .content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;overflow-x:auto;display:block}
+    .content th{background:var(--acc);color:#fff;padding:.7rem 1rem;text-align:left;font-family:var(--fnd);font-size:.82rem;font-weight:700}
+    .content td{padding:.65rem 1rem;border-bottom:1px solid var(--bor)}
+    .content tr:nth-child(even) td{background:var(--acl)}
+    .sumbox{background:var(--acl);border:1.5px solid rgba(148,40,228,.15);border-radius:16px;padding:1.8rem 2rem;margin:2rem 0 2.5rem}
+    .sumbox__ttl{font-family:var(--fnd);font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
+    .sumbox ul{margin:0 0 0 1.2rem}
+    .sumbox li{font-size:.93rem;color:#4a3060;margin-bottom:.45rem}
+    .sumbox a{color:var(--acc);text-decoration:underline;text-underline-offset:2px;font-weight:600}
+    .sumbox a:hover{color:#680079}
+    .cta-mid{background:var(--drk);border-radius:16px;padding:2rem 2.2rem;margin:3rem 0;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .cta-mid h4{font-family:var(--fnd);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+    .cta-mid p{font-size:.85rem;color:rgba(255,255,255,.5);margin:0}
+    .cta-mid .btn,.cta-fin .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.75rem 1.6rem;background:var(--acc);color:#fff;border-radius:100px;font-weight:700;font-size:.88rem;text-decoration:none;white-space:nowrap;flex-shrink:0}
+    .faq{margin:3rem 0}
+    .faq h2{font-family:var(--fnd);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;border-top:none!important;padding-top:0!important}
+    .faq__item{border:1px solid var(--bor);border-radius:12px;margin-bottom:.75rem;overflow:hidden}
+    .faq__q{width:100%;background:none;border:none;padding:1.1rem 1.4rem;text-align:left;font-family:var(--fbd);font-size:.95rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--txt)}
+    .faq__q:hover{background:var(--acl)}
+    .faq__ic{font-size:1.2rem;color:var(--acc);transition:transform .3s;flex-shrink:0}
+    .faq__item.open .faq__ic{transform:rotate(45deg)}
+    .faq__a{display:none;padding:0 1.4rem 1.2rem;font-size:.93rem;line-height:1.7;color:var(--mut)}
+    .faq__item.open .faq__a{display:block}
+    .author{background:var(--sur);border:1.5px solid var(--bor);border-radius:16px;padding:2rem;margin:3rem 0;display:flex;gap:1.5rem;align-items:flex-start}
+    .author__av{width:72px;height:72px;border-radius:50%;background:var(--acl);display:flex;align-items:center;justify-content:center;font-family:var(--fnd);font-size:1.6rem;font-weight:800;color:var(--acc);flex-shrink:0}
+    .author__name{font-family:var(--fnd);font-size:1.05rem;font-weight:700;margin-bottom:.15rem}
+    .author__role{font-size:.8rem;color:var(--acc);font-weight:600;margin-bottom:.6rem}
+    .author__bio{font-size:.87rem;color:var(--mut);line-height:1.65}
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0}
+    .tag{background:var(--acl);color:var(--acc);padding:.3rem .85rem;border-radius:100px;font-size:.75rem;font-weight:600;text-decoration:none}
+    .tag:hover{background:var(--acc);color:#fff;text-decoration:none}
+    .cta-fin{background:linear-gradient(135deg,var(--acc),#680079);border-radius:20px;padding:3rem;text-align:center;margin:3rem 0;color:#fff}
+    .cta-fin h3{font-family:var(--fnd);font-size:1.5rem;font-weight:800;margin-bottom:.6rem}
+    .cta-fin p{color:rgba(255,255,255,.65);margin-bottom:1.8rem;font-size:.95rem}
+    .cta-fin .btn{background:#fff;color:var(--acc)}
+    .side{position:sticky;top:88px;height:fit-content}
+    .side-form{background:var(--acc);border-radius:16px;padding:1.5rem;color:#fff;margin-bottom:1.5rem}
+    .side-form h4{font-family:var(--fnd);font-size:1rem;font-weight:700;margin-bottom:.4rem}
+    .side-form p{font-size:.8rem;opacity:.7;margin-bottom:1rem;line-height:1.5}
+    .side-form input{width:100%;padding:.7rem 1rem;border-radius:8px;border:none;font-size:.88rem;margin-bottom:.6rem;outline:none}
+    .side-form button{width:100%;padding:.7rem;background:#fff;color:var(--acc);border:none;border-radius:8px;font-weight:700;font-size:.88rem;cursor:pointer}
+    .side-card{background:var(--sur);border:1px solid var(--bor);border-radius:16px;padding:1.5rem}
+    .side-card__ttl{font-family:var(--fnd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:1rem}
+    .rel-post{display:flex;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--bor);text-decoration:none}
+    .rel-post:last-child{border-bottom:none;padding-bottom:0}
+    .rel-post:hover h4{color:var(--acc)}
+    .rel-post img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .rel-post h4{font-size:.82rem;font-weight:600;color:var(--txt);line-height:1.35;margin-bottom:.2rem}
+    .rel-post span{font-size:.72rem;color:var(--mut)}
+    footer{background:var(--drk);color:rgba(255,255,255,.5);padding:3rem 0;text-align:center;margin-top:4rem}
+    footer img{height:30px;width:auto;margin:0 auto .5rem;filter:brightness(10)}
+    footer p{font-size:.82rem}
+    @media(max-width:960px){.layout{grid-template-columns:1fr}.side{display:none}}
+    @media(max-width:768px){.nav__links{display:none}.nav__hbg{display:flex}.cover img{height:260px}.hero__title{font-size:1.7rem}.cta-mid{flex-direction:column}}
+  </style>
+<style id="mkt-chrome-v1">
+.footer{background:#0d0010;color:rgba(255,255,255,.52);padding:4rem 0 2rem;border-top:1px solid rgba(255,255,255,.06);margin-top:0;text-align:left;font-family:'DM Sans',-apple-system,sans-serif;line-height:1.7}
+.footer__wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer__logo-img{height:36px;width:auto;margin-bottom:1rem;filter:brightness(10)}
+.footer__tagline{font-size:.88rem;line-height:1.6;margin-bottom:1.2rem;color:rgba(255,255,255,.52)}
+.footer__social{display:flex;gap:.8rem}
+.footer__social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;color:rgba(255,255,255,.5);text-decoration:none}
+.footer__social a:hover{background:#9428e4;border-color:#9428e4;color:#fff}
+.footer__col .footer__col-t{color:#fff;font-size:.75rem;font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.2rem}
+.footer__col a{display:block;font-size:.88rem;margin-bottom:.7rem;transition:color .3s;color:rgba(255,255,255,.52);text-decoration:none}
+.footer__col a:hover{color:#fff}
+.footer__bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem}
+.footer__bottom a{color:rgba(255,255,255,.52);text-decoration:none}
+.footer__bottom a:hover{color:#fff}
+.footer__award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,0,255,.1);border:1px solid rgba(255,0,255,.2);border-radius:20px;padding:.3rem .8rem;font-size:.7rem;font-weight:600;color:#ff00ff;margin-top:.8rem}
+@media(max-width:860px){.footer__grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:560px){.footer__grid{grid-template-columns:1fr}.footer__bottom{flex-direction:column;gap:.5rem}}
+</style>
+<style id="mkt-overflow-v1">
+/* Trava de rolagem lateral: overflow-x:clip nao cria "scrollport" no iOS,
+   entao o dedo nao arrasta a pagina para o lado como se fosse imagem. */
+html{overflow-x:clip;max-width:100%}
+body{overflow-x:clip;max-width:100%;position:relative}
+img,video,iframe,svg,canvas{max-width:100%;height:auto}
+.content table,table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:640px){
+  .content,.content p,.content li,.content h1,.content h2,.content h3,.content h4,
+  .sumbox,.sumbox *,.card__title,.card__excerpt,.hero__title,.svc-hero__title,
+  .section__title,.cm-card h3,.svc-step h3,.svc-cta h2,.faq__q,.cm-faq__q{overflow-wrap:anywhere}
+  .sumbox{padding:1.2rem 1.1rem}
+  .content ul,.content ol{margin-left:1.1rem;padding-left:0}
+  .content blockquote{padding:1rem 1.1rem}
+}
+</style>
+<style id="mkt-reveal-v1">
+/* A animacao de entrada roda no compositor: mesmo com a thread principal
+   ocupada por tag manager, o conteudo aparece. Sem isso o maior bloco de
+   texto so pintava quando o observer rodava — era o LCP de 53s no celular. */
+.reveal{animation:mktRevelar .45s .35s both}
+.reveal.visible{animation:none}
+@keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
+<style id="mkt-a11y-v1">
+/* ancoras nao ficam escondidas atras do menu fixo */
+section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
+
+.author__av{padding:0;overflow:hidden;object-fit:cover;object-position:52% 42%;display:block}
+
+/* Blocos escuros: titulo e texto sempre claros. O h3/h4 do CTA do meio do
+   post estava com a cor de texto do corpo sobre fundo preto — invisivel. */
+.cta-mid h1,.cta-mid h2,.cta-mid h3,.cta-mid h4,.cta-mid p,
+.cta-fin h1,.cta-fin h2,.cta-fin h3,.cta-fin h4,
+.side-form h1,.side-form h2,.side-form h3,.side-form h4,.side-form p{color:#fff}
+.cta-mid p,.cta-fin p{color:rgba(255,255,255,.72)}
+.svc-dark h1,.svc-dark h2,.svc-dark h3,.svc-dark h4{color:#fff}
+.svc-cta h1,.svc-cta h2,.svc-cta h3{color:#fff}
+
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.pular{position:absolute;left:-9999px;top:0;z-index:2000;background:#9428e4;color:#fff;padding:.7rem 1.2rem;border-radius:0 0 10px 0;font-weight:600;font-size:.9rem;text-decoration:none}
+.pular:focus{left:0}
+:focus-visible{outline:2px solid #9428e4;outline-offset:2px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mkteudo.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.mkteudo.com.br/blog"}, {"@type": "ListItem", "position": 3, "name": "Comercial"}, {"@type": "ListItem", "position": 4, "name": "Inside sales funciona no meu segmento? Indústria, serviços, tecnologia, saúde e distribuição", "item": "https://www.mkteudo.com.br/post/inside-sales-por-segmento"}]}</script>
+<style>
+  .mkt-cookie{
+    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%);
+    z-index:9999; width:min(680px, calc(100vw - 2rem));
+    background:#0d0010; color:#fff;
+    border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:1.1rem 1.3rem; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+    font-family:'DM Sans',-apple-system,sans-serif;
+  }
+  .mkt-cookie[hidden]{display:none}
+  .mkt-cookie__text{flex:1 1 300px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72)}
+  .mkt-cookie__text strong{color:#fff; display:block; margin-bottom:.15rem; font-weight:600}
+  .mkt-cookie__text a{color:#ff00ff; text-decoration:underline}
+  .mkt-cookie__actions{display:flex; gap:.5rem; flex:0 0 auto}
+  .mkt-cookie__btn{
+    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+    padding:.6rem 1.3rem; border-radius:100px; border:1.5px solid transparent;
+    transition:transform .2s, background .2s;
+  }
+  .mkt-cookie__btn:hover{transform:translateY(-1px)}
+  .mkt-cookie__btn--ghost{background:transparent; color:rgba(255,255,255,.65); border-color:rgba(255,255,255,.22)}
+  .mkt-cookie__btn--ghost:hover{color:#fff; border-color:rgba(255,255,255,.45)}
+  .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
+  .mkt-cookie__btn--solid:hover{background:#a53ff0}
+  @media(max-width:560px){
+    /* Vira uma faixa rente ao rodapé: ocupa o mínimo de tela possível
+       e deixa os dois botões lado a lado, não empilhados. */
+    .mkt-cookie{
+      left:0; right:0; bottom:0; transform:none; width:100%;
+      border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
+      padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom, 0px));
+      gap:.7rem; align-items:center;
+    }
+    .mkt-cookie__text{flex:1 1 100%; font-size:.78rem; line-height:1.45}
+    .mkt-cookie__text strong{display:inline; margin:0}
+    .mkt-cookie__actions{flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+    .mkt-cookie__btn{width:100%; padding:.62rem .5rem; font-size:.8rem}
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     AJUSTES DE MOBILE  ·  mkt-mobile-v1
+     ───────────────────────────────────────────────────────────────
+     Os títulos usam clamp() com piso alto (ex.: clamp(2.8rem,6vw,4.8rem)).
+     O piso trava em 44.8px e PARA de encolher abaixo de ~746px — por
+     isso num celular de 360px a fonte é a mesma de um tablet, e
+     palavras longas como "crescimento" e "transformamos" estouram.
+     Aqui o tamanho é redefinido só no celular; desktop e tablet
+     continuam exatamente como estão.
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 640px){
+    .hero__title        {font-size:1.95rem !important;letter-spacing:-.02em;line-height:1.12}
+    .hero__subtitle     {font-size:1rem !important}
+    .section__title     {font-size:1.55rem !important;letter-spacing:-.02em}
+    .section__desc      {font-size:.95rem !important}
+    .picc__word         {font-size:1.8rem !important}
+    .picc-hero__title   {font-size:1.72rem !important;letter-spacing:-.02em;line-height:1.1}
+    .picc-hero__sub     {font-size:.95rem !important;line-height:1.6}
+    .picc-proof__mv     {font-size:1.4rem !important}
+    .picc-cta__title    {font-size:1.45rem !important}
+    .rd-hero__title     {font-size:1.78rem !important;letter-spacing:-.02em;line-height:1.12}
+    .calc-hero__title   {font-size:1.8rem !important}
+    .res-headline__big  {font-size:1.9rem !important}
+    .case-highlight__title{font-size:1.35rem !important}
+
+    /* caixas com muito respiro interno sobram pouco espaço ao texto */
+    .picc-cta__box      {padding:2rem 1.25rem !important}
+    .case-highlight     {padding:2rem 1.25rem !important}
+    .container          {padding:0 1.25rem}
+
+    /* rede de segurança: nenhuma palavra longa rompe a caixa */
+    h1,h2,h3,h4,.hero__title,.section__title,.picc-hero__title,
+    .picc-cta__title,.rd-hero__title,.calc-hero__title{
+      overflow-wrap:break-word; word-break:normal;
+    }
+
+    /* A linha de números do hero era um flex de 3 colunas com gap de
+       3rem que não quebrava: era ela que empurrava a home 21px para
+       fora da tela e causava o arrasto lateral. */
+    .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
+    .hero__stat-number{font-size:1.9rem}
+    .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
+  }
+
+  
+    .side-card--serv{margin-top:1rem}
+    .side-serv{display:block;font-size:.88rem;font-weight:600;color:var(--acc);padding:.6rem 0;border-bottom:1px solid var(--bor);transition:padding-left .2s}
+    .side-serv:last-child{border-bottom:0}
+    .side-serv:hover{padding-left:.35rem}
+    .side-form__msg{margin-top:.7rem;font-size:.82rem;line-height:1.5;color:var(--acc);font-weight:600}
+  </style>
+</head>
+<body>
+<a href="#conteudo" class="pular">Pular para o conteúdo</a>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="nav"><div class="nav__i">
+  <a href="/"><img src="../imagens/logo-mkteudo.png" alt="Mkteúdo" class="nav__logo" width="352" height="300"></a>
+  <div class="nav__links"><a href="/servicos">Serviços</a><a href="/#sobre">Sobre</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a><a href="/#cases">Cases</a><a href="/calculadora">Calculadora</a><a href="/blog">Blog</a><a href="/#contato" class="nav__cta">Fale conosco</a></div>
+  <button class="nav__hbg" onclick="document.getElementById('mob').classList.toggle('on')"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mob" id="mob">
+  <button class="mob__x" onclick="document.getElementById('mob').classList.remove('on')">✕</button>
+  <a href="/">Home</a><a href="/servicos">Serviços</a><a href="/#sobre">Sobre</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a><a href="/#cases">Cases</a><a href="/calculadora">Calculadora</a><a href="/blog">Blog</a><a href="/#contato">Fale conosco</a>
+</div>
+<div class="hero"><div class="hero__inner">
+  <nav class="crumb"><a href="/">Home</a> › <a href="/blog">Blog</a> › Comercial</nav>
+  <a href="/blog" class="hero__tag">Comercial</a>
+  <h1 class="hero__title">Inside sales funciona no meu segmento? Indústria, serviços, tecnologia, saúde e distribuição</h1>
+  <div class="hero__meta">
+    <span><strong>Felipe Piccoli</strong> — Fundador, Mkteúdo</span>
+    <span>·</span><span>29 out 2026</span>
+    <span>·</span><span>9 min de leitura</span>
+    <span>·</span><span>inside sales por segmento</span>
+  </div>
+</div></div>
+<div class="cover"><img src="/imagens/posts/inside-sales-por-segmento.jpg" alt="Inside sales por segmento indústria serviços tecnologia saúde distribuição" loading="eager" fetchpriority="high"></div>
+<div class="layout">
+  <main id="conteudo" class="content">
+<div class="sumbox">
+  <div class="sumbox__ttl">Neste artigo você vai aprender</div>
+  <ul><li><a href="#criterios">Os quatro critérios que decidem — melhor que o nome do setor</a></li>
+      <li><a href="#industria">Indústria e bens de capital</a></li>
+      <li><a href="#servicos">Serviços B2B e consultorias</a></li>
+      <li><a href="#tecnologia">Tecnologia e software</a></li>
+      <li><a href="#saude">Saúde e equipamentos médicos</a></li>
+      <li><a href="#distribuicao">Distribuição e atacado</a></li>
+      <li><a href="#nao-funciona">Onde inside sales não é a resposta</a></li>
+      </ul>
+</div>
+<p>"Inside sales funciona no meu segmento?" é a pergunta errada — e é a mais feita.</p>
+<p>Errada porque o setor não decide quase nada. O que decide são quatro características do negócio, e elas variam mais <em>dentro</em> de um segmento do que entre segmentos. Duas indústrias do mesmo ramo, uma vendendo máquina de R$ 2 milhões e outra vendendo peça de reposição, precisam de estruturas comerciais opostas.</p>
+<p>Este artigo começa pelos critérios e depois passa pelos setores, para você encontrar o seu caso.</p>
+
+<h2 id="criterios">Os quatro critérios que realmente decidem</h2>
+<div class="tbl-wrap"><table>
+  <tr><th>Critério</th><th>Favorece inside sales</th><th>Favorece campo ou híbrido</th></tr>
+  <tr><td>Ticket médio</td><td>Baixo a médio</td><td>Alto — a visita se paga</td></tr>
+  <tr><td>Complexidade técnica</td><td>Explicável em chamada e documento</td><td>Exige inspeção, medição ou teste no local</td></tr>
+  <tr><td>Decisores envolvidos</td><td>Um a três</td><td>Comitê, com várias áreas</td></tr>
+  <tr><td>Dispersão geográfica</td><td>Clientes espalhados</td><td>Clientes concentrados numa região</td></tr>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
+<p>Três ou quatro na coluna da esquerda: inside sales puro. Misturado: híbrido. Três ou quatro na direita: campo, com inside sales apoiando a agenda. Esse diagnóstico vale mais que qualquer comparação setorial.</p>
+
+<h2 id="industria">Indústria e bens de capital</h2>
+<p>O setor em que a divisão interna é mais nítida — e por isso onde a estrutura única mais atrapalha.</p>
+<ul>
+  <li><strong>Reposição, peças e consumíveis:</strong> ticket menor, recompra previsível, decisão de uma ou duas pessoas. Inside sales puro, com forte componente de recompra programada.</li>
+  <li><strong>Equipamento e projeto:</strong> ticket alto, especificação técnica, visita quase inevitável. Inside sales prospecta, qualifica e agenda; o engenheiro de vendas vai ao cliente.</li>
+</ul>
+<p>O erro clássico é colocar o mesmo vendedor nos dois mundos. Ele passa a semana na estrada atrás do projeto grande e a reposição — que é receita recorrente e barata — some.</p>
+
+<h2 id="servicos">Serviços B2B e consultorias</h2>
+<p>Encaixe natural: o produto é conversa, e conversa cabe numa chamada. Ciclo de 30 a 90 dias, dois a três decisores, ticket médio.</p>
+<p>O ponto de atenção é outro: em serviço, o que se vende é confiança. Isso exige <strong>prova social muito específica</strong> — caso de empresa do mesmo porte e setor — e um diagnóstico bem conduzido, porque não há produto para demonstrar. A estrutura está em <a href="/post/venda-consultiva-b2b-como-aplicar">venda consultiva</a>.</p>
+
+<h2 id="tecnologia">Tecnologia e software</h2>
+<p>O segmento que inventou o modelo. Demonstração remota funciona, o produto evolui rápido e o ciclo é curto o bastante para a cadência render.</p>
+<p>A armadilha aqui é a oposta das outras: excesso de automação. Fluxo automático demais, contato humano de menos, e a taxa de resposta despenca — ainda mais num mercado em que todo mundo usa as mesmas ferramentas e o prospect recebe a mesma sequência de cinco e-mails de dez fornecedores. O que separa é o contato específico. Sobre a linha entre automatizar e não automatizar, veja <a href="/post/automacao-de-vendas-o-que-vale-automatizar">o que vale automatizar em vendas</a>.</p>
+
+<div class="cta-mid"><div><h3>Não sabe qual modelo cabe no seu negócio?</h3><p>A Mkteúdo faz o diagnóstico pelos seus números — ticket, ciclo, decisores e dispersão — e desenha a estrutura.</p></div><a href="/#contato" class="btn">Falar com um especialista →</a></div>
+
+<h2 id="saude">Saúde e equipamentos médicos</h2>
+<p>Híbrido obrigatório, por dois motivos que não são comerciais: parte do ciclo envolve demonstração com o profissional que vai usar o equipamento, e há exigências regulatórias e de documentação que alongam a decisão.</p>
+<p>O que inside sales faz bem aqui: mapear a instituição, identificar quem decide (que raramente é quem usa), qualificar orçamento e janela de compra, e manter o acompanhamento entre uma etapa e outra de um processo que pode levar meses. A visita acontece — mas acontece preparada.</p>
+
+<h2 id="distribuicao">Distribuição e atacado</h2>
+<p>Alto volume de contas, ticket médio, recompra frequente. É onde inside sales costuma produzir o maior ganho financeiro imediato, por um motivo simples: boa parte da receita está na carteira que ninguém atende.</p>
+<p>A conta que convence: se a empresa tem 800 clientes ativos e três vendedores de campo, cada vendedor tem 266 contas. Com visitas, ele alcança talvez 40 por mês. As outras 226 só são lembradas quando ligam — e muitas já pararam de ligar. Inside sales existe exatamente para essa cauda, e é também a situação típica de quem descobre que o problema não é geração de demanda, e sim <a href="/post/capacidade-de-atendimento-de-leads-time-comercial">capacidade de atendimento</a>.</p>
+
+<h2 id="nao-funciona">Onde inside sales não é a resposta</h2>
+<ul>
+  <li><strong>Venda que exige inspeção física</strong> — obra, reforma, instalação sob medida, manutenção corretiva.</li>
+  <li><strong>Ticket muito alto com comitê de compras</strong>, em que a decisão depende de presença e de leitura de sala.</li>
+  <li><strong>Relação construída em território</strong>, em que o vendedor é parte da rotina do cliente — comum em regiões e setores com forte cultura presencial.</li>
+  <li><strong>Operação sem processo nenhum.</strong> Esse é o caso mais frequente e o menos reconhecido: não é que inside sales não funcione; é que nada funciona sem <a href="/post/processo-comercial-como-estruturar">processo comercial</a>. Montar inside sales antes disso só torna a desorganização mais cara.</li>
+</ul>
+<p>Mesmo nos três primeiros casos, quase sempre existe uma camada que cabe no modelo: reativação de inativos, recompra, agendamento qualificado e follow up entre visitas.</p>
+
+<h2>Como decidir, na prática</h2>
+<p>Responda quatro perguntas com os seus números: qual o ticket médio por linha de produto, quantos decisores participam, o produto pode ser demonstrado remotamente e os clientes estão concentrados ou espalhados. As respostas costumam apontar para uma estrutura diferente por linha de negócio — e é exatamente isso que a maioria das empresas não faz, porque trata o comercial como um bloco só.</p>
+<p>Esse desenho é decisão de direção, não de execução. É o que fazemos na fase <a href="/metodo-picc">Planejar</a> do Método PICC: nenhum projeto sai de uma prateleira, porque a estrutura certa para uma empresa de reposição não é a mesma de uma empresa de projeto — mesmo que as duas estejam no mesmo ramo.</p>
+
+<div class="faq"><h2>Perguntas Frequentes</h2>
+<div class="faq__item"><button class="faq__q">Inside sales funciona em qualquer segmento?<span class="faq__ic">+</span></button><div class="faq__a">O segmento importa menos que quatro características: ticket médio, complexidade técnica, número de decisores e dispersão geográfica dos clientes. Duas empresas do mesmo setor podem precisar de estruturas opostas — uma vendendo equipamento de alto valor e outra vendendo reposição, por exemplo.</div></div>
+<div class="faq__item"><button class="faq__q">Inside sales serve para indústria?<span class="faq__ic">+</span></button><div class="faq__a">Serve, com divisão por linha de produto. Reposição, peças e consumíveis funcionam bem em inside sales puro, com recompra programada. Equipamento e projeto pedem modelo híbrido: inside sales prospecta, qualifica e agenda, e o engenheiro de vendas conduz a visita técnica.</div></div>
+<div class="faq__item"><button class="faq__q">Qual segmento tem o maior ganho imediato com inside sales?<span class="faq__ic">+</span></button><div class="faq__a">Distribuição e atacado, porque costuma haver uma carteira grande de contas ativas que ninguém consegue visitar. Com centenas de clientes por vendedor de campo, a maior parte da base só é lembrada quando liga — e inside sales existe exatamente para essa cauda.</div></div>
+<div class="faq__item"><button class="faq__q">Quando inside sales não é a resposta?<span class="faq__ic">+</span></button><div class="faq__a">Quando a venda exige inspeção física, quando o ticket é muito alto e a decisão passa por comitê que exige presença, ou quando a relação é construída em território. E, acima de tudo, quando a empresa não tem processo comercial definido — nesse caso, montar inside sales apenas torna a desorganização mais cara.</div></div>
+<div class="faq__item"><button class="faq__q">Como descobrir o modelo certo para a minha empresa?<span class="faq__ic">+</span></button><div class="faq__a">Respondendo com números: ticket médio por linha de produto, quantos decisores participam, se o produto pode ser demonstrado remotamente e se os clientes estão concentrados ou espalhados. O resultado costuma apontar estruturas diferentes por linha de negócio, não uma única para o comercial inteiro.</div></div>
+</div>
+    <div class="author">
+      <img class="author__av" src="/imagens/felipe-piccoli-avatar.jpg" alt="Felipe Piccoli, fundador da Mkteúdo" width="440" height="440" loading="lazy" decoding="async">
+      <div>
+        <div class="author__name">Felipe Piccoli</div>
+        <div class="author__role">Fundador &amp; Estrategista — Mkteúdo Comunicação</div>
+        <div class="author__bio">Jornalista com MBA em Marketing e Comunicação Estratégica. Mais de 10 anos de experiência em marketing digital, com passagens por Accenture, LATAM/VAMOS, Grupo Bandeirantes, V4 e G4. Responsável pela gestão de marketing na Copa do Mundo 2014 e nos Jogos Olímpicos 2016. 2× premiado no RD Limitless com os melhores cases de transformação digital do Brasil.</div>
+      </div>
+    </div>
+    <div class="tags"><a href="/blog" class="tag">Inside Sales</a><a href="/blog" class="tag">Segmentos</a><a href="/blog" class="tag">Indústria</a><a href="/blog" class="tag">Distribuição</a><a href="/blog" class="tag">Modelo Comercial</a></div>
+    <div class="cta-fin">
+      <h3>Quer aplicar isso no seu negócio?</h3>
+      <p>A Mkteúdo é a agência de marketing digital referência em Ribeirão Preto — 2× premiada no RD Limitless.</p>
+      <a href="/#contato" class="btn">Falar com um especialista →</a>
+    </div>
+  </main>
+  <aside class="side">
+    <form class="side-form" id="side-news">
+      <h4>Receba conteúdos gratuitos</h4>
+      <p>Estratégias de marketing digital toda semana.</p>
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+      <button type="submit">Quero receber →</button>
+      <div class="side-form__msg" id="side-news-msg" hidden></div>
+    </form>
+    <div class="side-card side-card--serv">
+      <div class="side-card__ttl">Como podemos ajudar</div>
+      <a href="/consultoria-de-marketing" class="side-serv">Consultoria de Marketing Digital</a>
+      <a href="/terceirizacao-de-marketing" class="side-serv">Terceirização de Marketing</a>
+      <a href="/implantacao-de-crm" class="side-serv">Implantação de CRM</a>
+      <a href="/marketing-para-agronegocio" class="side-serv">Marketing para o Agronegócio</a>
+      <a href="/marketing-para-industria" class="side-serv">Marketing para Indústria</a>
+    </div>
+    <div class="side-card">
+      <div class="side-card__ttl">Leia também</div>
+      <a href="prospeccao-de-clientes-guia-b2b" class="rel-post"><img src="/imagens/posts/p/prospeccao-de-clientes-guia-b2b.jpg" alt="Prospecção de clientes: o guia" loading="lazy"><div><h4>Prospecção de clientes: o guia</h4><span>Comercial</span></div></a><a href="texto-e-script-de-prospeccao-modelos" class="rel-post"><img src="/imagens/posts/p/texto-e-script-de-prospeccao-modelos.jpg" alt="Modelos de texto e script" loading="lazy"><div><h4>Modelos de texto e script</h4><span>Comercial</span></div></a><a href="tecnicas-de-vendas-que-funcionam-b2b" class="rel-post"><img src="/imagens/posts/p/tecnicas-de-vendas-que-funcionam-b2b.jpg" alt="Técnicas de vendas em B2B" loading="lazy"><div><h4>Técnicas de vendas em B2B</h4><span>Comercial</span></div></a><a href="como-montar-operacao-inside-sales" class="rel-post"><img src="/imagens/posts/p/como-montar-operacao-inside-sales.jpg" alt="Como montar inside sales do zero" loading="lazy"><div><h4>Como montar inside sales do zero</h4><span>Comercial</span></div></a>
+    </div>
+  </aside>
+</div>
+<footer class="footer">
+    <div class="footer__wrap">
+      <div class="footer__grid">
+        <div>
+          <img src="/imagens/logo-mkteudo.png" alt="Mkteúdo" class="footer__logo-img" width="352" height="300" loading="lazy" decoding="async">
+          <p class="footer__tagline">Marketing que move negócios. Agência de Marketing Digital em Ribeirão Preto.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/mkteudo/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://www.linkedin.com/company/mkteudo/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+          </div>
+          <div class="footer__award">2× Premiada RD Limitless</div>
+        </div>
+        <div class="footer__col"><p class="footer__col-t">Serviços</p><a href="/consultoria-de-marketing">Consultoria de Marketing</a><a href="/terceirizacao-de-marketing">Terceirização de Marketing</a><a href="/implantacao-de-crm">Implantação de CRM</a><a href="/marketing-para-agronegocio">Marketing para o Agro</a><a href="/marketing-para-industria">Marketing para Indústria</a><a href="/servicos">Todos os serviços</a></div>
+        <div class="footer__col"><p class="footer__col-t">Conteúdo</p><a href="/blog">Blog</a><a href="/calculadora">Calculadora de Receita</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a></div>
+        <div class="footer__col"><p class="footer__col-t">Contato</p><a href="/#contato">Fale conosco</a><a href="/#cases">Cases</a><a href="/politica-de-privacidade/">Política de Privacidade</a></div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mkteúdo Comunicação. Todos os direitos reservados.</span>
+        <span><a href="/politica-de-privacidade/">Política de Privacidade</a></span>
+        <span>CNPJ: 32.115.047/0001-97</span>
+      </div>
+    </div>
+  </footer>
+<script>document.querySelectorAll('.faq__q').forEach(function(b){b.addEventListener('click',function(){this.closest('.faq__item').classList.toggle('open')});});</script>
+<!-- 1. GTM noscript — PRIMEIRA coisa depois de <body> -->
+
+<div class="mkt-cookie" id="mktCookie" role="dialog" aria-live="polite"
+     aria-label="Aviso de cookies" hidden>
+  <div class="mkt-cookie__text">
+    <strong>A gente usa cookies.</strong>
+    Para entender como o site é usado e melhorar sua experiência.
+    <a href="/politica-de-privacidade/">Política de Privacidade</a>
+  </div>
+  <div class="mkt-cookie__actions">
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--ghost"
+            id="mktCookieDeny">Recusar</button>
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--solid"
+            id="mktCookieAccept">Aceitar</button>
+  </div>
+</div>
+
+
+
+<script>
+(function(){
+  var KEY = 'mkt_consent';
+  var el = document.getElementById('mktCookie');
+  if (!el) return;
+
+  function saved(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function store(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+
+  function decide(value){
+    store(value);
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'analytics_storage': value === 'aceito' ? 'granted' : 'denied'
+      });
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cookie_consent_update',
+      cookie_consent: value
+    });
+    el.hidden = true;
+  }
+
+  // Só mostra se ainda não decidiu
+  if (!saved()) { el.hidden = false; }
+
+  document.getElementById('mktCookieAccept').addEventListener('click', function(){ decide('aceito'); });
+  document.getElementById('mktCookieDeny').addEventListener('click',   function(){ decide('recusado'); });
+})();
+</script>
+
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
+
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      link_location: a.dataset.linkLocation || 'conteudo',
+      link_text: a.dataset.linkText || (a.textContent || '').trim().slice(0,60) || 'WhatsApp'
+    });
+  }, true);
+})();
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Inside sales funciona em qualquer segmento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O segmento importa menos que quatro características: ticket médio, complexidade técnica, número de decisores e dispersão geográfica dos clientes. Duas empresas do mesmo setor podem precisar de estruturas opostas — uma vendendo equipamento de alto valor e outra vendendo reposição, por exemplo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Inside sales serve para indústria?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Serve, com divisão por linha de produto. Reposição, peças e consumíveis funcionam bem em inside sales puro, com recompra programada. Equipamento e projeto pedem modelo híbrido: inside sales prospecta, qualifica e agenda, e o engenheiro de vendas conduz a visita técnica."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual segmento tem o maior ganho imediato com inside sales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Distribuição e atacado, porque costuma haver uma carteira grande de contas ativas que ninguém consegue visitar. Com centenas de clientes por vendedor de campo, a maior parte da base só é lembrada quando liga — e inside sales existe exatamente para essa cauda."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando inside sales não é a resposta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quando a venda exige inspeção física, quando o ticket é muito alto e a decisão passa por comitê que exige presença, ou quando a relação é construída em território. E, acima de tudo, quando a empresa não tem processo comercial definido — nesse caso, montar inside sales apenas torna a desorganização mais cara."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como descobrir o modelo certo para a minha empresa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Respondendo com números: ticket médio por linha de produto, quantos decisores participam, se o produto pode ser demonstrado remotamente e se os clientes estão concentrados ou espalhados. O resultado costuma apontar estruturas diferentes por linha de negócio, não uma única para o comercial inteiro."
+      }
+    }
+  ]
+}
+</script>
+
+  <!-- módulo central de captura e qualificação de leads -->
+  <script src="/js/mkt-leads.js"></script>
+
+<script>
+  (function(){
+    var f=document.getElementById('side-news'); if(!f||!window.MKT) return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var m=document.getElementById('side-news-msg');
+      var v=window.MKT.valores(f);
+      if(!window.MKT.emailValido(v.email)){ m.hidden=false; m.textContent='Confira o e-mail.'; return; }
+      var b=f.querySelector('button'); b.disabled=true; b.textContent='Enviando…';
+      window.MKT.enviar(Object.assign({}, v, window.MKT.contexto(), {
+        origem_form:'newsletter', etapa:'newsletter', identificador:'newsletter-blog-mkteudo'
+      })).then(function(){
+        window.MKT.push('newsletter_inscricao', {form_origem:'newsletter'});
+        f.innerHTML='<h4>Pronto!</h4><p>Você vai receber nossos conteúdos no e-mail cadastrado.</p>';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
