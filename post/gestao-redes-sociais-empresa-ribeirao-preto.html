@@ -270,6 +270,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -448,25 +493,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="erro-principal">O erro mais comum nas redes sociais de empresas de Ribeirão Preto</h2>
 <p>O problema mais frequente não é a qualidade visual, nem a frequência de publicação. É tratar as redes sociais como vitrine de produtos — e não como canal de relacionamento e funil de vendas.</p>
 <p>Instagram não é catálogo. LinkedIn não é currículo corporativo. Facebook não é mural de promoções. Cada plataforma tem uma linguagem própria, um algoritmo específico e um comportamento de audiência diferente. Conteúdo que não respeita isso não é distribuído pelo algoritmo — e sem distribuição, não existe resultado.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Gestão operacional</th><th>Gestão estratégica</th></tr>
   <tr><td>Foco em quantidade de posts</td><td>Foco em resultado de negócio</td></tr>
   <tr><td>Mede curtidas e seguidores</td><td>Mede leads e vendas gerados</td></tr>
   <tr><td>Conteúdo sem persona definida</td><td>Conteúdo criado para persona específica</td></tr>
   <tr><td>Post por post, sem narrativa</td><td>Narrativa de marca consistente</td></tr>
   <tr><td>Sem integração com comercial</td><td>Conectada com CRM e processo de vendas</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h2 id="plataformas">Qual plataforma priorizar para o seu tipo de negócio</h2>
 <p>Tentar estar em todas as plataformas com qualidade é o segundo erro mais comum. Resultado: presença medíocre em cinco lugares em vez de presença forte em dois. A regra: escolha as 2 plataformas onde seu público está mais presente e faça excepcionalmente bem.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Plataforma</th><th>Melhor para</th><th>Formato que funciona</th></tr>
   <tr><td>Instagram</td><td>B2C, serviços ao consumidor, varejo, alimentação</td><td>Reels 15–30s, Stories interativos, Carrossel</td></tr>
   <tr><td>LinkedIn</td><td>B2B, serviços empresariais, consultoria, RH</td><td>Artigos, posts de texto, vídeo curto</td></tr>
   <tr><td>Facebook</td><td>Público 35+, comunidades locais de Ribeirão Preto</td><td>Posts, vídeos, grupos temáticos</td></tr>
   <tr><td>TikTok</td><td>Público 18–35, varejo, educação, gastronomia</td><td>Vídeo vertical 30–60s, trends locais</td></tr>
   <tr><td>YouTube</td><td>Conteúdo educativo, demonstrações, tutoriais</td><td>Vídeo longo + Shorts de corte</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Para a maioria das PMEs de Ribeirão Preto: <strong>Instagram + LinkedIn</strong> para B2B, e <strong>Instagram + Facebook</strong> para B2C. Uma empresa que domina essas combinações supera concorrentes presentes em todas as plataformas com estratégia dispersa.</p>
 
 <div class="cta-mid"><div><h3>Quer gestão de redes sociais com foco em resultado?</h3><p>A Mkteúdo gerencia social media estratégico para empresas de Ribeirão Preto com relatório de resultado real.</p></div><a href="/#contato" class="btn">Falar com especialista →</a></div>

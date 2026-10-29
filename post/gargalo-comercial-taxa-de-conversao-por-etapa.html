@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -396,25 +441,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Sem essas taxas, toda decisão vira palpite caro: aumenta-se verba quando o problema era qualificação, troca-se o vendedor quando o problema era a lista, refaz-se o site quando o problema era o tempo de resposta.</p>
 
 <h2 id="mapa">O mapa: quatro passagens, quatro perguntas</h2>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Passagem</th><th>O que mede</th><th>Dono</th></tr>
   <tr><td>Visitante → Lead</td><td>Se a oferta e a página convencem a deixar contato</td><td>Marketing</td></tr>
   <tr><td>Lead → MQL</td><td>Se quem chega tem o perfil certo</td><td>Marketing</td></tr>
   <tr><td>MQL → SQL</td><td>Se a qualificação e o atendimento funcionam</td><td>Marketing + Comercial</td></tr>
   <tr><td>SQL → Venda</td><td>Se a oferta, o preço e a condução fecham</td><td>Comercial</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>A definição de MQL e SQL precisa estar combinada entre as duas áreas antes de qualquer medição — se cada um usa um critério, a taxa não significa nada. Se esse combinado ainda não existe na sua empresa, comece por <a href="/post/mql-sql-qualificacao-leads-marketing-vendas">MQL e SQL: a diferença e como qualificar</a>.</p>
 
 <h2 id="diagnostico">A tabela de diagnóstico</h2>
 <p>Pegue os últimos 90 dias e preencha. Se a empresa não tem o dado de alguma linha, isso já é o primeiro achado.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Etapa</th><th>Volume</th><th>Taxa de passagem</th><th>Comparação com o seu histórico</th></tr>
   <tr><td>Visitantes</td><td>12.000</td><td>—</td><td>—</td></tr>
   <tr><td>Leads</td><td>240</td><td>2,0%</td><td>estável</td></tr>
   <tr><td>MQLs</td><td>96</td><td>40%</td><td>estável</td></tr>
   <tr><td>SQLs</td><td>19</td><td><strong>20%</strong></td><td><strong>caiu de 35%</strong></td></tr>
   <tr><td>Vendas</td><td>5</td><td>26%</td><td>estável</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Nesse exemplo o gargalo salta aos olhos: a passagem de MQL para SQL caiu quase pela metade. Tudo o mais está estável. Aumentar verba de mídia aqui seria jogar dinheiro dentro de um cano entupido — mais leads entrariam, e a mesma proporção morreria no mesmo ponto.</p>
 <p>A regra de leitura: <strong>compare cada taxa com o seu próprio histórico, não com benchmark de mercado</strong>. O que importa não é se 20% é bom — é que era 35% e virou 20%.</p>
 

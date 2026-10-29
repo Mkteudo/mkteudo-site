@@ -270,6 +270,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -457,13 +502,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Pesquisa de palavras-chave revela volume de busca, dificuldade de ranqueamento e intenção comercial de cada termo. Ferramentas como <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a>, Google Keyword Planner e Ubersuggest fazem essa análise gratuitamente ou por custo baixo.</p>
 
 <h3>Como classificar as oportunidades de conteúdo</h3>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Combinação</th><th>Prioridade</th><th>Ação</th></tr>
   <tr><td>Alta intenção + Baixa dificuldade</td><td>Máxima</td><td>Publicar agora</td></tr>
   <tr><td>Alta intenção + Média dificuldade</td><td>Alta</td><td>Nos próximos 2 meses</td></tr>
   <tr><td>Alta intenção + Alta dificuldade</td><td>Médio prazo</td><td>Após construir autoridade</td></tr>
   <tr><td>Baixa intenção (qualquer dificuldade)</td><td>Evitar</td><td>Gera tráfego sem conversão</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h3>Onde encontrar ideias de conteúdo relevante para Ribeirão Preto</h3>
 <ul>
@@ -491,13 +537,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="frequencia">Frequência ideal de publicação para ver resultado</h2>
 <p>Consistência supera volume. Publicar 2 artigos por mês de forma consistente por 12 meses gera resultado muito superior a publicar 8 artigos por mês durante 3 meses e parar. O Google valoriza sites ativos que publicam regularmente.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Frequência</th><th>Resultado esperado</th><th>Perfil ideal</th></tr>
   <tr><td>1 artigo por mês</td><td>Crescimento lento, 12–18 meses</td><td>Empresa começando, orçamento limitado</td></tr>
   <tr><td>2 artigos por mês</td><td>Crescimento consistente, 6–12 meses</td><td>PME com estratégia em andamento</td></tr>
   <tr><td>4 artigos por mês</td><td>Crescimento acelerado, 3–6 meses</td><td>Empresa priorizando SEO como canal</td></tr>
   <tr><td>8+ artigos por mês</td><td>Dominância de mercado local</td><td>Orçamento dedicado, equipe ou agência</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Para PMEs de Ribeirão Preto começando agora, a recomendação é: 2 artigos por mês bem planejados e otimizados. É sustentável, gera resultado em tempo razoável e pode ser escalado quando os primeiros leads orgânicos chegarem.</p>
 
 <h2 id="metricas">Como medir se o conteúdo está gerando resultado de negócio</h2>

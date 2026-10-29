@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -416,14 +461,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>SEO não é algo que se adiciona depois — precisa ser construído na estrutura do site. Cada página precisa de: title tag único, meta description otimizada, H1 com palavra-chave, alt text nas imagens e Schema.org configurado.</p>
 <div class="cta-mid"><div><h3>Quer um site que gera leads para sua empresa em Ribeirão Preto?</h3><p>A Mkteúdo cria sites com estratégia de marketing integrada — não apenas design bonito.</p></div><a href="/#contato" class="btn">Falar com especialista →</a></div>
 <h2 id="seo-on-page">SEO on-page básico que todo site precisa ter desde o início</h2>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Elemento</th><th>Padrão correto</th><th>Erro comum</th></tr>
   <tr><td>Title tag</td><td>"[Serviço] em Ribeirão Preto | [Empresa]"</td><td>"Home" ou nome da empresa apenas</td></tr>
   <tr><td>Meta description</td><td>120–155 chars com KW e benefício claro</td><td>Sem meta description ou duplicada</td></tr>
   <tr><td>H1 da página</td><td>1 por página, com palavra-chave principal</td><td>Múltiplos H1 ou H1 apenas com nome da empresa</td></tr>
   <tr><td>URLs</td><td>/servicos/marketing-digital-ribeirao-preto</td><td>/pagina-2 ou /?p=123</td></tr>
   <tr><td>Schema.org</td><td>LocalBusiness com endereço e coordenadas</td><td>Ausente</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <h2 id="integracao">Como integrar o site com marketing digital e CRM</h2>
 <p>Um site moderno não é uma página estática — é o hub central do ecossistema de marketing. Integrações obrigatórias:</p>
 <ul>
@@ -434,12 +480,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li>Google Search Console para monitorar ranqueamento e indexação</li>
 </ul>
 <h2 id="custo">Quanto custa e quanto tempo leva criar um site em Ribeirão Preto</h2>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Tipo de site</th><th>Investimento</th><th>Prazo</th></tr>
   <tr><td>Institucional simples (5 páginas)</td><td>R$3.000 – R$8.000</td><td>3–4 semanas</td></tr>
   <tr><td>Com landing pages e blog SEO</td><td>R$8.000 – R$20.000</td><td>5–8 semanas</td></tr>
   <tr><td>Completo com automação de marketing</td><td>R$20.000+</td><td>8–12 semanas</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Leia também nosso guia de <a href="seo-local-ribeirao-preto-como-aparecer-google">SEO Local em Ribeirão Preto</a> para entender como fazer o site aparecer nas buscas locais depois de criado.
 <h2 id="ux-conversao">UX e experiência do usuário: o que faz o visitante ficar e agir</h2>
 <p>UX (User Experience) é a experiência completa que o visitante tem ao navegar no site — e tem impacto direto na taxa de conversão. Sites com boa UX convertem mais não porque são mais bonitos, mas porque eliminam as fricções que impedem o visitante de avançar.</p>
@@ -453,14 +500,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="performance-tecnica">Performance técnica: velocidade que o Google e o usuário exigem</h2>
 <p>Um site bonito que carrega em 5 segundos perde para um site simples que carrega em 1,5 segundos. O Google confirma: velocidade de carregamento é fator de ranqueamento. E o usuário confirma com comportamento: 53% abandonam sites que demoram mais de 3 segundos.</p>
 <p>Checklist de performance para sites de empresas de Ribeirão Preto:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Elemento</th><th>Meta de performance</th><th>Como verificar</th></tr>
   <tr><td>Largest Contentful Paint (LCP)</td><td>Abaixo de 2,5 segundos</td><td>Google PageSpeed Insights</td></tr>
   <tr><td>Cumulative Layout Shift (CLS)</td><td>Abaixo de 0,1</td><td>Google PageSpeed Insights</td></tr>
   <tr><td>First Input Delay (FID)</td><td>Abaixo de 100ms</td><td>Google Search Console</td></tr>
   <tr><td>Tamanho das imagens</td><td>Abaixo de 200KB cada</td><td>Compressor.io ou TinyPNG</td></tr>
   <tr><td>Nota no PageSpeed Mobile</td><td>Acima de 80</td><td>PageSpeed Insights</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h2 id="manutencao">Manutenção do site: o que a maioria das empresas esquece após o lançamento</h2>
 <p>Um site lançado e abandonado perde relevância progressivamente — tanto no ranqueamento quanto na efetividade de conversão. Manutenção trimestral mínima:</p>
@@ -485,12 +533,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="hospedagem">Hospedagem: o investimento que a maioria subestima</h2>
 <p>Hospedar um site em servidor compartilhado de R$30/mês para economizar no início é um dos erros mais custosos do marketing digital. A hospedagem impacta diretamente velocidade de carregamento, uptime (tempo que o site fica no ar) e segurança — e todos os três afetam diretamente SEO e conversão.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Tipo de hospedagem</th><th>Custo mensal</th><th>Velocidade</th><th>Para quem</th></tr>
   <tr><td>Compartilhada básica</td><td>R$20–50</td><td>Lenta, variável</td><td>Sites institucionais simples, pouquíssimo tráfego</td></tr>
   <tr><td>Hospedagem gerenciada WordPress</td><td>R$80–200</td><td>Boa e consistente</td><td>PMEs em crescimento com tráfego regular</td></tr>
   <tr><td>VPS ou Cloud (AWS, Google Cloud)</td><td>R$200–600</td><td>Excelente</td><td>Sites com alto volume de tráfego ou e-commerce</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Para a maioria das PMEs de Ribeirão Preto, hospedagem gerenciada de WordPress de R$100 a R$200/mês é o ponto ideal entre custo e performance. O impacto no SEO e na taxa de conversão supera o custo adicional em meses.</p>
 <p>Para entender como o site se conecta à estratégia de marketing como um todo, leia nosso guia de <a href="inbound-marketing-ribeirao-preto-maquina-de-vendas">Inbound Marketing em Ribeirão Preto</a>.</p>
 

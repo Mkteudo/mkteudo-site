@@ -270,6 +270,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -466,7 +511,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 
 <h2 id="comparativo">ChatGPT vs Claude: qual usar para marketing digital</h2>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Critério</th><th>ChatGPT (GPT-4)</th><th>Claude (Anthropic)</th></tr>
   <tr><td>Textos longos e estratégicos</td><td>Bom</td><td>Excelente</td></tr>
   <tr><td>Análise de documentos</td><td>Bom</td><td>Muito bom</td></tr>
@@ -474,7 +519,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <tr><td>Custo mensal</td><td>~R$100/mês</td><td>~R$100/mês</td></tr>
   <tr><td>Melhor uso no marketing</td><td>Brainstorming, variações, pesquisa</td><td>Estratégia, conteúdo longo, análise</td></tr>
   <tr><td>Aderência ao briefing</td><td>Boa</td><td>Muito boa</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Na Mkteúdo, usamos os dois de forma complementar: Claude para estratégia, estruturação de conteúdo e análise de dados de campanha; ChatGPT para brainstorming de variações, pesquisa rápida e testes de abordagens.</p>
 
 <div class="cta-mid"><div><h3>Quer usar IA no marketing da sua empresa de forma estratégica?</h3><p>A Mkteúdo integra IA nas estratégias de marketing digital para empresas de Ribeirão Preto com resultado medido.</p></div><a href="/#contato" class="btn">Falar com especialista →</a></div>
@@ -539,13 +585,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Uma das aplicações de maior ROI imediato de IA no marketing digital é a criação de variações de anúncios para teste A/B em larga escala. Em vez de escrever 3 variações manualmente, é possível gerar 20 variações em minutos — testá-las em paralelo e descobrir qual combinação de headline, copy e CTA converte mais para cada audiência.</p>
 <p>Para Google Ads: gere 15 headlines diferentes para o mesmo grupo de anúncios e deixe o Google testar automaticamente qual performa melhor. O volume de variações possíveis com IA é impossível de replicar manualmente.</p>
 <p>Para Meta Ads: crie 5 ângulos diferentes para o mesmo produto — problema, solução, social proof, autoridade e escassez — e teste qual ressoa com cada segmento de audiência de Ribeirão Preto.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Tarefa</th><th>Tempo manual</th><th>Tempo com IA</th><th>Ganho</th></tr>
   <tr><td>10 headlines para Google Ads</td><td>45 min</td><td>5 min</td><td>9× mais rápido</td></tr>
   <tr><td>5 legendas para Instagram</td><td>2 horas</td><td>15 min</td><td>8× mais rápido</td></tr>
   <tr><td>E-mail de nutrição completo</td><td>3 horas</td><td>30 min</td><td>6× mais rápido</td></tr>
   <tr><td>Artigo de blog 1.500 palavras (rascunho)</td><td>4 horas</td><td>45 min</td><td>5× mais rápido</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h2 id="lgpd-ia">LGPD e IA no marketing: o que você precisa saber</h2>
 <p>Com o uso crescente de ferramentas de IA no marketing, as obrigações da LGPD (Lei Geral de Proteção de Dados) ganham uma dimensão nova que muitas empresas de Ribeirão Preto ainda não consideram adequadamente.</p>

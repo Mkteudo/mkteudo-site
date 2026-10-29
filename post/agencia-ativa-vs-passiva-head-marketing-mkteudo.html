@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -410,7 +455,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="agencia-ativa">O que é uma agência ativa e como ela opera diferente</h2>
 <p>Uma agência ativa opera com a mentalidade de sócio de marketing — não de fornecedor de serviço. Ela tem visão completa do negócio do cliente, propõe estratégia baseada em dados e realidade do mercado, e mede seu resultado em receita gerada — não em posts publicados.</p>
 <p>Como a agência ativa opera diferente:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Agência Passiva</th><th>Agência Ativa</th></tr>
   <tr><td>Espera o cliente dar a pauta</td><td>Propõe pauta baseada em dados e objetivos</td></tr>
   <tr><td>Executa o que é aprovado</td><td>Questiona quando não concorda estrategicamente</td></tr>
@@ -418,7 +463,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <tr><td>Reunião mensal de aprovação</td><td>Alinhamento semanal com comercial e diretoria</td></tr>
   <tr><td>Não sabe o que a venda fechou</td><td>Tem acesso ao CRM e acompanha até o fechamento</td></tr>
   <tr><td>Fee mensal fixo por entregável</td><td>Fee conectado a resultado — com skin in the game</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h2 id="head-marketing">O conceito de Head de Marketing Terceirizado — o que muda</h2>
 <p>O Head de Marketing Terceirizado — também chamado de CMO as a Service ou Fractional CMO — é o modelo em que uma agência ou profissional assume o papel estratégico de diretor de marketing de uma empresa sem ser um colaborador CLT fixo.</p>

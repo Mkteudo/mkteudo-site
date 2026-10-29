@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -407,13 +452,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li><strong>Metodologia testada em múltiplos projetos:</strong> não é aprendizado no seu projeto com o seu dinheiro</li>
   <li><strong>Resolução ágil de problemas técnicos:</strong> canal direto com a RD Station evita semanas de espera em suporte padrão</li>
 </ul>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Sem agência parceira</th><th>Com agência parceira certificada</th></tr>
   <tr><td>Configuração genérica e pouco otimizada</td><td>Configuração validada por projeto e segmento</td></tr>
   <tr><td>Suporte padrão da plataforma</td><td>Canal prioritário de suporte</td></tr>
   <tr><td>Metodologia improvisada</td><td>Metodologia testada em múltiplos projetos</td></tr>
   <tr><td>Sem acesso a novidades antecipadas</td><td>Acesso a funcionalidades beta</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <div class="cta-mid"><div><h3>Quer implementar RD Station com metodologia premiada?</h3><p>Somos Agência Parceira certificada com ROI de 1.275% comprovado em projeto no interior paulista.</p></div><a href="/#contato" class="btn">Falar com especialista →</a></div>
 <h2 id="projetos-premiados">Projetos premiados desenvolvidos pela Mkteúdo com RD Station</h2>
 <p>O case mais emblemático é o <a href="grupo-intelli-roi-1275">Clube do Eletricista do GRUPO INTELLI</a> — 11.100 leads em 6 meses e ROI de 1.275%, totalmente operado no RD Station Marketing. Reconhecido como o Melhor Case de Transformação Digital no RD Limitless 2023.</p>
@@ -446,13 +492,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="quanto-custa-rd">Quanto custa implementar RD Station em Ribeirão Preto com agência parceira</h2>
 <p>O investimento em automação de marketing com agência parceira tem dois componentes: a plataforma e a gestão estratégica. Entender o custo de cada parte permite planejar adequadamente:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Componente</th><th>Custo médio mensal</th><th>O que inclui</th></tr>
   <tr><td>RD Station Marketing (plano básico)</td><td>R$997 – R$1.997</td><td>Até 1.000 leads, automações, landing pages, e-mail</td></tr>
   <tr><td>RD Station Marketing (plano intermediário)</td><td>R$1.997 – R$3.997</td><td>Até 5.000 leads, lead scoring avançado, integrações</td></tr>
   <tr><td>Gestão por agência parceira</td><td>R$2.000 – R$6.000</td><td>Estratégia, configuração, fluxos, relatórios, otimização</td></tr>
   <tr><td>Investimento total mínimo</td><td>R$3.000 – R$8.000</td><td>Plataforma + gestão com resultado esperado</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>O ROI começa a aparecer entre 3 e 6 meses de operação consistente — e cresce progressivamente à medida que a base de leads se expande e os fluxos são otimizados com dados reais. Para ver o resultado possível, leia o case do <a href="grupo-intelli-roi-1275">GRUPO INTELLI com ROI de 1.275%</a>.</p>
 
 

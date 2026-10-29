@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -416,13 +461,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="politica-meta">O que a política do Meta permite e proíbe em serviços financeiros</h2>
 <p>Segundo a <a href="https://www.facebook.com/policies/ads/restricted_content/financial_products_and_services" target="_blank" rel="noopener">Política de Anúncios do Meta</a>, produtos e serviços financeiros são uma categoria restrita — o que significa que podem ser anunciados, mas com requisitos específicos.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Categoria</th><th>Permitido</th><th>Proibido</th></tr>
   <tr><td>Crédito Consignado</td><td>Simulação de parcela, benefícios da portabilidade, destaque de taxa menor</td><td>"Aprovação garantida", "sem consulta ao INSS", claims de ganho rápido</td></tr>
   <tr><td>Antecipação FGTS</td><td>Explicação do processo, prazo, parcela estimada</td><td>"Dinheiro na hora sem burocracia", imagens de maços de notas</td></tr>
   <tr><td>Cartão Consignado</td><td>Limite disponível, desconto em folha, segurança</td><td>"Limite ilimitado", "aprovação automática"</td></tr>
   <tr><td>Público-alvo</td><td>Segmentação por idade, interesse, comportamento</td><td>Segmentação por renda (proibido nas políticas do Meta desde 2019)</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p><strong>Atenção importante:</strong> o Meta adicionou regras de transparência sobre crédito pessoal após investigações regulatórias sobre publicidade enganosa no setor financeiro. Segundo a <a href="https://adseleto.com/meta-politicas-anuncios-2025/" target="_blank" rel="noopener">Adseleto</a>, anunciantes de saúde e finanças precisam garantir autorizações e documentações necessárias — além de evitar claims exagerados que caracterizem promessas de "ganho rápido" ou "garantia imediata".</p>
 
 <div class="cta-mid"><div><h3>Precisa de gestão de Meta Ads para correspondente bancário?</h3><p>A Mkteúdo cria e gerencia campanhas financeiras em conformidade com as políticas do Meta e com foco em conversão.</p></div><a href="/#contato" class="btn">Falar com especialista →</a></div>

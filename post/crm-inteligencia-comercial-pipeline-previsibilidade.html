@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -410,14 +455,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="projecao-ponderada">Projeção ponderada: a conta que transforma pipeline em previsão</h2>
 <p>A maioria das empresas olha o pipeline como um número só: "temos R$ 800 mil em negociação". Esse número não serve para decidir nada, porque trata uma oportunidade recém-criada e uma proposta em assinatura como se tivessem o mesmo valor.</p>
 <p>A <strong>projeção ponderada</strong> corrige isso. Cada etapa recebe um peso — a probabilidade histórica de uma oportunidade naquela etapa virar venda — e o valor de cada negócio é multiplicado por esse peso.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Etapa</th><th>Valor em aberto</th><th>Taxa histórica de fechamento</th><th>Valor ponderado</th></tr>
   <tr><td>Qualificação</td><td>R$ 400.000</td><td>10%</td><td>R$ 40.000</td></tr>
   <tr><td>Diagnóstico</td><td>R$ 250.000</td><td>25%</td><td>R$ 62.500</td></tr>
   <tr><td>Proposta enviada</td><td>R$ 120.000</td><td>45%</td><td>R$ 54.000</td></tr>
   <tr><td>Negociação final</td><td>R$ 30.000</td><td>70%</td><td>R$ 21.000</td></tr>
   <tr><td><strong>Total</strong></td><td><strong>R$ 800.000</strong></td><td>—</td><td><strong>R$ 177.500</strong></td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Os R$ 800 mil viraram R$ 177,5 mil. Esse segundo número é o que você leva para a reunião de diretoria — e o que usa para decidir se contrata, se investe mais em mídia ou se segura a mão.</p>
 
 <h3>De onde vêm os pesos</h3>
@@ -453,14 +499,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="dashboard">O dashboard que mede ação, não só resultado</h2>
 <p>A maior parte dos painéis comerciais mostra apenas resultado: vendas fechadas, receita, ticket médio. O problema é que resultado é <em>atrasado</em> — quando ele cai, o estrago já aconteceu há semanas.</p>
 <p>Um painel útil mostra também <strong>as ações executadas no sistema</strong>, que são indicadores antecedentes:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Indicador de ação</th><th>O que revela</th><th>Frequência</th></tr>
   <tr><td>Oportunidades criadas</td><td>Se há entrada suficiente para o mês que vem</td><td>Semanal</td></tr>
   <tr><td>Atividades registradas por vendedor</td><td>Se o time está trabalhando ou só esperando</td><td>Semanal</td></tr>
   <tr><td>Tempo médio em cada etapa</td><td>Onde as negociações travam</td><td>Mensal</td></tr>
   <tr><td>Oportunidades sem atividade há 14 dias</td><td>Pipeline que parece vivo e está morto</td><td>Semanal</td></tr>
   <tr><td>Taxa de preenchimento de motivo de perda</td><td>Se o aprendizado está sendo capturado</td><td>Mensal</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Esse conjunto responde a uma pergunta que o relatório de vendas não responde: <strong>o resultado ruim do mês veio de pouca atividade, de atividade errada ou de mercado?</strong> São três problemas com três soluções diferentes, e sem indicador de ação você trata os três do mesmo jeito.</p>
 <p>Se quiser ver como isso vira painel na prática, vale ler <a href="/post/dashboard-marketing-digital-lovable-cpl-cac-roi-roas">como montamos dashboards de marketing com CPL, CAC, ROI e ROAS</a>.</p>
 

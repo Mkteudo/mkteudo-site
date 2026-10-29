@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -398,14 +443,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="o-que-e">O que é inside sales — e o que não é</h2>
 <p>A tradução literal é "vendas internas": o vendedor opera de dentro da empresa, conduzindo todo o ciclo remotamente. A confusão mais comum é com telemarketing, e a diferença é estrutural.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th></th><th>Telemarketing</th><th>Inside sales</th><th>Field sales</th></tr>
   <tr><td>Abordagem</td><td>Script fechado, volume alto</td><td>Consultiva, baseada em diagnóstico</td><td>Consultiva, presencial</td></tr>
   <tr><td>Público</td><td>Lista ampla, pouca seleção</td><td>ICP definido e qualificado</td><td>ICP definido</td></tr>
   <tr><td>Ciclo</td><td>Uma ligação</td><td>Várias interações, semanas</td><td>Várias visitas, meses</td></tr>
   <tr><td>Ticket típico</td><td>Baixo</td><td>Médio</td><td>Alto</td></tr>
   <tr><td>Custo por negócio</td><td>Muito baixo</td><td>Baixo a médio</td><td>Alto</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>O que define inside sales não é o telefone. É a combinação de <strong>público qualificado</strong>, <strong>abordagem consultiva</strong> e <strong>processo registrado</strong>.</p>
 
 <h2 id="quando-faz-sentido">Quando inside sales faz sentido</h2>
@@ -446,7 +492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="cadencia">Cadência de contato</h2>
 <p>A causa número um de lead perdido não é preço. É silêncio — da empresa, não do cliente. O estudo clássico da <a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" target="_blank" rel="noopener">Harvard Business Review</a> sobre a vida curta dos leads online mostrou que empresas que respondem na primeira hora têm chance muito maior de qualificar o contato do que as que demoram mais — e a maior parte das empresas analisadas demorava bem mais que isso.</p>
 <p>Uma cadência padrão para B2B, ao longo de duas semanas:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Dia</th><th>Canal</th><th>Objetivo</th></tr>
   <tr><td>1 (até 1h do lead chegar)</td><td>Telefone</td><td>Contato enquanto o interesse está quente</td></tr>
   <tr><td>1</td><td>WhatsApp ou e-mail</td><td>Se não atendeu: mensagem curta com contexto</td></tr>
@@ -455,17 +501,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <tr><td>8</td><td>Telefone</td><td>Terceira tentativa</td></tr>
   <tr><td>11</td><td>LinkedIn</td><td>Conexão com mensagem pessoal</td></tr>
   <tr><td>14</td><td>E-mail</td><td>Encerramento educado, deixando a porta aberta</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Dois princípios importam mais que o calendário exato: <strong>varie o canal e o horário</strong> — insistir sempre às 10h da terça só prova que a pessoa não atende às 10h da terça — e <strong>registre toda tentativa no CRM</strong>, porque sem registro não existe gestão de cadência, só memória.</p>
 
 <h2 id="metas">Metas, rampagem e o que medir</h2>
 <p>Cada papel tem indicadores próprios. Misturá-los é como avaliar um goleiro por gols marcados.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Papel</th><th>Indicador principal</th><th>Indicadores de apoio</th></tr>
   <tr><td>SDR</td><td>Reuniões qualificadas agendadas</td><td>Tentativas por lead, taxa de conexão, taxa de no-show</td></tr>
   <tr><td>Closer</td><td>Receita fechada</td><td>Taxa de fechamento, ciclo médio, ticket médio</td></tr>
   <tr><td>Base</td><td>Receita de recompra e expansão</td><td>Taxa de renovação, carteira sem contato há 90 dias</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <h3>Rampagem</h3>
 <p>Ninguém entrega meta cheia no primeiro mês. Uma rampa realista para B2B costuma ser 30% no primeiro mês, 60% no segundo e 100% no terceiro — e isso precisa estar no plano financeiro antes da contratação, não ser descoberto depois.</p>
 <h3>A reunião semanal</h3>

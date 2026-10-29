@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -403,13 +448,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote><p>Uma agência pode afirmar que "trabalha com RD Station" sem ser parceira certificada. A certificação é o que comprova que a agência passou pela avaliação rigorosa de competência técnica e resultado.</p></blockquote>
 <h2 id="criterios">Quais critérios uma agência precisa cumprir para ser parceira</h2>
 <p>O processo de certificação envolve múltiplas camadas de avaliação que a maioria das agências não consegue cumprir. Isso é positivo — é o que garante qualidade para as empresas que contratam:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Critério</th><th>O que é avaliado</th></tr>
   <tr><td>Certificação técnica da equipe</td><td>Exames formais da RD Station passados por membros da equipe</td></tr>
   <tr><td>Portfólio de clientes ativos</td><td>Mínimo de clientes gerenciados com uso ativo da plataforma</td></tr>
   <tr><td>Qualidade dos resultados</td><td>Métricas de leads, conversão e ROI dos projetos</td></tr>
   <tr><td>Renovação periódica</td><td>A certificação precisa ser mantida — não é título vitalício</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <h2 id="diferenca">O que muda na prática para empresas que trabalham com agência parceira</h2>
 <p>Trabalhar com uma agência parceira certificada da RD Station garante diferenças concretas desde o início do projeto:</p>
 <ul>
@@ -440,14 +486,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="metricas-rd-station">Métricas do RD Station que revelam o real desempenho do marketing</h2>
 <p>O RD Station Marketing oferece dezenas de métricas. Saber quais são as que importam para o negócio é diferencial que separa agências parceiras experientes de usuários iniciantes da plataforma:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Métrica</th><th>O que indica</th><th>Meta saudável</th></tr>
   <tr><td>Taxa de conversão de visitante para lead</td><td>Qualidade das landing pages</td><td>8–15% para B2B</td></tr>
   <tr><td>Taxa de abertura de e-mail</td><td>Qualidade da lista e relevância do assunto</td><td>Acima de 22%</td></tr>
   <tr><td>Taxa de clique (CTR) nos e-mails</td><td>Relevância do conteúdo e força do CTA</td><td>Acima de 3%</td></tr>
   <tr><td>Lead Scoring médio da base</td><td>Qualidade e engajamento geral dos leads</td><td>Crescimento mês a mês</td></tr>
   <tr><td>MQLs gerados por mês</td><td>Leads prontos para abordagem comercial</td><td>Meta definida com o time de vendas</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Para entender como a automação de marketing se conecta ao funil completo, leia nosso guia de <a href="automacao-marketing-rd-station-ribeirao-preto">Automação com RD Station em Ribeirão Preto</a>.</p>
 
 

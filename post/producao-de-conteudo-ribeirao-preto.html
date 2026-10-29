@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -400,12 +445,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 <blockquote><p>Conteúdo estratégico começa pela pesquisa de intenção de busca: o que meu cliente ideal está digitando no Google quando tem o problema que eu resolvo? A resposta define a pauta, não o que a empresa tem vontade de publicar.</p></blockquote>
 <h2 id="funil">Tipos de conteúdo por etapa do funil de vendas</h2>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Etapa</th><th>Tipo de conteúdo</th><th>Objetivo</th></tr>
   <tr><td>Topo — Atração</td><td>Artigos educativos amplos, vídeos explicativos</td><td>Ser encontrado por quem tem o problema</td></tr>
   <tr><td>Meio — Consideração</td><td>Guias completos, cases, comparativos</td><td>Aprofundar interesse e construir confiança</td></tr>
   <tr><td>Fundo — Conversão</td><td>Depoimentos, ROI, demos, propostas</td><td>Converter interesse em decisão de compra</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>A maioria das empresas de Ribeirão Preto produz quase exclusivamente conteúdo de topo — e depois reclama que "conteúdo não converte". Conteúdo de fundo de funil tem taxa de conversão muito superior, mas exige que o visitante já tenha passado pelas etapas anteriores.</p>
 <h2 id="seo-local">Como criar conteúdo otimizado para SEO em Ribeirão Preto</h2>
 <p>Para que o conteúdo apareça no Google, cada artigo precisa de otimização técnica específica:</p>
@@ -419,12 +465,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 <div class="cta-mid"><div><h3>Quer que a Mkteúdo crie e gerencie o conteúdo da sua empresa?</h3><p>Produzimos conteúdo estratégico e otimizado para SEO para empresas de Ribeirão Preto.</p></div><a href="/#contato" class="btn">Falar com especialista →</a></div>
 <h2 id="frequencia">Frequência ideal de publicação para começar a ver resultado</h2>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Frequência</th><th>Resultado esperado</th><th>Perfil indicado</th></tr>
   <tr><td>1 artigo por mês</td><td>Crescimento lento, 12–18 meses</td><td>Empresa começando, budget limitado</td></tr>
   <tr><td>2 artigos por mês</td><td>Crescimento consistente, 6–12 meses</td><td>PME com estratégia em andamento</td></tr>
   <tr><td>4+ artigos por mês</td><td>Crescimento acelerado, 3–6 meses</td><td>Empresa priorizando conteúdo como canal</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Para PMEs de Ribeirão Preto começando agora, a recomendação é 2 artigos por mês bem planejados e otimizados. É sustentável, gera resultado em tempo razoável e pode ser escalado quando os primeiros leads orgânicos chegarem.</p>
 <h2 id="metricas">Como medir se o conteúdo está gerando resultado de negócio real</h2>
 <ul>

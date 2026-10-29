@@ -270,6 +270,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -464,7 +509,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="comparativo">Comparativo: Pipedrive vs HubSpot vs RD Station CRM</h2>
 <p>Cada plataforma tem um perfil de empresa ideal. Escolher a ferramenta errada é um dos principais motivos de abandono de CRM após 3 meses de tentativa.</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Critério</th><th>Pipedrive</th><th>HubSpot</th><th>RD Station CRM</th></tr>
   <tr><td>Facilidade de uso</td><td>5/5</td><td>4/5</td><td>5/5</td></tr>
   <tr><td>Integração com marketing</td><td>3/5</td><td>5/5</td><td>5/5 (nativa)</td></tr>
@@ -472,7 +517,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <tr><td>Automações de vendas</td><td>4/5</td><td>5/5</td><td>3/5</td></tr>
   <tr><td>Melhor para</td><td>Times de vendas focados</td><td>Empresas em crescimento acelerado</td><td>Quem já usa RD Station Marketing</td></tr>
   <tr><td>Suporte em português</td><td>Limitado</td><td>Bom</td><td>Excelente</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h3>Nossa recomendação para PMEs de Ribeirão Preto</h3>
 <p>Para empresas que já usam ou planejam usar o RD Station Marketing, o <strong>RD Station CRM</strong> é a escolha mais estratégica — a integração nativa garante que leads gerados pelas campanhas chegam automaticamente para o time comercial, com todo o histórico de comportamento digital visível para o vendedor na hora da abordagem.</p>
@@ -548,14 +594,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="crm-para-gestores">CRM como ferramenta de gestão: o que o gestor deve analisar</h2>
 <p>Para o gestor de vendas, o CRM é um instrumento de diagnóstico — não apenas de registro. As análises que geram mais insight acionável:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Análise</th><th>O que revela</th><th>Ação imediata</th></tr>
   <tr><td>Taxa de conversão por etapa</td><td>Onde as oportunidades são perdidas</td><td>Treinar o time na etapa com maior perda</td></tr>
   <tr><td>Tempo médio por etapa</td><td>Gargalos no processo</td><td>Investigar o que trava a progressão</td></tr>
   <tr><td>Pipeline por vendedor</td><td>Distribuição de carga e oportunidades</td><td>Rebalancear carteiras ou reforçar time</td></tr>
   <tr><td>Taxa de ganho por fonte de lead</td><td>Qual canal gera lead mais qualificado</td><td>Direcionar investimento de marketing</td></tr>
   <tr><td>Motivos de perda</td><td>Por que leads não convertem</td><td>Ajustar proposta, preço ou discurso</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <blockquote><p>O CRM que os gestores de Ribeirão Preto mais subutilizam é o de "motivos de perda". Cada oportunidade perdida registrada com o motivo real é uma lição valiosa — e um padrão que, quando identificado, pode ser corrigido. Sem esse registro, o mesmo erro se repete indefinidamente.</p></blockquote>
 
 <h2 id="adocao-time">Como garantir que o time vai usar o CRM de verdade</h2>

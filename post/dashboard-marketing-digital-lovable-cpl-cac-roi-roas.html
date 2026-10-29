@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -406,7 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="metricas-essenciais">CPL, MQL, SQL, CAC, LTV, ROI e ROAS — o que cada métrica significa</h2>
 <p>Antes de criar o dashboard, é preciso entender o que cada indicador mede — e por que todos eles juntos formam a visão completa do resultado de marketing:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Sigla</th><th>Nome</th><th>Fórmula</th><th>Para que serve</th></tr>
   <tr><td>CPL</td><td>Custo por Lead</td><td>Investimento ÷ Leads gerados</td><td>Mede eficiência da geração de leads</td></tr>
   <tr><td>Custo por MQL</td><td>Custo por Lead Qualificado</td><td>Investimento ÷ MQLs gerados</td><td>Mede qualidade dos leads, não apenas volume</td></tr>
@@ -415,7 +460,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <tr><td>LTV</td><td>Lifetime Value</td><td>Ticket médio × Frequência × Tempo de retenção</td><td>Mede quanto cada cliente gera ao longo do tempo</td></tr>
   <tr><td>ROI</td><td>Retorno sobre Investimento</td><td>(Receita - Investimento) ÷ Investimento × 100</td><td>Mede o retorno total do investimento em marketing</td></tr>
   <tr><td>ROAS</td><td>Retorno sobre Investimento em Anúncios</td><td>Receita de anúncios ÷ Investimento em anúncios</td><td>Mede eficiência específica de cada campanha paga</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 
 <h2 id="lovable">Como a Mkteúdo usa Lovable para criar dashboards inteligentes em tempo real</h2>
 <p>O <a href="https://lovable.dev" target="_blank" rel="noopener">Lovable</a> é uma plataforma de criação de aplicativos com IA que permite construir dashboards completamente customizados sem precisar de equipe de desenvolvimento. A Mkteúdo usa Lovable para criar painéis de marketing personalizados para cada cliente — conectando os dados de Google Ads, Meta Ads, CRM e planilhas num único painel visual e interativo.</p>

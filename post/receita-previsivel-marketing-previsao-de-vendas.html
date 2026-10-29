@@ -228,6 +228,51 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-tabelas-v1">
+/* Tabelas no celular.
+   Dois defeitos somados deixavam a tabela ilegivel:
+   1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
+      faz as colunas ESPREMEREM em vez de rolar — overflow-x nunca dispara;
+   2) o overflow-wrap:anywhere aplicado a .content era herdado pelas celulas e
+      quebrava palavra no meio ("Telemark / eting").
+   A correcao: a tabela volta a ser tabela, com largura minima, e quem rola e o
+   involucro .tbl-wrap. As celulas quebram por palavra, nunca no meio dela. */
+/* o item de grid precisa de min-width:0, senao ele estica para caber a tabela
+   em vez de deixar o involucro rolar (blowout classico de grid/flex) */
+.layout,.content,.side{min-width:0}
+.content>*{max-width:100%}
+.tbl-wrap{
+  max-width:100%;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  margin:1.6rem 0;border-radius:12px;border:1px solid var(--bor,#ebebeb);
+  background:
+    linear-gradient(to right,var(--sur,#fff) 30%,rgba(255,255,255,0)),
+    linear-gradient(to right,rgba(255,255,255,0),var(--sur,#fff) 70%) 100% 0,
+    radial-gradient(farthest-side at 0 50%,rgba(13,0,16,.14),rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%,rgba(13,0,16,.14),rgba(0,0,0,0)) 100% 0;
+  background-repeat:no-repeat;background-size:36px 100%,36px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.content .tbl-wrap table,.tbl-wrap table{
+  display:table!important;width:100%;min-width:620px;max-width:none;
+  margin:0;overflow:visible;border-collapse:collapse;table-layout:auto;
+}
+.content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+  overflow-wrap:break-word;word-break:normal;hyphens:none;vertical-align:top;
+}
+.content .tbl-wrap th,.tbl-wrap th{white-space:nowrap}
+@media (max-width:640px){
+  .content .tbl-wrap table,.tbl-wrap table{min-width:560px;font-size:.85rem}
+  .content .tbl-wrap th,.content .tbl-wrap td,.tbl-wrap th,.tbl-wrap td{
+    padding:.6rem .8rem;overflow-wrap:break-word!important;word-break:normal!important;
+  }
+  .tbl-wrap::after{content:'';display:block}
+}
+.tbl-aviso{
+  display:none;font-size:.78rem;color:var(--mut,#6B6B6B);margin:-1.1rem 0 1.6rem;
+}
+@media (max-width:640px){.tbl-aviso{display:block}}
+</style>
 <style id="mkt-a11y-v1">
 /* ancoras nao ficam escondidas atras do menu fixo */
 section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
@@ -407,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="engenharia-reversa">A engenharia reversa da meta</h2>
 <p>A conta tem sete degraus e desce da receita até o investimento em mídia. Vamos com números redondos para o raciocínio ficar visível.</p>
 <p><strong>Meta do trimestre: R$ 600.000.</strong></p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Degrau</th><th>Conta</th><th>Resultado</th></tr>
   <tr><td>1. Receita necessária</td><td>meta do período</td><td>R$ 600.000</td></tr>
   <tr><td>2. Ticket médio</td><td>histórico dos últimos 12 meses</td><td>R$ 30.000</td></tr>
@@ -420,7 +465,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <tr><td>9. Leads necessários</td><td>267 ÷ 0,25</td><td>1.068 leads</td></tr>
   <tr><td>10. CPL médio</td><td>histórico das campanhas</td><td>R$ 45</td></tr>
   <tr><td>11. <strong>Investimento necessário</strong></td><td>1.068 × 45</td><td><strong>R$ 48.060</strong></td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Pronto: a meta de R$ 600 mil exige, nessa operação, cerca de <strong>R$ 48 mil de mídia e 1.068 leads</strong>. Esse é o número que vira orçamento — e é defensável linha a linha diante de qualquer sócio.</p>
 
 <h3>O que a conta revela quando você a faz pela primeira vez</h3>
@@ -447,12 +493,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="tres-motores">Os três motores de aquisição</h2>
 <p>Depender de uma fonte só é a causa mais comum de receita imprevisível. Uma operação madura trabalha três motores ao mesmo tempo, e eles têm comportamentos diferentes:</p>
-<table>
+<div class="tbl-wrap"><table>
   <tr><th>Motor</th><th>Como funciona</th><th>Velocidade</th><th>Previsibilidade</th></tr>
   <tr><td>Inbound</td><td>conteúdo e busca atraem quem já procura</td><td>lenta para ligar, estável depois</td><td>alta</td></tr>
   <tr><td>Mídia paga</td><td>verba compra atenção agora</td><td>imediata</td><td>média — some quando a verba some</td></tr>
   <tr><td>Outbound</td><td>prospecção ativa sobre lista de ICP</td><td>rápida</td><td>alta, mas depende de gente</td></tr>
-</table>
+</table></div>
+<p class="tbl-aviso">Arraste a tabela para o lado para ver todas as colunas.</p>
 <p>Quem só faz mídia paga tem receita que acompanha o extrato bancário. Quem só faz inbound demora a reagir quando precisa acelerar. Quem só faz outbound cresce no limite do número de pessoas no time. A previsibilidade vem da combinação — e do fato de que, quando um motor falha, os outros dois seguram o trimestre.</p>
 <p>Se o motor que falta na sua operação é a prospecção ativa, o caminho é <a href="/post/como-montar-operacao-inside-sales">montar uma operação de inside sales</a>. Se é o inbound, comece por <a href="/post/conteudo-motor-geracao-de-leads-maquina-de-vendas">conteúdo como combustível da máquina de vendas</a>.</p>
 
