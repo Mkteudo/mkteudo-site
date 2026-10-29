@@ -364,6 +364,27 @@
     return campo ? campo.value : '';
   }
 
+  /* No modo "managed" o Turnstile se resolve sozinho, mas leva 1 a 3
+     segundos. Quem clica em enviar antes disso recebia um erro pedindo
+     para "confirmar que não é um robô" — sem nada visível para clicar.
+     Beco sem saída que custa lead. Agora a gente espera o token chegar,
+     e só desiste depois do prazo: nesse caso o envio segue sem token e
+     a planilha marca a linha como não verificada, em vez de perdê-la. */
+  function esperarToken(formEl, msEspera) {
+    return new Promise(function (resolve) {
+      if (!window.turnstile) return resolve('');          /* não carregou */
+      var jaTem = tokenTurnstile(formEl);
+      if (jaTem) return resolve(jaTem);
+
+      var limite = Date.now() + (msEspera || 8000);
+      var timer = setInterval(function () {
+        var t = tokenTurnstile(formEl);
+        if (t)                { clearInterval(timer); resolve(t); }
+        else if (Date.now() > limite) { clearInterval(timer); resolve(''); }
+      }, 180);
+    });
+  }
+
   /* ───────────────────────── utilidades de form ─────────────────────── */
   function valores(formEl) {
     var out = {};
@@ -419,6 +440,7 @@
     drenarFila: drenarFila,
     carregarTurnstile: carregarTurnstile,
     tokenTurnstile: tokenTurnstile,
+    esperarToken: esperarToken,
     valores: valores,
     emailValido: emailValido,
     telefoneValido: telefoneValido,

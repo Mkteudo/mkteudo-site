@@ -1667,9 +1667,12 @@ document.addEventListener("submit",function(e){
     if(!M.telefoneValido(v.telefone)) { cx.textContent='Confira o WhatsApp: inclua o DDD.'; cx.hidden=false; return; }
     if(!v.nivel_decisao)              { cx.textContent='Escolha seu nível de decisão — é o que define quem conduz a conversa do nosso lado.'; cx.hidden=false; return; }
 
-    var token = M.tokenTurnstile(f);
-    if(window.turnstile && !token)    { cx.textContent='Confirme que você não é um robô para concluir.'; cx.hidden=false; return; }
+    var btn = document.getElementById('btnDiag');
+    btn.disabled = true; btn.textContent = 'Verificando…';
+    M.esperarToken(f).then(function(token){ concluir(token); });
+    return;
 
+    function concluir(token){
     /* atualiza o contato caso tenha corrigido algo na tela final */
     S.leadNome=v.nome; S.leadEmail=v.email; S.leadTelefone=v.telefone; S.leadEmpresa=v.empresa;
 
@@ -1678,9 +1681,7 @@ document.addEventListener("submit",function(e){
       prazo: v.prazo || ''
     });
     var p = M.pontuar(dados);
-
-    var btn = document.getElementById('btnDiag');
-    btn.disabled = true; btn.textContent = 'Enviando…';
+    btn.textContent = 'Enviando…';
 
     var ctx = M.contexto();
     M.enviar(Object.assign({}, dados, ctx, {
@@ -1696,6 +1697,7 @@ document.addEventListener("submit",function(e){
       });
       mostrarSucessoLead();
     });
+    }
   });
 
   /* ── 6. Máscara de telefone no portão, quando ele renderizar ── */

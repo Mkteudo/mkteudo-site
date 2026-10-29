@@ -925,19 +925,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var v = M.valores(p2);
         if(!v.nivel_decisao) return erro(cx, 'Escolha seu nível de decisão — é o que define quem conduz a conversa do nosso lado.');
 
-        var token = M.tokenTurnstile(p2);
-        if(window.turnstile && !token){
-          return erro(cx, 'Confirme que você não é um robô para concluir o envio.');
-        }
+        var btn = document.getElementById('btnEnviarP2');
+        btn.disabled = true; btn.textContent = 'Verificando…';
 
+        /* espera o anti-spam resolver em vez de recusar o envio */
+        M.esperarToken(p2).then(function(token){ concluir(token); });
+        return;
+
+        function concluir(token){
         var dados = Object.assign({}, dadosP1, v);
         var ctx   = M.contexto();
         dados.visitas = ctx.visitas;
 
         var p = M.pontuar(dados);
-
-        var btn = document.getElementById('btnEnviarP2');
-        btn.disabled = true; btn.textContent = 'Enviando…';
+        btn.textContent = 'Enviando…';
 
         var payload = Object.assign({}, dados, ctx, {
           origem_form: 'contato',
@@ -965,6 +966,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
           ok.scrollIntoView({behavior:'smooth', block:'center'});
         });
+        }
       });
 
       /* ───── Abandono: se a pessoa escreveu bastante e sai sem enviar,
