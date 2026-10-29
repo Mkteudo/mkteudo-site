@@ -175,8 +175,16 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-a11y-v1">
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.pular{position:absolute;left:-9999px;top:0;z-index:2000;background:#9428e4;color:#fff;padding:.7rem 1.2rem;border-radius:0 0 10px 0;font-weight:600;font-size:.9rem;text-decoration:none}
+.pular:focus{left:0}
+:focus-visible{outline:2px solid #9428e4;outline-offset:2px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mkteudo.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Conteúdo que move negócios.", "item": "https://www.mkteudo.com.br/blog"}]}</script>
 </head>
 <body>
+<a href="#conteudo" class="pular">Pular para o conteúdo</a>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -190,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/">Home</a><a href="/#servicos">Serviços</a>
   <a href="/#cases">Cases</a><a href="/blog">Blog</a><a href="/#contato">Contato</a>
 </div>
-<header class="page-header">
+<main id="conteudo"><header class="page-header">
   <div class="eyebrow">Blog</div>
   <h1>Conteúdo que move negócios.</h1>
   <p>Artigos, cases de sucesso e insights sobre marketing digital para empresas do interior paulista.</p>
@@ -212,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <img src="/imagens/capas/agencia-ativa-vs-passiva-head-marketing-mkteudo.jpg" alt="Agência ativa vs passiva" class="card__img" loading="lazy" decoding="async">
     <div class="card__body">
       <div class="card__meta"><span class="card__tag">Sobre a Mkteúdo</span><span class="card__date">29 mar 2026</span><span>9 min</span></div>
-      <h3 class="card__title">Agência passiva ou agência ativa? Conheça o modelo que realmente transforma resultados</h3>
+      <h2 class="sr-only">Artigos do blog</h2><h3 class="card__title">Agência passiva ou agência ativa? Conheça o modelo que realmente transforma resultados</h3>
       <p class="card__excerpt">A Mkteúdo opera como Head de Marketing do cliente — dentro, propondo e integrando. Entenda a diferença entre entregar relatório e entregar resultado.</p>
       <span class="card__read">Ler mais →</span>
     </div>
@@ -562,7 +570,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </div></div>
 
-<footer class="footer">
+</main>
+  <footer class="footer">
     <div class="footer__wrap">
       <div class="footer__grid">
         <div>

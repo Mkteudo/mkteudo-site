@@ -259,8 +259,15 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
+<style id="mkt-a11y-v1">
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.pular{position:absolute;left:-9999px;top:0;z-index:2000;background:#9428e4;color:#fff;padding:.7rem 1.2rem;border-radius:0 0 10px 0;font-weight:600;font-size:.9rem;text-decoration:none}
+.pular:focus{left:0}
+:focus-visible{outline:2px solid #9428e4;outline-offset:2px}
+</style>
 </head>
 <body>
+<a href="#conteudo" class="pular">Pular para o conteúdo</a>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -273,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </nav>
 
   <div class="mobile-overlay" id="mobileMenu"><button class="mobile-overlay__close" onclick="toggleMenu()">✕</button><a href="/" onclick="toggleMenu()">Home</a><a href="/servicos" onclick="toggleMenu()">Serviços</a><a href="/#sobre" onclick="toggleMenu()">Sobre</a><a href="/metodo-picc" onclick="toggleMenu()">Método PICC</a><a href="/rd-station" onclick="toggleMenu()">RD Station</a><a href="/#cases" onclick="toggleMenu()">Cases</a><a href="/calculadora" onclick="toggleMenu()">Calculadora</a><a href="/blog" onclick="toggleMenu()">Blog</a><a href="/#contato" onclick="toggleMenu()">Fale conosco</a></div>
-  <section class="hero" id="hero">
+  <main id="conteudo"><section class="hero" id="hero">
     <div class="hero__bg-image"></div>
     <div class="hero__bg-gradient"></div>
     <div class="hero__bg-gradient2"></div>
@@ -815,6 +822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  </main>
   <footer class="footer">
     <div class="footer__wrap">
       <div class="footer__grid">
