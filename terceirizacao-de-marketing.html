@@ -259,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="page-header__eyebrow">Terceirização</div>
       <h1 class="page-header__title">Terceirização de Marketing</h1>
       <p class="page-header__desc">Um time completo de marketing operando a sua empresa, sem a folha de pagamento de um departamento.</p>
-      <div style="margin-top:2rem"><a href="/#contato" class="btn btn--primary">Falar com a Mkteúdo <span class="btn__arrow">→</span></a></div>
+      <div style="margin-top:2rem"><a href="#mapeamento" class="btn btn--primary">Mapear minha necessidade <span class="btn__arrow">→</span></a></div>
     </div>
   </header>
 
@@ -295,6 +295,222 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cm-prova reveal">
         <h2>Quem já operamos</h2>
         <p>Mais de 10 anos de operação, com histórico que inclui projetos para a Copa do Mundo de 2014, as Olimpíadas de 2016 e empresas como LATAM, Accenture e Grupo Bandeirantes. Duas vezes premiados no RD Limitless.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MAPEAMENTO DE TERCEIRIZAÇÃO
+       Quatro passos. O contato é gravado no passo 1; cada passo
+       seguinte enriquece a MESMA linha da planilha (sessao_id).
+       No fim devolve um resumo do mapeamento para quem preencheu —
+       quem dá informação precisa receber algo em troca.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="mapeamento">
+    <div class="container">
+      <div class="section__eyebrow">Mapeamento</div>
+      <h2 class="section__title">Quanto custaria terceirizar o seu marketing?</h2>
+      <p class="section__desc">Responda em 2 minutos e receba um mapa do que você já cobre, do que está descoberto e de quanto sua operação custa hoje. Sem compromisso.</p>
+
+      <div class="mp" id="mp">
+        <div class="mp__bar"><div class="mp__fill" id="mpFill"></div></div>
+        <div class="mp__steps" id="mpSteps">
+          <span class="on">1. Contato</span><span>2. Necessidade</span><span>3. Hoje</span><span>4. Verba</span>
+        </div>
+
+        <!-- PASSO 1 -->
+        <form class="mp__form" id="mp1" novalidate>
+          <p class="mp__intro">Começamos pelo básico. Quatro campos.</p>
+          <div class="mp__row">
+            <label class="mp__f"><span>Nome completo *</span><input type="text" name="nome" autocomplete="name" required></label>
+            <label class="mp__f"><span>E-mail profissional *</span><input type="email" name="email" autocomplete="email" required></label>
+          </div>
+          <div class="mp__row">
+            <label class="mp__f"><span>WhatsApp *</span><input type="tel" name="telefone" placeholder="(16) 9 0000-0000" required></label>
+            <label class="mp__f"><span>Empresa *</span><input type="text" name="empresa" autocomplete="organization" required></label>
+          </div>
+          <label class="mp__f"><span>Site da empresa</span><input type="text" name="site" placeholder="suaempresa.com.br" inputmode="url"></label>
+          <div class="mp__erro" id="mpE1" hidden></div>
+          <div class="mp__nav"><span></span><button type="submit" class="btn btn--primary">Continuar <span class="btn__arrow">→</span></button></div>
+        </form>
+
+        <!-- PASSO 2 -->
+        <form class="mp__form" id="mp2" novalidate hidden>
+          <p class="mp__intro" id="mpI2">O que você precisa que alguém assuma?</p>
+          <div class="mp__f">
+            <span>Marque todas as frentes que fazem falta hoje *</span>
+            <div class="mp__chips">
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Estratégia e planejamento"><span>Estratégia e planejamento</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Conteúdo e redes sociais"><span>Conteúdo e redes sociais</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Mídia paga"><span>Mídia paga (Google e Meta)</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="SEO e conteúdo para busca"><span>SEO e conteúdo para busca</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="CRM e automação"><span>CRM e automação</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Dashboards e dados"><span>Dashboards e dados</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Vídeo"><span>Vídeo</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="E-mail marketing"><span>E-mail marketing</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Site e landing pages"><span>Site e landing pages</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Branding e identidade"><span>Branding e identidade</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Eventos e feiras"><span>Eventos e feiras</span></label>
+              <label class="mp__chip"><input type="checkbox" name="frentes" value="Campanhas de incentivo"><span>Campanhas de incentivo</span></label>
+            </div>
+          </div>
+          <div class="mp__f">
+            <span>Qual o objetivo principal?</span>
+            <div class="mp__chips">
+              <label class="mp__chip mp__chip--r"><input type="radio" name="objetivo" value="Gerar mais leads"><span>Gerar mais leads</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="objetivo" value="Aumentar vendas"><span>Aumentar vendas</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="objetivo" value="Estruturar o processo"><span>Estruturar o processo</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="objetivo" value="Reduzir custo da operação"><span>Reduzir custo da operação</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="objetivo" value="Construir marca"><span>Construir marca</span></label>
+            </div>
+          </div>
+          <div class="mp__erro" id="mpE2" hidden></div>
+          <div class="mp__nav"><button type="button" class="mp__voltar" data-volta="1">← Voltar</button><button type="submit" class="btn btn--primary">Continuar <span class="btn__arrow">→</span></button></div>
+        </form>
+
+        <!-- PASSO 3 -->
+        <form class="mp__form" id="mp3" novalidate hidden>
+          <p class="mp__intro">Agora o que já existe. É isso que define o tamanho do trabalho.</p>
+          <div class="mp__f">
+            <span>Quem faz o marketing hoje? *</span>
+            <div class="mp__chips">
+              <label class="mp__chip mp__chip--r"><input type="radio" name="quem_faz" value="Ninguém"><span>Ninguém</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="quem_faz" value="Eu mesmo, sobrando tempo"><span>Eu mesmo, no tempo que sobra</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="quem_faz" value="Time interno"><span>Um time interno</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="quem_faz" value="Agência"><span>Uma agência</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="quem_faz" value="Interno + agência"><span>Interno + agência</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="quem_faz" value="Freelancers"><span>Freelancers avulsos</span></label>
+            </div>
+          </div>
+          <div class="mp__f">
+            <span>Quantas pessoas dedicadas a marketing?</span>
+            <div class="mp__chips">
+              <label class="mp__chip mp__chip--r"><input type="radio" name="pessoas" value="0"><span>Nenhuma</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="pessoas" value="1"><span>1</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="pessoas" value="2"><span>2</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="pessoas" value="3"><span>3</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="pessoas" value="4+"><span>4 ou mais</span></label>
+            </div>
+          </div>
+          <div class="mp__f">
+            <span>Custo mensal com essas pessoas (salário + encargos)</span>
+            <div class="mp__chips">
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_pessoas" value="Nenhum"><span>Nenhum</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_pessoas" value="Até R$8 mil"><span>Até R$8 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_pessoas" value="R$8–20 mil"><span>R$8 a 20 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_pessoas" value="R$20–40 mil"><span>R$20 a 40 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_pessoas" value="Acima de R$40 mil"><span>Acima de R$40 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_pessoas" value="Prefiro não informar"><span>Prefiro não informar</span></label>
+            </div>
+          </div>
+          <div class="mp__f">
+            <span>Custo mensal com ferramentas</span>
+            <div class="mp__chips">
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_ferramentas" value="Nenhum"><span>Nenhum</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_ferramentas" value="Até R$1 mil"><span>Até R$1 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_ferramentas" value="R$1–3 mil"><span>R$1 a 3 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_ferramentas" value="R$3–8 mil"><span>R$3 a 8 mil</span></label>
+              <label class="mp__chip mp__chip--r"><input type="radio" name="custo_ferramentas" value="Acima de R$8 mil"><span>Acima de R$8 mil</span></label>
+            </div>
+          </div>
+          <div class="mp__f">
+            <span>O que você já tem funcionando?</span>
+            <div class="mp__chips">
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="CRM em uso"><span>CRM em uso</span></label>
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="Site atualizado"><span>Site atualizado</span></label>
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="Rastreamento configurado"><span>Rastreamento configurado</span></label>
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="Automação de marketing"><span>Automação de marketing</span></label>
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="Campanhas rodando"><span>Campanhas rodando</span></label>
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="Processo comercial definido"><span>Processo comercial definido</span></label>
+              <label class="mp__chip"><input type="checkbox" name="ja_tem" value="Nada disso"><span>Nada disso ainda</span></label>
+            </div>
+          </div>
+          <div class="mp__erro" id="mpE3" hidden></div>
+          <div class="mp__nav"><button type="button" class="mp__voltar" data-volta="2">← Voltar</button><button type="submit" class="btn btn--primary">Continuar <span class="btn__arrow">→</span></button></div>
+        </form>
+
+        <!-- PASSO 4 -->
+        <form class="mp__form" id="mp4" novalidate hidden>
+          <p class="mp__intro">Último passo. Isso define o que é possível montar.</p>
+          <div class="mp__row">
+            <div class="mp__f">
+              <span>Verba mensal para mídia (anúncios)</span>
+              <div class="mp__chips">
+                <label class="mp__chip mp__chip--r"><input type="radio" name="verba_midia" value="Nenhuma"><span>Nenhuma</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="verba_midia" value="Até R$3 mil"><span>Até R$3 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="verba_midia" value="R$3–10 mil"><span>R$3 a 10 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="verba_midia" value="R$10–30 mil"><span>R$10 a 30 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="verba_midia" value="Acima de R$30 mil"><span>Acima de R$30 mil</span></label>
+              </div>
+            </div>
+            <div class="mp__f">
+              <span>Verba mensal para a operação (o time)</span>
+              <div class="mp__chips">
+                <label class="mp__chip mp__chip--r"><input type="radio" name="investimento" value="Até R$2 mil"><span>Até R$2 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="investimento" value="R$2–5 mil"><span>R$2 a 5 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="investimento" value="R$5–10 mil"><span>R$5 a 10 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="investimento" value="+R$10 mil"><span>Acima de R$10 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="investimento" value="Ainda não sei"><span>Ainda não sei</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="mp__row">
+            <div class="mp__f">
+              <span>Faturamento mensal aproximado</span>
+              <div class="mp__chips">
+                <label class="mp__chip mp__chip--r"><input type="radio" name="faturamento" value="Até R$50 mil"><span>Até R$50 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="faturamento" value="R$50–200 mil"><span>R$50 a 200 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="faturamento" value="R$200–500 mil"><span>R$200 a 500 mil</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="faturamento" value="R$500 mil–1 milhão"><span>R$500 mil a 1 milhão</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="faturamento" value="Acima de R$1 milhão"><span>Acima de R$1 milhão</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="faturamento" value="Prefiro não informar"><span>Prefiro não informar</span></label>
+              </div>
+            </div>
+            <div class="mp__f">
+              <span>Seu nível de decisão *</span>
+              <div class="mp__chips">
+                <label class="mp__chip mp__chip--r"><input type="radio" name="nivel_decisao" value="Sócio / Proprietário"><span>Sócio / Proprietário</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="nivel_decisao" value="CEO / Presidente"><span>CEO / Presidente</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="nivel_decisao" value="Diretor(a)"><span>Diretor(a)</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="nivel_decisao" value="Gerente"><span>Gerente</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="nivel_decisao" value="Coordenador(a) / Supervisor(a)"><span>Coordenador(a)</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="nivel_decisao" value="Analista / Assistente"><span>Analista / Assistente</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="mp__row">
+            <div class="mp__f">
+              <span>Setor da empresa</span>
+              <select name="setor">
+                <option value="">Selecione…</option>
+                <option>Agronegócio</option><option>Saúde, clínicas e hospitais</option>
+                <option>Indústria</option><option>Construção e imobiliário</option>
+                <option>Educação</option><option>Tecnologia e software</option>
+                <option>Serviços B2B</option><option>Varejo e e-commerce</option>
+                <option>Alimentação e food service</option><option>Automotivo</option>
+                <option>Financeiro e seguros</option><option>Jurídico e contábil</option>
+                <option>Beleza e estética</option><option>Logística e transporte</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="mp__f">
+              <span>Em quanto tempo pretende começar?</span>
+              <div class="mp__chips">
+                <label class="mp__chip mp__chip--r"><input type="radio" name="prazo" value="Imediato"><span>Imediato</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="prazo" value="30 dias"><span>30 dias</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="prazo" value="60–90 dias"><span>60 a 90 dias</span></label>
+                <label class="mp__chip mp__chip--r"><input type="radio" name="prazo" value="Só estou pesquisando"><span>Só pesquisando</span></label>
+              </div>
+            </div>
+          </div>
+          <label class="mp__f"><span>Algo que a gente deveria saber?</span><textarea name="mensagem" rows="3" placeholder="Contexto, restrição, histórico com agências…"></textarea></label>
+          <div class="mp__f"><div class="cf-turnstile" data-sitekey="0x4AAAAAAFrUQu2VfFUGikMh" data-theme="light" data-size="flexible" data-language="pt-br" data-action="mapeamento-terceirizacao"></div></div>
+          <div class="mp__erro" id="mpE4" hidden></div>
+          <div class="mp__nav"><button type="button" class="mp__voltar" data-volta="3">← Voltar</button><button type="submit" class="btn btn--primary" id="mpEnviar">Ver meu mapeamento <span class="btn__arrow">→</span></button></div>
+        </form>
+
+        <!-- RESULTADO -->
+        <div class="mp__res" id="mpRes" hidden></div>
       </div>
     </div>
   </section>
@@ -485,6 +701,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .cm-rel a{font-size:.85rem;font-weight:600;color:var(--clr-accent);border:1.5px solid var(--clr-border);border-radius:100px;padding:.5rem 1.1rem;transition:all .25s}
     .cm-rel a:hover{border-color:var(--clr-accent);background:var(--clr-accent-light)}
     @media(max-width:680px){.cm-prova{padding:1.6rem}.cm-card{padding:1.3rem}}
+      /* ── mapeamento de terceirização ── */
+    .mp{max-width:860px;margin:0 auto;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:20px;padding:2.5rem}
+    .mp__bar{height:4px;background:var(--clr-border);border-radius:100px;overflow:hidden;margin-bottom:.55rem}
+    .mp__fill{height:100%;width:25%;background:linear-gradient(90deg,var(--clr-accent),var(--clr-neon));border-radius:100px;transition:width .45s var(--ease-out)}
+    .mp__steps{display:flex;justify-content:space-between;font-size:.72rem;font-weight:600;color:var(--clr-text-muted);letter-spacing:.02em;margin-bottom:2rem}
+    .mp__steps .on{color:var(--clr-accent)}
+    .mp__form{display:flex;flex-direction:column;gap:1.5rem}
+    .mp__form[hidden]{display:none}
+    .mp__intro{font-size:.95rem;color:var(--clr-text-muted);line-height:1.6;margin:0}
+    .mp__row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .mp__f{display:flex;flex-direction:column;gap:.5rem}
+    .mp__f>span{font-size:.82rem;font-weight:600;color:var(--clr-text)}
+    .mp__f input[type=text],.mp__f input[type=email],.mp__f input[type=tel],.mp__f select,.mp__f textarea{
+      width:100%;padding:.85rem 1.1rem;border:1.5px solid var(--clr-border);border-radius:10px;
+      font-family:var(--font-body);font-size:.92rem;background:var(--clr-bg);color:var(--clr-text);
+      outline:none;transition:border-color .25s,box-shadow .25s;appearance:none}
+    .mp__f input:focus,.mp__f select:focus,.mp__f textarea:focus{border-color:var(--clr-accent);box-shadow:0 0 0 3px rgba(148,40,228,.1)}
+    .mp__f textarea{resize:vertical;min-height:84px}
+    .mp__chips{display:flex;flex-wrap:wrap;gap:.45rem}
+    .mp__chip{display:inline-flex;align-items:center;padding:.48rem .95rem;border:1.5px solid var(--clr-border);
+      border-radius:8px;cursor:pointer;font-size:.84rem;color:var(--clr-text-muted);transition:all .2s;background:var(--clr-bg)}
+    .mp__chip:hover{border-color:var(--clr-accent)}
+    .mp__chip:has(input:checked){border-color:var(--clr-accent);background:var(--clr-accent-light);color:var(--clr-accent);font-weight:600}
+    .mp__chip input{position:absolute;opacity:0;width:0;height:0}
+    .mp__nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+    .mp__voltar{background:none;border:none;font-family:inherit;font-size:.84rem;font-weight:600;color:var(--clr-text-muted);cursor:pointer;padding:.3rem 0;transition:color .2s}
+    .mp__voltar:hover{color:var(--clr-accent)}
+    .mp__erro{background:#fff1f1;border:1.5px solid #ffc9c9;color:#b02525;font-size:.85rem;line-height:1.5;padding:.8rem 1rem;border-radius:10px}
+    .mp__res{background:var(--clr-dark);color:#fff;border-radius:16px;padding:2.4rem;position:relative;overflow:hidden}
+    .mp__res::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.25),transparent 70%)}
+    .mp__res h3{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:1rem;position:relative;line-height:1.25}
+    .mp__res p{color:rgba(255,255,255,.72);line-height:1.75;font-size:.95rem;margin-bottom:1rem;position:relative}
+    .mp__res strong{color:#fff}
+    .mp__num{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.2rem;margin:1.8rem 0;position:relative}
+    .mp__num>div{border-left:2px solid var(--clr-neon);padding-left:.9rem}
+    .mp__num b{display:block;font-family:var(--font-display);font-size:1.75rem;font-weight:800;color:var(--clr-neon);line-height:1.1}
+    .mp__num span{display:block;font-size:.74rem;color:rgba(255,255,255,.5);margin-top:.25rem;line-height:1.4}
+    .mp__lista{list-style:none;padding:0;margin:0 0 1.5rem;position:relative}
+    .mp__lista li{color:rgba(255,255,255,.78);font-size:.89rem;line-height:1.55;padding-left:1.4rem;margin-bottom:.45rem;position:relative}
+    .mp__lista li::before{content:'';position:absolute;left:0;top:.52em;width:6px;height:6px;border-radius:50%;background:var(--clr-neon)}
+    .mp__res .btn{position:relative}
+    @media(max-width:680px){
+      .mp{padding:1.4rem;border-radius:14px}
+      .mp__row{grid-template-columns:1fr}
+      .mp__steps{font-size:.64rem;gap:.3rem}
+      .mp__res{padding:1.5rem}
+      .mp__chip{font-size:.8rem;padding:.44rem .8rem}
+      .mp__nav .btn{width:100%;justify-content:center}
+    }
   </style>
 
 <script>
@@ -624,5 +889,192 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- módulo central de captura e qualificação de leads -->
   <script src="/js/mkt-leads.js"></script>
+  <script>
+  /* ══════════════════════════════════════════════════════════════════
+     MAPEAMENTO DE TERCEIRIZAÇÃO — controlador
+     Quatro passos, gravando na mesma linha da planilha a cada avanço.
+     ══════════════════════════════════════════════════════════════════ */
+  (function(){
+    if(!window.MKT) return;
+    var M = window.MKT, dados = {}, passo = 1, gravouContato = false;
+    var F = [null, document.getElementById('mp1'), document.getElementById('mp2'),
+                   document.getElementById('mp3'), document.getElementById('mp4')];
+    var fill = document.getElementById('mpFill');
+    var rotulos = document.getElementById('mpSteps').children;
+    var res = document.getElementById('mpRes');
+    if(!F[1]) return;
+
+    M.mascaraTelefone(F[1].querySelector('[name="telefone"]'));
+    M.carregarTurnstile();
+
+    function erro(n, msg){
+      var c = document.getElementById('mpE'+n);
+      c.textContent = msg; c.hidden = false;
+      c.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    function limpa(n){ var c=document.getElementById('mpE'+n); c.hidden=true; c.textContent=''; }
+
+    function mostra(n){
+      for(var i=1;i<=4;i++) F[i].hidden = (i!==n);
+      res.hidden = true;
+      passo = n;
+      fill.style.width = (n*25) + '%';
+      for(var j=0;j<rotulos.length;j++) rotulos[j].classList.toggle('on', j < n);
+      document.getElementById('mp').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    /* marcados de um grupo de caixas */
+    function marcados(form, nome){
+      return Array.prototype.slice.call(form.querySelectorAll('[name="'+nome+'"]:checked'))
+                  .map(function(i){ return i.value; });
+    }
+
+    /* grava o que já se sabe, sem apagar o que veio antes */
+    function gravar(etapa){
+      var ctx = M.contexto();
+      M.enviar(Object.assign({}, dados, ctx, {
+        origem_form: 'terceirizacao',
+        etapa: etapa,
+        identificador: 'mapeamento-terceirizacao-mkteudo'
+      }));
+      M.push('mapeamento_passo', { form_origem:'terceirizacao', etapa:etapa });
+    }
+
+    /* ── passo 1 ── */
+    F[1].addEventListener('submit', function(e){
+      e.preventDefault(); limpa(1);
+      var v = M.valores(F[1]);
+      if(!v.nome || v.nome.length<3)       return erro(1,'Escreva seu nome completo.');
+      if(!M.emailValido(v.email))          return erro(1,'Confira o e-mail: parece incompleto.');
+      if(!M.telefoneValido(v.telefone))    return erro(1,'Confira o WhatsApp: inclua o DDD.');
+      if(!v.empresa || v.empresa.length<2) return erro(1,'Informe o nome da empresa.');
+      v.site = M.normalizaSite(v.site);
+      Object.assign(dados, v);
+      if(!gravouContato){ gravouContato = true; gravar('contato'); }
+      document.getElementById('mpI2').textContent =
+        v.nome.split(' ')[0] + ', o que você precisa que alguém assuma?';
+      mostra(2);
+    });
+
+    /* ── passo 2 ── */
+    F[2].addEventListener('submit', function(e){
+      e.preventDefault(); limpa(2);
+      var fr = marcados(F[2],'frentes');
+      if(!fr.length) return erro(2,'Marque pelo menos uma frente — é o que define o tamanho do trabalho.');
+      dados.frentes = fr.join('; ');
+      dados.frentes_qtd = fr.length;
+      var o = F[2].querySelector('[name="objetivo"]:checked');
+      dados.objetivo = o ? o.value : '';
+      gravar('necessidade');
+      mostra(3);
+    });
+
+    /* ── passo 3 ── */
+    F[3].addEventListener('submit', function(e){
+      e.preventDefault(); limpa(3);
+      var v = M.valores(F[3]);
+      if(!v.quem_faz) return erro(3,'Conte quem cuida do marketing hoje.');
+      var tem = marcados(F[3],'ja_tem');
+      Object.assign(dados, v);
+      dados.ja_tem = tem.join('; ');
+      dados.ja_tem_qtd = tem.indexOf('Nada disso') > -1 ? 0 : tem.length;
+      /* deriva, para a mesma régua de pontuação dos outros formulários */
+      dados.investe_hoje = (v.quem_faz==='Ninguém') ? 'Não'
+                         : (v.quem_faz==='Agência' || v.quem_faz==='Interno + agência') ? 'Sim, com agência'
+                         : 'Sim, internamente';
+      dados.colaboradores = ({'0':'1–5','1':'1–5','2':'6–20','3':'6–20','4+':'21–50'})[v.pessoas] || '';
+      gravar('situacao_atual');
+      mostra(4);
+    });
+
+    /* ── passo 4 e resultado ── */
+    var MEIO_PESSOAS = {'Nenhum':0,'Até R$8 mil':5000,'R$8–20 mil':14000,
+                        'R$20–40 mil':30000,'Acima de R$40 mil':50000};
+    var MEIO_FERR    = {'Nenhum':0,'Até R$1 mil':600,'R$1–3 mil':2000,
+                        'R$3–8 mil':5500,'Acima de R$8 mil':10000};
+    var brl = function(n){ return 'R$ ' + Math.round(n).toLocaleString('pt-BR'); };
+
+    F[4].addEventListener('submit', function(e){
+      e.preventDefault(); limpa(4);
+      var v = M.valores(F[4]);
+      if(!v.nivel_decisao) return erro(4,'Escolha seu nível de decisão — é o que define quem conduz a conversa do nosso lado.');
+
+      var btn = document.getElementById('mpEnviar');
+      btn.disabled = true; btn.textContent = 'Verificando…';
+      M.esperarToken(F[4]).then(function(token){ concluir(v, token, btn); });
+    });
+
+    function concluir(v, token, btn){
+      Object.assign(dados, v);
+      var p = M.pontuar(dados);
+      btn.textContent = 'Montando seu mapa…';
+
+      var cp = MEIO_PESSOAS[dados.custo_pessoas];
+      var cf = MEIO_FERR[dados.custo_ferramentas];
+      var temCusto = (cp !== undefined) && (cf !== undefined);
+      var custo = temCusto ? cp + cf : null;
+      var pedidas = dados.frentes_qtd || 0;
+      var bases   = dados.ja_tem_qtd || 0;
+      var descobertas = Math.max(0, pedidas - bases);
+
+      dados.custo_atual_estimado = custo === null ? '' : custo;
+      dados.frentes_descobertas  = descobertas;
+
+      var ctx = M.contexto();
+      M.enviar(Object.assign({}, dados, ctx, {
+        origem_form:'terceirizacao', etapa:'mapeamento_completo',
+        lead_score:p.score, lead_tier:p.tier, lead_sinais:p.sinais.join(','),
+        turnstile_token: token,
+        identificador:'mapeamento-terceirizacao-mkteudo'
+      })).then(function(){
+        M.eventosDeLead('terceirizacao', dados, p);
+        M.push('mapeamento_concluido', { form_origem:'terceirizacao',
+          lead_tier:p.tier, lead_score:p.score, frentes_qtd:pedidas });
+        desenhar(custo, pedidas, bases, descobertas, p);
+      });
+    }
+
+    function desenhar(custo, pedidas, bases, descobertas, p){
+      for(var i=1;i<=4;i++) F[i].hidden = true;
+      fill.style.width = '100%';
+      for(var j=0;j<rotulos.length;j++) rotulos[j].classList.add('on');
+
+      var nome = (dados.nome||'').split(' ')[0];
+      var linhaCusto = custo === null
+        ? '<p>Você preferiu não informar os custos, o que é justo. Sem eles o mapa fica incompleto, mas a gente levanta isso na conversa.</p>'
+        : custo === 0
+          ? '<p>Hoje sua empresa <strong>não tem custo fixo de marketing</strong>. Isso significa começar do zero — o que costuma ser mais simples do que reorganizar uma estrutura que já existe.</p>'
+          : '<p>Somando pessoas e ferramentas, sua operação de marketing custa hoje por volta de <strong>'+brl(custo)+' por mês</strong> — sem contar a verba de mídia.</p>';
+
+      var blocos = [];
+      if(custo !== null) blocos.push('<div><b>'+brl(custo)+'</b><span>custo mensal estimado hoje</span></div>');
+      blocos.push('<div><b>'+pedidas+'</b><span>frentes que você quer cobrir</span></div>');
+      blocos.push('<div><b>'+bases+'</b><span>bases já funcionando</span></div>');
+      if(descobertas>0) blocos.push('<div><b>'+descobertas+'</b><span>frentes sem cobertura hoje</span></div>');
+
+      var fechamento = p.tier === 'ICP-A'
+        ? 'Seu perfil é exatamente o de quem a gente mais ajuda. Vamos priorizar seu contato e retornar ainda hoje, em horário comercial.'
+        : 'Nossa equipe vai analisar esse mapeamento e retornar em até 1 dia útil com um caminho — e, se não fizer sentido terceirizar agora, a gente diz isso também.';
+
+      res.innerHTML =
+        '<h3>' + (nome ? nome + ', seu' : 'Seu') + ' mapeamento está pronto</h3>' +
+        linhaCusto +
+        '<div class="mp__num">' + blocos.join('') + '</div>' +
+        (descobertas > 0
+          ? '<p>Das ' + pedidas + ' frentes que você marcou, <strong>' + descobertas +
+            '</strong> não têm ninguém responsável hoje. É normalmente aí que o investimento em marketing vaza: a campanha roda, mas falta quem feche o ciclo.</p>'
+          : '<p>Você já tem boa parte das bases montadas. Nesse cenário a terceirização costuma render mais em <strong>operação e consistência</strong> do que em montar coisa nova.</p>') +
+        '<p>' + fechamento + '</p>' +
+        '<a href="/#contato" class="btn btn--primary">Falar com a Mkteúdo <span class="btn__arrow">→</span></a>';
+      res.hidden = false;
+      res.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    /* voltar */
+    document.querySelectorAll('.mp__voltar').forEach(function(b){
+      b.addEventListener('click', function(){ mostra(+b.dataset.volta); });
+    });
+  })();
+  </script>
 </body>
 </html>

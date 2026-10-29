@@ -28,6 +28,10 @@ const COLS = [
   'cidade', 'estado', 'nivel_decisao', 'area',
   'objetivo', 'desafio', 'colaboradores', 'faturamento',
   'investe_hoje', 'investimento', 'prazo', 'mensagem', 'origem',
+  /* mapeamento de terceirização */
+  'frentes', 'frentes_qtd', 'frentes_descobertas', 'quem_faz', 'pessoas',
+  'custo_pessoas', 'custo_ferramentas', 'custo_atual_estimado',
+  'ja_tem', 'ja_tem_qtd', 'verba_midia',
   /* calculadora */
   'calc_modelo', 'calc_segmento', 'calc_ticket', 'calc_recorrencia',
   'calc_estrutura', 'calc_crm', 'calc_vendedores', 'calc_cap_por_vendedor',
