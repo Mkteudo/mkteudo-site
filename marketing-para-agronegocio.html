@@ -343,6 +343,128 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 :focus-visible{outline:2px solid #9428e4;outline-offset:2px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mkteudo.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Marketing para o Agronegócio", "item": "https://www.mkteudo.com.br/marketing-para-agronegocio"}]}</script>
+<style>
+  .mkt-cookie{
+    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%);
+    z-index:9999; width:min(680px, calc(100vw - 2rem));
+    background:#0d0010; color:#fff;
+    border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:1.1rem 1.3rem; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+    font-family:'DM Sans',-apple-system,sans-serif;
+  }
+  .mkt-cookie[hidden]{display:none}
+  .mkt-cookie__text{flex:1 1 300px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72)}
+  .mkt-cookie__text strong{color:#fff; display:block; margin-bottom:.15rem; font-weight:600}
+  .mkt-cookie__text a{color:#ff00ff; text-decoration:underline}
+  .mkt-cookie__actions{display:flex; gap:.5rem; flex:0 0 auto}
+  .mkt-cookie__btn{
+    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+    padding:.6rem 1.3rem; border-radius:100px; border:1.5px solid transparent;
+    transition:transform .2s, background .2s;
+  }
+  .mkt-cookie__btn:hover{transform:translateY(-1px)}
+  .mkt-cookie__btn--ghost{background:transparent; color:rgba(255,255,255,.65); border-color:rgba(255,255,255,.22)}
+  .mkt-cookie__btn--ghost:hover{color:#fff; border-color:rgba(255,255,255,.45)}
+  .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
+  .mkt-cookie__btn--solid:hover{background:#a53ff0}
+  @media(max-width:560px){
+    /* Vira uma faixa rente ao rodapé: ocupa o mínimo de tela possível
+       e deixa os dois botões lado a lado, não empilhados. */
+    .mkt-cookie{
+      left:0; right:0; bottom:0; transform:none; width:100%;
+      border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
+      padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom, 0px));
+      gap:.7rem; align-items:center;
+    }
+    .mkt-cookie__text{flex:1 1 100%; font-size:.78rem; line-height:1.45}
+    .mkt-cookie__text strong{display:inline; margin:0}
+    .mkt-cookie__actions{flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+    .mkt-cookie__btn{width:100%; padding:.62rem .5rem; font-size:.8rem}
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     AJUSTES DE MOBILE  ·  mkt-mobile-v1
+     ───────────────────────────────────────────────────────────────
+     Os títulos usam clamp() com piso alto (ex.: clamp(2.8rem,6vw,4.8rem)).
+     O piso trava em 44.8px e PARA de encolher abaixo de ~746px — por
+     isso num celular de 360px a fonte é a mesma de um tablet, e
+     palavras longas como "crescimento" e "transformamos" estouram.
+     Aqui o tamanho é redefinido só no celular; desktop e tablet
+     continuam exatamente como estão.
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 640px){
+    .hero__title        {font-size:1.95rem !important;letter-spacing:-.02em;line-height:1.12}
+    .hero__subtitle     {font-size:1rem !important}
+    .section__title     {font-size:1.55rem !important;letter-spacing:-.02em}
+    .section__desc      {font-size:.95rem !important}
+    .picc__word         {font-size:1.8rem !important}
+    .picc-hero__title   {font-size:1.72rem !important;letter-spacing:-.02em;line-height:1.1}
+    .picc-hero__sub     {font-size:.95rem !important;line-height:1.6}
+    .picc-proof__mv     {font-size:1.4rem !important}
+    .picc-cta__title    {font-size:1.45rem !important}
+    .rd-hero__title     {font-size:1.78rem !important;letter-spacing:-.02em;line-height:1.12}
+    .calc-hero__title   {font-size:1.8rem !important}
+    .res-headline__big  {font-size:1.9rem !important}
+    .case-highlight__title{font-size:1.35rem !important}
+
+    /* caixas com muito respiro interno sobram pouco espaço ao texto */
+    .picc-cta__box      {padding:2rem 1.25rem !important}
+    .case-highlight     {padding:2rem 1.25rem !important}
+    .container          {padding:0 1.25rem}
+
+    /* rede de segurança: nenhuma palavra longa rompe a caixa */
+    h1,h2,h3,h4,.hero__title,.section__title,.picc-hero__title,
+    .picc-cta__title,.rd-hero__title,.calc-hero__title{
+      overflow-wrap:break-word; word-break:normal;
+    }
+
+    /* A linha de números do hero era um flex de 3 colunas com gap de
+       3rem que não quebrava: era ela que empurrava a home 21px para
+       fora da tela e causava o arrasto lateral. */
+    .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
+    .hero__stat-number{font-size:1.9rem}
+    .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
+  }
+
+  
+    /* ── páginas comerciais ── */
+    .cm-prose p{font-size:1.02rem;line-height:1.8;color:var(--clr-text-muted);margin-bottom:1.1rem;max-width:720px}
+    .cm-prose strong{color:var(--clr-text)}
+    .cm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:2.5rem}
+    .cm-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:14px;padding:1.6rem;transition:all .35s var(--ease-out)}
+    .cm-card:hover{border-color:var(--clr-accent);transform:translateY(-3px);box-shadow:0 10px 32px rgba(148,40,228,.07)}
+    .cm-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.5rem;line-height:1.25}
+    .cm-card p{font-size:.9rem;color:var(--clr-text-muted);line-height:1.65}
+    .cm-prova{background:var(--clr-dark);color:#fff;border-radius:18px;padding:2.6rem;position:relative;overflow:hidden}
+    .cm-prova::before{content:'';position:absolute;top:-80px;right:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.22),transparent 70%)}
+    .cm-prova h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.9rem;position:relative}
+    .cm-prova p{color:rgba(255,255,255,.7);line-height:1.75;font-size:.98rem;position:relative;max-width:760px}
+    .cm-faq{max-width:780px}
+    .cm-faq__item{border:1px solid var(--clr-border);border-radius:12px;margin-bottom:.7rem;overflow:hidden;background:var(--clr-surface)}
+    .cm-faq__q{width:100%;background:none;border:none;padding:1.05rem 1.3rem;text-align:left;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--clr-text)}
+    .cm-faq__q:hover{background:var(--clr-accent-light)}
+    .cm-faq__ic{font-family:var(--font-display);font-size:1.2rem;color:var(--clr-accent);flex-shrink:0;transition:transform .25s}
+    .cm-faq__item.on .cm-faq__ic{transform:rotate(45deg)}
+    .cm-faq__a{display:none;padding:0 1.3rem 1.2rem;font-size:.93rem;line-height:1.75;color:var(--clr-text-muted)}
+    .cm-faq__item.on .cm-faq__a{display:block}
+    .cm-rel{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+    .cm-rel a{font-size:.85rem;font-weight:600;color:var(--clr-accent);border:1.5px solid var(--clr-border);border-radius:100px;padding:.5rem 1.1rem;transition:all .25s}
+    .cm-rel a:hover{border-color:var(--clr-accent);background:var(--clr-accent-light)}
+    @media(max-width:680px){.cm-prova{padding:1.6rem}.cm-card{padding:1.3rem}}
+  </style>
 </head>
 <body>
 <a href="#conteudo" class="pular">Pular para o conteúdo</a>
@@ -468,128 +590,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<style>
-  .mkt-cookie{
-    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%);
-    z-index:9999; width:min(680px, calc(100vw - 2rem));
-    background:#0d0010; color:#fff;
-    border:1px solid rgba(255,255,255,.12); border-radius:16px;
-    padding:1.1rem 1.3rem; box-shadow:0 18px 50px rgba(0,0,0,.35);
-    display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
-    font-family:'DM Sans',-apple-system,sans-serif;
-  }
-  .mkt-cookie[hidden]{display:none}
-  .mkt-cookie__text{flex:1 1 300px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72)}
-  .mkt-cookie__text strong{color:#fff; display:block; margin-bottom:.15rem; font-weight:600}
-  .mkt-cookie__text a{color:#ff00ff; text-decoration:underline}
-  .mkt-cookie__actions{display:flex; gap:.5rem; flex:0 0 auto}
-  .mkt-cookie__btn{
-    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
-    padding:.6rem 1.3rem; border-radius:100px; border:1.5px solid transparent;
-    transition:transform .2s, background .2s;
-  }
-  .mkt-cookie__btn:hover{transform:translateY(-1px)}
-  .mkt-cookie__btn--ghost{background:transparent; color:rgba(255,255,255,.65); border-color:rgba(255,255,255,.22)}
-  .mkt-cookie__btn--ghost:hover{color:#fff; border-color:rgba(255,255,255,.45)}
-  .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
-  .mkt-cookie__btn--solid:hover{background:#a53ff0}
-  @media(max-width:560px){
-    /* Vira uma faixa rente ao rodapé: ocupa o mínimo de tela possível
-       e deixa os dois botões lado a lado, não empilhados. */
-    .mkt-cookie{
-      left:0; right:0; bottom:0; transform:none; width:100%;
-      border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
-      padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom, 0px));
-      gap:.7rem; align-items:center;
-    }
-    .mkt-cookie__text{flex:1 1 100%; font-size:.78rem; line-height:1.45}
-    .mkt-cookie__text strong{display:inline; margin:0}
-    .mkt-cookie__actions{flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
-    .mkt-cookie__btn{width:100%; padding:.62rem .5rem; font-size:.8rem}
-  }
 
-  /* ═══════════════════════════════════════════════════════════════
-     AJUSTES DE MOBILE  ·  mkt-mobile-v1
-     ───────────────────────────────────────────────────────────────
-     Os títulos usam clamp() com piso alto (ex.: clamp(2.8rem,6vw,4.8rem)).
-     O piso trava em 44.8px e PARA de encolher abaixo de ~746px — por
-     isso num celular de 360px a fonte é a mesma de um tablet, e
-     palavras longas como "crescimento" e "transformamos" estouram.
-     Aqui o tamanho é redefinido só no celular; desktop e tablet
-     continuam exatamente como estão.
-     ═══════════════════════════════════════════════════════════════ */
-  @media (max-width: 640px){
-    .hero__title        {font-size:1.95rem !important;letter-spacing:-.02em;line-height:1.12}
-    .hero__subtitle     {font-size:1rem !important}
-    .section__title     {font-size:1.55rem !important;letter-spacing:-.02em}
-    .section__desc      {font-size:.95rem !important}
-    .picc__word         {font-size:1.8rem !important}
-    .picc-hero__title   {font-size:1.72rem !important;letter-spacing:-.02em;line-height:1.1}
-    .picc-hero__sub     {font-size:.95rem !important;line-height:1.6}
-    .picc-proof__mv     {font-size:1.4rem !important}
-    .picc-cta__title    {font-size:1.45rem !important}
-    .rd-hero__title     {font-size:1.78rem !important;letter-spacing:-.02em;line-height:1.12}
-    .calc-hero__title   {font-size:1.8rem !important}
-    .res-headline__big  {font-size:1.9rem !important}
-    .case-highlight__title{font-size:1.35rem !important}
-
-    /* caixas com muito respiro interno sobram pouco espaço ao texto */
-    .picc-cta__box      {padding:2rem 1.25rem !important}
-    .case-highlight     {padding:2rem 1.25rem !important}
-    .container          {padding:0 1.25rem}
-
-    /* rede de segurança: nenhuma palavra longa rompe a caixa */
-    h1,h2,h3,h4,.hero__title,.section__title,.picc-hero__title,
-    .picc-cta__title,.rd-hero__title,.calc-hero__title{
-      overflow-wrap:break-word; word-break:normal;
-    }
-
-    /* A linha de números do hero era um flex de 3 colunas com gap de
-       3rem que não quebrava: era ela que empurrava a home 21px para
-       fora da tela e causava o arrasto lateral. */
-    .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
-    .hero__stat-number{font-size:1.9rem}
-    .hero__actions .btn{width:100%; justify-content:center}
-
-    /* A faixa de prêmios empilhava com ícone grande e título em duas
-       linhas, ocupando tela demais. No celular vira uma lista enxuta,
-       alinhada à esquerda. */
-    .awards-strip      {padding:2.5rem 0}
-    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
-    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
-    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
-    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
-    .award-item__icon svg{width:18px !important; height:18px !important}
-    .award-item__title {font-size:.94rem; line-height:1.25}
-    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
-  }
-
-  
-    /* ── páginas comerciais ── */
-    .cm-prose p{font-size:1.02rem;line-height:1.8;color:var(--clr-text-muted);margin-bottom:1.1rem;max-width:720px}
-    .cm-prose strong{color:var(--clr-text)}
-    .cm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:2.5rem}
-    .cm-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:14px;padding:1.6rem;transition:all .35s var(--ease-out)}
-    .cm-card:hover{border-color:var(--clr-accent);transform:translateY(-3px);box-shadow:0 10px 32px rgba(148,40,228,.07)}
-    .cm-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.5rem;line-height:1.25}
-    .cm-card p{font-size:.9rem;color:var(--clr-text-muted);line-height:1.65}
-    .cm-prova{background:var(--clr-dark);color:#fff;border-radius:18px;padding:2.6rem;position:relative;overflow:hidden}
-    .cm-prova::before{content:'';position:absolute;top:-80px;right:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.22),transparent 70%)}
-    .cm-prova h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.9rem;position:relative}
-    .cm-prova p{color:rgba(255,255,255,.7);line-height:1.75;font-size:.98rem;position:relative;max-width:760px}
-    .cm-faq{max-width:780px}
-    .cm-faq__item{border:1px solid var(--clr-border);border-radius:12px;margin-bottom:.7rem;overflow:hidden;background:var(--clr-surface)}
-    .cm-faq__q{width:100%;background:none;border:none;padding:1.05rem 1.3rem;text-align:left;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--clr-text)}
-    .cm-faq__q:hover{background:var(--clr-accent-light)}
-    .cm-faq__ic{font-family:var(--font-display);font-size:1.2rem;color:var(--clr-accent);flex-shrink:0;transition:transform .25s}
-    .cm-faq__item.on .cm-faq__ic{transform:rotate(45deg)}
-    .cm-faq__a{display:none;padding:0 1.3rem 1.2rem;font-size:.93rem;line-height:1.75;color:var(--clr-text-muted)}
-    .cm-faq__item.on .cm-faq__a{display:block}
-    .cm-rel{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
-    .cm-rel a{font-size:.85rem;font-weight:600;color:var(--clr-accent);border:1.5px solid var(--clr-border);border-radius:100px;padding:.5rem 1.1rem;transition:all .25s}
-    .cm-rel a:hover{border-color:var(--clr-accent);background:var(--clr-accent-light)}
-    @media(max-width:680px){.cm-prova{padding:1.6rem}.cm-card{padding:1.3rem}}
-  </style>
 
 <script>
 (function(){
