@@ -7,8 +7,15 @@
 
    ANTES DE USAR, uma única vez:
      1. Extensões → Apps Script, cole este arquivo por cima do antigo.
-     2. Configurações do projeto → Propriedades do script →
-        adicione TURNSTILE_SECRET com a chave secreta da Cloudflare.
+     2. Configurações do projeto → Propriedades do script → adicione:
+          TURNSTILE_SECRET   chave secreta da Cloudflare (anti-spam)
+          EMAIL_NOTIFICACAO  para onde vai o aviso de conversão
+                             (se vazio, vai para o dono do script)
+          TRELLO_KEY         chave da API do Trello      (opcional)
+          TRELLO_TOKEN       token da API do Trello      (opcional)
+          TRELLO_LIST_ID     id da lista que recebe os leads (opcional)
+        Sem as três do Trello o cartão simplesmente não é criado;
+        o e-mail continua saindo.
      3. Rode configurar() uma vez (cria o cabeçalho).
      4. Implantar → Nova implantação → App da Web
           Executar como: Eu
@@ -46,7 +53,9 @@ const COLS = [
   'pagina', 'dispositivo', 'visitas',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
   'gclid', 'fbclid', 'primeiro_toque', 'primeiro_toque_em',
-  'sessao_id'
+  'sessao_id',
+  /* controle de notificação */
+  'notificado', 'trello_card'
 ];
 
 /* ─────────────────────────── instalação ─────────────────────────── */
@@ -162,6 +171,7 @@ function doPost(e) {
         return (v === undefined || v === null || v === '') ? atual[i] : texto(v);
       });
       aba.getRange(linha, 1, 1, COLS.length).setValues([novo]);
+      notificar(aba, linha, d);
       return resposta({ ok: true, acao: 'atualizada', linha: linha });
     }
 
@@ -172,6 +182,7 @@ function doPost(e) {
       return (v === undefined || v === null) ? '' : texto(v);
     });
     aba.appendRow(nova);
+    notificar(aba, aba.getLastRow(), d);
     return resposta({ ok: true, acao: 'criada', linha: aba.getLastRow() });
 
   } catch (err) {
@@ -197,4 +208,180 @@ function texto(v) {
 function resposta(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   NOTIFICAÇÃO DE CONVERSÃO
+   ──────────────────────────────────────────────────────────────────────
+   Dois momentos, nunca mais que isso por pessoa:
+     1. "novo"      — assim que a linha ganha e-mail ou telefone.
+                      É o aviso que permite ligar no mesmo dia.
+     2. "completo"  — quando a pessoa termina o formulário ou fecha a
+                      calculadora. Traz o resultado e o diagnóstico.
+   O que já foi avisado fica marcado na coluna notificado, então um envio
+   parcial a mais não vira um e-mail a mais.
+   ══════════════════════════════════════════════════════════════════════ */
+
+const ETAPAS_FINAIS = ['completo','pediu_diagnostico','mapeamento_completo',
+                       'calc_resultado','calc_funil','resultado'];
+
+function notificar(aba, linha, d) {
+  try {
+    const iNot = COLS.indexOf('notificado');
+    const valores = aba.getRange(linha, 1, 1, COLS.length).getValues()[0];
+    const feito = String(valores[iNot] || '');
+
+    const temContato = !!(valores[COLS.indexOf('email')] || valores[COLS.indexOf('telefone')]);
+    const final = ETAPAS_FINAIS.indexOf(String(d.etapa || '')) > -1;
+
+    let momento = '';
+    if (final && feito.indexOf('completo') < 0)   momento = 'completo';
+    else if (temContato && feito.indexOf('novo') < 0) momento = 'novo';
+    if (!momento) return;
+
+    const r = retrato(valores);
+    enviarEmail(momento, r, linha);
+    const cardAtual = String(valores[COLS.indexOf('trello_card')] || '');
+    const card = trello(momento, r, linha, cardAtual);
+
+    aba.getRange(linha, iNot + 1).setValue((feito ? feito + ',' : '') + momento);
+    if (card && card !== cardAtual) aba.getRange(linha, COLS.indexOf('trello_card') + 1).setValue(card);
+  } catch (err) {
+    console.error('notificar: ' + err);   /* nunca derruba a gravação do lead */
+  }
+}
+
+/* Monta o retrato da pessoa: só o que ela preencheu, na ordem em que
+   interessa para quem vai ligar. */
+function retrato(v) {
+  function g(c) { const i = COLS.indexOf(c); return i < 0 ? '' : String(v[i] == null ? '' : v[i]); }
+  const campos = [];
+  COLS.forEach(function (c) {
+    if (c === 'notificado' || c === 'trello_card') return;
+    const val = g(c);
+    if (val !== '' && val !== 'null') campos.push([rotulo(c), val]);
+  });
+  return {
+    nome: g('nome') || '(sem nome)',
+    empresa: g('empresa'),
+    email: g('email'),
+    telefone: g('telefone'),
+    tier: g('lead_tier'),
+    score: g('lead_score'),
+    origem: g('origem_form'),
+    etapa: g('etapa'),
+    campos: campos
+  };
+}
+
+function rotulo(c) {
+  const m = {
+    'origem_form':'Formulário','lead_score':'Pontuação','lead_tier':'Classificação',
+    'lead_sinais':'Sinais','nivel_decisao':'Nível de decisão','investe_hoje':'Já investe',
+    'custo_atual_estimado':'Custo atual estimado (R$)','frentes_qtd':'Frentes pedidas',
+    'frentes_descobertas':'Frentes descobertas','verba_midia':'Verba de mídia',
+    'primeiro_toque':'Primeiro toque','primeiro_toque_em':'Primeiro toque em','sessao_id':'Sessão'
+  };
+  if (m[c]) return m[c];
+  if (c.indexOf('calc_') === 0) return 'Calculadora · ' + c.slice(5).replace(/_/g, ' ');
+  return c.charAt(0).toUpperCase() + c.slice(1).replace(/_/g, ' ');
+}
+
+function enviarEmail(momento, r, linha) {
+  const props = PropertiesService.getScriptProperties();
+  const para = props.getProperty('EMAIL_NOTIFICACAO') || Session.getEffectiveUser().getEmail();
+  if (!para) return;
+
+  const marca = r.tier ? '[' + r.tier + (r.score ? ' · ' + r.score : '') + '] ' : '';
+  const quem  = r.nome + (r.empresa ? ' — ' + r.empresa : '');
+  const assunto = (momento === 'completo' ? 'Lead completo ' : 'Novo lead ') + marca + quem;
+
+  const url = SpreadsheetApp.getActiveSpreadsheet().getUrl() + '#gid=' +
+              SpreadsheetApp.getActiveSpreadsheet().getSheetByName(ABA).getSheetId() +
+              '&range=A' + linha;
+
+  const linhas = r.campos.map(function (c) {
+    return '<tr><td style="padding:6px 14px 6px 0;color:#6b6b6b;font-size:13px;white-space:nowrap;' +
+           'vertical-align:top">' + esc(c[0]) + '</td>' +
+           '<td style="padding:6px 0;font-size:14px;color:#0d0010">' + esc(c[1]) + '</td></tr>';
+  }).join('');
+
+  const html =
+    '<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:640px">' +
+      '<div style="background:#0d0010;padding:22px 26px;border-radius:14px 14px 0 0">' +
+        '<div style="color:#c18cff;font-size:11px;letter-spacing:.18em;text-transform:uppercase">' +
+          (momento === 'completo' ? 'Formulário concluído' : 'Nova conversão no site') + '</div>' +
+        '<div style="color:#fff;font-size:21px;font-weight:700;margin-top:6px">' + esc(quem) + '</div>' +
+        (r.tier ? '<div style="display:inline-block;margin-top:10px;background:rgba(148,40,228,.25);' +
+          'border:1px solid rgba(148,40,228,.5);color:#e9d5ff;border-radius:20px;padding:3px 12px;' +
+          'font-size:12px">' + esc(r.tier) + (r.score ? ' · ' + esc(r.score) + ' pontos' : '') + '</div>' : '') +
+      '</div>' +
+      '<div style="border:1px solid #ebebeb;border-top:none;border-radius:0 0 14px 14px;padding:20px 26px">' +
+        (r.telefone ? '<p style="margin:0 0 6px"><a href="https://wa.me/55' + r.telefone.replace(/\D/g,'') +
+            '" style="color:#9428e4;font-weight:600;text-decoration:none">Chamar no WhatsApp</a>' +
+            ' &nbsp;·&nbsp; ' + esc(r.telefone) + '</p>' : '') +
+        (r.email ? '<p style="margin:0 0 16px"><a href="mailto:' + esc(r.email) +
+            '" style="color:#9428e4;text-decoration:none">' + esc(r.email) + '</a></p>' : '') +
+        '<table style="border-collapse:collapse;width:100%">' + linhas + '</table>' +
+        '<p style="margin:20px 0 0"><a href="' + url + '" style="color:#9428e4;font-size:13px">' +
+          'Abrir a linha na planilha</a></p>' +
+      '</div></div>';
+
+  MailApp.sendEmail({ to: para, subject: assunto, htmlBody: html,
+                      name: 'Leads do site Mkteúdo' });
+}
+
+function trello(momento, r, linha, cardAtual) {
+  const props = PropertiesService.getScriptProperties();
+  const key = props.getProperty('TRELLO_KEY');
+  const tok = props.getProperty('TRELLO_TOKEN');
+  const lista = props.getProperty('TRELLO_LIST_ID');
+  if (!key || !tok || !lista) return cardAtual;   /* sem credencial, segue sem cartão */
+
+  const titulo = (r.tier ? '[' + r.tier + '] ' : '') + r.nome + (r.empresa ? ' — ' + r.empresa : '');
+  const url = SpreadsheetApp.getActiveSpreadsheet().getUrl();
+  let desc = '**' + (r.origem ? 'Formulário: ' + r.origem : 'Lead do site') + '**' +
+             (r.etapa ? '  ·  etapa: ' + r.etapa : '') + '\n\n';
+  if (r.telefone) desc += '📞 ' + r.telefone + '  ·  [WhatsApp](https://wa.me/55' + r.telefone.replace(/\D/g,'') + ')\n';
+  if (r.email) desc += '✉️ ' + r.email + '\n';
+  desc += '\n| Campo | Valor |\n| --- | --- |\n';
+  r.campos.forEach(function (c) { desc += '| ' + c[0] + ' | ' + String(c[1]).replace(/\|/g,'\\|') + ' |\n'; });
+  desc += '\n[Linha na planilha](' + url + ')';
+
+  const base = 'https://api.trello.com/1/cards';
+  const auth = 'key=' + encodeURIComponent(key) + '&token=' + encodeURIComponent(tok);
+  const opc = { method: 'post', muteHttpExceptions: true,
+                contentType: 'application/x-www-form-urlencoded' };
+
+  if (cardAtual) {
+    /* já existe: só atualiza a descrição com o que a pessoa completou */
+    const res = UrlFetchApp.fetch(base + '/' + cardAtual + '?' + auth, {
+      method: 'put', muteHttpExceptions: true,
+      payload: { name: titulo, desc: desc }
+    });
+    return res.getResponseCode() === 200 ? cardAtual : cardAtual;
+  }
+
+  opc.payload = { idList: lista, name: titulo, desc: desc, pos: 'top' };
+  const res = UrlFetchApp.fetch(base + '?' + auth, opc);
+  if (res.getResponseCode() !== 200) {
+    console.error('trello ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 200));
+    return cardAtual;
+  }
+  return JSON.parse(res.getContentText()).id;
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* Roda uma vez para conferir que o e-mail e o Trello estão de pé. */
+function testarNotificacao() {
+  const r = { nome:'Teste de notificação', empresa:'Mkteúdo', email:'teste@mkteudo.com.br',
+              telefone:'(16) 90000-0000', tier:'ICP-A', score:'93', origem:'teste', etapa:'completo',
+              campos:[['Formulário','teste'],['Classificação','ICP-A'],['Pontuação','93']] };
+  enviarEmail('novo', r, 2);
+  const c = trello('novo', r, 2, '');
+  console.log('e-mail enviado; cartão: ' + (c || 'nao configurado'));
 }

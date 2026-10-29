@@ -109,7 +109,7 @@ else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
 
     /* Navbar */
-    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,250,248,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--clr-border); }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--clr-border); }
     .navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
     .navbar__logo-img{height:42px;width:auto;} .navbar__logo { font-family: var(--font-display); font-size: 1.6rem; color: var(--clr-accent); }
     .navbar__logo span { color: var(--clr-text); }
@@ -473,6 +473,45 @@ section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
 .cm-card:hover{transform:translateY(-4px);border-color:var(--clr-accent);box-shadow:0 14px 40px rgba(148,40,228,.10)}
 @media(max-width:640px){.cm-card{padding:1.3rem}}
 </style>
+<style id="mkt-srv-v1">
+.srv-dor{background:#0d0010;color:#f4f3ee;padding:6.5rem 0;position:relative;overflow:hidden}
+.srv-dor::before{content:'';position:absolute;top:-220px;left:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.20) 0%,transparent 68%);pointer-events:none}
+.srv-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 2rem}
+.srv-over{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem}
+.srv-over::before{content:'';width:24px;height:2px;background:#ff00ff;display:block;flex:0 0 auto}
+.srv-dor .srv-over{color:#c18cff}
+.srv-dor h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:#fff;max-width:18ch;margin:0 0 1rem}
+.srv-dor__sub{font-size:1.05rem;line-height:1.75;color:rgba(244,243,238,.62);max-width:60ch;margin:0}
+.srv-dores{display:grid;grid-template-columns:1fr 1fr;gap:0 3.5rem;margin-top:3rem}
+.srv-dor__i{display:flex;gap:1.1rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.09)}
+.srv-dor__n{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(148,40,228,.5);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.82rem;font-weight:700;color:#c18cff}
+.srv-dor__i p{margin:0;font-size:.98rem;line-height:1.6;color:rgba(244,243,238,.82);padding-top:.35rem}
+.srv-ganha{padding:6.5rem 0;background:var(--clr-bg)}
+.srv-ganha .srv-over{color:var(--clr-accent)}
+.srv-ganha h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:18ch;margin:0 0 1rem}
+.srv-ganha__sub{font-size:1.05rem;line-height:1.75;color:var(--clr-text-muted);max-width:60ch;margin:0 0 2.8rem}
+.srv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+.srv-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:18px;padding:1.9rem 1.7rem;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s}
+.srv-card:hover{transform:translateY(-4px);border-color:var(--clr-accent);box-shadow:0 14px 40px rgba(148,40,228,.10)}
+.srv-card__ic{width:44px;height:44px;border-radius:13px;background:var(--clr-accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;color:var(--clr-accent)}
+.srv-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;line-height:1.3;margin:0 0 .5rem}
+.srv-card p{font-size:.9rem;line-height:1.65;color:var(--clr-text-muted);margin:0}
+.srv-res{padding:6.5rem 0;background:#0d0010;color:#f4f3ee;position:relative;overflow:hidden}
+.srv-res::after{content:'';position:absolute;bottom:-240px;right:-180px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.12) 0%,transparent 70%);pointer-events:none}
+.srv-res .srv-over{color:#c18cff}
+.srv-res h2{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:#fff;margin:0 0 2.6rem;max-width:16ch}
+.srv-res__g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.srv-res__i{display:flex;gap:1rem;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:1.3rem 1.4rem;transition:background .35s,border-color .35s}
+.srv-res__i:hover{background:rgba(148,40,228,.10);border-color:rgba(148,40,228,.4)}
+.srv-res__i svg{flex:0 0 auto;color:#c18cff}
+.srv-res__i span{font-size:.94rem;line-height:1.5;color:rgba(244,243,238,.84)}
+@media(max-width:900px){.srv-grid,.srv-res__g{grid-template-columns:1fr 1fr}.srv-dores{grid-template-columns:1fr;gap:0}}
+@media(max-width:640px){
+ .srv-dor,.srv-ganha,.srv-res{padding:3.6rem 0}
+ .srv-grid,.srv-res__g{grid-template-columns:1fr}
+ .srv-dor h2,.srv-ganha h2,.srv-res h2{font-size:1.65rem;max-width:none}
+}
+</style>
 </head>
 <body>
 <a href="#conteudo" class="pular">Pular para o conteúdo</a>
@@ -491,7 +530,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </nav>
 
   <div class="mobile-overlay" id="mobileMenu"><button class="mobile-overlay__close" onclick="toggleMenu()">✕</button><a href="/" onclick="toggleMenu()">Home</a><a href="/servicos" onclick="toggleMenu()">Serviços</a><a href="/#sobre" onclick="toggleMenu()">Sobre</a><a href="/metodo-picc" onclick="toggleMenu()">Método PICC</a><a href="/rd-station" onclick="toggleMenu()">RD Station</a><a href="/#cases" onclick="toggleMenu()">Cases</a><a href="/calculadora" onclick="toggleMenu()">Calculadora</a><a href="/blog" onclick="toggleMenu()">Blog</a><a href="/#contato" onclick="toggleMenu()">Fale conosco</a></div>
-  <header class="svc-hero"><div class="svc-hero__in"><div class="svc-hero__eyebrow">Serviços</div><h1 class="svc-hero__title">Soluções que geram resultados</h1><p class="svc-hero__desc">Da estratégia à execução: serviços múltiplos e customizados às necessidades da sua empresa, com o número aberto para provar o que funcionou.</p><div class="svc-hero__acoes"><a href="/#contato" class="btn btn--primary">Falar com a Mkteúdo <span class="btn__arrow">→</span></a><a href="/calculadora" class="btn btn--outline">Calcular meu potencial</a></div><div class="svc-hero__stats"><div><div class="svc-hero__n">2×</div><div class="svc-hero__l">Premiada no RD Limitless</div></div><div><div class="svc-hero__n">1.275%</div><div class="svc-hero__l">ROI no case Grupo Intelli</div></div><div><div class="svc-hero__n">RD Station</div><div class="svc-hero__l">Agência Parceira certificada</div></div></div></div></header>
+  <header class="svc-hero"><div class="svc-hero__in"><div class="svc-hero__eyebrow">Serviços</div><h1 class="svc-hero__title">Soluções que geram resultados</h1><p class="svc-hero__desc">Equipe, agência, tráfego pago. Você investe, mas o marketing não traz o retorno que deveria. Assumimos a estratégia e a direção para traduzir investimento em crescimento consistente.</p><div class="svc-hero__acoes"><a href="/#contato" class="btn btn--primary">Falar com a Mkteúdo <span class="btn__arrow">→</span></a><a href="/calculadora" class="btn btn--outline">Calcular meu potencial</a></div><div class="svc-hero__stats"><div><div class="svc-hero__n">2×</div><div class="svc-hero__l">Premiada no RD Limitless</div></div><div><div class="svc-hero__n">1.275%</div><div class="svc-hero__l">ROI no case Grupo Intelli</div></div><div><div class="svc-hero__n">RD Station</div><div class="svc-hero__l">Agência Parceira certificada</div></div></div></div></header>
+
+  <section class="srv-dor" id="se-identifica">
+    <div class="srv-in">
+      <div class="reveal">
+        <div class="srv-over">O diagnóstico</div>
+        <h2>O que falta quase nunca é execução. É direção.</h2>
+        <p class="srv-dor__sub">Equipe, agência, tráfego pago. Você investe, e mesmo assim o marketing não devolve o que deveria. Veja se alguma destas frases é a sua.</p>
+      </div>
+      <div class="srv-dores"><div class="srv-dor__i reveal"><div class="srv-dor__n">01</div><p>Você investe em marketing todo mês e não consegue dizer o que daquilo virou receita</p></div><div class="srv-dor__i reveal"><div class="srv-dor__n">02</div><p>Tem agência, tem time, tem campanha rodando — e a decisão ainda para na sua mesa</p></div><div class="srv-dor__i reveal"><div class="srv-dor__n">03</div><p>Cada fornecedor entrega a sua parte e ninguém responde pelo número do fim</p></div><div class="srv-dor__i reveal"><div class="srv-dor__n">04</div><p>O comercial reclama da qualidade do lead e o marketing reclama do follow-up</p></div><div class="srv-dor__i reveal"><div class="srv-dor__n">05</div><p>Você sabe que precisa de um diretor de marketing, mas não quer carregar essa folha</p></div><div class="srv-dor__i reveal"><div class="srv-dor__n">06</div><p>As metas existem, mas ninguém acompanha indicador semana a semana</p></div></div>
+    </div>
+  </section>
+
+  <section class="srv-ganha" id="o-que-entra">
+    <div class="srv-in">
+      <div class="reveal">
+        <div class="srv-over">A nossa entrega</div>
+        <h2>Assumimos a estratégia e a direção do seu marketing</h2>
+        <p class="srv-ganha__sub">Para traduzir investimento em crescimento consistente — não em relatório bonito. É o que a Mkteúdo conduz pelo Método PICC em cada cliente.</p>
+      </div>
+      <div class="srv-grid"><div class="srv-card reveal"><div class="srv-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div><h3>Direção, não execução avulsa</h3><p>Alguém responsável pela estratégia, pela ordem das prioridades e pelo plano do ano. O time executa; a direção responde pelo número.</p></div><div class="srv-card reveal"><div class="srv-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Clareza sobre o que dá retorno</h3><p>Funil medido ponta a ponta: o que cada canal custa, o que entrega e o que deve ser cortado. Sem achismo e sem métrica de vaidade.</p></div><div class="srv-card reveal"><div class="srv-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg></div><h3>Marketing e vendas no mesmo funil</h3><p>CRM organizado, acordo entre as áreas e o lead rastreado até o pedido. O comercial recebe contexto, não uma planilha de nomes.</p></div><div class="srv-card reveal"><div class="srv-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></svg></div><h3>Rotina que não depende de você</h3><p>Planejamento, alinhamento e revisão de resultado em cadência fixa. A decisão sai da reunião, não da sua caixa de entrada.</p></div><div class="srv-card reveal"><div class="srv-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M4 20V8l5-4 6 4 5-3v12l-5 3-6-4-5 4z"/></svg></div><h3>Fornecedores sob um plano só</h3><p>Agência, freelancer, ferramenta e time interno trabalhando sobre a mesma estratégia, com um responsável coordenando tudo.</p></div><div class="srv-card reveal"><div class="srv-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div><h3>Tecnologia onde ela economiza hora</h3><p>Automação e IA aplicadas em nutrição, qualificação e relatório, para o time gastar tempo no que decide venda.</p></div></div>
+    </div>
+        <p class="srv-ganha__sub" style="margin-top:2.2rem;margin-bottom:0;padding:1.4rem 1.6rem;border-left:3px solid var(--clr-accent);background:var(--clr-surface);border-radius:0 14px 14px 0;max-width:72ch"><strong style="color:var(--clr-text)">Nenhum projeto sai de uma prateleira.</strong> Cada um é modelado para a necessidade da empresa — por isso todo cliente começa pelo <a href="/metodo-picc" style="color:var(--clr-accent);font-weight:600">Planejar</a>, a primeira fase do Método PICC. É ali que o escopo é desenhado, antes de qualquer execução.</p>
+    </section>
+
+  <section class="srv-res" id="resultados">
+    <div class="srv-in">
+      <div class="reveal">
+        <div class="srv-over">Impacto</div>
+        <h2>Quais resultados esperar</h2>
+      </div>
+      <div class="srv-res__g"><div class="srv-res__i reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 17l6-6 4 4 7-8"/><path d="M14 7h7v7"/></svg><span>Previsibilidade de leads qualificados mês a mês</span></div><div class="srv-res__i reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 019 9h-9z"/></svg><span>Retorno mensurável por canal, não por sensação</span></div><div class="srv-res__i reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 17v-5h-5"/></svg><span>Menos verba parada em canal que não converte</span></div><div class="srv-res__i reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.6"/><circle cx="17" cy="17" r="2.6"/></svg><span>Conversão melhor entre o lead e a venda</span></div><div class="srv-res__i reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span>Plano saindo do papel em cadência, não em picos</span></div><div class="srv-res__i reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg><span>Decisão de marketing deixando de depender do dono</span></div></div>
+    </div>
+  </section>
+
 
   <!-- Inbound Marketing -->
   <section class="service-detail" id="inbound">
