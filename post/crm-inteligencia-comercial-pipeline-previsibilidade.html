@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- mkt-base-v1 -->
+<!-- ---------- 1. FONTES AUTO-HOSPEDADAS ---------- -->
+<link rel="preload" href="/fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<!-- 2. FAVICONS -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#4c0059">
+
+<!-- ---------- 3. CONSENT MODE v2 + GTM ----------
+     IMPORTANTE: este bloco precisa vir ANTES do script do GTM.
+     Tudo negado por padrão — nada dispara até o visitante aceitar.
+-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Estado inicial: TUDO negado (exigência da LGPD/GDPR)
+  gtag('consent', 'default', {
+    'ad_storage':             'denied',
+    'ad_user_data':           'denied',
+    'ad_personalization':     'denied',
+    'analytics_storage':      'denied',
+    'functionality_storage':  'granted',
+    'personalization_storage':'denied',
+    'security_storage':       'granted',
+    'wait_for_update':        500
+  });
+
+  // Se o visitante já decidiu em visita anterior, restaura a escolha
+  (function(){
+    try {
+      var c = localStorage.getItem('mkt_consent');
+      if (c === 'aceito') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    } catch(e) {}
+  })();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
+/* GTM sai do caminho critico: carrega no primeiro gesto do visitante ou
+   logo apos o load, o que vier antes. O pageview continua disparando. */
+var carregado=false;
+function carregar(){ if(carregado) return; carregado=true;
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  ['pointerdown','keydown','touchstart','scroll'].forEach(function(e){
+    w.removeEventListener(e,carregar,{passive:true}); });
+}
+['pointerdown','keydown','touchstart','scroll'].forEach(function(e){
+  w.addEventListener(e,carregar,{passive:true,once:true}); });
+if(d.readyState==='complete') setTimeout(carregar,1200);
+else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
+})(window,document,'script','dataLayer','GTM-WQTG79G');</script>
+<!-- End Google Tag Manager -->
+
+  <title>Pipeline de vendas: previsibilidade pelo CRM | Mkteúdo</title>
+  <meta name="description" content="Implantar CRM não é usar CRM. Como calcular projeção ponderada, cobertura de pipeline e indicadores de ação para prever vendas com número, não palpite.">
+  <meta name="keywords" content="pipeline de vendas, gestão de pipeline de vendas, previsibilidade de vendas, crm inteligência comercial, projeção ponderada">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Felipe Piccoli">
+  <link rel="canonical" href="https://www.mkteudo.com.br/post/crm-inteligencia-comercial-pipeline-previsibilidade">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pipeline de vendas: como extrair do CRM a previsibilidade que a planilha nunca deu">
+  <meta property="og:description" content="Implantar CRM não é usar CRM. Como calcular projeção ponderada, cobertura de pipeline e indicadores de ação para prever vendas com número, não palpite.">
+  <meta property="og:url" content="https://www.mkteudo.com.br/post/crm-inteligencia-comercial-pipeline-previsibilidade">
+  <meta property="og:image" content="https://www.mkteudo.com.br/imagens/posts/crm-inteligencia-comercial-pipeline-previsibilidade.jpg">
+  <meta property="og:site_name" content="Mkteúdo Comunicação">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pipeline de vendas: como extrair do CRM a previsibilidade que a planilha nunca deu">
+  <meta name="twitter:description" content="Implantar CRM não é usar CRM. Como calcular projeção ponderada, cobertura de pipeline e indicadores de ação para prever vendas com número, não palpite.">
+  <meta property="article:published_time" content="2026-10-29">
+  <meta property="article:author" content="Felipe Piccoli">
+  <meta property="article:section" content="Comercial">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "Pipeline de vendas: como extrair do CRM a previsibilidade que a planilha nunca deu", "description": "Implantar CRM não é usar CRM. Como calcular projeção ponderada, cobertura de pipeline e indicadores de ação para prever vendas com número, não palpite.", "image": "https://www.mkteudo.com.br/imagens/posts/crm-inteligencia-comercial-pipeline-previsibilidade.jpg", "datePublished": "2026-10-29", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Felipe Piccoli", "jobTitle": "Fundador e Estrategista", "url": "https://www.mkteudo.com.br/post/felipe-piccoli-profissional-multidisciplinar-comunicacao-marketing", "worksFor": {"@type": "Organization", "name": "Mkteúdo Comunicação"}}, "publisher": {"@type": "Organization", "name": "Mkteúdo Comunicação", "logo": {"@type": "ImageObject", "url": "https://www.mkteudo.com.br/imagens/logo-mkteudo.png"}}, "url": "https://www.mkteudo.com.br/post/crm-inteligencia-comercial-pipeline-previsibilidade", "mainEntityOfPage": "https://www.mkteudo.com.br/post/crm-inteligencia-comercial-pipeline-previsibilidade", "articleSection": "Comercial", "keywords": "pipeline de vendas, gestão de pipeline de vendas, previsibilidade de vendas, crm inteligência comercial, projeção ponderada"}
+  </script>
+  <style>
+    :root{--bg:#f4f3ee;--sur:#FFF;--txt:#0d0010;--mut:#6B6B6B;--acc:#9428e4;--acl:#f0e6fd;--bor:#ebebeb;--drk:#0d0010;--fnd:'Syne',sans-serif;--fbd:'DM Sans',-apple-system,sans-serif}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    body{font-family:var(--fbd);background:var(--bg);color:var(--txt);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;display:block}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--bor)}
+    .nav__i{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1200px;margin:0 auto;padding:0 2rem}
+    .nav__logo{height:40px;width:auto}
+    .nav__links{display:flex;gap:2rem;align-items:center}
+    .nav__links a{font-size:.875rem;font-weight:500;color:var(--mut);text-decoration:none;transition:color .3s}
+    .nav__links a:hover{color:var(--txt)}
+    .nav__cta{background:var(--acc);color:#fff!important;padding:.5rem 1.3rem;border-radius:100px;font-size:.84rem;font-weight:600}
+    .nav__hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+    .nav__hbg span{width:24px;height:2px;background:var(--txt)}
+    .mob{display:none;position:fixed;inset:0;z-index:999;background:rgba(244,243,238,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mob.on{display:flex}
+    .mob a{font-family:var(--fnd);font-size:1.6rem;font-weight:700;color:var(--txt);text-decoration:none}
+    .mob__x{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer}
+    .hero{padding:7rem 0 0;background:var(--sur)}
+    .hero__inner{max-width:820px;margin:0 auto;padding:0 1.5rem}
+    .crumb{padding:.9rem 0;font-size:.78rem;color:var(--mut)}
+    .crumb a{color:var(--mut);text-decoration:none}
+    .crumb a:hover{color:var(--acc)}
+    .hero__tag{display:inline-block;background:var(--acl);color:var(--acc);padding:.3rem .9rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem}
+    .hero__title{font-family:var(--fnd);font-size:clamp(1.85rem,4vw,2.75rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem}
+    .hero__meta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;font-size:.82rem;color:var(--mut);padding-bottom:1.5rem;border-bottom:1px solid var(--bor)}
+    .hero__meta strong{color:var(--txt)}
+    .cover img{width:100%;height:460px;object-fit:cover;display:block}
+    .layout{display:grid;grid-template-columns:1fr 290px;gap:4rem;max-width:1140px;margin:0 auto;padding:3rem 1.5rem 5rem}
+    .content h2{font-family:var(--fnd);font-size:1.5rem;font-weight:700;line-height:1.2;margin:2.8rem 0 .9rem;padding-top:.6rem;border-top:2px solid var(--acl);color:var(--txt)}
+    .content h3{font-family:var(--fnd);font-size:1.18rem;font-weight:700;margin:2rem 0 .7rem;color:var(--txt)}
+    .content h4{font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--txt)}
+    .content p{margin-bottom:1.2rem;font-size:1rem;line-height:1.8;color:#2a2a2a}
+    .content ul,.content ol{margin:1rem 0 1.5rem 1.5rem}
+    .content li{margin-bottom:.55rem;line-height:1.7;font-size:.97rem}
+    .content strong{color:var(--txt);font-weight:700}
+    .content a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+    .content blockquote{border-left:4px solid var(--acc);padding:1.2rem 1.5rem;margin:2rem 0;background:var(--acl);border-radius:0 12px 12px 0}
+    .content blockquote p{margin:0;font-style:italic;color:#4a3060}
+    .content table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;overflow-x:auto;display:block}
+    .content th{background:var(--acc);color:#fff;padding:.7rem 1rem;text-align:left;font-family:var(--fnd);font-size:.82rem;font-weight:700}
+    .content td{padding:.65rem 1rem;border-bottom:1px solid var(--bor)}
+    .content tr:nth-child(even) td{background:var(--acl)}
+    .sumbox{background:var(--acl);border:1.5px solid rgba(148,40,228,.15);border-radius:16px;padding:1.8rem 2rem;margin:2rem 0 2.5rem}
+    .sumbox__ttl{font-family:var(--fnd);font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
+    .sumbox ul{margin:0 0 0 1.2rem}
+    .sumbox li{font-size:.93rem;color:#4a3060;margin-bottom:.45rem}
+    .sumbox a{color:var(--acc);text-decoration:underline;text-underline-offset:2px;font-weight:600}
+    .sumbox a:hover{color:#680079}
+    .cta-mid{background:var(--drk);border-radius:16px;padding:2rem 2.2rem;margin:3rem 0;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .cta-mid h4{font-family:var(--fnd);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+    .cta-mid p{font-size:.85rem;color:rgba(255,255,255,.5);margin:0}
+    .cta-mid .btn,.cta-fin .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.75rem 1.6rem;background:var(--acc);color:#fff;border-radius:100px;font-weight:700;font-size:.88rem;text-decoration:none;white-space:nowrap;flex-shrink:0}
+    .faq{margin:3rem 0}
+    .faq h2{font-family:var(--fnd);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;border-top:none!important;padding-top:0!important}
+    .faq__item{border:1px solid var(--bor);border-radius:12px;margin-bottom:.75rem;overflow:hidden}
+    .faq__q{width:100%;background:none;border:none;padding:1.1rem 1.4rem;text-align:left;font-family:var(--fbd);font-size:.95rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--txt)}
+    .faq__q:hover{background:var(--acl)}
+    .faq__ic{font-size:1.2rem;color:var(--acc);transition:transform .3s;flex-shrink:0}
+    .faq__item.open .faq__ic{transform:rotate(45deg)}
+    .faq__a{display:none;padding:0 1.4rem 1.2rem;font-size:.93rem;line-height:1.7;color:var(--mut)}
+    .faq__item.open .faq__a{display:block}
+    .author{background:var(--sur);border:1.5px solid var(--bor);border-radius:16px;padding:2rem;margin:3rem 0;display:flex;gap:1.5rem;align-items:flex-start}
+    .author__av{width:72px;height:72px;border-radius:50%;background:var(--acl);display:flex;align-items:center;justify-content:center;font-family:var(--fnd);font-size:1.6rem;font-weight:800;color:var(--acc);flex-shrink:0}
+    .author__name{font-family:var(--fnd);font-size:1.05rem;font-weight:700;margin-bottom:.15rem}
+    .author__role{font-size:.8rem;color:var(--acc);font-weight:600;margin-bottom:.6rem}
+    .author__bio{font-size:.87rem;color:var(--mut);line-height:1.65}
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:2.5rem 0}
+    .tag{background:var(--acl);color:var(--acc);padding:.3rem .85rem;border-radius:100px;font-size:.75rem;font-weight:600;text-decoration:none}
+    .tag:hover{background:var(--acc);color:#fff;text-decoration:none}
+    .cta-fin{background:linear-gradient(135deg,var(--acc),#680079);border-radius:20px;padding:3rem;text-align:center;margin:3rem 0;color:#fff}
+    .cta-fin h3{font-family:var(--fnd);font-size:1.5rem;font-weight:800;margin-bottom:.6rem}
+    .cta-fin p{color:rgba(255,255,255,.65);margin-bottom:1.8rem;font-size:.95rem}
+    .cta-fin .btn{background:#fff;color:var(--acc)}
+    .side{position:sticky;top:88px;height:fit-content}
+    .side-form{background:var(--acc);border-radius:16px;padding:1.5rem;color:#fff;margin-bottom:1.5rem}
+    .side-form h4{font-family:var(--fnd);font-size:1rem;font-weight:700;margin-bottom:.4rem}
+    .side-form p{font-size:.8rem;opacity:.7;margin-bottom:1rem;line-height:1.5}
+    .side-form input{width:100%;padding:.7rem 1rem;border-radius:8px;border:none;font-size:.88rem;margin-bottom:.6rem;outline:none}
+    .side-form button{width:100%;padding:.7rem;background:#fff;color:var(--acc);border:none;border-radius:8px;font-weight:700;font-size:.88rem;cursor:pointer}
+    .side-card{background:var(--sur);border:1px solid var(--bor);border-radius:16px;padding:1.5rem}
+    .side-card__ttl{font-family:var(--fnd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:1rem}
+    .rel-post{display:flex;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--bor);text-decoration:none}
+    .rel-post:last-child{border-bottom:none;padding-bottom:0}
+    .rel-post:hover h4{color:var(--acc)}
+    .rel-post img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .rel-post h4{font-size:.82rem;font-weight:600;color:var(--txt);line-height:1.35;margin-bottom:.2rem}
+    .rel-post span{font-size:.72rem;color:var(--mut)}
+    footer{background:var(--drk);color:rgba(255,255,255,.5);padding:3rem 0;text-align:center;margin-top:4rem}
+    footer img{height:30px;width:auto;margin:0 auto .5rem;filter:brightness(10)}
+    footer p{font-size:.82rem}
+    @media(max-width:960px){.layout{grid-template-columns:1fr}.side{display:none}}
+    @media(max-width:768px){.nav__links{display:none}.nav__hbg{display:flex}.cover img{height:260px}.hero__title{font-size:1.7rem}.cta-mid{flex-direction:column}}
+  </style>
+<style id="mkt-chrome-v1">
+.footer{background:#0d0010;color:rgba(255,255,255,.52);padding:4rem 0 2rem;border-top:1px solid rgba(255,255,255,.06);margin-top:0;text-align:left;font-family:'DM Sans',-apple-system,sans-serif;line-height:1.7}
+.footer__wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer__logo-img{height:36px;width:auto;margin-bottom:1rem;filter:brightness(10)}
+.footer__tagline{font-size:.88rem;line-height:1.6;margin-bottom:1.2rem;color:rgba(255,255,255,.52)}
+.footer__social{display:flex;gap:.8rem}
+.footer__social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;color:rgba(255,255,255,.5);text-decoration:none}
+.footer__social a:hover{background:#9428e4;border-color:#9428e4;color:#fff}
+.footer__col .footer__col-t{color:#fff;font-size:.75rem;font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.2rem}
+.footer__col a{display:block;font-size:.88rem;margin-bottom:.7rem;transition:color .3s;color:rgba(255,255,255,.52);text-decoration:none}
+.footer__col a:hover{color:#fff}
+.footer__bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem}
+.footer__bottom a{color:rgba(255,255,255,.52);text-decoration:none}
+.footer__bottom a:hover{color:#fff}
+.footer__award{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,0,255,.1);border:1px solid rgba(255,0,255,.2);border-radius:20px;padding:.3rem .8rem;font-size:.7rem;font-weight:600;color:#ff00ff;margin-top:.8rem}
+@media(max-width:860px){.footer__grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:560px){.footer__grid{grid-template-columns:1fr}.footer__bottom{flex-direction:column;gap:.5rem}}
+</style>
+<style id="mkt-overflow-v1">
+/* Trava de rolagem lateral: overflow-x:clip nao cria "scrollport" no iOS,
+   entao o dedo nao arrasta a pagina para o lado como se fosse imagem. */
+html{overflow-x:clip;max-width:100%}
+body{overflow-x:clip;max-width:100%;position:relative}
+img,video,iframe,svg,canvas{max-width:100%;height:auto}
+.content table,table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:640px){
+  .content,.content p,.content li,.content h1,.content h2,.content h3,.content h4,
+  .sumbox,.sumbox *,.card__title,.card__excerpt,.hero__title,.svc-hero__title,
+  .section__title,.cm-card h3,.svc-step h3,.svc-cta h2,.faq__q,.cm-faq__q{overflow-wrap:anywhere}
+  .sumbox{padding:1.2rem 1.1rem}
+  .content ul,.content ol{margin-left:1.1rem;padding-left:0}
+  .content blockquote{padding:1rem 1.1rem}
+}
+</style>
+<style id="mkt-reveal-v1">
+/* A animacao de entrada roda no compositor: mesmo com a thread principal
+   ocupada por tag manager, o conteudo aparece. Sem isso o maior bloco de
+   texto so pintava quando o observer rodava — era o LCP de 53s no celular. */
+.reveal{animation:mktRevelar .45s .35s both}
+.reveal.visible{animation:none}
+@keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+<style id="mkt-a11y-v1">
+/* ancoras nao ficam escondidas atras do menu fixo */
+section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
+
+.author__av{padding:0;overflow:hidden;object-fit:cover;object-position:52% 42%;display:block}
+
+/* Blocos escuros: titulo e texto sempre claros. O h3/h4 do CTA do meio do
+   post estava com a cor de texto do corpo sobre fundo preto — invisivel. */
+.cta-mid h1,.cta-mid h2,.cta-mid h3,.cta-mid h4,.cta-mid p,
+.cta-fin h1,.cta-fin h2,.cta-fin h3,.cta-fin h4,
+.side-form h1,.side-form h2,.side-form h3,.side-form h4,.side-form p{color:#fff}
+.cta-mid p,.cta-fin p{color:rgba(255,255,255,.72)}
+.svc-dark h1,.svc-dark h2,.svc-dark h3,.svc-dark h4{color:#fff}
+.svc-cta h1,.svc-cta h2,.svc-cta h3{color:#fff}
+
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.pular{position:absolute;left:-9999px;top:0;z-index:2000;background:#9428e4;color:#fff;padding:.7rem 1.2rem;border-radius:0 0 10px 0;font-weight:600;font-size:.9rem;text-decoration:none}
+.pular:focus{left:0}
+:focus-visible{outline:2px solid #9428e4;outline-offset:2px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mkteudo.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.mkteudo.com.br/blog"}, {"@type": "ListItem", "position": 3, "name": "Comercial"}, {"@type": "ListItem", "position": 4, "name": "Pipeline de vendas: como extrair do CRM a previsibilidade que a planilha nunca deu", "item": "https://www.mkteudo.com.br/post/crm-inteligencia-comercial-pipeline-previsibilidade"}]}</script>
+<style>
+  .mkt-cookie{
+    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%);
+    z-index:9999; width:min(680px, calc(100vw - 2rem));
+    background:#0d0010; color:#fff;
+    border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:1.1rem 1.3rem; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+    font-family:'DM Sans',-apple-system,sans-serif;
+  }
+  .mkt-cookie[hidden]{display:none}
+  .mkt-cookie__text{flex:1 1 300px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72)}
+  .mkt-cookie__text strong{color:#fff; display:block; margin-bottom:.15rem; font-weight:600}
+  .mkt-cookie__text a{color:#ff00ff; text-decoration:underline}
+  .mkt-cookie__actions{display:flex; gap:.5rem; flex:0 0 auto}
+  .mkt-cookie__btn{
+    font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+    padding:.6rem 1.3rem; border-radius:100px; border:1.5px solid transparent;
+    transition:transform .2s, background .2s;
+  }
+  .mkt-cookie__btn:hover{transform:translateY(-1px)}
+  .mkt-cookie__btn--ghost{background:transparent; color:rgba(255,255,255,.65); border-color:rgba(255,255,255,.22)}
+  .mkt-cookie__btn--ghost:hover{color:#fff; border-color:rgba(255,255,255,.45)}
+  .mkt-cookie__btn--solid{background:#9428e4; color:#fff}
+  .mkt-cookie__btn--solid:hover{background:#a53ff0}
+  @media(max-width:560px){
+    /* Vira uma faixa rente ao rodapé: ocupa o mínimo de tela possível
+       e deixa os dois botões lado a lado, não empilhados. */
+    .mkt-cookie{
+      left:0; right:0; bottom:0; transform:none; width:100%;
+      border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
+      padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom, 0px));
+      gap:.7rem; align-items:center;
+    }
+    .mkt-cookie__text{flex:1 1 100%; font-size:.78rem; line-height:1.45}
+    .mkt-cookie__text strong{display:inline; margin:0}
+    .mkt-cookie__actions{flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+    .mkt-cookie__btn{width:100%; padding:.62rem .5rem; font-size:.8rem}
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     AJUSTES DE MOBILE  ·  mkt-mobile-v1
+     ───────────────────────────────────────────────────────────────
+     Os títulos usam clamp() com piso alto (ex.: clamp(2.8rem,6vw,4.8rem)).
+     O piso trava em 44.8px e PARA de encolher abaixo de ~746px — por
+     isso num celular de 360px a fonte é a mesma de um tablet, e
+     palavras longas como "crescimento" e "transformamos" estouram.
+     Aqui o tamanho é redefinido só no celular; desktop e tablet
+     continuam exatamente como estão.
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 640px){
+    .hero__title        {font-size:1.95rem !important;letter-spacing:-.02em;line-height:1.12}
+    .hero__subtitle     {font-size:1rem !important}
+    .section__title     {font-size:1.55rem !important;letter-spacing:-.02em}
+    .section__desc      {font-size:.95rem !important}
+    .picc__word         {font-size:1.8rem !important}
+    .picc-hero__title   {font-size:1.72rem !important;letter-spacing:-.02em;line-height:1.1}
+    .picc-hero__sub     {font-size:.95rem !important;line-height:1.6}
+    .picc-proof__mv     {font-size:1.4rem !important}
+    .picc-cta__title    {font-size:1.45rem !important}
+    .rd-hero__title     {font-size:1.78rem !important;letter-spacing:-.02em;line-height:1.12}
+    .calc-hero__title   {font-size:1.8rem !important}
+    .res-headline__big  {font-size:1.9rem !important}
+    .case-highlight__title{font-size:1.35rem !important}
+
+    /* caixas com muito respiro interno sobram pouco espaço ao texto */
+    .picc-cta__box      {padding:2rem 1.25rem !important}
+    .case-highlight     {padding:2rem 1.25rem !important}
+    .container          {padding:0 1.25rem}
+
+    /* rede de segurança: nenhuma palavra longa rompe a caixa */
+    h1,h2,h3,h4,.hero__title,.section__title,.picc-hero__title,
+    .picc-cta__title,.rd-hero__title,.calc-hero__title{
+      overflow-wrap:break-word; word-break:normal;
+    }
+
+    /* A linha de números do hero era um flex de 3 colunas com gap de
+       3rem que não quebrava: era ela que empurrava a home 21px para
+       fora da tela e causava o arrasto lateral. */
+    .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
+    .hero__stat-number{font-size:1.9rem}
+    .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
+  }
+
+  
+    .side-card--serv{margin-top:1rem}
+    .side-serv{display:block;font-size:.88rem;font-weight:600;color:var(--acc);padding:.6rem 0;border-bottom:1px solid var(--bor);transition:padding-left .2s}
+    .side-serv:last-child{border-bottom:0}
+    .side-serv:hover{padding-left:.35rem}
+    .side-form__msg{margin-top:.7rem;font-size:.82rem;line-height:1.5;color:var(--acc);font-weight:600}
+  </style>
+</head>
+<body>
+<a href="#conteudo" class="pular">Pular para o conteúdo</a>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQTG79G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="nav"><div class="nav__i">
+  <a href="/"><img src="../imagens/logo-mkteudo.png" alt="Mkteúdo" class="nav__logo" width="352" height="300"></a>
+  <div class="nav__links"><a href="/servicos">Serviços</a><a href="/#sobre">Sobre</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a><a href="/#cases">Cases</a><a href="/calculadora">Calculadora</a><a href="/blog">Blog</a><a href="/#contato" class="nav__cta">Fale conosco</a></div>
+  <button class="nav__hbg" onclick="document.getElementById('mob').classList.toggle('on')"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mob" id="mob">
+  <button class="mob__x" onclick="document.getElementById('mob').classList.remove('on')">✕</button>
+  <a href="/">Home</a><a href="/servicos">Serviços</a><a href="/#sobre">Sobre</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a><a href="/#cases">Cases</a><a href="/calculadora">Calculadora</a><a href="/blog">Blog</a><a href="/#contato">Fale conosco</a>
+</div>
+<div class="hero"><div class="hero__inner">
+  <nav class="crumb"><a href="/">Home</a> › <a href="/blog">Blog</a> › Comercial</nav>
+  <a href="/blog" class="hero__tag">Comercial</a>
+  <h1 class="hero__title">Pipeline de vendas: como extrair do CRM a previsibilidade que a planilha nunca deu</h1>
+  <div class="hero__meta">
+    <span><strong>Felipe Piccoli</strong> — Fundador, Mkteúdo</span>
+    <span>·</span><span>29 out 2026</span>
+    <span>·</span><span>9 min de leitura</span>
+    <span>·</span><span>pipeline de vendas</span>
+  </div>
+</div></div>
+<div class="cover"><img src="/imagens/posts/crm-inteligencia-comercial-pipeline-previsibilidade.jpg" alt="Pipeline de vendas CRM previsibilidade projeção ponderada funil" loading="eager" fetchpriority="high"></div>
+<div class="layout">
+  <main id="conteudo" class="content">
+<div class="sumbox">
+  <div class="sumbox__ttl">Neste artigo você vai aprender</div>
+  <ul><li><a href="#implantar-nao-e-usar">Por que implantar o CRM não é o mesmo que usar o CRM</a></li>
+      <li><a href="#projecao-ponderada">Projeção ponderada: a conta que transforma pipeline em previsão</a></li>
+      <li><a href="#cobertura">Cobertura de pipeline: o seu funil cobre a meta do trimestre?</a></li>
+      <li><a href="#higiene">Higiene de dados: por que a previsão mente quando o campo está vazio</a></li>
+      <li><a href="#dashboard">O dashboard que mede ação, não só resultado</a></li>
+      <li><a href="#rotina">A rotina semanal que sustenta tudo isso</a></li>
+      </ul>
+</div>
+<p>Comprar um CRM é fácil. Qualquer empresa consegue contratar Pipedrive, HubSpot ou RD Station CRM numa tarde, importar a base de contatos e desenhar as etapas do funil. O problema aparece seis meses depois, quando alguém pergunta <strong>"quanto a gente fecha este mês?"</strong> — e a resposta continua sendo um palpite.</p>
+<p>Os dados brasileiros mostram o tamanho do buraco. Segundo os <a href="https://www.rdstation.com/pesquisas/panoramas-rd-station/edicao-2026/" target="_blank" rel="noopener">Panoramas de Marketing e Vendas 2026 da RD Station</a>, levantamento com 2.790 profissionais, <strong>54% das empresas ainda operam sem CRM</strong> e <strong>62% não acompanham as taxas de conversão do funil</strong>. No mesmo estudo, 75% não bateram a meta de vendas em 2025.</p>
+<p>Não é coincidência. Meta batida é consequência de previsão confiável, e previsão confiável é consequência de um <strong>pipeline de vendas</strong> que registra o que realmente acontece. Este artigo mostra como sair do CRM-cadastro para o CRM-instrumento de decisão.</p>
+
+<h2 id="implantar-nao-e-usar">Implantar o CRM não é o mesmo que usar o CRM</h2>
+<p>Existe uma diferença brutal entre um CRM implantado e um CRM em uso. O implantado tem etapas configuradas, usuários criados e integrações ligadas. O em uso tem três características que nenhuma tela de configuração entrega:</p>
+<ul>
+  <li><strong>Todas as oportunidades estão lá.</strong> Não as que o vendedor lembrou de cadastrar — todas, inclusive as que ele acha que não vão dar em nada.</li>
+  <li><strong>As etapas significam a mesma coisa para todo mundo.</strong> "Proposta enviada" quer dizer proposta enviada, não "mandei uma mensagem explicando o preço".</li>
+  <li><strong>A data de fechamento é uma previsão, não um campo obrigatório preenchido no automático.</strong></li>
+</ul>
+<p>Quando esses três pontos não estão de pé, o relatório do CRM vira ficção organizada. Bonito, colorido, e errado.</p>
+
+<h3>O teste de 30 segundos</h3>
+<p>Abra o seu CRM agora e responda: quantas oportunidades estão com data de fechamento no passado e ainda em aberto? Se o número passar de 15% do pipeline, a sua previsão não é uma previsão — é um acúmulo de intenções antigas que ninguém teve coragem de arquivar.</p>
+
+<h2 id="projecao-ponderada">Projeção ponderada: a conta que transforma pipeline em previsão</h2>
+<p>A maioria das empresas olha o pipeline como um número só: "temos R$ 800 mil em negociação". Esse número não serve para decidir nada, porque trata uma oportunidade recém-criada e uma proposta em assinatura como se tivessem o mesmo valor.</p>
+<p>A <strong>projeção ponderada</strong> corrige isso. Cada etapa recebe um peso — a probabilidade histórica de uma oportunidade naquela etapa virar venda — e o valor de cada negócio é multiplicado por esse peso.</p>
+<table>
+  <tr><th>Etapa</th><th>Valor em aberto</th><th>Taxa histórica de fechamento</th><th>Valor ponderado</th></tr>
+  <tr><td>Qualificação</td><td>R$ 400.000</td><td>10%</td><td>R$ 40.000</td></tr>
+  <tr><td>Diagnóstico</td><td>R$ 250.000</td><td>25%</td><td>R$ 62.500</td></tr>
+  <tr><td>Proposta enviada</td><td>R$ 120.000</td><td>45%</td><td>R$ 54.000</td></tr>
+  <tr><td>Negociação final</td><td>R$ 30.000</td><td>70%</td><td>R$ 21.000</td></tr>
+  <tr><td><strong>Total</strong></td><td><strong>R$ 800.000</strong></td><td>—</td><td><strong>R$ 177.500</strong></td></tr>
+</table>
+<p>Os R$ 800 mil viraram R$ 177,5 mil. Esse segundo número é o que você leva para a reunião de diretoria — e o que usa para decidir se contrata, se investe mais em mídia ou se segura a mão.</p>
+
+<h3>De onde vêm os pesos</h3>
+<p>Não de um artigo na internet, e muito menos de um padrão de fábrica da ferramenta. Os pesos saem do <strong>seu próprio histórico</strong>: de cada 100 oportunidades que entraram na etapa "Diagnóstico" nos últimos 12 meses, quantas fecharam? Esse é o peso da etapa.</p>
+<p>Se a sua operação é nova e não tem 12 meses de histórico, comece com pesos conservadores e revise a cada trimestre. A precisão vem com o tempo; o hábito de ponderar precisa começar antes.</p>
+
+<blockquote><p>Previsão ponderada errada ainda é melhor que previsão ponderada nenhuma — porque a errada você consegue corrigir no trimestre seguinte, e a inexistente você só descobre no dia 30.</p></blockquote>
+
+<h2 id="cobertura">Cobertura de pipeline: o seu funil cobre a meta?</h2>
+<p>A segunda conta é a mais simples e a mais ignorada. <strong>Cobertura de pipeline</strong> é o valor total em aberto dividido pela meta do período.</p>
+<p>Se a meta do trimestre é R$ 300 mil e você tem R$ 800 mil em negociação, a cobertura é de 2,7×. Isso é suficiente? Depende da sua taxa de conversão geral. Se você fecha 20% do que entra no funil, precisaria de 5× de cobertura para bater a meta com folga — ou seja, R$ 1,5 milhão. Com 2,7×, a meta não fecha, e você descobre isso <em>agora</em>, não no último dia do trimestre.</p>
+<p>A fórmula que resolve a pergunta "meu pipeline cobre minha meta?":</p>
+<ul>
+  <li><strong>Cobertura necessária = 1 ÷ taxa de conversão geral.</strong> Fecha 25%? Precisa de 4× a meta em pipeline.</li>
+  <li><strong>Déficit = (cobertura necessária × meta) − pipeline atual.</strong> É o tanto de oportunidade nova que precisa entrar.</li>
+</ul>
+<p>E aqui o marketing entra na conversa: esse déficit é a demanda real que as campanhas precisam gerar. Sem essa conta, o marketing trabalha com uma meta de leads inventada, e o comercial reclama de volume ou de qualidade sem conseguir apontar qual dos dois.</p>
+
+<div class="cta-mid"><div><h3>Quer que o seu CRM responda "fecho a meta?" sem palpite</h3><p>A Mkteúdo assume a direção comercial e de marketing e deixa o pipeline, as taxas e a projeção funcionando como rotina.</p></div><a href="/#contato" class="btn">Falar com um especialista →</a></div>
+
+<h2 id="higiene">Higiene de dados: a previsão mente quando o campo está vazio</h2>
+<p>Nenhuma das duas contas acima funciona se o CRM estiver sujo. E CRM sujo quase nunca é problema de ferramenta — é problema de combinado.</p>
+<h3>Os quatro campos que não podem faltar</h3>
+<ul>
+  <li><strong>Valor da oportunidade.</strong> Sem valor, não há ponderação possível. Se o ticket ainda não está fechado, use a faixa média do produto.</li>
+  <li><strong>Data prevista de fechamento.</strong> Precisa ser revisada quando a negociação muda, não preenchida uma vez e esquecida.</li>
+  <li><strong>Motivo de perda.</strong> É o campo mais valioso do CRM e o menos preenchido. Sem ele você nunca saberá se perde por preço, por timing ou por perfil errado.</li>
+  <li><strong>Origem do lead.</strong> É o que conecta a venda fechada à campanha que a gerou — e o que permite calcular retorno de verdade.</li>
+</ul>
+<h3>A regra que faz a equipe preencher</h3>
+<p>Campo obrigatório na ferramenta resolve metade. A outra metade é o combinado: <strong>o que não está no CRM não entra na previsão e não conta na comissão</strong>. Quando o registro deixa de ser burocracia e passa a ser a fonte do pagamento, o preenchimento se resolve em duas semanas.</p>
+
+<h2 id="dashboard">O dashboard que mede ação, não só resultado</h2>
+<p>A maior parte dos painéis comerciais mostra apenas resultado: vendas fechadas, receita, ticket médio. O problema é que resultado é <em>atrasado</em> — quando ele cai, o estrago já aconteceu há semanas.</p>
+<p>Um painel útil mostra também <strong>as ações executadas no sistema</strong>, que são indicadores antecedentes:</p>
+<table>
+  <tr><th>Indicador de ação</th><th>O que revela</th><th>Frequência</th></tr>
+  <tr><td>Oportunidades criadas</td><td>Se há entrada suficiente para o mês que vem</td><td>Semanal</td></tr>
+  <tr><td>Atividades registradas por vendedor</td><td>Se o time está trabalhando ou só esperando</td><td>Semanal</td></tr>
+  <tr><td>Tempo médio em cada etapa</td><td>Onde as negociações travam</td><td>Mensal</td></tr>
+  <tr><td>Oportunidades sem atividade há 14 dias</td><td>Pipeline que parece vivo e está morto</td><td>Semanal</td></tr>
+  <tr><td>Taxa de preenchimento de motivo de perda</td><td>Se o aprendizado está sendo capturado</td><td>Mensal</td></tr>
+</table>
+<p>Esse conjunto responde a uma pergunta que o relatório de vendas não responde: <strong>o resultado ruim do mês veio de pouca atividade, de atividade errada ou de mercado?</strong> São três problemas com três soluções diferentes, e sem indicador de ação você trata os três do mesmo jeito.</p>
+<p>Se quiser ver como isso vira painel na prática, vale ler <a href="/post/dashboard-marketing-digital-lovable-cpl-cac-roi-roas">como montamos dashboards de marketing com CPL, CAC, ROI e ROAS</a>.</p>
+
+<h2 id="rotina">A rotina semanal que sustenta tudo isso</h2>
+<p>Ferramenta e fórmula não criam disciplina. Rotina cria. A que funciona na maioria das operações B2B cabe em 45 minutos por semana:</p>
+<ol>
+  <li><strong>Limpeza (10 min).</strong> Oportunidades com data vencida: fecha, perde ou reprojeta. Nenhuma fica como estava.</li>
+  <li><strong>Revisão de etapa (15 min).</strong> Cada negócio acima de um valor de corte é discutido: o que precisa acontecer para avançar e quando.</li>
+  <li><strong>Projeção (10 min).</strong> Recalcula o ponderado e compara com a meta. O déficit vira pedido de demanda para o marketing.</li>
+  <li><strong>Ações da semana (10 min).</strong> Cada vendedor sai com três compromissos registrados no CRM, com data.</li>
+</ol>
+<p>Repetida por um trimestre, essa rotina muda a conversa comercial de "acho que vai entrar" para "está em negociação final, com 70% de probabilidade, previsto para o dia 18". É essa mudança — e não o software — que produz previsibilidade.</p>
+
+<h3>O que a integração com marketing acrescenta</h3>
+<p>O mesmo estudo da RD Station mostra que apenas <strong>16% das empresas consideram satisfatória a integração entre marketing e vendas</strong>, e que as que consideram têm <strong>66% mais probabilidade de bater a meta</strong>. Faz sentido: quando o CRM devolve ao marketing a taxa de fechamento por origem, a verba para de ser distribuída por intuição. Esse é o tema de <a href="/post/marketing-integrado-vendas-processo-comercial">marketing integrado com vendas</a> e de <a href="/post/otimize-campanhas-por-sql-vendas-nao-por-leads">otimizar campanhas por SQL, e não por lead</a>.</p>
+
+<div class="faq"><h2>Perguntas Frequentes</h2>
+<div class="faq__item"><button class="faq__q">Qual a diferença entre pipeline de vendas e funil de vendas?<span class="faq__ic">+</span></button><div class="faq__a">Funil de vendas descreve a jornada do cliente, do primeiro contato até a compra, e costuma incluir as etapas de marketing. Pipeline de vendas é a representação operacional dessa jornada dentro do CRM: as oportunidades reais, com valor, etapa e data prevista. O funil explica o processo; o pipeline mostra o que está acontecendo nele agora.</div></div>
+<div class="faq__item"><button class="faq__q">Como calcular a projeção ponderada do pipeline?<span class="faq__ic">+</span></button><div class="faq__a">Multiplique o valor em aberto de cada etapa pela taxa histórica de fechamento daquela etapa e some os resultados. A taxa precisa vir do seu próprio histórico — de cada 100 oportunidades que passaram por aquela etapa nos últimos 12 meses, quantas viraram venda.</div></div>
+<div class="faq__item"><button class="faq__q">Quanta cobertura de pipeline uma empresa precisa ter?<span class="faq__ic">+</span></button><div class="faq__a">A cobertura necessária é 1 dividido pela sua taxa de conversão geral. Quem fecha 25% das oportunidades precisa de 4 vezes a meta em pipeline aberto; quem fecha 20% precisa de 5 vezes. Não existe número universal — existe o número que a sua taxa de conversão exige.</div></div>
+<div class="faq__item"><button class="faq__q">Vale a pena trocar de CRM se o atual não dá previsibilidade?<span class="faq__ic">+</span></button><div class="faq__a">Na maioria dos casos, não. A falta de previsibilidade quase sempre vem de processo e de preenchimento, não da ferramenta. Trocar de CRM sem resolver o combinado de registro costuma reproduzir o mesmo problema numa tela diferente, com o custo extra da migração.</div></div>
+<div class="faq__item"><button class="faq__q">A Mkteúdo ajuda a estruturar o uso do CRM?<span class="faq__ic">+</span></button><div class="faq__a">Sim. Assumimos a direção de marketing e a interface com o comercial: desenho das etapas, definição dos campos obrigatórios, cálculo das taxas por etapa, painel de indicadores de ação e a rotina semanal de revisão de pipeline. Todo projeto começa pela fase Planejar do Método PICC, que é onde esse diagnóstico é feito.</div></div>
+</div>
+    <div class="author">
+      <img class="author__av" src="/imagens/felipe-piccoli-avatar.jpg" alt="Felipe Piccoli, fundador da Mkteúdo" width="440" height="440" loading="lazy" decoding="async">
+      <div>
+        <div class="author__name">Felipe Piccoli</div>
+        <div class="author__role">Fundador &amp; Estrategista — Mkteúdo Comunicação</div>
+        <div class="author__bio">Jornalista com MBA em Marketing e Comunicação Estratégica. Mais de 10 anos de experiência em marketing digital, com passagens por Accenture, LATAM/VAMOS, Grupo Bandeirantes, V4 e G4. Responsável pela gestão de marketing na Copa do Mundo 2014 e nos Jogos Olímpicos 2016. 2× premiado no RD Limitless com os melhores cases de transformação digital do Brasil.</div>
+      </div>
+    </div>
+    <div class="tags"><a href="/blog" class="tag">Pipeline de Vendas</a><a href="/blog" class="tag">CRM</a><a href="/blog" class="tag">Previsibilidade</a><a href="/blog" class="tag">Gestão Comercial</a><a href="/blog" class="tag">Dados</a></div>
+    <div class="cta-fin">
+      <h3>Quer aplicar isso no seu negócio?</h3>
+      <p>A Mkteúdo é a agência de marketing digital referência em Ribeirão Preto — 2× premiada no RD Limitless.</p>
+      <a href="/#contato" class="btn">Falar com um especialista →</a>
+    </div>
+  </main>
+  <aside class="side">
+    <form class="side-form" id="side-news">
+      <h4>Receba conteúdos gratuitos</h4>
+      <p>Estratégias de marketing digital toda semana.</p>
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+      <button type="submit">Quero receber →</button>
+      <div class="side-form__msg" id="side-news-msg" hidden></div>
+    </form>
+    <div class="side-card side-card--serv">
+      <div class="side-card__ttl">Como podemos ajudar</div>
+      <a href="/consultoria-de-marketing" class="side-serv">Consultoria de Marketing Digital</a>
+      <a href="/terceirizacao-de-marketing" class="side-serv">Terceirização de Marketing</a>
+      <a href="/implantacao-de-crm" class="side-serv">Implantação de CRM</a>
+      <a href="/marketing-para-agronegocio" class="side-serv">Marketing para o Agronegócio</a>
+      <a href="/marketing-para-industria" class="side-serv">Marketing para Indústria</a>
+    </div>
+    <div class="side-card">
+      <div class="side-card__ttl">Leia também</div>
+      <a href="como-montar-operacao-inside-sales" class="rel-post"><img src="/imagens/posts/p/como-montar-operacao-inside-sales.jpg" alt="Como montar inside sales do zero" loading="lazy"><div><h4>Como montar inside sales do zero</h4><span>Comercial</span></div></a><a href="receita-previsivel-marketing-previsao-de-vendas" class="rel-post"><img src="/imagens/posts/p/receita-previsivel-marketing-previsao-de-vendas.jpg" alt="Receita previsível: a conta do marketing" loading="lazy"><div><h4>Receita previsível: a conta do marketing</h4><span>Estratégia</span></div></a><a href="gargalo-comercial-taxa-de-conversao-por-etapa" class="rel-post"><img src="/imagens/posts/p/gargalo-comercial-taxa-de-conversao-por-etapa.jpg" alt="Onde está o gargalo do comercial" loading="lazy"><div><h4>Onde está o gargalo do comercial</h4><span>Comercial</span></div></a><a href="mql-sql-qualificacao-leads-marketing-vendas" class="rel-post"><img src="/imagens/posts/p/mql-sql-qualificacao-leads-marketing-vendas.jpg" alt="MQL e SQL: a diferença e como qualificar" loading="lazy"><div><h4>MQL e SQL: a diferença e como qualificar</h4><span>Estratégia</span></div></a>
+    </div>
+  </aside>
+</div>
+<footer class="footer">
+    <div class="footer__wrap">
+      <div class="footer__grid">
+        <div>
+          <img src="/imagens/logo-mkteudo.png" alt="Mkteúdo" class="footer__logo-img" width="352" height="300" loading="lazy" decoding="async">
+          <p class="footer__tagline">Marketing que move negócios. Agência de Marketing Digital em Ribeirão Preto.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/mkteudo/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="https://www.linkedin.com/company/mkteudo/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+          </div>
+          <div class="footer__award">2× Premiada RD Limitless</div>
+        </div>
+        <div class="footer__col"><p class="footer__col-t">Serviços</p><a href="/consultoria-de-marketing">Consultoria de Marketing</a><a href="/terceirizacao-de-marketing">Terceirização de Marketing</a><a href="/implantacao-de-crm">Implantação de CRM</a><a href="/marketing-para-agronegocio">Marketing para o Agro</a><a href="/marketing-para-industria">Marketing para Indústria</a><a href="/servicos">Todos os serviços</a></div>
+        <div class="footer__col"><p class="footer__col-t">Conteúdo</p><a href="/blog">Blog</a><a href="/calculadora">Calculadora de Receita</a><a href="/metodo-picc">Método PICC</a><a href="/rd-station">RD Station</a></div>
+        <div class="footer__col"><p class="footer__col-t">Contato</p><a href="/#contato">Fale conosco</a><a href="/#cases">Cases</a><a href="/politica-de-privacidade/">Política de Privacidade</a></div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Mkteúdo Comunicação. Todos os direitos reservados.</span>
+        <span><a href="/politica-de-privacidade/">Política de Privacidade</a></span>
+        <span>CNPJ: 32.115.047/0001-97</span>
+      </div>
+    </div>
+  </footer>
+<script>document.querySelectorAll('.faq__q').forEach(function(b){b.addEventListener('click',function(){this.closest('.faq__item').classList.toggle('open')});});</script>
+<!-- 1. GTM noscript — PRIMEIRA coisa depois de <body> -->
+
+<div class="mkt-cookie" id="mktCookie" role="dialog" aria-live="polite"
+     aria-label="Aviso de cookies" hidden>
+  <div class="mkt-cookie__text">
+    <strong>A gente usa cookies.</strong>
+    Para entender como o site é usado e melhorar sua experiência.
+    <a href="/politica-de-privacidade/">Política de Privacidade</a>
+  </div>
+  <div class="mkt-cookie__actions">
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--ghost"
+            id="mktCookieDeny">Recusar</button>
+    <button type="button" class="mkt-cookie__btn mkt-cookie__btn--solid"
+            id="mktCookieAccept">Aceitar</button>
+  </div>
+</div>
+
+
+
+<script>
+(function(){
+  var KEY = 'mkt_consent';
+  var el = document.getElementById('mktCookie');
+  if (!el) return;
+
+  function saved(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function store(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+
+  function decide(value){
+    store(value);
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'analytics_storage': value === 'aceito' ? 'granted' : 'denied'
+      });
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cookie_consent_update',
+      cookie_consent: value
+    });
+    el.hidden = true;
+  }
+
+  // Só mostra se ainda não decidiu
+  if (!saved()) { el.hidden = false; }
+
+  document.getElementById('mktCookieAccept').addEventListener('click', function(){ decide('aceito'); });
+  document.getElementById('mktCookieDeny').addEventListener('click',   function(){ decide('recusado'); });
+})();
+</script>
+
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
+
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      link_location: a.dataset.linkLocation || 'conteudo',
+      link_text: a.dataset.linkText || (a.textContent || '').trim().slice(0,60) || 'WhatsApp'
+    });
+  }, true);
+})();
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre pipeline de vendas e funil de vendas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Funil de vendas descreve a jornada do cliente, do primeiro contato até a compra, e costuma incluir as etapas de marketing. Pipeline de vendas é a representação operacional dessa jornada dentro do CRM: as oportunidades reais, com valor, etapa e data prevista. O funil explica o processo; o pipeline mostra o que está acontecendo nele agora."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como calcular a projeção ponderada do pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiplique o valor em aberto de cada etapa pela taxa histórica de fechamento daquela etapa e some os resultados. A taxa precisa vir do seu próprio histórico — de cada 100 oportunidades que passaram por aquela etapa nos últimos 12 meses, quantas viraram venda."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanta cobertura de pipeline uma empresa precisa ter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A cobertura necessária é 1 dividido pela sua taxa de conversão geral. Quem fecha 25% das oportunidades precisa de 4 vezes a meta em pipeline aberto; quem fecha 20% precisa de 5 vezes. Não existe número universal — existe o número que a sua taxa de conversão exige."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vale a pena trocar de CRM se o atual não dá previsibilidade?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Na maioria dos casos, não. A falta de previsibilidade quase sempre vem de processo e de preenchimento, não da ferramenta. Trocar de CRM sem resolver o combinado de registro costuma reproduzir o mesmo problema numa tela diferente, com o custo extra da migração."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Mkteúdo ajuda a estruturar o uso do CRM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Assumimos a direção de marketing e a interface com o comercial: desenho das etapas, definição dos campos obrigatórios, cálculo das taxas por etapa, painel de indicadores de ação e a rotina semanal de revisão de pipeline. Todo projeto começa pela fase Planejar do Método PICC, que é onde esse diagnóstico é feito."
+      }
+    }
+  ]
+}
+</script>
+
+  <!-- módulo central de captura e qualificação de leads -->
+  <script src="/js/mkt-leads.js"></script>
+
+<script>
+  (function(){
+    var f=document.getElementById('side-news'); if(!f||!window.MKT) return;
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var m=document.getElementById('side-news-msg');
+      var v=window.MKT.valores(f);
+      if(!window.MKT.emailValido(v.email)){ m.hidden=false; m.textContent='Confira o e-mail.'; return; }
+      var b=f.querySelector('button'); b.disabled=true; b.textContent='Enviando…';
+      window.MKT.enviar(Object.assign({}, v, window.MKT.contexto(), {
+        origem_form:'newsletter', etapa:'newsletter', identificador:'newsletter-blog-mkteudo'
+      })).then(function(){
+        window.MKT.push('newsletter_inscricao', {form_origem:'newsletter'});
+        f.innerHTML='<h4>Pronto!</h4><p>Você vai receber nossos conteúdos no e-mail cadastrado.</p>';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
