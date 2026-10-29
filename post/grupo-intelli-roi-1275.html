@@ -195,17 +195,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="../blog.html" class="hero__tag">Cases de Sucesso</a>
   <h1 class="hero__title">GRUPO INTELLI alcança ROI de 1.275% com o Clube do Eletricista — case premiado</h1>
   <div class="hero__meta">
-    <span>✍️ <strong>Felipe Piccoli</strong> — Fundador, Mkteúdo</span>
-    <span>·</span><span>📅 10 de novembro de 2023</span>
-    <span>·</span><span>⏱ 9 min de leitura</span>
-    <span>·</span><span>🔑 roi marketing digital interior paulista</span>
+    <span><strong>Felipe Piccoli</strong> — Fundador, Mkteúdo</span>
+    <span>·</span><span>10 de novembro de 2023</span>
+    <span>·</span><span>9 min de leitura</span>
+    <span>·</span><span>roi marketing digital interior paulista</span>
   </div>
 </div></div>
 <div class="cover"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80&fit=crop" alt="Premiação RD Limitless case GRUPO INTELLI ROI marketing Ribeirão Preto" loading="eager"></div>
 <div class="layout">
   <main class="content">
     <div class="sumbox">
-      <div class="sumbox__ttl">📋 Neste artigo você vai aprender</div>
+      <div class="sumbox__ttl">Neste artigo você vai aprender</div>
       <ul><li><a href="#desafio">O desafio: líder de mercado com potencial digital inexplorado</a></li>
           <li><a href="#estrategia">A estratégia: plataforma EAD gratuita como isca de captação</a></li>
           <li><a href="#execucao">A execução: RD Station como motor do projeto de ponta a ponta</a></li>
@@ -289,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <p>Para entender a metodologia completa de Inbound Marketing que gerou esse resultado, leia nosso guia de <a href="inbound-marketing-ribeirao-preto-maquina-de-vendas.html">Inbound Marketing em Ribeirão Preto</a>. Para entender como a automação funcionou por trás do funil, veja nosso artigo sobre <a href="automacao-marketing-rd-station-ribeirao-preto.html">Automação com RD Station</a>.</p>
 
-<div class="faq"><h2>❓ Perguntas Frequentes</h2>
+<div class="faq"><h2>Perguntas Frequentes</h2>
 <div class="faq__item"><button class="faq__q">O ROI de 1.275% é real e verificável?<span class="faq__ic">+</span></button><div class="faq__a">Sim. O case foi documentado, auditado e aprovado pelo júri especializado do RD Limitless — o maior prêmio de marketing digital da América Latina. O cálculo seguiu metodologia padrão de mercado sobre o incremento de receita atribuível à estratégia em comparação ao período anterior.</div></div>
 <div class="faq__item"><button class="faq__q">Esse modelo funciona para outros segmentos além do setor elétrico?<span class="faq__ic">+</span></button><div class="faq__a">Sim. A lógica de criar uma isca digital genuinamente valiosa funciona em qualquer segmento com dor de capacitação, acesso a ferramenta ou pertencimento a comunidade. O que muda é o formato da isca — pode ser EAD, diagnóstico, ferramenta, clube exclusivo ou comunidade de pares.</div></div>
 <div class="faq__item"><button class="faq__q">Quanto tempo levou para ter os primeiros resultados mensuráveis?<span class="faq__ic">+</span></button><div class="faq__a">Os primeiros leads chegaram nas primeiras semanas após o lançamento. Volume significativo no primeiro mês completo. ROI mensurável em 3 meses. A estratégia foi desenhada para resultado rápido sem sacrificar a sustentabilidade de longo prazo.</div></div>
@@ -426,6 +426,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
     .hero__stat-number{font-size:1.9rem}
     .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
   </style>

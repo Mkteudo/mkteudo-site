@@ -195,17 +195,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="../blog.html" class="hero__tag">Inbound Marketing</a>
   <h1 class="hero__title">Mkteúdo: Agência Parceira da RD Station com resultado comprovado nacionalmente</h1>
   <div class="hero__meta">
-    <span>✍️ <strong>Felipe Piccoli</strong> — Fundador, Mkteúdo</span>
-    <span>·</span><span>📅 1 de julho de 2023</span>
-    <span>·</span><span>⏱ 8 min de leitura</span>
-    <span>·</span><span>🔑 agência parceira rd station</span>
+    <span><strong>Felipe Piccoli</strong> — Fundador, Mkteúdo</span>
+    <span>·</span><span>1 de julho de 2023</span>
+    <span>·</span><span>8 min de leitura</span>
+    <span>·</span><span>agência parceira rd station</span>
   </div>
 </div></div>
 <div class="cover"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&q=80&fit=crop" alt="Agência parceira RD Station certificação automação marketing resultado" loading="eager"></div>
 <div class="layout">
   <main class="content">
     <div class="sumbox">
-      <div class="sumbox__ttl">📋 Neste artigo você vai aprender</div>
+      <div class="sumbox__ttl">Neste artigo você vai aprender</div>
       <ul><li><a href="#o-que-significa">O que significa ser Agência Parceira RD Station na prática</a></li>
           <li><a href="#como-impacta">Como a certificação impacta o resultado da sua empresa</a></li>
           <li><a href="#projetos-premiados">Projetos premiados desenvolvidos pela Mkteúdo com RD Station</a></li>
@@ -309,7 +309,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <p>Para suporte especializado na implementação, entre em contato com a Mkteúdo — agência com metodologia premiada 2× no RD Limitless para empresas do interior paulista.</p>
 
-<div class="faq"><h2>❓ Perguntas Frequentes</h2><div class="faq__item"><button class="faq__q">O que é Agência Parceira RD Station?<span class="faq__ic">+</span></button><div class="faq__a">É uma agência certificada pelo programa oficial da RD Station com critérios de conhecimento técnico, volume de clientes ativos e resultados comprovados. Garante que a agência domina a plataforma de forma validada.</div></div><div class="faq__item"><button class="faq__q">A Mkteúdo é parceira da RD Station?<span class="faq__ic">+</span></button><div class="faq__a">Sim. Somos Agência Parceira certificada com dois projetos premiados no RD Limitless — o maior prêmio de marketing digital da América Latina.</div></div><div class="faq__item"><button class="faq__q">Preciso contratar o RD Station para trabalhar com a Mkteúdo?<span class="faq__ic">+</span></button><div class="faq__a">Não necessariamente. O RD Station é nossa recomendação principal para automação de marketing, mas avaliamos cada situação específica e podemos trabalhar com outras ferramentas quando fizer mais sentido.</div></div><div class="faq__item"><button class="faq__q">Quanto custa implementar automação de marketing?<span class="faq__ic">+</span></button><div class="faq__a">O RD Station parte de R$997/mês. A implementação e gestão pela agência varia conforme o escopo. O retorno geralmente supera o investimento em 3 a 6 meses de operação consistente.</div></div><div class="faq__item"><button class="faq__q">Como contratar a Mkteúdo para implementar RD Station?<span class="faq__ic">+</span></button><div class="faq__a">Entre em contato pelo formulário do site para um diagnóstico gratuito. Avaliamos seu momento, recomendamos as ferramentas certas e estruturamos a implementação completa.</div></div></div>
+<div class="faq"><h2>Perguntas Frequentes</h2><div class="faq__item"><button class="faq__q">O que é Agência Parceira RD Station?<span class="faq__ic">+</span></button><div class="faq__a">É uma agência certificada pelo programa oficial da RD Station com critérios de conhecimento técnico, volume de clientes ativos e resultados comprovados. Garante que a agência domina a plataforma de forma validada.</div></div><div class="faq__item"><button class="faq__q">A Mkteúdo é parceira da RD Station?<span class="faq__ic">+</span></button><div class="faq__a">Sim. Somos Agência Parceira certificada com dois projetos premiados no RD Limitless — o maior prêmio de marketing digital da América Latina.</div></div><div class="faq__item"><button class="faq__q">Preciso contratar o RD Station para trabalhar com a Mkteúdo?<span class="faq__ic">+</span></button><div class="faq__a">Não necessariamente. O RD Station é nossa recomendação principal para automação de marketing, mas avaliamos cada situação específica e podemos trabalhar com outras ferramentas quando fizer mais sentido.</div></div><div class="faq__item"><button class="faq__q">Quanto custa implementar automação de marketing?<span class="faq__ic">+</span></button><div class="faq__a">O RD Station parte de R$997/mês. A implementação e gestão pela agência varia conforme o escopo. O retorno geralmente supera o investimento em 3 a 6 meses de operação consistente.</div></div><div class="faq__item"><button class="faq__q">Como contratar a Mkteúdo para implementar RD Station?<span class="faq__ic">+</span></button><div class="faq__a">Entre em contato pelo formulário do site para um diagnóstico gratuito. Avaliamos seu momento, recomendamos as ferramentas certas e estruturamos a implementação completa.</div></div></div>
     <div class="author">
       <div class="author__av">FP</div>
       <div>
@@ -440,6 +440,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
     .hero__stat-number{font-size:1.9rem}
     .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
   </style>

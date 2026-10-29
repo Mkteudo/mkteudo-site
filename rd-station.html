@@ -414,7 +414,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="rd-award">
       <div class="rd-award__inner">
-        <div class="rd-award__badge">★ Reconhecimento de mercado</div>
+        <div class="rd-award__badge">Reconhecimento de mercado</div>
         <h2 class="rd-award__title">2× premiada no <em>RD Limitless</em>, o maior prêmio de marketing da América Latina</h2>
         <p class="rd-award__text">O Prêmio RD Limitless é realizado anualmente pela RD Station desde 2015 e reconhece as melhores estratégias e agências de marketing do Brasil. A cerimônia faz parte do RD Summit — o maior evento de marketing, vendas e inovação da América Latina, que reúne dezenas de milhares de profissionais.</p>
         <p class="rd-award__text">A Mkteúdo subiu ao pódio duas vezes nesse palco. Em 2023, conquistamos o 2º lugar na categoria Melhor Case de Transformação Digital – Agência Parceira, com a estratégia criada para o Grupo Intelli, disputando entre cerca de 2 mil agências de todo o Brasil. Na prática, isso significa uma coisa para você: domínio comprovado da plataforma e capacidade de gerar resultado real com ela.</p>
@@ -487,7 +487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="https://www.instagram.com/mkteudo/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="https://www.linkedin.com/company/mkteudo/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
         </div>
-        <div class="footer__award">🏆 2× Premiada RD Limitless</div>
+        <div class="footer__award">2× Premiada RD Limitless</div>
       </div>
       <div class="footer__col"><h5>Serviços</h5><a href='/servicos'>Terceirização de Marketing</a><a href='/servicos#inbound'>Inbound Marketing</a><a href='/servicos#crm'>CRM &amp; Dashboards</a><a href='/servicos#incentivo'>Campanhas de Incentivo</a></div>
       <div class="footer__col"><h5>Conteúdo</h5><a href='/blog'>Blog</a><a href='/metodo-picc'>Método PICC</a><a href='/calculadora'>Calculadora de Receita</a><a href="/#cases">Cases</a></div>
@@ -616,6 +616,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
     .hero__stat-number{font-size:1.9rem}
     .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
   

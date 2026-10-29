@@ -503,7 +503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="https://www.instagram.com/mkteudo/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="https://www.linkedin.com/company/mkteudo/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
         </div>
-        <div class="footer__award">🏆 2× Premiada RD Limitless</div>
+        <div class="footer__award">2× Premiada RD Limitless</div>
       </div>
       <div class="footer__col"><h5>Serviços</h5><a href='/servicos'>Terceirização de Marketing</a><a href='/servicos#inbound'>Inbound Marketing</a><a href='/servicos#crm'>CRM &amp; Dashboards</a><a href='/servicos#incentivo'>Campanhas de Incentivo</a></div>
       <div class="footer__col"><h5>Conteúdo</h5><a href='/blog'>Blog</a><a href='/metodo-picc'>Método PICC</a><a href='/calculadora'>Calculadora de Receita</a><a href="/#cases">Cases</a></div>
@@ -632,6 +632,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
     .hero__stat-number{font-size:1.9rem}
     .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
   

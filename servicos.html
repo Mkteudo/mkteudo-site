@@ -151,10 +151,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 0.9rem; color: var(--clr-text);
     }
     .service-detail__feature::before {
-      content: '✓'; display: flex; align-items: center; justify-content: center;
+      content: ''; display: flex; flex-shrink: 0;
       width: 22px; height: 22px; border-radius: 50%;
-      background: var(--clr-accent-light); color: var(--clr-accent);
-      font-size: 0.7rem; font-weight: 700; flex-shrink: 0;
+      background: var(--clr-accent-light);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239428e4' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 12 5.5 5.5L20 7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: 11px 11px;
     }
 
     .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 100px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s var(--ease-out); }
@@ -497,6 +498,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .hero__stats{flex-wrap:wrap; gap:1.25rem 1.75rem; margin-top:2.5rem; padding-top:2rem}
     .hero__stat-number{font-size:1.9rem}
     .hero__actions .btn{width:100%; justify-content:center}
+
+    /* A faixa de prêmios empilhava com ícone grande e título em duas
+       linhas, ocupando tela demais. No celular vira uma lista enxuta,
+       alinhada à esquerda. */
+    .awards-strip      {padding:2.5rem 0}
+    .awards-strip__inner{grid-template-columns:1fr !important; gap:1.5rem; align-items:stretch; justify-content:flex-start}
+    .awards-strip__inner .award-item+.award-item{border-left:0 !important; padding-left:0 !important}
+    .award-item        {gap:.85rem; align-items:flex-start; text-align:left; width:100%}
+    .award-item__icon  {width:36px !important; height:36px !important; border-radius:10px}
+    .award-item__icon svg{width:18px !important; height:18px !important}
+    .award-item__title {font-size:.94rem; line-height:1.25}
+    .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
   </style>
