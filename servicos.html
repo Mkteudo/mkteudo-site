@@ -288,8 +288,6 @@ else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
 .svc-hero__n{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:800;line-height:1;background:linear-gradient(135deg,#ff00ff 0%,#680079 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .svc-hero__l{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.5rem;line-height:1.4;text-transform:uppercase;letter-spacing:.07em}
 .svc-lede{font-size:1.1rem;line-height:1.75;color:var(--clr-text)}
-.cm-card{position:relative;padding-top:2.9rem}
-.cm-card::before{content:attr(data-n);position:absolute;top:1.1rem;left:1.6rem;font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;line-height:1;color:var(--clr-accent);opacity:.14}
 .cm-card:hover{transform:translateY(-4px);border-color:var(--clr-accent);box-shadow:0 14px 40px rgba(148,40,228,.10)}
 .svc-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem;margin-top:2.4rem;counter-reset:p}
 .svc-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:1.8rem 1.5rem;transition:all .35s cubic-bezier(.16,1,.3,1)}
@@ -462,6 +460,19 @@ section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
   }
 
   </style>
+<style id="mkt-cards-servicos">
+/* servicos.html tinha os modificadores de .cm-card mas nao a regra base:
+   os cards apareciam como texto solto. */
+.cm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:2.5rem}
+.cm-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:14px;padding:1.6rem;transition:all .35s var(--ease-out)}
+.cm-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.5rem;line-height:1.25}
+.cm-card p{font-size:.9rem;color:var(--clr-text-muted);line-height:1.65}
+.cm-rel{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.cm-rel a{font-size:.85rem;font-weight:600;color:var(--clr-accent);border:1.5px solid var(--clr-border);border-radius:100px;padding:.5rem 1.1rem;transition:all .25s}
+.cm-card{display:block;text-decoration:none;color:inherit}
+.cm-card:hover{transform:translateY(-4px);border-color:var(--clr-accent);box-shadow:0 14px 40px rgba(148,40,228,.10)}
+@media(max-width:640px){.cm-card{padding:1.3rem}}
+</style>
 </head>
 <body>
 <a href="#conteudo" class="pular">Pular para o conteúdo</a>
