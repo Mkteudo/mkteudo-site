@@ -50,9 +50,21 @@
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+new Date().getTime(),event:'gtm.js'});
+/* GTM sai do caminho critico: carrega no primeiro gesto do visitante ou
+   logo apos o load, o que vier antes. O pageview continua disparando. */
+var carregado=false;
+function carregar(){ if(carregado) return; carregado=true;
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  ['pointerdown','keydown','touchstart','scroll'].forEach(function(e){
+    w.removeEventListener(e,carregar,{passive:true}); });
+}
+['pointerdown','keydown','touchstart','scroll'].forEach(function(e){
+  w.addEventListener(e,carregar,{passive:true,once:true}); });
+if(d.readyState==='complete') setTimeout(carregar,1200);
+else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
 })(window,document,'script','dataLayer','GTM-WQTG79G');</script>
 <!-- End Google Tag Manager -->
 
@@ -298,6 +310,15 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
   .content ul,.content ol{margin-left:1.1rem;padding-left:0}
   .content blockquote{padding:1rem 1.1rem}
 }
+</style>
+<style id="mkt-reveal-v1">
+/* A animacao de entrada roda no compositor: mesmo com a thread principal
+   ocupada por tag manager, o conteudo aparece. Sem isso o maior bloco de
+   texto so pintava quando o observer rodava — era o LCP de 53s no celular. */
+.reveal{animation:mktRevelar .45s .35s both}
+.reveal.visible{animation:none}
+@keyframes mktRevelar{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -711,6 +732,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
   <!-- módulo central de captura e qualificação de leads -->
-  <script src="/js/mkt-leads.js"></script>
+  <script src="/js/mkt-leads.js" defer></script>
 </body>
 </html>
