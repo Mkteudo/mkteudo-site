@@ -3,3 +3,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.mkteudo.com.br/sitemap.xml
+
+# Resumo da entidade para modelos de linguagem
+# https://www.mkteudo.com.br/llms.txt
