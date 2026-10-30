@@ -1,14 +1,22 @@
-# Netlify — mkteudocomunicacao.com.br redireciona para o domínio principal.
+# mkteudocomunicacao.com.br -> www.mkteudo.com.br
 #
-# Este arquivo é lido APENAS pelo Netlify, que serve o domínio antigo.
-# O GitHub Pages, que serve www.mkteudo.com.br, ignora este arquivo.
+# Lido APENAS pelo Netlify, que serve o dominio antigo. O GitHub Pages,
+# que serve www.mkteudo.com.br, ignora este arquivo.
 #
-# O "!" no fim força o redirecionamento mesmo quando existe um arquivo
-# estático com aquele caminho — sem ele o Netlify entregaria a cópia
-# do site em vez de redirecionar, que é exatamente o problema de
-# conteúdo duplicado que queremos matar.
+# O "!" no fim forca o redirecionamento mesmo quando existe um arquivo
+# estatico naquele caminho. Sem ele o Netlify entregaria a copia do site
+# em vez de redirecionar — que e exatamente o conteudo duplicado que
+# queremos matar.
+#
+# Por que a regra de caminho no fim: as regras com URL completa so casam
+# quando o Netlify reconhece aquele host como dominio do site. Este site
+# do Netlify serve SOMENTE o dominio antigo, entao o catch-all por caminho
+# cobre qualquer host que chegue aqui, inclusive o *.netlify.app.
+# A ordem importa: o Netlify usa a primeira regra que casar.
 
 https://mkteudocomunicacao.com.br/*      https://www.mkteudo.com.br/:splat   301!
 http://mkteudocomunicacao.com.br/*       https://www.mkteudo.com.br/:splat   301!
 https://www.mkteudocomunicacao.com.br/*  https://www.mkteudo.com.br/:splat   301!
 http://www.mkteudocomunicacao.com.br/*   https://www.mkteudo.com.br/:splat   301!
+
+/*                                       https://www.mkteudo.com.br/:splat   301!
