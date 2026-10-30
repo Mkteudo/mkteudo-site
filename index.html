@@ -440,7 +440,18 @@ section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
   }
   </style>
 <style id="mkt-dirm-v1">
-.dirm__sub--nota{margin-top:1rem;font-size:.96rem;border-left:3px solid var(--clr-neon,#ff00ff);padding-left:1rem}
+.dirm__sub--nota{margin-top:2.2rem;font-size:.96rem;line-height:1.7;border-left:3px solid var(--clr-neon,#ff00ff);padding:1.1rem 1.3rem;background:rgba(148,40,228,.10);border-radius:0 12px 12px 0}
+@media(max-width:900px){.dirm__sub--nota{margin-top:1.8rem;padding:1rem 1.1rem}}
+/* ---- cabecalho do Metodo PICC dentro da secao de Diretoria ---- */
+.dirm__picc{grid-column:1/-1;margin-bottom:.6rem}
+.dirm__picc-t{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-display);font-size:1.45rem;font-weight:800;letter-spacing:-.02em;color:#fff;margin:0 0 .8rem}
+.dirm__picc-t::before{content:"";width:24px;height:2px;background:#ff00ff;display:block;flex:0 0 auto}
+.dirm__picc-d{font-size:.98rem;line-height:1.75;color:rgba(244,243,238,.68);max-width:68ch;margin:0}
+.dirm__picc-d b{color:#c18cff;font-weight:700}
+@media(max-width:700px){.dirm__picc-t{font-size:1.25rem;gap:10px}.dirm__picc-t::before{width:18px}}
+.dirm-card__l{line-height:1}
+.dirm-card__f{font-family:var(--font-display);font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,243,238,.42);margin-bottom:.35rem}
+
 .dirm{background:#0d0010;color:#f4f3ee;padding:7rem 0;position:relative;overflow:hidden}
 .dirm::before{content:'';position:absolute;top:-240px;right:-180px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(148,40,228,.22) 0%,transparent 68%);pointer-events:none}
 .dirm::after{content:'';position:absolute;bottom:-280px;left:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.10) 0%,transparent 70%);pointer-events:none}
@@ -461,6 +472,8 @@ section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
 .dirm__volta{grid-column:1/-1;display:flex;align-items:center;gap:14px;color:rgba(244,243,238,.45);font-size:.82rem;margin-top:.4rem}
 .dirm__volta::before,.dirm__volta::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(148,40,228,.5),transparent)}
 .dirm__volta b{color:#c18cff;font-weight:600}
+.dirm__volta-t{flex:0 1 auto;text-align:center;line-height:1.6}
+@media(max-width:700px){.dirm__volta{display:block;text-align:center;margin-top:1.2rem}.dirm__volta::before,.dirm__volta::after{display:none}}
 .dirm-quem{background:#f4f3ee;color:#0d0010;padding:6rem 0}
 .dirm-quem__in{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:start}
 .dirm-quem h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin:0 0 1rem}
@@ -574,21 +587,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="dirm__sub dirm__sub--nota"><strong>A direção entra onde ela falta.</strong> Em algumas empresas isso é dar rumo, prioridade e números ao time que já existe. Em outras, é assumir a cadeira de Diretor de Marketing por inteiro. O desenho sai do diagnóstico — e costuma evoluir conforme a relação amadurece.</p>
       </div>
       <div class="dirm__ciclo">
+        <div class="dirm__picc">
+          <p class="dirm__picc-t">O Método PICC</p>
+          <p class="dirm__picc-d">O ciclo em quatro fases que a Mkteúdo aplica desde 2018: <b>P</b>lanejar, <b>I</b>ntegrar, <b>C</b>onverter e <b>C</b>rescer. As duas primeiras estruturam a operação de marketing; as duas últimas conduzem o dia a dia. Não é uma lista de etapas que termina — é um ciclo, e o que se aprende na última fase volta para a primeira.</p>
+        </div>
         <div>
-          <p class="dirm__fase">Primeiro, estruturamos <span></span></p>
+          <p class="dirm__fase">Fases 1 e 2 · Primeiro, estruturamos <span></span></p>
           <div class="dirm__bloco">
-            <div class="dirm-card reveal"><div class="dirm-card__l">P</div><h3>Planejar</h3><p>Você passa a ter alguém responsável pela estratégia de marketing, pela definição de prioridades, pelo plano anual e pelas metas e indicadores.</p></div>
-            <div class="dirm-card reveal"><div class="dirm-card__l">I</div><h3>Integrar</h3><p>Marketing e vendas no mesmo funil. Agência, fornecedores e time trabalhando sobre o mesmo plano, com CRM organizado.</p></div>
+            <div class="dirm-card reveal"><div class="dirm-card__l">P</div><p class="dirm-card__f">Fase 1</p><h3>Planejar</h3><p>Você passa a ter alguém responsável pela estratégia de marketing, pela definição de prioridades, pelo plano anual e pelas metas e indicadores.</p></div>
+            <div class="dirm-card reveal"><div class="dirm-card__l">I</div><p class="dirm-card__f">Fase 2</p><h3>Integrar</h3><p>Marketing e vendas no mesmo funil. Agência, fornecedores e time trabalhando sobre o mesmo plano, com CRM organizado.</p></div>
           </div>
         </div>
         <div>
-          <p class="dirm__fase">Depois, lideramos no dia a dia <span></span></p>
+          <p class="dirm__fase">Fases 3 e 4 · Depois, lideramos no dia a dia <span></span></p>
           <div class="dirm__bloco">
-            <div class="dirm-card reveal"><div class="dirm-card__l">C</div><h3>Converter</h3><p>Gestão de canais e campanhas, acompanhamento do lead até a venda, automações e IA a serviço do seu time.</p></div>
-            <div class="dirm-card reveal"><div class="dirm-card__l">C</div><h3>Crescer</h3><p>Reuniões de acompanhamento, análise de resultados e projetos de crescimento. O que aprendemos aqui volta para o Planejar.</p></div>
+            <div class="dirm-card reveal"><div class="dirm-card__l">C</div><p class="dirm-card__f">Fase 3</p><h3>Converter</h3><p>Gestão de canais e campanhas, acompanhamento do lead até a venda, automações e IA a serviço do seu time.</p></div>
+            <div class="dirm-card reveal"><div class="dirm-card__l">C</div><p class="dirm-card__f">Fase 4</p><h3>Crescer</h3><p>Reuniões de acompanhamento, análise de resultados e projetos de crescimento. O que aprendemos aqui volta para o Planejar.</p></div>
           </div>
         </div>
-        <p class="dirm__volta">O que aprendemos em <b>Crescer</b> volta para o <b>Planejar</b> — o ciclo recomeça</p>
+        <p class="dirm__volta"><span class="dirm__volta-t">O que aprendemos em <b>Crescer</b> volta para o <b>Planejar</b> — o ciclo recomeça</span></p>
+        <p class="dirm__picc-d" style="grid-column:1/-1;margin-top:1.4rem"><a href="/metodo-picc" style="color:#c18cff;font-weight:600;text-decoration:underline;text-underline-offset:3px">Ver o Método PICC fase a fase →</a></p>
       </div>
     </div>
   </section>
