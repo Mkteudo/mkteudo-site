@@ -422,3 +422,144 @@ reindexação para o Google ver isso logo.
 Depois, em alguns dias, acompanhe em **Aprimoramentos → Perguntas
 frequentes**: é onde o Google mostra quantas das 175 perguntas ele
 validou.
+
+---
+
+# Adendo — 30 de outubro de 2026: medição, identidade e SEO comercial
+
+## O que foi concluído
+
+### Google Tag Manager — versão 15 publicada
+A versão 14 (15 eventos de GA4) já estava no ar. Hoje saiu a causa de um problema
+antigo: a tag legada **"Google Analytics Universal Analytics 1"** (tipo Universal
+Analytics, produto desligado pelo Google em 2023) continuava disparando em All Pages.
+O Google a convertia automaticamente e carregava `config G-Z9TDX4673G` com a flag
+`is_legacy_loaded` — ou seja, o site alimentava **duas propriedades do GA4** havia três
+anos. Tag pausada. Conferido no `gtm.js` publicado: zero ocorrências do ID duplicado,
+16 do `G-CRG2F5SJ6R`.
+
+A tag base do GA4 foi renomeada para **"Tag do Google — GA4 G-CRG2F5SJ6R (base, nao
+pausar)"**, porque o nome antigo dela também era "Google Analytics Universal Analytics"
+e convidava a pausar a errada.
+
+### Google Analytics
+- **Retenção de dados de evento: 2 → 14 meses.** Estava no padrão do Google, que
+  descarta histórico de evento depois de 60 dias.
+- **Search Console vinculado** à propriedade (www.mkteudo.com.br → fluxo Mkteúdo).
+- Tagueamento validado de ponta a ponta: 18 nomes de evento chegando no Tempo real.
+- **Pendente:** marcar `generate_lead`, `lead_icp_a` e `diagnostico_solicitado` como
+  eventos principais. A lista do Admin só aceita a estrela depois que o nome é
+  processado (até 24h). Há um retorno agendado para fazer isso.
+
+### Search Console
+Sitemap reenviado (76 URLs). A linha mostra "Índice de Sitemaps / última leitura
+17/jul/2026 / 0 páginas" — isso é metadado velho da época do Wix, que servia um índice
+naquele endereço. O arquivo no ar é um `<urlset>` correto com 76 URLs; o tipo e a
+contagem se corrigem quando o Google relê.
+
+### Logo — bug de layout em 12 páginas
+O logo tem proporção 9,78:1. Em 11 páginas com `.navbar__logo-img{height:42px}` e em
+`blog.html` com `.nav__logo{height:42px}`, ele ocupava **411px de largura**: no desktop
+empurrava a navegação para duas linhas, no mobile saía da tela. Normalizado para 22px e
+adicionado o bloco `mkt-logo-v2` nas 76 páginas, com redução progressiva (19px abaixo de
+900, 17px abaixo de 560, 15px abaixo de 380) e `max-width` em vw. Varrido em 1440px e
+390px: sem estouro horizontal em nenhuma página.
+
+### Favicon
+Já estava com a marca nova. Conferido que o `favicon.ico` inclui o frame de **48×48**,
+que é o mínimo que o Google exige para exibir ícone na busca, e que o `robots.txt` não
+bloqueia. Acrescentada a declaração do PNG de 96×96, que existia no servidor sem ser
+referenciado. O ícone no resultado de busca atualiza no ritmo do Google (dias a semanas)
+e não há como forçar; o único empurrão é Solicitar indexação da home no Search Console.
+
+### Turnstile — anti-spam estava inerte
+`carregarTurnstile()` estava **definida e nunca era chamada**. Sem ela, `window.turnstile`
+nunca existia, `esperarToken` desistia imediatamente e **todo lead era enviado sem token**.
+Nenhum lead estava em risco — o Apps Script só recusa quando a Cloudflare reprova um
+token (`'falhou'`); `'sem-token'` é gravado e sinalizado de propósito. Mas a proteção
+nunca funcionou. Corrigido: o script carrega no `iniciar()`, apenas nas páginas que têm
+`.cf-turnstile`.
+
+### Capa do case Barenbrug
+A capa de texto em gradiente ("587% de ROI") foi substituída por imagem conceitual na
+linha editorial do blog — fileiras de pastagem em silhueta, linha de crescimento violeta
+e nós de dados em magenta. Três variantes (1200×630, 600×315, 240×240) em `posts/` e
+`capas/`. Varrido o resto do blog: não sobrou nenhuma outra capa de texto chapada.
+
+### Página de inside sales — reposicionada pela SERP
+`inside sales` tem 4.400 buscas/mês e dificuldade 26, o que parecia uma oportunidade.
+A SERP desmentiu: página 1 é guia da HubSpot (DA 93), RD Station (DA 71), Salesforce
+(DA 92) **e vagas de emprego** (LinkedIn DA 99, Indeed DA 91, Glassdoor). Intenção
+informacional e de carreira — tráfego que não é ICP, contra domínios inalcançáveis.
+A página de serviço não deve perseguir o termo curto.
+
+O que é aproveitável: em toda a página 1 não há uma única agência vendendo o serviço.
+Title, H1, og:title e twitter:title passaram a liderar com "Inside Sales"; a meta
+description cobre "consultoria de inside sales"; duas FAQs novas (consultoria x
+terceirização, e como funciona o custo — sem número inventado) elevaram o schema
+FAQPage de 6 para 8 perguntas.
+
+### Ubersuggest — rastreamento ampliado
+De 57 para **81 posições** (limite 150), com as duas localizações preservadas.
+
+> **Armadilha documentada:** `add_project_keywords` **substitui a lista inteira** em vez
+> de acrescentar. A primeira chamada apagou as 54 palavras existentes e a localização de
+> Ribeirão Preto. Sempre reenviar o mapa completo.
+
+Números levantados: `inside sales` 4.400/SD 26 · `consultoria de vendas` 1.900/SD 21 ·
+`consultoria comercial` 480/SD 10, CPC R$ 6,41 · `agência rd station` 30/SD 33, CPC
+R$ 10,33 · `implantação de inside sales` e `inside sales no agronegócio` ambos com
+volume 0 e SD 4 (termos de posicionamento, não de tráfego).
+
+### Google Empresas
+- **Descrição** substituída (695/750). Abre com "Agência de marketing em Ribeirão Preto",
+  nomeia o ICP, lista geração de demanda, processo comercial, inside sales, CRM e
+  dashboards, cita RD Station/Pipedrive/HubSpot, o Método PICC e os dois cases premiados.
+- **Categorias**: de uma para três — Agência de Marketing (principal), Consultoria em
+  Marketing e Serviço de marketing na Internet.
+- **Serviços**: existiam todos sem descrição. Preenchidas cinco de 300 caracteres
+  (Consultoria de marketing, Desenvolvimento comercial, Marketing digital, Serviços de
+  SEO, Inbound Marketing) e criados quatro personalizados: **Implantação de Inside Sales,
+  Implantação de CRM, Consultoria Comercial e de Vendas, Marketing para o Agronegócio**.
+- **Logo** subido pelo Felipe.
+
+## O que ficou pendente
+
+| Item | Quem | Observação |
+|---|---|---|
+| 5 propriedades do Apps Script + `testarNotificacao()` | Felipe | Ver abaixo. É o item de maior impacto |
+| Foto de capa do Google Empresas | Felipe | Arquivo pronto em 1200×675; upload só abre pelo seletor nativo |
+| Telefone no Google Empresas | Felipe | Decisão dele: o site não publica telefone em lugar nenhum |
+| Marcar os 3 eventos principais no GA4 | agendado | Depende da propagação dos nomes (até 24h) |
+| Avaliações no Google Empresas | Felipe | Concorrente Compor tem 23; pesa no mapa local |
+| Logo novo nos perfis sociais | Felipe | IG, FB, LinkedIn, YouTube, X, WhatsApp Business |
+| Descrição de mais 6 serviços no Google Empresas | — | Análise de marketing, E-mail marketing, Gerenciamento de conteúdo, Marketing de atração, Mídia social, Relatórios |
+| 20 prompts de visibilidade em IA no Ubersuggest | — | Slots zerados; é a medição da tese de autoridade em IA |
+| 10 slots de concorrentes no Ubersuggest | — | Zerados |
+| Página de preços | Felipe | Ele não quer publicar faixas. Alternativa: página que explica **o que determina o custo**, sem tabela, para capturar "quanto custa agência de marketing" |
+
+### Apps Script — o passo a passo
+O endpoint já roda a versão nova do script (responde com 80 colunas). Falta só as
+propriedades. Em *Configurações do projeto → Propriedades do script*:
+
+| Propriedade | Valor |
+|---|---|
+| `EMAIL_NOTIFICACAO` | `comercial@mkteudo.com.br` |
+| `TRELLO_LIST_ID` | `6ae3abd3fa545418b836442d` |
+| `TRELLO_KEY` / `TRELLO_TOKEN` | trello.com/power-ups/admin |
+| `TURNSTILE_SECRET` | Cloudflare → Turnstile → o widget do site |
+
+Depois rodar `testarNotificacao()` no editor. Se faltar autorização de escopo, ele pede
+ali — e é justamente isso que não dá para descobrir de fora. Busca no Gmail por
+notificação de lead nos últimos 7 dias não achou nenhuma, o que pode ser ausência de
+leads ou falha de escopo; o teste resolve a dúvida.
+
+## Referências que não estão em lugar nenhum óbvio
+
+- Container do GTM: `GTM-WQTG79G` · conta 6003399925 / container 41684845
+- GA4 real: `G-CRG2F5SJ6R` (propriedade 265135807, conta 191859498)
+- GA4 duplicada, agora sem fonte: `G-Z9TDX4673G`
+- Google Ads: `AW-409-492-0529`
+- Site key do Turnstile (público): `0x4AAAAAAFrUQu2VfFUGikMh`
+- Perfil do Google Empresas: id `1298393560163833771`
+- Projeto no Ubersuggest: `mkteudo.com.br` — "Mkteúdo"
