@@ -453,6 +453,12 @@
   /* Na carga: fixa a sessão, registra atribuição e tenta esvaziar a fila. */
   function iniciar() {
     contexto();
+    /* O script da Cloudflare precisa estar carregado ANTES do envio: no modo
+       "managed" o token leva de 1 a 3 segundos para aparecer, e esperarToken
+       desiste na hora se window.turnstile nao existe. carregarTurnstile estava
+       definida e nunca era chamada — resultado: nenhum lead vinha com token e
+       o anti-spam ficava inerte. Carrega so nas paginas que tem o widget. */
+    if (document.querySelector('.cf-turnstile')) carregarTurnstile();
     setTimeout(drenarFila, 1500);   /* depois da página pintar */
     log('pronto · sessão', sessao(), '· endpoint', CONFIG.ENDPOINT ? 'configurado' : 'VAZIO (fila local)');
   }
