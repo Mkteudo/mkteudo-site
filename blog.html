@@ -94,7 +94,7 @@ else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
     a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
     .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--bor)}
     .nav__i{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;padding:0 2rem}
-    .nav__logo{height:42px;width:auto}
+    .nav__logo{height:22px;width:auto}
     .nav__links{display:flex;gap:2rem;align-items:center}
     .nav__links a{font-size:.875rem;font-weight:500;color:var(--mut);transition:color .3s}
     .nav__links a:hover,.nav__links a.active{color:var(--acc)}
@@ -352,7 +352,14 @@ section[id],header[id],div[id],h2[id],h3[id]{scroll-margin-top:92px}
     .award-item__event {font-size:.76rem; line-height:1.45; margin-top:3px}
   }
 
-  </style>
+  
+/* ---- mkt-logo-v2 ---- */
+.nav__logo,.navbar__logo-img{height:22px;width:auto;max-width:62vw;object-fit:contain}
+.footer__logo-img{height:26px;width:auto;max-width:70vw;object-fit:contain;margin-bottom:1rem}
+@media(max-width:900px){.nav__logo,.navbar__logo-img{height:19px}}
+@media(max-width:560px){.nav__logo,.navbar__logo-img{height:17px}.footer__logo-img{height:22px}}
+@media(max-width:380px){.nav__logo,.navbar__logo-img{height:15px}}
+</style>
 </head>
 <body>
 <a href="#conteudo" class="pular">Pular para o conteúdo</a>
