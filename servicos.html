@@ -352,6 +352,18 @@ pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.visible{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 <style id="mkt-tabelas-v1">
+/* ---- mkt-tbl-estilo-v1 ---- */
+.tbl-wrap table{border-collapse:collapse;font-size:.9rem;background:var(--clr-surface,#fff)}
+.tbl-wrap th{background:var(--clr-accent,#9428e4);color:#fff;font-family:var(--font-display,inherit);font-size:.8rem;font-weight:700;letter-spacing:.01em;text-align:left;padding:.85rem 1.1rem;vertical-align:bottom;white-space:nowrap}
+.tbl-wrap th:first-child{border-top-left-radius:10px}
+.tbl-wrap th:last-child{border-top-right-radius:10px}
+.tbl-wrap td{padding:.8rem 1.1rem;border-bottom:1px solid var(--clr-border,#ebebeb);vertical-align:top;line-height:1.55;color:var(--clr-text,#0d0010)}
+.tbl-wrap tr:last-child td{border-bottom:none}
+.tbl-wrap tr:nth-child(even) td{background:rgba(148,40,228,.035)}
+.tbl-wrap td:first-child{font-weight:600;color:var(--clr-text,#0d0010);border-right:1px solid var(--clr-border,#ebebeb)}
+.tbl-wrap th:first-child{border-right:1px solid rgba(255,255,255,.18)}
+@media (max-width:640px){.tbl-wrap th,.tbl-wrap td{padding:.65rem .8rem}.tbl-wrap th{font-size:.74rem}}
+
 /* Tabelas no celular.
    Dois defeitos somados deixavam a tabela ilegivel:
    1) o bloco mkt-overflow-v1 punha display:block + width:100% na tabela, o que
