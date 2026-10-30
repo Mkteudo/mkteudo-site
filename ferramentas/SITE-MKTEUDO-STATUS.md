@@ -671,3 +671,74 @@ conversões, públicos nem campanhas.
 
 A tag de remarketing da conta antiga (`AW-409-492-0529`) foi removida na **versão 16**
 do GTM.
+
+---
+
+## Adendo — 30/10/2026 (fim de tarde): o Apps Script no ar é uma versão antiga
+
+### Como apareceu
+
+Felipe preencheu `TURNSTILE_SECRET` nas propriedades do script. Para validar — e
+`testarNotificacao()` **não** valida o Turnstile, porque não passa pela Cloudflare —
+foi feito um envio real: token legítimo colhido do widget na página
+`/terceirizacao-de-marketing`, POST para o `/exec` com `etapa: 'completo'`.
+
+Resposta: `{"ok":true,"acao":"criada","linha":2}`. Mas a coluna `verificacao` gravou
+**`cloudflare-fora`** — o valor do `catch` em `turnstileOk`, ou seja, a chamada
+`UrlFetchApp.fetch` para `challenges.cloudflare.com` **lançou exceção**.
+
+O lead passou porque o código é tolerante a indisponibilidade da Cloudflare. Na
+prática: **o anti-spam continua inerte**, agora por outro motivo.
+
+### A causa real
+
+O projeto do Apps Script tem **201 linhas e 6 funções**:
+`configurar · turnstileOk · doPost · doGet · texto · resposta`
+
+O arquivo `ferramentas/apps-script-leads.gs` deste repositório tem **387 linhas e 12
+funções**. Faltam no ar: `notificar`, `retrato`, `rotulo`, `enviarEmail`, `trello`,
+`esc`, `testarNotificacao`.
+
+Ou seja: **a versão nova nunca foi colada por cima da antiga.** Consequências que
+estavam passando despercebidas:
+
+- nenhum lead dispara e-mail de aviso
+- nenhum cartão é criado no Trello
+- `testarNotificacao()` não existe no projeto — a pendência "rodar
+  testarNotificacao()" nunca foi executável
+
+A exceção no `UrlFetchApp` tem cara de **escopo OAuth**: o projeto foi autorizado
+quando o código ainda não fazia requisição externa. O escopo
+`script.external_request` não foi concedido, então toda chamada externa estoura e cai
+no `catch`. Isso também explica por que o Trello nunca funcionou.
+
+### O conserto (combinado, a executar na semana de 02/11)
+
+1. Colar `ferramentas/apps-script-leads.gs` por cima do `Código.gs`
+2. **Felipe** clica em Executar e aceita a tela de autorização — vai pedir escopos
+   novos, incluindo "Conectar-se a um serviço externo" e envio de e-mail. Autorização
+   de conta é passo dele, não meu
+3. Reimplantar o App da Web
+4. Refazer o teste ponta a ponta até `verificacao` gravar `ok`
+
+**Por que não foi feito em 30/10:** Felipe autorizou colar, mas saiu em seguida. Colar
+sem o passo 2 não adianta nada até segunda, e não foi possível confirmar se a
+implantação `/exec` serve uma versão fixa ou o HEAD. No segundo caso, salvar código
+que exige escopos ainda não concedidos derrubaria a captura de leads no fim de semana
+inteiro. O ganho era de dois minutos; o risco, três dias sem registrar lead. Ficou
+para segunda.
+
+### Propriedades do script — estado atual
+
+| Propriedade | Valor |
+|---|---|
+| `TURNSTILE_SECRET` | preenchida por Felipe (nunca passa por mim) |
+| `EMAIL_NOTIFICACAO` | comercial@mkteudo.com.br |
+| `TRELLO_LIST_ID` | `6ae3abd3fa545418b836442d` |
+| `TRELLO_KEY` | **falta** — Felipe cola |
+| `TRELLO_TOKEN` | **falta** — Felipe cola |
+
+Sem `TRELLO_KEY` e `TRELLO_TOKEN`, a função `trello()` retorna sem fazer nada — o lead
+é gravado normalmente, só não vira cartão.
+
+A linha de teste criada nesta validação foi apagada da planilha.
