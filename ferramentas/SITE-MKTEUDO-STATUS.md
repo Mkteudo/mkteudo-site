@@ -563,3 +563,111 @@ leads ou falha de escopo; o teste resolve a dúvida.
 - Site key do Turnstile (público): `0x4AAAAAAFrUQu2VfFUGikMh`
 - Perfil do Google Empresas: id `1298393560163833771`
 - Projeto no Ubersuggest: `mkteudo.com.br` — "Mkteúdo"
+
+---
+
+## Adendo — 30/10/2026 (tarde): filtro de IP interno + painéis do GA4
+
+### 1. Exclusão do tráfego interno (CONCLUÍDO)
+
+| Item | Valor |
+|---|---|
+| IP da máquina do Felipe | `189.69.245.32` (IPv4; a máquina não tem IPv6 público) |
+| Regra na tag do Google | "Felipe — máquina da Mkteúdo" → `traffic_type = internal`, CIDR `189.69.245.32/32` |
+| Filtro de dados | "Internal Traffic" → tipo *Tráfego interno*, operação *Excluir*, **Estado: Ativo** |
+
+**Dois passos, não um.** A regra no fluxo de dados apenas *marca* o acesso com
+`traffic_type=internal`; quem de fato remove do relatório é o filtro de dados, que o
+GA4 cria em estado "Teste" por padrão e que foi virado para "Ativo" nesta sessão.
+Regra sem filtro ativo = nenhum efeito.
+
+**Não é retroativo.** O GA4 avisa isso no próprio diálogo de ativação: "As mudanças
+nos filtros são permanentes e irreversíveis... Elas também não são retroativas."
+Logo, os acessos de teste já gravados (incl. os de hoje) permanecem no histórico.
+Hoje, 30/10, a propriedade registrou **3 usuários ativos / 13 visualizações**, com
+tempo médio de engajamento de 6 min — perfil típico de aba aberta em teste. O volume
+é pequeno o bastante para não distorcer nada.
+
+Se o IP da operadora mudar (IP dinâmico), a regra para de funcionar e precisa ser
+atualizada. Sinal disso: voltar a aparecer sessão "direct" com engajamento alto nos
+dias em que trabalhamos no site.
+
+### 2. Painel na home dos Relatórios (CONCLUÍDO)
+
+O "Resumo dos relatórios" da propriedade estava **sem configuração** (a propriedade
+nunca teve um snapshot escolhido). Aplicado o modelo **Comportamento do usuário** e
+publicado na coleção "Reports snapshot", com as métricas de topo trocadas para:
+
+`Usuários ativos` · `Novos usuários` · `Tempo médio de engajamento` · `Eventos principais`
+
+Limite do GA4: **máximo de 4 métricas de topo**. Para incluir "Eventos principais"
+foi preciso remover "Contagem de eventos".
+
+> **Hoje esse card mostra 0** — não é erro. `generate_lead`, `lead_icp_a` e
+> `diagnostico_solicitado` ainda não foram marcados como eventos principais (só é
+> possível marcar depois que o GA4 processa o nome do evento; lembrete agendado para
+> 31/10). Assim que forem marcados, o número passa a popular.
+
+### 3. Exploração "Painel comercial - Mkteudo" (CONCLUÍDO)
+
+Uma exploração com 4 abas, em Analisar → Painel comercial - Mkteudo:
+
+| Aba | Técnica | O que responde |
+|---|---|---|
+| 1. Funil até o lead | Funil | Quantos entram, leem, demonstram interesse e viram lead |
+| 2. Páginas que geram lead | Formato livre | Qual página de destino traz sessão, engajamento e evento principal |
+| 3. De onde vem o tráfego | Formato livre | Canal × origem/mídia, com sessões, usuários e eventos principais |
+| 4. Caminho dentro do site | Caminho | Por onde o visitante navega depois de entrar |
+
+**Etapas do funil** (1 → 4):
+1. `session_start`
+2. `scroll` (90% da página — medição aprimorada do GA4)
+3. `whatsapp_click` **ou** `diagnostico_solicitado` **ou** `generate_lead`
+4. `generate_lead`
+
+O `generate_lead` entra também na etapa 3 de propósito: o funil é sequencial e, sem
+isso, quem preenche o formulário sem passar pelo WhatsApp seria descartado antes da
+etapa 4.
+
+**Gotcha do GA4 que custou tempo:** eventos disparados hoje **não aparecem** na lista
+do seletor (o período padrão da exploração termina ontem, e o GA4 leva até 24 h para
+registrar o nome). A saída é digitar o nome exato no campo de busca e clicar em
+**"Criar evento: `<nome>`"** — o GA4 aceita a string literal e faz o match quando o
+dado chegar.
+
+**Inventário dos eventos do site** (extraído de `js/mkt-leads.js` e `calculadora.html`,
+não de memória):
+`generate_lead` · `lead_icp_a` · `lead_decisor` · `lead_troca_agencia` · `lead_urgente` ·
+`lead_verba_alta` · `decisor` · `pesquisando` · `porte_alto` · `primeira_vez` ·
+`troca_de_agencia` · `urgente` · `verba_alta` · `verba_baixa` ·
+`diagnostico_solicitado` · `whatsapp_click` · `cookie_consent_update`
+
+### 4. Leitura dos dados (02/10 – 29/10, 28 dias)
+
+| Canal | Origem / mídia | Sessões | Usuários |
+|---|---|---|---|
+| Direct | (direct) / (none) | 24 | 17 |
+| Organic Search | google / organic | 7 | 7 |
+| Unassigned | teste_e2e / qa | 2 | 1 |
+| Organic Search | bing / organic | 1 | 1 |
+| Referral | clinicasimoessessa.com.br / referral | 1 | 1 |
+
+Funil: 25 usuários entraram, **5 (20%) leram a página até o fim**, 0 chegaram à etapa
+de interesse. Desktop converte melhor que mobile na etapa 2 (26,7% vs 10%).
+
+Páginas de destino: `/` concentra 21 das 35 sessões; `/blog` 4; o post da Intelli 3;
+`/calculadora` 2 (com 1 min 59 s de engajamento médio — o maior do site depois do blog).
+
+**Observação honesta:** com 35 sessões em 28 dias, nada disso é estatisticamente
+significativo. Serve para confirmar que a medição funciona, não para tirar conclusão
+de negócio. O valor dos painéis aparece quando houver tráfego pago.
+
+### 5. Google Ads — bloqueio
+
+A conta de anunciante da Mkteúdo **não existe** e **eu não posso criá-la**: criar
+contas está fora do que consigo executar. Felipe precisa criar dentro da MCC
+817-594-9937, modo Especialista, BRL, São Paulo. Sem isso não há onde colocar
+conversões, públicos nem campanhas.
+
+A tag de remarketing da conta antiga (`AW-409-492-0529`) foi removida na **versão 16**
+do GTM.
