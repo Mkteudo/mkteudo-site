@@ -93,8 +93,11 @@ else w.addEventListener('load',function(){ setTimeout(carregar,1200); });
     .container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
     .navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--clr-border)}
     .navbar__inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:var(--max-w);margin:0 auto;padding:0 2rem}
-    .navbar__logo-img{height:42px;width:auto}
-    .navbar__back{font-size:.875rem;font-weight:500;color:var(--clr-text-muted)}
+    .navbar__logo-img{height:22px;width:auto;max-width:62vw;object-fit:contain}
+    @media(max-width:900px){.navbar__logo-img{height:19px}}
+    @media(max-width:560px){.navbar__logo-img{height:17px}}
+    @media(max-width:380px){.navbar__logo-img{height:15px}}
+    .navbar__back{font-size:.875rem;font-weight:500;color:var(--clr-text-muted);white-space:nowrap;flex:0 0 auto}
     .doc{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem}
     .doc__eyebrow{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:1rem}
     .doc h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:.75rem}
@@ -265,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <nav class="navbar">
     <div class="navbar__inner">
-      <a href="/"><img src="/imagens/logo-mkteudo.png" alt="Mkteúdo" class="navbar__logo-img" width="352" height="300"></a>
+      <a href="/"><img src="/imagens/logo-mkteudo.svg" alt="Mkteúdo" class="navbar__logo-img" width="7504" height="767"></a>
       <a href="/" class="navbar__back">← Voltar ao site</a>
     </div>
   </nav>
