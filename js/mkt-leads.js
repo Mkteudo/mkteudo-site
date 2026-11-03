@@ -487,18 +487,234 @@
     return 'https://wa.me/' + WA.numero + '?text=' + encodeURIComponent(msg);
   }
 
-  /* Um registro por sessão e por página: recliques não viram linha nova. */
-  function registrarWhatsapp() {
-    var chave = 'mkt_wa_' + refCurto();
-    if (ler(chave)) { log('whatsapp já registrado nesta página'); return; }
-    gravar(chave, '1');
+  /* Perguntas em toque, na ordem em que mais pesam na pontuação.
+     Três telas de um toque e uma de três campos: é o máximo que se pode
+     pedir antes de o WhatsApp perder a vantagem que ele tem, que é a
+     pressa. Os valores são idênticos aos do formulário longo — o motor de
+     pontuação é o mesmo, então um lead do WhatsApp entra na fila com o
+     mesmo critério de um lead do formulário. */
+  var WA_PASSOS = [
+    { campo: 'objetivo', titulo: 'O que você precisa resolver?',
+      opcoes: ['Gerar mais leads', 'Aumentar vendas', 'Estruturar processo comercial',
+               'Melhorar performance das campanhas', 'Construir marca'] },
+    { campo: 'nivel_decisao', titulo: 'Qual seu nível de decisão?',
+      opcoes: ['Sócio / Proprietário', 'CEO / Presidente', 'Diretor(a)', 'Gerente',
+               'Coordenador(a) / Supervisor(a)', 'Analista / Assistente', 'Outro'] },
+    { campo: 'faturamento', titulo: 'Faturamento mensal da empresa',
+      opcoes: ['Até R$50 mil', 'R$50–200 mil', 'R$200–500 mil', 'R$500 mil–1 milhão',
+               'Acima de R$1 milhão', 'Prefiro não informar'] },
+    { campo: 'prazo', titulo: 'Para quando?',
+      opcoes: ['Imediato', '30 dias', '60–90 dias', 'Só estou pesquisando'] }
+  ];
+
+  /* O motor de pontuação distribui 100 pontos por seis critérios. O WhatsApp
+     pergunta três deles — os de maior peso — e por isso o máximo que um lead
+     daqui consegue somar é 64. Sem corrigir isso, um diretor de empresa acima
+     de R$1 milhão sairia com 48 pontos e cairia em ICP-C, atrás de leads piores
+     vindos do formulário longo. A nota é então reescalonada sobre o que de fato
+     foi perguntado; a porta do ICP-A (decisor + porte) continua valendo igual,
+     porque esses dois critérios o WhatsApp pergunta. */
+  function waPontuar() {
+    var p = pontuar(waDados);
+    var teto = 0;
+    WA_PASSOS.forEach(function (passo) {
+      var pesos = PESOS[passo.campo];
+      if (!pesos) return;
+      teto += Math.max.apply(null, passo.opcoes.map(function (o) { return pesos[o] || 0; }));
+    });
+    p.score_bruto = p.score;
+    p.score_teto = teto;
+    p.score = teto ? Math.round((p.score / teto) * 100) : p.score;
+    var porta = p.detalhe.nivel_decisao >= PORTA_ICP_A.nivel_decisao
+             && p.detalhe.faturamento   >= PORTA_ICP_A.porte;
+    if (p.score >= 70 && porta)      p.tier = 'ICP-A';
+    else if (p.score >= 50)          p.tier = 'ICP-B';
+    else if (p.score >= 30)          p.tier = 'ICP-C';
+    else                             p.tier = 'Fora do ICP';
+    return p;
+  }
+
+  var waDados = {}, waPasso = 0, waCaixa = null;
+
+  function waEstilo() {
+    if (document.getElementById('mkt-wa-modal-v1')) return;
+    var s = document.createElement('style');
+    s.id = 'mkt-wa-modal-v1';
+    s.textContent =
+      '.wa-ov{position:fixed;inset:0;z-index:10000;background:rgba(13,0,16,.72);backdrop-filter:blur(4px);' +
+      'display:flex;align-items:flex-end;justify-content:center;padding:0}' +
+      '@media(min-width:620px){.wa-ov{align-items:center;padding:1.5rem}}' +
+      '.wa-cx{background:#fff;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;' +
+      'border-radius:20px 20px 0 0;padding:1.5rem 1.4rem 1.7rem;font-family:var(--font-body,system-ui),sans-serif;color:#0d0010}' +
+      '@media(min-width:620px){.wa-cx{border-radius:20px}}' +
+      '.wa-cx__top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.3rem}' +
+      '.wa-cx__pass{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#6B6B6B;font-weight:700}' +
+      '.wa-cx__x{background:none;border:0;font-size:1.6rem;line-height:1;color:#6B6B6B;cursor:pointer;padding:0 .2rem}' +
+      '.wa-cx__barra{height:3px;background:#ebebeb;border-radius:3px;margin:.5rem 0 1.2rem;overflow:hidden}' +
+      '.wa-cx__barra i{display:block;height:100%;background:#25D366;transition:width .3s}' +
+      '.wa-cx__t{font-family:var(--font-display,inherit);font-size:1.3rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:.35rem}' +
+      '.wa-cx__s{font-size:.87rem;color:#6B6B6B;margin-bottom:1.1rem;line-height:1.5}' +
+      '.wa-chips{display:flex;flex-direction:column;gap:.5rem}' +
+      '.wa-chip{text-align:left;background:#fff;border:1px solid #e3e3e3;border-radius:12px;padding:.85rem 1rem;' +
+      'font:600 .92rem/1.3 inherit;color:#0d0010;cursor:pointer;transition:all .18s}' +
+      '.wa-chip:hover{border-color:#25D366;background:#f3fdf7}' +
+      '.wa-campo{display:block;margin-bottom:.8rem}' +
+      '.wa-campo span{display:block;font-size:.78rem;font-weight:700;color:#6B6B6B;margin-bottom:.3rem}' +
+      '.wa-campo input{width:100%;border:1px solid #e3e3e3;border-radius:11px;padding:.8rem .9rem;font:400 .95rem inherit;color:#0d0010}' +
+      '.wa-campo input:focus{outline:2px solid #25D366;outline-offset:1px;border-color:#25D366}' +
+      '.wa-env{width:100%;background:#25D366;color:#fff;border:0;border-radius:100px;padding:.95rem;' +
+      'font:700 .98rem inherit;cursor:pointer;margin-top:.4rem;display:flex;align-items:center;justify-content:center;gap:.5rem}' +
+      '.wa-env[disabled]{opacity:.55;cursor:default}' +
+      '.wa-nota{font-size:.75rem;color:#8a8a8a;text-align:center;margin-top:.8rem;line-height:1.5}' +
+      '.wa-volta{background:none;border:0;color:#6B6B6B;font:600 .82rem inherit;cursor:pointer;padding:.6rem 0 0;text-decoration:underline}';
+    document.head.appendChild(s);
+  }
+
+  function waResumo() {
+    var ref = refCurto(), p = [];
+    if (waDados.nome) p.push('Sou ' + waDados.nome);
+    if (waDados.empresa) p.push('da ' + waDados.empresa);
+    if (waDados.nivel_decisao && waDados.nivel_decisao !== 'Outro') p.push('(' + waDados.nivel_decisao + ')');
+    var quem = p.length ? p.join(' ') + '. ' : '';
+    var msg = 'Olá! Vim pelo site da Mkteúdo. ' + quem;
+    if (waDados.objetivo) msg += 'O que preciso: ' + waDados.objetivo + '. ';
+    if (waDados.faturamento && waDados.faturamento !== 'Prefiro não informar') msg += 'Faturamento mensal: ' + waDados.faturamento + '. ';
+    if (waDados.prazo) msg += 'Prazo: ' + waDados.prazo + '. ';
+    msg += '[ref ' + ref + ']';
+    return 'https://wa.me/' + WA.numero + '?text=' + encodeURIComponent(msg);
+  }
+
+  function waGravar(etapa) {
     var p = contexto();
-    p.etapa = 'whatsapp';
+    Object.keys(waDados).forEach(function (k) { p[k] = waDados[k]; });
+    var pont = waPontuar();
+    p.etapa = etapa;
     p.origem_form = 'whatsapp';
     p.ref = refCurto();
     p.visitas = contaVisita();
+    p.score = pont.score;
+    p.score_bruto = pont.score_bruto;
+    p.score_base = 'whatsapp (' + pont.score_teto + ' pts possíveis)';
+    p.tier = pont.tier;
+    p.sinais = pont.sinais.join(',');
     enviar(p);
-    log('whatsapp registrado · ref', p.ref);
+    if (etapa === 'whatsapp_qualificado') eventosDeLead('whatsapp', waDados, pont);
+    log('whatsapp ' + etapa + ' · ' + pont.tier + ' (' + pont.score + ')');
+    return p;
+  }
+
+  function waFechar(abandonou) {
+    if (!waCaixa) return;
+    if (abandonou && Object.keys(waDados).length && !waDados._enviado) waGravar('whatsapp_parcial');
+    waCaixa.remove(); waCaixa = null;
+    document.documentElement.style.overflow = '';
+  }
+
+  function waPintar() {
+    var corpo = waCaixa.querySelector('.wa-corpo');
+    var barra = waCaixa.querySelector('.wa-cx__barra i');
+    var marca = waCaixa.querySelector('.wa-cx__pass');
+    var total = WA_PASSOS.length + 1;
+    barra.style.width = Math.round(((waPasso) / total) * 100) + '%';
+    marca.textContent = 'Passo ' + (waPasso + 1) + ' de ' + total;
+    corpo.innerHTML = '';
+
+    if (waPasso < WA_PASSOS.length) {
+      var passo = WA_PASSOS[waPasso];
+      corpo.innerHTML = '<div class="wa-cx__t">' + passo.titulo + '</div>' +
+        '<p class="wa-cx__s">Um toque. É para a conversa já começar no ponto certo.</p>' +
+        '<div class="wa-chips"></div>';
+      var caixa = corpo.querySelector('.wa-chips');
+      passo.opcoes.forEach(function (op) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'wa-chip'; b.textContent = op;
+        b.onclick = function () { waDados[passo.campo] = op; waPasso++; waPintar(); };
+        caixa.appendChild(b);
+      });
+    } else {
+      corpo.innerHTML =
+        '<div class="wa-cx__t">Como te chamamos?</div>' +
+        '<p class="wa-cx__s">Para a conversa já abrir com o seu contexto — sem repetir nada no WhatsApp.</p>' +
+        '<label class="wa-campo"><span>Seu nome *</span><input id="wa-nome" autocomplete="name" required></label>' +
+        '<label class="wa-campo"><span>Empresa *</span><input id="wa-emp" autocomplete="organization" required></label>' +
+        '<label class="wa-campo"><span>Seu WhatsApp *</span><input id="wa-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(16) 99999-9999" required></label>' +
+        '<button type="button" class="wa-env" disabled>Abrir conversa no WhatsApp</button>' +
+        '<p class="wa-nota">Seus dados ficam só com a Mkteúdo. Nada de lista, nada de disparo.</p>';
+      var nome = corpo.querySelector('#wa-nome'), emp = corpo.querySelector('#wa-emp'),
+          tel = corpo.querySelector('#wa-tel'), env = corpo.querySelector('.wa-env');
+      function checa() {
+        env.disabled = !(nome.value.trim().length > 1 && emp.value.trim().length > 1 &&
+                         tel.value.replace(/\D/g, '').length >= 10);
+      }
+      [nome, emp, tel].forEach(function (i) { i.addEventListener('input', checa); });
+      env.onclick = function () {
+        waDados.nome = nome.value.trim();
+        waDados.empresa = emp.value.trim();
+        waDados.telefone = tel.value.trim();
+        /* Abre a janela DENTRO do gesto do clique: se esperasse o POST,
+           o navegador trataria como pop-up e bloquearia. */
+        var w = window.open(waResumo(), '_blank', 'noopener');
+        waDados._enviado = true;
+        push('whatsapp_click', { link_location: 'qualificacao', link_text: 'Abrir conversa no WhatsApp' });
+        try { gravar('mkt_wa_dados', JSON.stringify(waDados)); } catch (e) {}
+        try { waGravar('whatsapp_qualificado'); } catch (e) { log('falha ao gravar', e.message); }
+        waFechar(false);
+        if (!w) window.location.href = waResumo();
+      };
+      setTimeout(function () { nome.focus(); }, 60);
+    }
+
+    if (waPasso > 0) {
+      var volta = document.createElement('button');
+      volta.type = 'button'; volta.className = 'wa-volta'; volta.textContent = '← voltar';
+      volta.onclick = function () { waPasso--; waPintar(); };
+      corpo.appendChild(volta);
+    }
+  }
+
+  function waAbrir() {
+    if (waCaixa) return;
+    waEstilo();
+    waPasso = 0;
+    waCaixa = document.createElement('div');
+    waCaixa.className = 'wa-ov';
+    waCaixa.setAttribute('role', 'dialog');
+    waCaixa.setAttribute('aria-modal', 'true');
+    waCaixa.setAttribute('aria-label', 'Iniciar conversa no WhatsApp');
+    waCaixa.innerHTML =
+      '<div class="wa-cx">' +
+        '<div class="wa-cx__top"><span class="wa-cx__pass"></span>' +
+        '<button type="button" class="wa-cx__x" aria-label="Fechar">&times;</button></div>' +
+        '<div class="wa-cx__barra"><i></i></div><div class="wa-corpo"></div>' +
+      '</div>';
+    waCaixa.querySelector('.wa-cx__x').onclick = function () { waFechar(true); };
+    waCaixa.addEventListener('click', function (e) { if (e.target === waCaixa) waFechar(true); });
+    document.addEventListener('keydown', function esc(e) {
+      if (e.key === 'Escape' && waCaixa) { waFechar(true); document.removeEventListener('keydown', esc); }
+    });
+    document.body.appendChild(waCaixa);
+    document.documentElement.style.overflow = 'hidden';
+    push('whatsapp_abriu_qualificacao', { pagina: window.location.pathname });
+    waPintar();
+  }
+
+  /* Qualquer link de WhatsApp abre a qualificação primeiro. Quem já
+     respondeu nesta sessão vai direto: não se pergunta duas vezes. */
+  function ouvirCliquesWhatsapp() {
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
+      var ja = ler('mkt_wa_dados');
+      if (ja) {
+        try { waDados = JSON.parse(ja); a.href = waResumo(); } catch (e) {}
+        return;                      /* deixa o link seguir normalmente */
+      }
+      ev.preventDefault();
+      ev.stopPropagation();
+      waAbrir();
+    }, true);
   }
 
   function montarBotaoWhatsapp() {
@@ -541,18 +757,6 @@
       new MutationObserver(ajustar).observe(aviso, { attributes: true, attributeFilter: ['hidden', 'style'] });
       window.addEventListener('resize', ajustar, { passive: true });
     }
-  }
-
-  /* Qualquer link de WhatsApp da página — o flutuante, o do rodapé ou um do
-     meio do texto — grava o registro antes de abrir a conversa. */
-  function ouvirCliquesWhatsapp() {
-    document.addEventListener('click', function (ev) {
-      var a = ev.target.closest && ev.target.closest('a');
-      if (!a) return;
-      var href = a.getAttribute('href') || '';
-      if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
-      try { registrarWhatsapp(); } catch (e) { log('falha ao registrar whatsapp', e.message); }
-    }, true);
   }
 
   function whatsappIniciar() {
