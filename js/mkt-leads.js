@@ -503,6 +503,8 @@
     { campo: 'faturamento', titulo: 'Faturamento mensal da empresa',
       opcoes: ['Até R$50 mil', 'R$50–200 mil', 'R$200–500 mil', 'R$500 mil–1 milhão',
                'Acima de R$1 milhão', 'Prefiro não informar'] },
+    { campo: 'investimento', titulo: 'Quanto investe em marketing digital por mês?',
+      opcoes: ['Até R$2 mil', 'R$2–5 mil', 'R$5–10 mil', '+R$10 mil', 'Ainda não sei'] },
     { campo: 'prazo', titulo: 'Para quando?',
       opcoes: ['Imediato', '30 dias', '60–90 dias', 'Só estou pesquisando'] }
   ];
@@ -560,8 +562,8 @@
       '.wa-chip:hover{border-color:#25D366;background:#f3fdf7}' +
       '.wa-campo{display:block;margin-bottom:.8rem}' +
       '.wa-campo span{display:block;font-size:.78rem;font-weight:700;color:#6B6B6B;margin-bottom:.3rem}' +
-      '.wa-campo input{width:100%;border:1px solid #e3e3e3;border-radius:11px;padding:.8rem .9rem;font:400 .95rem inherit;color:#0d0010}' +
-      '.wa-campo input:focus{outline:2px solid #25D366;outline-offset:1px;border-color:#25D366}' +
+      '.wa-campo input,.wa-campo textarea{width:100%;border:1px solid #e3e3e3;border-radius:11px;padding:.8rem .9rem;font:400 .95rem/1.5 inherit;color:#0d0010;resize:vertical;font-family:inherit}' +
+      '.wa-campo input:focus,.wa-campo textarea:focus{outline:2px solid #25D366;outline-offset:1px;border-color:#25D366}' +
       '.wa-env{width:100%;background:#25D366;color:#fff;border:0;border-radius:100px;padding:.95rem;' +
       'font:700 .98rem inherit;cursor:pointer;margin-top:.4rem;display:flex;align-items:center;justify-content:center;gap:.5rem}' +
       '.wa-env[disabled]{opacity:.55;cursor:default}' +
@@ -580,6 +582,8 @@
     if (waDados.objetivo) msg += 'O que preciso: ' + waDados.objetivo + '. ';
     if (waDados.faturamento && waDados.faturamento !== 'Prefiro não informar') msg += 'Faturamento mensal: ' + waDados.faturamento + '. ';
     if (waDados.prazo) msg += 'Prazo: ' + waDados.prazo + '. ';
+    if (waDados.investimento && waDados.investimento !== 'Ainda não sei') msg += 'Investimento atual: ' + waDados.investimento + '/mês. ';
+    if (waDados.mensagem) msg += '\n\n' + waDados.mensagem + '\n\n';
     msg += '[ref ' + ref + ']';
     return 'https://wa.me/' + WA.numero + '?text=' + encodeURIComponent(msg);
   }
@@ -622,7 +626,7 @@
     if (waPasso < WA_PASSOS.length) {
       var passo = WA_PASSOS[waPasso];
       corpo.innerHTML = '<div class="wa-cx__t">' + passo.titulo + '</div>' +
-        '<p class="wa-cx__s">Um toque. É para a conversa já começar no ponto certo.</p>' +
+        '<p class="wa-cx__s">Um toque. São uns 20 segundos, e a conversa já começa no ponto certo.</p>' +
         '<div class="wa-chips"></div>';
       var caixa = corpo.querySelector('.wa-chips');
       passo.opcoes.forEach(function (op) {
@@ -637,11 +641,14 @@
         '<p class="wa-cx__s">Para a conversa já abrir com o seu contexto — sem repetir nada no WhatsApp.</p>' +
         '<label class="wa-campo"><span>Seu nome *</span><input id="wa-nome" autocomplete="name" required></label>' +
         '<label class="wa-campo"><span>Empresa *</span><input id="wa-emp" autocomplete="organization" required></label>' +
+        '<label class="wa-campo"><span>Site da empresa</span><input id="wa-site" type="text" inputmode="url" placeholder="suaempresa.com.br"></label>' +
         '<label class="wa-campo"><span>Seu WhatsApp *</span><input id="wa-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(16) 99999-9999" required></label>' +
+        '<label class="wa-campo"><span>Quer adiantar alguma coisa? (opcional)</span><textarea id="wa-msg" rows="3" placeholder="Em uma frase, o que está travando hoje."></textarea></label>' +
         '<button type="button" class="wa-env" disabled>Abrir conversa no WhatsApp</button>' +
         '<p class="wa-nota">Seus dados ficam só com a Mkteúdo. Nada de lista, nada de disparo.</p>';
       var nome = corpo.querySelector('#wa-nome'), emp = corpo.querySelector('#wa-emp'),
-          tel = corpo.querySelector('#wa-tel'), env = corpo.querySelector('.wa-env');
+          tel = corpo.querySelector('#wa-tel'), env = corpo.querySelector('.wa-env'),
+          site = corpo.querySelector('#wa-site'), msg = corpo.querySelector('#wa-msg');
       function checa() {
         env.disabled = !(nome.value.trim().length > 1 && emp.value.trim().length > 1 &&
                          tel.value.replace(/\D/g, '').length >= 10);
@@ -651,6 +658,8 @@
         waDados.nome = nome.value.trim();
         waDados.empresa = emp.value.trim();
         waDados.telefone = tel.value.trim();
+        if (site.value.trim()) waDados.site = site.value.trim();
+        if (msg.value.trim())  waDados.mensagem = msg.value.trim().slice(0, 500);
         /* Abre a janela DENTRO do gesto do clique: se esperasse o POST,
            o navegador trataria como pop-up e bloquearia. */
         var w = window.open(waResumo(), '_blank', 'noopener');
