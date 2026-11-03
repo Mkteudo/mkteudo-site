@@ -451,6 +451,122 @@
   window.MKT = MKT;
 
   /* Na carga: fixa a sessão, registra atribuição e tenta esvaziar a fila. */
+
+  /* ───────────────── 7. WHATSAPP: BOTÃO E MAPEAMENTO DO LEAD ─────────────────
+     O receio é legítimo: WhatsApp aberto é lead que começa a conversa fora do
+     funil, sem origem, sem campanha, sem registro. Aqui o clique não é um link
+     solto — antes de abrir a conversa ele grava um registro com sessão,
+     atribuição de primeiro e último toque, página e dispositivo, e carimba um
+     código curto na mensagem. O código é o que liga a conversa no celular à
+     linha na planilha. Quem chega pelo WhatsApp fica mapeado como quem chega
+     pelo formulário; o que falta é só o nome, e esse a conversa dá.
+
+     O evento whatsapp_click do dataLayer continua sendo disparado pelo handler
+     que já existe no rodapé de cada página — por isso aqui não se empurra
+     evento nenhum: empurrar de novo contaria o mesmo clique duas vezes no GA4. */
+  var WA = {
+    numero: '5516991402609',
+    rotulo: 'Falar no WhatsApp'
+  };
+
+  /* Código curto e legível em voz alta: sem 0/O e 1/I, que o cliente lê errado. */
+  function refCurto() {
+    var alfabeto = 'ACDEFGHJKLMNPQRTUVWXY2345679';
+    var semente = (sessao() + '|' + window.location.pathname);
+    var h = 5381;
+    for (var i = 0; i < semente.length; i++) h = ((h * 33) ^ semente.charCodeAt(i)) >>> 0;
+    var out = '';
+    for (var j = 0; j < 4; j++) { out += alfabeto[h % alfabeto.length]; h = Math.floor(h / alfabeto.length) + 7; }
+    return out;
+  }
+
+  function linkWhatsapp() {
+    var ref = refCurto();
+    var pag = window.location.pathname === '/' ? 'a página inicial' : window.location.pathname;
+    var msg = 'Olá! Vim pelo site da Mkteúdo (' + pag + '). Gostaria de conversar sobre marketing e vendas. [ref ' + ref + ']';
+    return 'https://wa.me/' + WA.numero + '?text=' + encodeURIComponent(msg);
+  }
+
+  /* Um registro por sessão e por página: recliques não viram linha nova. */
+  function registrarWhatsapp() {
+    var chave = 'mkt_wa_' + refCurto();
+    if (ler(chave)) { log('whatsapp já registrado nesta página'); return; }
+    gravar(chave, '1');
+    var p = contexto();
+    p.etapa = 'whatsapp';
+    p.origem_form = 'whatsapp';
+    p.ref = refCurto();
+    p.visitas = contaVisita();
+    enviar(p);
+    log('whatsapp registrado · ref', p.ref);
+  }
+
+  function montarBotaoWhatsapp() {
+    if (document.querySelector('.wa-flut')) return;
+
+    var css = document.createElement('style');
+    css.id = 'mkt-wa-v1';
+    css.textContent =
+      '.wa-flut{position:fixed;right:18px;bottom:18px;z-index:9990;display:flex;align-items:center;gap:.55rem;' +
+      'background:#25D366;color:#fff;padding:.7rem 1.05rem .7rem .85rem;border-radius:100px;' +
+      'font:600 .9rem/1 var(--font-body,system-ui),sans-serif;text-decoration:none;' +
+      'box-shadow:0 6px 24px rgba(0,0,0,.22);transition:transform .25s,box-shadow .25s,bottom .25s}' +
+      '.wa-flut:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.28);text-decoration:none;color:#fff}' +
+      '.wa-flut svg{width:21px;height:21px;flex:0 0 auto;fill:currentColor}' +
+      '@media(max-width:560px){.wa-flut{right:14px;bottom:14px;padding:.72rem;gap:0}.wa-flut span{display:none}}' +
+      '@media(prefers-reduced-motion:reduce){.wa-flut{transition:none}}';
+    document.head.appendChild(css);
+
+    var a = document.createElement('a');
+    a.className = 'wa-flut';
+    a.href = linkWhatsapp();
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.setAttribute('aria-label', WA.rotulo);
+    a.dataset.linkLocation = 'flutuante';
+    a.dataset.linkText = WA.rotulo;
+    a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.36c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23z"/></svg>' +
+                  '<span>' + WA.rotulo + '</span>';
+    document.body.appendChild(a);
+
+    /* O aviso de cookies é fixo no rodapé e tem z-index maior.
+       Enquanto estiver na tela, o botão sobe para não ficar embaixo dele. */
+    var aviso = document.querySelector('.mkt-cookie');
+    function ajustar() {
+      var visivel = aviso && !aviso.hasAttribute('hidden') && aviso.offsetHeight > 0;
+      a.style.bottom = visivel ? (aviso.offsetHeight + 30) + 'px' : '';
+    }
+    if (aviso) {
+      ajustar();
+      new MutationObserver(ajustar).observe(aviso, { attributes: true, attributeFilter: ['hidden', 'style'] });
+      window.addEventListener('resize', ajustar, { passive: true });
+    }
+  }
+
+  /* Qualquer link de WhatsApp da página — o flutuante, o do rodapé ou um do
+     meio do texto — grava o registro antes de abrir a conversa. */
+  function ouvirCliquesWhatsapp() {
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('wa.me') === -1 && href.indexOf('api.whatsapp.com') === -1) return;
+      try { registrarWhatsapp(); } catch (e) { log('falha ao registrar whatsapp', e.message); }
+    }, true);
+  }
+
+  function whatsappIniciar() {
+    try {
+      ouvirCliquesWhatsapp();
+      montarBotaoWhatsapp();
+      /* O rodapé traz o número em HTML, para SEO local e para quem copia.
+         O link ganha a mensagem com código aqui, no cliente. */
+      Array.prototype.forEach.call(document.querySelectorAll('[data-wa-link]'), function (el) {
+        el.href = linkWhatsapp();
+      });
+    } catch (e) { log('whatsapp: ' + e.message); }
+  }
+
   function iniciar() {
     contexto();
     /* O script da Cloudflare precisa estar carregado ANTES do envio: no modo
@@ -459,6 +575,7 @@
        definida e nunca era chamada — resultado: nenhum lead vinha com token e
        o anti-spam ficava inerte. Carrega so nas paginas que tem o widget. */
     if (document.querySelector('.cf-turnstile')) carregarTurnstile();
+    whatsappIniciar();
     setTimeout(drenarFila, 1500);   /* depois da página pintar */
     log('pronto · sessão', sessao(), '· endpoint', CONFIG.ENDPOINT ? 'configurado' : 'VAZIO (fila local)');
   }
