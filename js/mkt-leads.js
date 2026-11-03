@@ -609,7 +609,13 @@
 
   function waFechar(abandonou) {
     if (!waCaixa) return;
-    if (abandonou && Object.keys(waDados).length && !waDados._enviado) waGravar('whatsapp_parcial');
+    if (abandonou && !waDados._enviado) {
+      var campo = waPasso < WA_PASSOS.length ? WA_PASSOS[waPasso].campo : 'dados_de_contato';
+      push('whatsapp_abandono', { passo_num: waPasso + 1, passo_campo: campo,
+                                  passo_total: WA_PASSOS.length + 1,
+                                  respondidos: Object.keys(waDados).length });
+      if (Object.keys(waDados).length) waGravar('whatsapp_parcial');
+    }
     waCaixa.remove(); waCaixa = null;
     document.documentElement.style.overflow = '';
   }
@@ -632,7 +638,12 @@
       passo.opcoes.forEach(function (op) {
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'wa-chip'; b.textContent = op;
-        b.onclick = function () { waDados[passo.campo] = op; waPasso++; waPintar(); };
+        b.onclick = function () {
+          waDados[passo.campo] = op;
+          push('whatsapp_passo', { passo_num: waPasso + 1, passo_campo: passo.campo,
+                                   passo_resposta: op, passo_total: WA_PASSOS.length + 1 });
+          waPasso++; waPintar();
+        };
         caixa.appendChild(b);
       });
     } else {
@@ -664,7 +675,7 @@
            o navegador trataria como pop-up e bloquearia. */
         var w = window.open(waResumo(), '_blank', 'noopener');
         waDados._enviado = true;
-        push('whatsapp_click', { link_location: 'qualificacao', link_text: 'Abrir conversa no WhatsApp' });
+        push('whatsapp_conversa_aberta', { lead_tier: waPontuar().tier, pagina: window.location.pathname });
         try { gravar('mkt_wa_dados', JSON.stringify(waDados)); } catch (e) {}
         try { waGravar('whatsapp_qualificado'); } catch (e) { log('falha ao gravar', e.message); }
         waFechar(false);
@@ -721,7 +732,12 @@
         return;                      /* deixa o link seguir normalmente */
       }
       ev.preventDefault();
-      ev.stopPropagation();
+      /* Nao se tenta mais calar o handler inline de cada pagina: ele escuta no
+         MESMO document e registra antes, porque este modulo so entra no
+         DOMContentLoaded. Em vez de brigar, cada um mede uma coisa —
+         whatsapp_click e a INTENCAO (clicou no botao) e
+         whatsapp_conversa_aberta e a conversa de fato aberta. O funil fica
+         mais legivel assim do que com um evento so. */
       waAbrir();
     }, true);
   }
