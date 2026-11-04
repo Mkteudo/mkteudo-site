@@ -17,6 +17,18 @@ Case Barenbrug do Brasil (indústria de sementes de pastagem, venda via represen
 
 Case Grupo Intelli: 1.275% de ROI.
 
+## Como trabalhamos: escopo, começo e prestação de contas
+
+Página completa: https://www.mkteudo.com.br/como-trabalhamos
+
+O que a Mkteúdo não faz, declarado antes do contrato: não vende projeto quando o diagnóstico mostra que a conta não fecha; não contrata pessoas pela empresa cliente (desenha a estrutura, treina e acompanha, mas a relação trabalhista é do cliente); não retém contas de anúncio, CRM, domínio, base ou licenças — tudo fica no nome do cliente; não vende treinamento de vendas como produto isolado; não trabalha com tabela de preço fechada; não promete resultado em prazo menor que o ciclo de venda do cliente.
+
+Para quem a Mkteúdo não serve: venda direta ao consumidor sem time comercial e sem funil; quem procura volume de publicação em redes sociais como produto final; quem ainda não tem verba nem alguém executando; quem precisa de resultado antes do próprio ciclo de venda.
+
+Primeiros 60 dias de projeto: semanas 1 e 2, instrumentação e auditoria das ferramentas; semanas 2 a 4, diagnóstico fechado com conversão por etapa do funil, ciclo médio, ticket e gargalo nomeado; semanas 4 a 8, implementação de processo comercial, CRM, critério de qualificação e SLA de passagem do lead para vendas; geração de demanda em paralelo, em escala pequena. Resultado comercial consistente costuma aparecer entre o terceiro e o sexto mês. No agronegócio, amarrado à janela da safra.
+
+Fechamento mensal: conversão por etapa do funil (lead, MQL, SQL, venda), custo por lead qualificado e custo de aquisição, oportunidades geradas e o desfecho de cada uma no comercial, o que foi testado no mês e o que o teste indicou, e o que muda no mês seguinte. Alcance, impressão, curtida e seguidor não são apresentados como prova de retorno.
+
 ## Premiações
 
 - Prêmio RD Station de Marketing e Vendas 2021 — categoria Melhor Case de Transformação Digital, com a Barenbrug do Brasil. Estratégia de inbound marketing e inside sales idealizada e conduzida por Felipe Piccoli à frente do marketing da companhia.
