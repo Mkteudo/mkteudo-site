@@ -66,6 +66,12 @@ function configurar() {
   aba.getRange(1, 1, 1, COLS.length).setValues([COLS])
      .setFontWeight('bold').setBackground('#4c0059').setFontColor('#ffffff');
   aba.setFrozenRows(1);
+  /* createFilter() estoura se a aba ja tem um filtro, e o doPost chama
+     configurar() toda vez que o cabecalho nao bate com COLS. Sem remover
+     o filtro antigo primeiro, a primeira submissao depois de acrescentar
+     uma coluna derruba TODAS as submissoes seguintes. */
+  const filtroAtual = aba.getFilter();
+  if (filtroAtual) filtroAtual.remove();
   aba.getRange(1, 1, 1, COLS.length).createFilter();
 
   /* destaque automático para os leads que merecem ligação hoje */
